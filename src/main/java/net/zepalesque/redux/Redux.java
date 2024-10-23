@@ -269,7 +269,7 @@ public class Redux {
                     }
                     if (ReduxConfig.CLIENT.first_startup_menu_setup.get()) {
                         if (CumulusConfig.CLIENT.enable_menu_api.get()) {
-                            CumulusConfig.CLIENT.active_menu.set(ReduxMenus.SKYFIELDS_MENU.getId().toString());
+                            CumulusConfig.CLIENT.active_menu.set(ReduxMenus.REDUX_MENU.getId().toString());
                             CumulusConfig.CLIENT.active_menu.save();
                             CumulusConfig.CLIENT.enable_menu_list_button.set(true);
                             CumulusConfig.CLIENT.active_menu.save();
