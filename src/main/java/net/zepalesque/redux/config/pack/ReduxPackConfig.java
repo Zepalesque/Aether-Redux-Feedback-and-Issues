@@ -49,14 +49,14 @@ public class ReduxPackConfig {
         this.cockatrice_texture = builder.comment().cfg("cockatrice_texture", CockatriceType.blighted, CockatriceType.MAPPER);
         builder.pop();
         // Various sound improvements
-        builder.push("audio");
+        builder.push("mob_sounds");
         this.better_aechor_sounds = builder.comment().cfg("better_aechor_sounds", true);
         this.better_aerwhale_sounds = builder.comment().cfg("better_aerwhale_sounds", true);
-        this.better_cockatrice_sounds = builder.comment().cfg("better_cockatrice_sounds", true);
-        this.better_mimic_awaken_sound = builder.comment().cfg("better_mimic_awaken_sound", true);
-        this.better_moa_sounds = builder.comment().cfg("better_moa_sounds", true);
         this.better_sentry_sounds = builder.comment().cfg("better_sentry_sounds", true);
+        this.better_mimic_awaken_sound = builder.comment().cfg("better_mimic_awaken_sound", true);
         this.better_slider_sounds = builder.comment().cfg("better_slider_sounds", true);
+        this.better_cockatrice_sounds = builder.comment().cfg("better_cockatrice_sounds", false);
+        this.better_moa_sounds = builder.comment().cfg("better_moa_sounds", false);
         this.better_tempest_sounds = builder.comment().cfg("better_tempest_sounds", true);
         builder.pop();
         builder.push("item");
