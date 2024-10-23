@@ -27,7 +27,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraftforge.client.ForgeHooksClient;
 import net.zepalesque.redux.Redux;
+import net.zepalesque.redux.client.ReduxMenus;
 import net.zepalesque.redux.client.gui.component.menu.ReduxMenuButton;
+import net.zepalesque.redux.config.ReduxConfig;
 
 import java.util.function.Predicate;
 
@@ -42,13 +44,10 @@ public class ReduxTitleScreen extends TitleScreen implements TitleScreenBehavior
 	private static final int SPLASH_COLOR = 0xAAAAFF;
 	private static final int baseLogoWidth = baseLogoHeight * 2;
 
-	public ReduxTitleScreen(String panorama) {
+	public ReduxTitleScreen() {
 		((TitleScreenAccessor) this).aether$setFading(true);
-		this.cube = new PanoramaRenderer(new CubeMap(Redux.locate("textures/gui/title/panorama/" + panorama + "/panorama")));
+		this.cube = new PanoramaRenderer(ReduxMenus.DYNAMIC_CUBEMAP);
 	}
-
-
-
 
 	@Override
 	protected void init() {

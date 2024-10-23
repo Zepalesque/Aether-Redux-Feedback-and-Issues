@@ -633,12 +633,6 @@ public class ReduxLanguageData extends AetherLanguageProvider {
         addPackConfig("auto_apply", "Automatic Application", "Enables the resource pack automatically when removed");
         addPackConfig("smelter_menu_type", "Smelter Menu Type", "Switch between three different types of Aether Smelter Menus: The originals, classic-styled improvemenets, and modernized menus");
         addPackConfigCategory("audio", "Audio", "Changes to different sounds heard in the Aether");
-
-        addMenuTitle("blight", "Redux - Blight");
-        addMenuTitle("gilded", "Redux - Gilded");
-        addMenuTitle("dungeon", "Redux - Dungeon");
-        addMenuTitle("cloudcaps", "Redux - Cloudcaps");
-        addMenuTitle("skyfields", "Redux - Skyfields");
         addPackConfig("better_aechor_sounds", "New Aechor Plant Sounds", "Gives the Aechor Plants new sounds, with more plant-like hurt sounds");
         addPackConfig("better_aerwhale_sounds", "Highlands Aerwhale Sounds", "Gives Aerwhales their sounds from older 1.10 and 1.12 alphas of the Aether II");
         addPackConfig("better_cockatrice_sounds", "Highlands Cockatrice Sounds", "Gives Cockatrices their sounds from older 1.10 and 1.12 alphas of the Aether II");
@@ -647,6 +641,8 @@ public class ReduxLanguageData extends AetherLanguageProvider {
         addPackConfig("better_sentry_sounds", "Highlands Sentry Sounds", "Gives Moas their sounds from older 1.10 alphas of the Aether II");
         addPackConfig("better_slider_sounds", "New Slider Sounds", "Gives the Slider new sounds, with more labyrinth-themed ambient droning and a more Sentry-like hurt sound.");
         addPackConfig("better_tempest_sounds", "Highlands Tempest Sounds (Requires: The Aether: Genesis)", "Gives Tempests their sounds from older 1.10 and 1.12 alphas of the Aether II");
+
+        addMenuTitle("redux", Redux.DISPLAY);
 
         addPackTitle("overrides", "Redux - Aether Overrides");
         addPackDescription("overrides", "Configurable overrides for " + Redux.DISPLAY);

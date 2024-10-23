@@ -5,26 +5,28 @@ import com.aetherteam.cumulus.Cumulus;
 import com.aetherteam.cumulus.CumulusConfig;
 import com.aetherteam.cumulus.api.Menu;
 import net.minecraft.client.gui.screens.TitleScreen;
+import net.minecraft.client.renderer.CubeMap;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 import net.zepalesque.redux.Redux;
 import net.zepalesque.redux.client.audio.ReduxMusic;
+import net.zepalesque.redux.client.gui.screen.menu.DynamicCubeMap;
 import net.zepalesque.redux.client.gui.screen.menu.ReduxTitleScreen;
 import net.zepalesque.redux.config.ReduxConfig;
 
+import java.util.List;
 import java.util.function.Supplier;
 
 public class ReduxMenus {
     public static final DeferredRegister<Menu> MENUS = DeferredRegister.create(Cumulus.MENU_REGISTRY_KEY, Redux.MODID);
 
     private static final ResourceLocation ICON = Redux.locate("textures/gui/menu_api/menu_icon_redux.png");
-    private static final Component BLIGHT_NAME = Component.translatable("aether_redux.menu_title.blight");
-    private static final Component GILDED_NAME = Component.translatable("aether_redux.menu_title.gilded");
-    private static final Component DUNGEON_NAME = Component.translatable("aether_redux.menu_title.dungeon");
-    private static final Component CLOUDCAPS_NAME = Component.translatable("aether_redux.menu_title.cloudcaps");
-    private static final Component SKYFIELDS_NAME = Component.translatable("aether_redux.menu_title.skyfields");
+    private static final Component MENU_NAME = Component.translatable("aether_redux.menu_title.redux");
+
+    public static final CubeMap DYNAMIC_CUBEMAP = new DynamicCubeMap(ReduxConfig.CLIENT.menu_directory, Redux.MODID, "textures/gui/title/panorama/%s/panorama", "skyfields");
+
 
     private static final ResourceLocation THE_AETHER_REGULAR_BACKGROUND = new ResourceLocation(Aether.MODID, "textures/gui/title/options_background.png");
     private static final ResourceLocation THE_AETHER_DARK_BACKGROUND = new ResourceLocation(Aether.MODID, "textures/gui/title/light_sentry_background.png");
@@ -40,11 +42,7 @@ public class ReduxMenus {
             .tabButton(THE_AETHER_TAB_BUTTON);
 
 
-    public static final RegistryObject<Menu> BLIGHT_MENU = register("redux_blight", ICON, BLIGHT_NAME, () -> new ReduxTitleScreen("blight"), () -> new Menu.Properties().music(ReduxMusic.REDUX_MENU).background(REDUX_BACKGROUND));
-    public static final RegistryObject<Menu> GILDED_MENU = register("redux_gilded", ICON, GILDED_NAME, () -> new ReduxTitleScreen("gilded"), () -> new Menu.Properties().music(ReduxMusic.REDUX_MENU).background(REDUX_BACKGROUND));
-    public static final RegistryObject<Menu> DUNGEON_MENU = register("redux_dungeon", ICON, DUNGEON_NAME, () -> new ReduxTitleScreen("dungeon"), () -> new Menu.Properties().music(ReduxMusic.REDUX_MENU).background(REDUX_BACKGROUND));
-    public static final RegistryObject<Menu> CLOUDCAPS_MENU = register("redux_cloudcaps", ICON, CLOUDCAPS_NAME, () -> new ReduxTitleScreen("cloudcaps"), () -> new Menu.Properties().music(ReduxMusic.REDUX_MENU).background(REDUX_BACKGROUND));
-    public static final RegistryObject<Menu> SKYFIELDS_MENU = register("redux_skyfields", ICON, SKYFIELDS_NAME, () -> new ReduxTitleScreen("skyfields"), () -> new Menu.Properties().music(ReduxMusic.REDUX_MENU).background(REDUX_BACKGROUND));
+    public static final RegistryObject<Menu> REDUX_MENU = register("aether_redux_menu", ICON, MENU_NAME, ReduxTitleScreen::new, () -> new Menu.Properties().music(ReduxMusic.REDUX_MENU).background(REDUX_BACKGROUND));
 
     public static RegistryObject<Menu> register(String id, ResourceLocation icon, Component name, Supplier<TitleScreen> screen, Supplier<Menu.Properties> properties) {
         return MENUS.register(id, () -> new Menu(icon, name, screen.get(), () -> CumulusConfig.CLIENT.active_menu.get().equals("aether_redux:" + id), properties.get()));
@@ -52,16 +50,23 @@ public class ReduxMenus {
 
     public static void cycle() {
         if (ReduxConfig.CLIENT_SPEC.isLoaded() && CumulusConfig.CLIENT_SPEC.isLoaded()) {
-            if (ReduxConfig.CLIENT.cycle_menu.get() && CumulusConfig.CLIENT.active_menu.get().contains("aether_redux:")) {
-                int index = Redux.RAND.nextInt(5);
-                CumulusConfig.CLIENT.active_menu.set(
-                        index == 0 ? ReduxMenus.CLOUDCAPS_MENU.getId().toString() :
-                        index == 1 ? ReduxMenus.DUNGEON_MENU.getId().toString() :
-                        index == 2 ? ReduxMenus.GILDED_MENU.getId().toString() :
-                        index == 3 ? ReduxMenus.BLIGHT_MENU.getId().toString() : ReduxMenus.SKYFIELDS_MENU.getId().toString()
-                );
-                CumulusConfig.CLIENT.active_menu.save();
+            List<? extends String> choices = ReduxConfig.CLIENT.menu_choices.get();
+            if (!choices.isEmpty()) {
+                if (choices.size() > 1) {
+                    if (CumulusConfig.CLIENT.active_menu.get().equals(REDUX_MENU.getId().toString())) {
+                        if (ReduxConfig.CLIENT.randomize_menu_cycling.get()) {
+                            ReduxConfig.CLIENT.menu_directory.set(choices.get(Redux.RAND.nextInt(choices.size())));
+                        } else {
+                            int index = choices.indexOf(ReduxConfig.CLIENT.menu_directory.get());
+                            if (index == choices.size() - 1) index = 0; else index++;
+                            ReduxConfig.CLIENT.menu_directory.set(choices.get(index));
+                        }
+                    }
+                } else if (!CumulusConfig.CLIENT.active_menu.get().equals(REDUX_MENU.getId().toString())) {
+                    ReduxConfig.CLIENT.menu_directory.set(choices.get(0));
+                }
             }
+
         }
     }
 

@@ -165,7 +165,9 @@ public class ReduxConfig {
         public final ForgeConfigSpec.BooleanValue better_leaf_particles;
 //        public final ForgeConfigSpec.BooleanValue enable_adrenaline_postproccess;
         public final ForgeConfigSpec.BooleanValue fix_biome_modifier_bug;
-        public final ForgeConfigSpec.BooleanValue cycle_menu;
+        public final ForgeConfigSpec.ConfigValue<String> menu_directory;
+        public final ForgeConfigSpec.ConfigValue<List<? extends String>> menu_choices;
+        public final ForgeConfigSpec.BooleanValue randomize_menu_cycling;
         public final ForgeConfigSpec.BooleanValue first_startup_menu_setup;
         public final ForgeConfigSpec.BooleanValue first_startup_lightmap_changes;
         public final ForgeConfigSpec.BooleanValue aercloud_sfx;
@@ -186,7 +188,9 @@ public class ReduxConfig {
 //            this.enable_adrenaline_postproccess = builder.comment("Enables a post processing effect for the Shroom Ring's adrenaline ability. Only works with Fabulous graphics, and will cause issues when underwater (even when the ability is not active)").define("Enable Adrenaline Post Processing Effect", false);
 //            builder.pop();
             builder.push("GUI");
-            this.cycle_menu = builder.comment("Cycles between Redux's menus.").define("Cycle Menu", true);
+            this.menu_directory = builder.comment("Current folder used for the menu panorama").define("Menu Directory", "skyfields");
+            this.menu_choices = builder.comment("Which menu panorama directories to cycle between. Make empty to disable cycling logic").defineListAllowEmpty("Menu Choices", List.of("skyfields", "dungeon", "blight", "cloudcaps", "gilded"), o -> String.class.isAssignableFrom(o.getClass()));
+            this.randomize_menu_cycling = builder.comment("Randomize menu panorama ranther than cycling in order.").define("Randomize Menu Cycling", false);
             builder.pop();
             builder.push("Particles");
             this.better_leaf_particles = builder.comment("Improves the leaf particles for Golden Oaks, Gilded Oaks, and Crystal Trees, based on Minecraft 1.20's new cherry tree particles.").define("Better Leaf Particles", true);
