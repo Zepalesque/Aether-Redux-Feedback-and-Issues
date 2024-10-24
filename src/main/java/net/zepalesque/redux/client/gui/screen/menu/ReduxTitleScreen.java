@@ -12,6 +12,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.components.Renderable;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.components.events.GuiEventListener;
@@ -20,7 +21,6 @@ import net.minecraft.client.gui.screens.ConnectScreen;
 import net.minecraft.client.gui.screens.TitleScreen;
 import net.minecraft.client.multiplayer.ServerData;
 import net.minecraft.client.multiplayer.resolver.ServerAddress;
-import net.minecraft.client.renderer.CubeMap;
 import net.minecraft.client.renderer.PanoramaRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -28,15 +28,17 @@ import net.minecraft.util.Mth;
 import net.minecraftforge.client.ForgeHooksClient;
 import net.zepalesque.redux.Redux;
 import net.zepalesque.redux.client.ReduxMenus;
+import net.zepalesque.redux.client.gui.component.DynamicImageButton;
 import net.zepalesque.redux.client.gui.component.menu.ReduxMenuButton;
 import net.zepalesque.redux.config.ReduxConfig;
 
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 
-/** NOTE: Duplicates {@link com.aetherteam.aether.client.gui.screen.menu.AetherTitleScreen}, with a few edits such as always being left-aligned (except the logo) and different button textures and stuff */
+/** NOTE: Duplicates {@link com.aetherteam.aether.client.gui.screen.menu.AetherTitleScreen}, with a few edits such as always being left-aligned (except the logo, which can be configured) and different button textures and stuff */
 public class ReduxTitleScreen extends TitleScreen implements TitleScreenBehavior {
 	private static final ResourceLocation PANORAMA_OVERLAY = new ResourceLocation("textures/gui/title/background/panorama_overlay.png");
-	private static final ResourceLocation AETHER_LOGO = Redux.locate("textures/gui/title/redux.png");
+	private static final ResourceLocation REDUX_LOGO = Redux.locate("textures/gui/title/redux.png");
 	private final PanoramaRenderer cube;
 	private int rows;
 	private static final int baseLogoHeight = 144;
@@ -58,6 +60,8 @@ public class ReduxTitleScreen extends TitleScreen implements TitleScreenBehavior
 	public void setupButtons() {
 		int buttonRows = 0;
 		int lastY = 0;
+
+		Button title = this.addRenderableWidget(this.logoButton(getScale(this, this.getMinecraft())));
 		if (AetherConfig.CLIENT.enable_server_button.get()) {
 			Component component = ((TitleScreenAccessor) this).callGetMultiplayerDisabledReason();
 			boolean flag = component == null;
@@ -87,7 +91,7 @@ public class ReduxTitleScreen extends TitleScreen implements TitleScreenBehavior
 						button.buttonCountOffset = buttonRows;
 					}
 
-					if ((Boolean)AetherConfig.CLIENT.enable_server_button.get() && buttonText.equals(Component.translatable("menu.singleplayer"))) {
+					if (AetherConfig.CLIENT.enable_server_button.get() && buttonText.equals(Component.translatable("menu.singleplayer"))) {
 						++buttonRows;
 					}
 				}
@@ -104,7 +108,7 @@ public class ReduxTitleScreen extends TitleScreen implements TitleScreenBehavior
 		}
 		float fadeAmount = TitleScreenBehavior.super.handleFading(guiGraphics, this, titleScreenAccessor, this.cube, PANORAMA_OVERLAY, partialTicks);
 		float scale = getScale(this, this.getMinecraft());
-		this.setupLogo(guiGraphics, fadeAmount, scale);
+//		this.setupLogo(guiGraphics, fadeAmount, scale);
 		int roundedFadeAmount = Mth.ceil(fadeAmount * 255.0F) << 24;
 		if ((roundedFadeAmount & -67108864) != 0) {
 			ForgeHooksClient.renderMainMenu(this, guiGraphics, this.font, this.width, this.height, roundedFadeAmount);
@@ -112,7 +116,7 @@ public class ReduxTitleScreen extends TitleScreen implements TitleScreenBehavior
 				SplashRendererAccessor splashRendererAccessor = (SplashRendererAccessor) titleScreenAccessor.aether$getSplash();
 				if (splashRendererAccessor.cumulus$getSplash() != null && !splashRendererAccessor.cumulus$getSplash().isEmpty()) {
 					PoseStack poseStack = guiGraphics.pose();
-					float splashX = (float) ReduxTitleScreen.this.width / 2 + (baseLogoHeight / scale);
+					float splashX = (ReduxConfig.CLIENT.centered_logo.get() ? (float) ReduxTitleScreen.this.width / 2 : 16 * scale + (baseLogoHeight / scale)) + (baseLogoHeight / scale);
 					float splashY = (int) (20 + ((baseLogoHeight - 24) / scale));
 					poseStack.pushPose();
 					poseStack.translate(splashX, splashY, 0.0F);
@@ -129,7 +133,7 @@ public class ReduxTitleScreen extends TitleScreen implements TitleScreenBehavior
 
 		}
 
-		int xOffset = TitleScreenBehavior.super.handleButtonVisibility(this, fadeAmount);
+		int xOffset = this.handleButtonVisibility(this, fadeAmount);
 		for (Renderable renderable : this.renderables) {
 			renderable.render(guiGraphics, mouseX, mouseY, partialTicks);
 			if (renderable instanceof ReduxMenuButton aetherButton) { // Smoothly shifts the Aether-styled buttons to the right slightly when hovered over.
@@ -161,12 +165,22 @@ public class ReduxTitleScreen extends TitleScreen implements TitleScreenBehavior
 	private void setupLogo(GuiGraphics guiGraphics, float transparency, float scale) {
 		int width = (int) (baseLogoWidth / scale);
 		int height = (int) (baseLogoHeight / scale);
-		int logoX = (int) ((this.width / 2 - (baseLogoWidth / 2) / scale));
+		int logoX = ReduxConfig.CLIENT.centered_logo.get() ? (int) ((this.width / 2 - (baseLogoWidth / 2) / scale)) : (int) (scale * 16);
 		int logoY = (int) (/*25*/ 0 + (10 / scale));
 		guiGraphics.setColor(1.0F, 1.0F, 1.0F, transparency);
-		guiGraphics.blit(AETHER_LOGO, logoX, logoY, 0, 0, width, height, width, height);
+		guiGraphics.blit(REDUX_LOGO, logoX, logoY, 0, 0, width, height, width, height);
 		guiGraphics.setColor(1.0F, 1.0F, 1.0F, 1.0F);
 	}
+
+	protected ImageButton logoButton(float scale) {
+		int width = (int) (baseLogoWidth / scale);
+		int height = (int) (baseLogoHeight / scale);
+		int logoX = ReduxConfig.CLIENT.centered_logo.get() ? (int) ((this.width / 2 - (baseLogoWidth / 2) / scale)) : (int) (scale * 16);
+		int logoY = (int) (/*25*/ 0 + (10 / scale));
+		return new DynamicImageButton(logoX, logoY, width, height, 0, 0, 0, REDUX_LOGO, width, height, button -> ReduxMenus.cycle()).setActiveSupplier(() -> !this.isActuallyFading());
+	}
+
+
 
 	/**
 	 * Determines the proper scaling for menu elements relative to the true screen scale.
@@ -219,5 +233,9 @@ public class ReduxTitleScreen extends TitleScreen implements TitleScreenBehavior
 	@Override
 	public void onClose() {
 		super.onClose();
+	}
+
+	protected boolean isActuallyFading() {
+		return Util.getMillis() - ((TitleScreenAccessor) this).aether$getFadeInStart() < 1000;
 	}
 }

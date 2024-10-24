@@ -35,6 +35,8 @@ public class DynamicImageButton extends ImageButton {
         return this;
     }
 
+
+
     public DynamicImageButton(int x, int y, int width, int height, int xTexStart, int yTexStart, int yDiffTex, ResourceLocation resourceLocation, int textureWidth, int textureHeight, OnPress onPress, Component message) {
         super(x, y, width, height, xTexStart, yTexStart, yDiffTex, resourceLocation, textureWidth, textureHeight, onPress, message);
     }
@@ -48,6 +50,7 @@ public class DynamicImageButton extends ImageButton {
         if (this.visibleSupplier != null) {
             this.visible = this.visibleSupplier.get();
         }
+
         super.render(guiGraphics, mouseX, mouseY, partialTick);
     }
 }
