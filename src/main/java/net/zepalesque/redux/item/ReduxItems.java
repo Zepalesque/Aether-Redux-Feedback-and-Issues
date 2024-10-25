@@ -107,7 +107,7 @@ public class ReduxItems {
     public static final RegistryObject<Item> SUBZERO_CROSSBOW = register("subzero_crossbow", () -> new SubzeroCrossbowItem(new Item.Properties().stacksTo(1).durability(1024).rarity(AetherItems.AETHER_LOOT)));
 
     public static final RegistryObject<SpawnEggItem> VANILLA_SWET_SPAWN_EGG = ITEMS.register("vanilla_swet_spawn_egg", () -> new ForgeSpawnEggItem(ReduxEntityTypes.VANILLA_SWET, 0xF7F3E3, 0xD3CABB, new Item.Properties()));
-    public static final RegistryObject<Item> SLIDER_MUSIC_DISC = ITEMS.register("slider_music_disc", () -> (new RecordItem(1, ReduxSoundEvents.MUSIC_DISC_LABYRINTHS_VENGEANCE, (new Item.Properties()).stacksTo(1).rarity(Rarity.RARE), 4300)));
+    public static final RegistryObject<Item> ANCIENT_SENTRITE_MUSIC_DISC = ITEMS.register("ancient_sentrite_music_disc", () -> (new RecordItem(1, ReduxSoundEvents.MUSIC_DISC_SENTIENCE, (new Item.Properties()).stacksTo(1).rarity(Rarity.RARE), 4300)));
 
     public static final RegistryObject<SpawnEggItem> SHIMMERCOW_SPAWN_EGG = ITEMS.register("shimmercow_spawn_egg", () -> new ForgeSpawnEggItem(ReduxEntityTypes.SHIMMERCOW, 0x7B7F90, 0x7876CC, new Item.Properties()));
 

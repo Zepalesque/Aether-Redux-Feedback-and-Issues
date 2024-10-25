@@ -89,7 +89,7 @@ public class ReduxSoundEvents {
     public static final RegistryObject<SoundEvent> GREEN_AERCLOUD_WUBBLE = register("block.aercloud.green_aercloud_wubble");
 
 
-    public static final RegistryObject<SoundEvent> MUSIC_DISC_LABYRINTHS_VENGEANCE = register("item.music_disc.labyrinths_vengeance");
+    public static final RegistryObject<SoundEvent> MUSIC_DISC_SENTIENCE = register("item.music_disc.sentience");
 
     public static final RegistryObject<SoundEvent> ADVANCEMENT_GOLD = register("ui.toast.aether_redux_gold");
 

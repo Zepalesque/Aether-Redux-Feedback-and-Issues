@@ -25,7 +25,6 @@
     "common.entity.MimicMixin",
     "common.entity.MobMixin",
     "common.entity.SentryMixin",
-    "common.entity.SliderMixin",
     "common.entity.SlimeMixin",
     "common.entity.SwetMixin",
     "common.entity.ValkQueenMixin",

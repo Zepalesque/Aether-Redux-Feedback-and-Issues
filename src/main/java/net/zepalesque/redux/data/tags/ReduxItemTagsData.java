@@ -118,7 +118,7 @@ public class ReduxItemTagsData extends ItemTagsProvider {
                 ReduxItems.FEATHER_OF_WARDING.get()
         );
         this.tag(ReduxTags.Items.BLUEBERRY_PIE_EGGS).addTag(AetherTags.Items.MOA_EGGS).add(Items.EGG).addOptional(DAItems.QUAIL_EGG.getId());
-        this.tag(ItemTags.MUSIC_DISCS).add(ReduxItems.SLIDER_MUSIC_DISC.get());
+        this.tag(ItemTags.MUSIC_DISCS).add(ReduxItems.ANCIENT_SENTRITE_MUSIC_DISC.get());
         this.tag(ReduxTags.Items.VERIDIUM_ADVANCEMENT_INFUSABLE).add(
                 ReduxItems.VERIDIUM_PICKAXE.get(),
                 ReduxItems.VERIDIUM_AXE.get(),

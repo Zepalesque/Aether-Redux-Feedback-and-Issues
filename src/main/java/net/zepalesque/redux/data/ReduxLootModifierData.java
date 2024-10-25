@@ -108,7 +108,7 @@ public class ReduxLootModifierData extends GlobalLootModifierProvider {
                         MatchTool.toolMatches(ItemPredicate.Builder.item().of(Items.SHEARS)).or(MatchTool.toolMatches(ItemPredicate.Builder.item().hasEnchantment(new EnchantmentPredicate(Enchantments.SILK_TOUCH, MinMaxBounds.Ints.atLeast(1))))).invert().build()
                 }));
 
-        this.add("slider_disc", new AddDrops(new ItemStack(ReduxItems.SLIDER_MUSIC_DISC.get()),
+        this.add("sentrite_disc", new AddDrops(new ItemStack(ReduxItems.ANCIENT_SENTRITE_MUSIC_DISC.get()),
                 new LootItemFunction[] {
                         SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)).build()
                 },

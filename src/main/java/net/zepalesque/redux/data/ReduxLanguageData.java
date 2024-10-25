@@ -141,12 +141,12 @@ public class ReduxLanguageData extends AetherLanguageProvider {
         addItem(ReduxItems.INFUSED_VERIDIUM_DART_SHOOTER, "Infused Veridium Dart Shooter");
         addLore(ReduxItems.INFUSED_VERIDIUM_DART_SHOOTER, "A Dart Shooter which shoots Veridium Darts. This can be infused, by right-clicking it with an ambrosium shard!");
 
-        addItem(ReduxItems.SLIDER_MUSIC_DISC, "Slider Music Disc");
-        addDiscDesc(ReduxItems.SLIDER_MUSIC_DISC, "Emile van Krieken - Labyrinth's Vengeance");
-        addLore(ReduxItems.SLIDER_MUSIC_DISC, "A music disc that plays Labyrinth's Vengeance by Emile van Krieken. These are dropped on occasion when a Sentry kills another Sentry.");
+        addItem(ReduxItems.ANCIENT_SENTRITE_MUSIC_DISC, "Ancient Sentrite Music Disc");
+        addDiscDesc(ReduxItems.ANCIENT_SENTRITE_MUSIC_DISC, "Emile van Krieken - Sentience");
+        addLore(ReduxItems.ANCIENT_SENTRITE_MUSIC_DISC, "A music disc that plays an ambient track, Sentience, made by Emile van Krieken. These are dropped on occasion when a Sentry kills another Sentry.");
 
         addItem(ReduxItems.MOUSE_EAR_SOUP, "Mouse Ear Soup");
-        addLore(ReduxItems.MOUSE_EAR_SOUP, "Mouse Ear Soup is a surprisingly good dish, but it will certainly not get you praise from most. However, while most people will raise their eyebrows wondering why in Veradex you have leather ears in a bowl of water, a select few will recognize your true culinary genious, gaining you their utmost and complete respect.");
+        addLore(ReduxItems.MOUSE_EAR_SOUP, "This unusual stew is a surprisingly tasty and filling meal. Despite the fact that many may question your sanity if they see you eating this, passing it off as chunks of dyed leather boiled in water, a very select few will recognize your true culinary genius, and you will have their utmost respect.");
 
 
         addBlock(ReduxBlocks.SHORT_AETHER_GRASS, "Aether Grass");

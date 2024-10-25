@@ -114,7 +114,7 @@ public class ReduxSoundData extends SoundDefinitionsProvider {
         this.add(ReduxSoundEvents.BLIGHTSHADE_SPRAY,
                 definition().with(sound("aether_redux:block/blightshade_spray"))
                         .subtitle("subtitles.aether_redux.block.blightshade_spray"));
-        this.add(ReduxSoundEvents.MUSIC_DISC_LABYRINTHS_VENGEANCE, definition().with(sound("aether_redux:music/labyrinth_disc_mono").stream()));
+        this.add(ReduxSoundEvents.MUSIC_DISC_SENTIENCE, definition().with(sound("aether_redux:music/ancient_sentrite_disc").stream()));
         this.add(ReduxSoundEvents.CONVERT_AMBROSIUM,
                 definition().with(sound("aether_redux:item/convert_ambrosium"))
                         .subtitle("subtitles.aether_redux.item.convert_ambrosium"));

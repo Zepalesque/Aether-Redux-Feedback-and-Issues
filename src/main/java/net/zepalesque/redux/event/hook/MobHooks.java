@@ -6,6 +6,7 @@ import com.aetherteam.aether.entity.monster.dungeon.Mimic;
 import com.aetherteam.aether.entity.monster.dungeon.Sentry;
 import com.aetherteam.aether.entity.passive.Moa;
 import com.aetherteam.aether_genesis.entity.monster.BattleSentry;
+import com.google.common.collect.ImmutableMap;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.goal.FleeSunGoal;
@@ -14,7 +15,11 @@ import net.minecraft.world.entity.ai.goal.RestrictSunGoal;
 import net.minecraft.world.entity.ai.goal.WrappedGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.util.Lazy;
 import net.zepalesque.redux.Redux;
+import net.zepalesque.redux.block.ReduxBlocks;
 import net.zepalesque.redux.capability.animation.mimic.MimicAnimation;
 import net.zepalesque.redux.capability.animation.moa.MoaAnimation;
 import net.zepalesque.redux.capability.animation.sentry.SentryAnimation;
@@ -26,10 +31,21 @@ import net.zepalesque.redux.config.ReduxConfig;
 import net.zepalesque.redux.entity.ai.goal.CockatriceMeleeAttackGoal;
 import net.zepalesque.redux.entity.ai.goal.CockatriceRangedStrafeGoal;
 import net.zepalesque.redux.entity.ai.target.HurtByOtherTypeTargetGoal;
+import org.spongepowered.asm.mixin.Unique;
+
+import java.util.Map;
+import java.util.function.Function;
 
 public class MobHooks {
 
+    public static final Lazy<Map<Block, Function<BlockState, BlockState>>> SLIDER_BLOCKS = Lazy.of(() -> new ImmutableMap.Builder<Block, Function<BlockState, BlockState>>()
 
+
+
+
+
+            .build()
+    );
 
     public static void modifyCockatriceAI(Cockatrice cockatrice) {
         if (ReduxConfig.COMMON.cockatrice_burn_in_daylight.get()) {

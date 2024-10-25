@@ -327,7 +327,7 @@ public class ReduxCreativeTabs {
 
             putAfter(AetherItems.PHOENIX_BOW, ReduxItems.SUBZERO_CROSSBOW, event);
 
-            putAfter(AetherItems.MUSIC_DISC_ASCENDING_DAWN, ReduxItems.SLIDER_MUSIC_DISC, event);
+            putAfter(AetherItems.MUSIC_DISC_ASCENDING_DAWN, ReduxItems.ANCIENT_SENTRITE_MUSIC_DISC, event);
 
             doBoats(AetherItems.SKYROOT_CHEST_BOAT, event);
         }

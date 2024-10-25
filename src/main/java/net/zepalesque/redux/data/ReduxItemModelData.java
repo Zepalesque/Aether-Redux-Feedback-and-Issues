@@ -87,7 +87,7 @@ public class ReduxItemModelData extends AetherItemModelProvider {
         item(ReduxItems.RING_OF_CONSTRUCTION, "accessories/");
         item(ReduxItems.AIRBOUND_CAPE, "accessories/");
         item(ReduxItems.SOLAR_EMBLEM, "accessories/");
-        item(ReduxItems.SLIDER_MUSIC_DISC, "misc/");
+        item(ReduxItems.ANCIENT_SENTRITE_MUSIC_DISC, "misc/");
         item(ReduxItems.MOUSE_EAR_SOUP, "food/");
         item(ReduxItems.OATMEAL, "food/");
         itemBlock(ReduxBlocks.COARSE_AETHER_DIRT);
