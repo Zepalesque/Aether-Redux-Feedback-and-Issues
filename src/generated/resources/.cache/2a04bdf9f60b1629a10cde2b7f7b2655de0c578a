@@ -1,4 +1,4 @@
-// 1.20.1	2024-07-04T14:56:04.3329899	Tags for minecraft:item mod id aether_redux
+// 1.20.1	2024-10-25T19:16:30.8426638	Tags for minecraft:item mod id aether_redux
 300781e4ca600daa56e90c34c0dbde6d8e83a30f data/aether/tags/items/accessories_capes.json
 1bc4d30bebbc48e19dd73fcd9b61bcee5c13a066 data/aether/tags/items/accessories_miscellaneous.json
 dee038e142bc18a39fdeae6abccd9121ad40e466 data/aether/tags/items/accessories_pendants.json
@@ -46,7 +46,7 @@ cfe48fd28023b2449cb40cc8fb5671de94ee19c2 data/minecraft/tags/items/axes.json
 36a406b0d0b6c5f7f65c2cb9f24c55f1f684f950 data/minecraft/tags/items/boats.json
 d2afe40cb50ce46dcbbf232eac8fd4d41171d55d data/minecraft/tags/items/chest_boats.json
 e60767be7710a7d974af090a872ab20f4d199986 data/minecraft/tags/items/hoes.json
-73c2e97497598505c59f73b3d674733103523eeb data/minecraft/tags/items/music_discs.json
+7f2f7d3b4ffa79a76989a7c61314a51b12d48d32 data/minecraft/tags/items/music_discs.json
 d7419f8329f04e3bc18cdcf761b7c6288bfbf50b data/minecraft/tags/items/pickaxes.json
 8dca6eb7f0f539576b5d49e0926d4ebf47e7ae44 data/minecraft/tags/items/shovels.json
 b3c687cc6d49ab49a67e1bd72fd98030a64daf31 data/minecraft/tags/items/swords.json

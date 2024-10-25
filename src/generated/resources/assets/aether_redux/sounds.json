@@ -421,10 +421,10 @@
     ],
     "subtitle": "subtitles.aether_redux.item.convert_swet_ball"
   },
-  "item.music_disc.labyrinths_vengeance": {
+  "item.music_disc.sentience": {
     "sounds": [
       {
-        "name": "aether_redux:music/labyrinth_disc_mono",
+        "name": "aether_redux:music/ancient_sentrite_disc",
         "stream": true
       }
     ]

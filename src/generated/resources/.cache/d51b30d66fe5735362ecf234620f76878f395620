@@ -1,5 +1,6 @@
-// 1.20.1	2024-07-11T10:20:03.0769268	Item Models: aether_redux
+// 1.20.1	2024-10-25T19:16:30.8316711	Item Models: aether_redux
 2445055af5b1b7f3c6045199ffce74108003cef6 assets/aether_redux/models/item/airbound_cape.json
+ecaf5351821bcc0b65e09e6c21ff78fab555595c assets/aether_redux/models/item/ancient_sentrite_music_disc.json
 2fa1343a8119a1f49af334c002773099174965bd assets/aether_redux/models/item/aurum.json
 edfe83948874d1436a61893ed9471b47e93dbe88 assets/aether_redux/models/item/avelium.json
 069219dd6179163a1afbd2ba1c972e9e9219ffc8 assets/aether_redux/models/item/avelium_roots.json
@@ -250,7 +251,6 @@ aec70cdc85dfdc10f3782dd2c1d08fcff8d1d360 assets/aether_redux/models/item/shell_s
 262070202f715ccbb93ebca7b4dd3b04851bc0ce assets/aether_redux/models/item/short_aether_grass.json
 0b82db1997b953e9a51ed21e7dbf470127c7b6f8 assets/aether_redux/models/item/shroom_ring.json
 6eb82aa73b8f464c031aede636157d1f9fb79678 assets/aether_redux/models/item/skysprouts.json
-3277043e77cf82c46293a905c797bb8cec8aaf03 assets/aether_redux/models/item/slider_music_disc.json
 6ac0dc6780c42e567774c05e1f597af1a9f8b48a assets/aether_redux/models/item/snailshell_shield.json
 4e0cb673da868d9160e95ff7c74450271fe60775 assets/aether_redux/models/item/solar_emblem.json
 ef405b37de6a713eaa2b3a73e51abd287ab716d5 assets/aether_redux/models/item/spear_of_the_blight.json

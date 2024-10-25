@@ -154,10 +154,10 @@ dependencies {
 
     implementation fg.deobf("curse.maven:aether-treasure-reforging-1016302:${project.treasure_version}")
 
-    implementation fg.deobf("curse.maven:ancient-aether-886751:${project.ancient_aether_version}")
-    implementation fg.deobf("blank:aether_genesis-${project.genesis_version}:${project.genesis_version}")
-    implementation fg.deobf("curse.maven:deep-aether-852465:${project.deep_aether_version}")
-    implementation fg.deobf("curse.maven:aether-lost-content-318602:${project.lost_content_version}")
+    compileOnly fg.deobf("curse.maven:ancient-aether-886751:${project.ancient_aether_version}")
+    compileOnly fg.deobf("blank:aether_genesis-${project.genesis_version}:${project.genesis_version}")
+    compileOnly fg.deobf("curse.maven:deep-aether-852465:${project.deep_aether_version}")
+    compileOnly fg.deobf("curse.maven:aether-lost-content-318602:${project.lost_content_version}")
 
     implementation fg.deobf("curse.maven:jei-238222:${project.jei_curse_version}")
     implementation fg.deobf("top.theillusivec4.curios:curios-forge:${project.curios_version}")

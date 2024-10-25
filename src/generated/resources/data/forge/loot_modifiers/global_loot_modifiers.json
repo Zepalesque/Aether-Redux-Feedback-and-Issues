@@ -12,12 +12,12 @@
     "aether_redux:vampire_amulet",
     "aether_redux:blue_swet_ball_increase",
     "aether_redux:raw_veridium",
-    "aether_redux:slider_disc",
     "aether_redux:airbound_cape",
     "aether_redux:remove_golden_swet_glowstone",
     "aether_redux:vanilla_gummy_swet",
     "aether_redux:sentry_chip",
-    "aether_redux:cockatrice_feather"
+    "aether_redux:cockatrice_feather",
+    "aether_redux:sentrite_disc"
   ],
   "replace": false
 }
