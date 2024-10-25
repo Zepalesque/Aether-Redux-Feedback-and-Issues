@@ -3,7 +3,6 @@ package net.zepalesque.redux;
 import com.aetherteam.aether.AetherConfig;
 import com.aetherteam.aether.block.dispenser.DispenseUsableItemBehavior;
 import com.aetherteam.aether.entity.AetherEntityTypes;
-import com.aetherteam.aether.entity.monster.dungeon.boss.Slider;
 import com.aetherteam.aether.item.AetherItems;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import com.aetherteam.aether_genesis.item.GenesisItems;
@@ -93,7 +92,6 @@ import net.zepalesque.redux.data.tags.ReduxSoundEventTagData;
 import net.zepalesque.redux.effect.ReduxEffects;
 import net.zepalesque.redux.entity.ReduxEntityTypes;
 import net.zepalesque.redux.entity.dataserializer.ReduxDataSerializers;
-import net.zepalesque.redux.event.hook.MobHooks;
 import net.zepalesque.redux.event.hook.SwetHooks;
 import net.zepalesque.redux.event.listener.MobSoundListener;
 import net.zepalesque.redux.item.ReduxItems;
@@ -252,12 +250,6 @@ public class Redux {
             if (Redux.ancientAetherCompat()) {
                 SwetHooks.registerParticle(AncientAetherEntityTypes.FESTIVE_SWET.get(), AetherItems.SWET_BALL.get());
             }
-            var map = Slider.DUNGEON_BLOCK_CONVERSIONS;
-            map.put(ReduxBlocks.LOCKED_CARVED_BASE.get(), block -> ReduxBlocks.CARVED_BASE.get().defaultBlockState());
-            map.put(ReduxBlocks.LOCKED_SENTRY_BASE.get(), block -> ReduxBlocks.SENTRY_BASE.get().defaultBlockState());
-            map.put(ReduxBlocks.LOCKED_CARVED_PILLAR.get(), block -> ReduxBlocks.CARVED_PILLAR.get().defaultBlockState());
-            map.put(ReduxBlocks.LOCKED_RUNELIGHT.get(), block -> ReduxBlocks.RUNELIGHT.get().defaultBlockState());
-            map.put(ReduxBlocks.LOCKED_SENTRITE_BRICKS.get(), block -> ReduxBlocks.SENTRITE_BRICKS.get().defaultBlockState());
         });
     }
 
