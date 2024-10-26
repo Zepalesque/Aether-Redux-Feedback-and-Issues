@@ -16,9 +16,6 @@ import java.util.function.Supplier;
 
 public class AncientCompatUtil {
 
-    // TODO: Remove version check once AA 0.9.0 releases
-    public static final boolean before090 = !Redux.ancientAetherCompat() || ModuleDescriptor.Version.parse(ModList.get().getModFileById("ancient_aether").versionString()).compareTo(ModuleDescriptor.Version.parse("0.9.0")) < 0;
-
     private static final Lazy<Map<Block, Supplier<? extends ParticleOptions>>> PARTICLE_MAP = Lazy.of(() -> new ImmutableMap.Builder<Block, Supplier<? extends ParticleOptions>>()
             .put(AncientAetherBlocks.CRYSTAL_SKYROOT_LEAVES.get(), ReduxParticleTypes.FALLING_CRYSTAL_SKYROOT_LEAVES)
             .put(AncientAetherBlocks.ENCHANTED_SKYROOT_LEAVES.get(), ReduxParticleTypes.FALLING_ENCHANTED_SKYROOT_LEAVES)

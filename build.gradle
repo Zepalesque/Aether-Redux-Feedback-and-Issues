@@ -171,7 +171,7 @@ dependencies {
     runtimeOnly fg.deobf("curse.maven:embeddium-908741:${project.embeddium_version}")
     implementation fg.deobf("curse.maven:jade-324717:${project.jade_version}")
     compileOnly fg.deobf("curse.maven:galosphere-631098:${project.galosphere_version}")
-    compileOnly fg.deobf("curse.maven:lootr-361276:${project.lootr_version}")
+    implementation fg.deobf("curse.maven:lootr-361276:${project.lootr_version}")
     implementation fg.deobf("curse.maven:cyanide-541676:${project.cyanide_version}")
 
 //    jarJar fg.deobf("curse.maven:aeroblender-879879:${project.aeroblender_version}") {

@@ -17,7 +17,7 @@ public class ReduxFeatures {
     public static RegistryObject<Feature<CloudcapFeature.Config>> CLOUDCAP = FEATURES.register("cloudcap", () -> new CloudcapFeature(CloudcapFeature.Config.CODEC));
     public static RegistryObject<Feature<SurfaceRuleLakeFeature.Config>> SURFACE_RULE_LAKE = FEATURES.register("surface_rule_lake", () -> new SurfaceRuleLakeFeature(SurfaceRuleLakeFeature.Config.CODEC));
     public static RegistryObject<Feature<FieldsprootTreeFeature.Config>> FIELDSPROOT_TREE = FEATURES.register("fieldsprout_tree", () -> new FieldsprootTreeFeature(FieldsprootTreeFeature.Config.CODEC));
-    public static RegistryObject<Feature<CloudLayerFeature.Config>> CLOUD_LAYER = FEATURES.register("cloud_layer", () -> new CloudLayerFeature(CloudLayerFeature.Config.CODEC));
+    public static RegistryObject<Feature<CloudbedFeature.Config>> CLOUDBED = FEATURES.register("cloud_layer", () -> new CloudbedFeature(CloudbedFeature.Config.CODEC));
     public static RegistryObject<Feature<JellyshroomFeature.Config>> JELLYSHROOM = FEATURES.register("jellyshroom", () -> new JellyshroomFeature(JellyshroomFeature.Config.CODEC));
     public static RegistryObject<Feature<NoneFeatureConfiguration>> TREE_AWARE_SNOW = FEATURES.register("tree_aware_snow", () -> new TreeAwareSnowLayerFeature(NoneFeatureConfiguration.CODEC));
     public static RegistryObject<Feature<UpwardVineFeature.Config>> UPWARD_VINE = FEATURES.register("upward_vine", () -> new UpwardVineFeature(UpwardVineFeature.Config.CODEC));

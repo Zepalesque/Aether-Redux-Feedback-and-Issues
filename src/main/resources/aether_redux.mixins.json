@@ -37,7 +37,9 @@
     "common.item.SubzeroCrossbowItemMixin",
     "common.world.BronzeBossMixin",
     "common.world.BronzeDungeonRoomMixin",
-    "common.world.ChunkAccessAccessor"
+    "common.world.ChunkAccessAccessor",
+    "common.world.PerlinNoiseAccessor",
+    "common.world.RandomStateMixin"
   ],
   "injectors": {
     "defaultRequire": 1

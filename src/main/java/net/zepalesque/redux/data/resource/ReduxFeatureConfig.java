@@ -29,6 +29,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.PinkPetalsBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.levelgen.DensityFunction;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -198,6 +199,8 @@ public class    ReduxFeatureConfig {
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
         HolderGetter<Block> blocks = context.lookup(Registries.BLOCK);
         HolderGetter<ConfiguredFeature<?, ?>> configs = context.lookup(Registries.CONFIGURED_FEATURE);
+        HolderGetter<DensityFunction> functions = context.lookup(Registries.DENSITY_FUNCTION);
+
         register(context, AEVELIUM_GRASSES_PATCH, Feature.RANDOM_PATCH,
                 blockBelowPlacementPatch(32, 7, 3, (new WeightedStateProvider(
                                 SimpleWeightedRandomList.<BlockState>builder()
@@ -279,8 +282,16 @@ public class    ReduxFeatureConfig {
                         UniformInt.of(1, 2),
                         0.75F));
 
-        register(context, CLOUD_LAYER, ReduxFeatures.CLOUD_LAYER.get(),
-                new CloudLayerFeature.Config(prov(AetherBlocks.COLD_AERCLOUD), BlockPredicate.matchesBlocks(Blocks.AIR, Blocks.CAVE_AIR, Blocks.VOID_AIR), 8, 1D));
+        register(context, CLOUD_LAYER, ReduxFeatures.CLOUDBED.get(),
+                new CloudbedFeature.Config(
+                        prov(AetherFeatureStates.COLD_AERCLOUD),
+                        BlockPredicate.ONLY_IN_AIR_PREDICATE,
+                        8,
+                        ReduxDensityFunctions.get(functions, ReduxDensityFunctions.CLOUDBED_NOISE),
+                        10,
+                        ReduxDensityFunctions.get(functions, ReduxDensityFunctions.CLOUDBED_Y_OFFSET),
+                        10, Optional.empty()));
+
 
         register(context, BLIGHT_ROCK, ReduxFeatures.CONFIGURED_BOULDER.get(),
                 new ConfiguredBoulder.Config(prov(ReduxBlocks.BLIGHTMOSS_HOLYSTONE)));

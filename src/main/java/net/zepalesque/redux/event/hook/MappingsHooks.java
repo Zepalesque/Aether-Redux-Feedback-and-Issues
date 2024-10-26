@@ -171,6 +171,8 @@ public class MappingsHooks {
 
         builder.put(Redux.locate("valkyrie_ring"), ReduxItems.RING_OF_CONSTRUCTION);
 
+        builder.put(Redux.locate("silder_music_disc"), ReduxItems.ANCIENT_SENTRITE_MUSIC_DISC);
+
         return builder.build();
     }
     private static Map<ResourceLocation, Supplier<? extends Block>> createBlockMap() {

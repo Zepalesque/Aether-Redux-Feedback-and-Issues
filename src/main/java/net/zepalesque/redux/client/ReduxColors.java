@@ -165,20 +165,10 @@ public class ReduxColors {
             register(event, (stack, tintIndex) -> tintIndex == 1 ? ReduxBiomes.AETHER_GRASS_COLOR : 0xFFFFFF,
                     new ResourceLocation("ancient_aether", "sky_blues"));
 
-            // Version-dependent flowers
-            if (!AncientCompatUtil.before090) {
-                register(event, (stack, tintIndex) -> tintIndex == 1 ? ReduxBiomes.AETHER_GRASS_COLOR : 0xFFFFFF,
-                        new ResourceLocation("ancient_aether", "sunset_rose"));
-                register(event, (stack, tintIndex) -> tintIndex == 1 ? ReduxBiomes.PALE_GRASS_COLOR : 0xFFFFFF,
-                        new ResourceLocation("ancient_aether", "elevetia"));
-            } else {
-                register(event, (stack, tintIndex) -> tintIndex == 1 ? ReduxBiomes.AETHER_GRASS_COLOR : 0xFFFFFF,
-                        new ResourceLocation("ancient_aether", "highland_viola"));
-                register(event, (stack, tintIndex) -> tintIndex == 1 ? ReduxBiomes.AETHER_GRASS_COLOR : 0xFFFFFF,
-                        new ResourceLocation("ancient_aether", "sakura_blossoms"));
-                register(event, (stack, tintIndex) -> tintIndex == 1 ? ReduxBiomes.AETHER_GRASS_COLOR : 0xFFFFFF,
-                        new ResourceLocation("ancient_aether", "trapped_sakura_blossoms"));
-            }
+            register(event, (stack, tintIndex) -> tintIndex == 1 ? ReduxBiomes.AETHER_GRASS_COLOR : 0xFFFFFF,
+                    new ResourceLocation("ancient_aether", "sunset_rose"));
+            register(event, (stack, tintIndex) -> tintIndex == 1 ? ReduxBiomes.PALE_GRASS_COLOR : 0xFFFFFF,
+                    new ResourceLocation("ancient_aether", "elevetia"));
         }
         // Deep AetherAa Compat
         if (Redux.deepAetherCompat()) {
@@ -232,11 +222,9 @@ public class ReduxColors {
 
     private static final Consumer<String> BLOCK_ERROR = s -> {
         Redux.LOGGER.warn("Tried to register compat color for block that does not exist! Could not find: {}", s);
-        Redux.LOGGER.warn("This is not NECESSARILY an issue, as some blocks that are mutually-exclusive in compatible mod versions exist, but it is being logged nonetheless");
     };
     private static final Consumer<String> ITEM_ERROR = s -> {
         Redux.LOGGER.warn("Tried to register compat color for item that does not exist! Could not find: {}", s);
-        Redux.LOGGER.warn("This is not NECESSARILY an issue, as some items that are mutually-exclusive in compatible mod versions exist, but it is being logged nonetheless");
     };
 
     private static void register(RegisterColorHandlersEvent.Item colors, ItemColor resolver, ResourceLocation... locations) {
