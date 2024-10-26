@@ -35,6 +35,7 @@
     "common.item.ItemMixin",
     "common.item.PickaxeItemMixin",
     "common.item.SubzeroCrossbowItemMixin",
+    "common.world.AetherNoiseBuildersMixin",
     "common.world.BronzeBossMixin",
     "common.world.BronzeDungeonRoomMixin",
     "common.world.ChunkAccessAccessor",

@@ -44,4 +44,14 @@ public class ReduxRegistrySets extends DatapackBuiltinEntriesProvider {
         return BUILDER.buildPatch(RegistryAccess.fromRegistryOfRegistries(BuiltInRegistries.REGISTRY), lookup);
     }
 
+
+    public static class NoisePack extends DatapackBuiltinEntriesProvider {
+        public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
+                .add(Registries.NOISE_SETTINGS, ReduxNoiseSettings.NoisePack::bootstrap);
+
+        public NoisePack(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, String modid, String... otherIds) {
+            super(output, registries, BUILDER, buildModidList(modid, otherIds));
+        }
+    }
+
 }

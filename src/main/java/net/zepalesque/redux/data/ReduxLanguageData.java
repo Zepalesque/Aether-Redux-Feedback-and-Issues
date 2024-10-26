@@ -146,7 +146,7 @@ public class ReduxLanguageData extends AetherLanguageProvider {
         addLore(ReduxItems.ANCIENT_SENTRITE_MUSIC_DISC, "A music disc that plays an ambient track, Sentience, made by Emile van Krieken. These are dropped on occasion when a Sentry kills another Sentry.");
 
         addItem(ReduxItems.MOUSE_EAR_SOUP, "Mouse Ear Soup");
-        addLore(ReduxItems.MOUSE_EAR_SOUP, "This unusual stew is a surprisingly tasty and filling meal. Despite the fact that many may question your sanity if they see you eating this, passing it off as chunks of dyed leather boiled in water, a very select few will recognize your true culinary genius, and you will have their utmost respect.");
+        addLore(ReduxItems.MOUSE_EAR_SOUP, "This unusual stew is a surprisingly tasty meal! Despite the fact that many may question your sanity if they see you eating this, passing it off as chunks of dyed leather boiled in water, a very select few will recognize your true culinary genius, and you will have their utmost respect.");
 
 
         addBlock(ReduxBlocks.SHORT_AETHER_GRASS, "Aether Grass");

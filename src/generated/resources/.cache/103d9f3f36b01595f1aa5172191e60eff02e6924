@@ -1,4 +1,4 @@
-// 1.20.1	2024-10-25T20:10:24.7041596	Registries
+// 1.20.1	2024-10-26T15:26:29.7797724	Registries
 1bf1e96a91388f7bf47c90dab07b1152d3861b11 data/aether/worldgen/configured_feature/crystal_tree.json
 3899e831707994c2ecc93af7d8997043a0f0a462 data/aether/worldgen/configured_feature/golden_oak_tree.json
 875593e37a52dd63b2d87226b0f0e5e76ef48247 data/aether/worldgen/configured_feature/grass_patch.json
@@ -131,7 +131,8 @@ ad1149bd8404aa620211b13167a509f1f8c0367a data/aether_redux/worldgen/configured_f
 4aca9c3975cb5d595060a29e9b3bbe292ee4044a data/aether_redux/worldgen/configured_feature/trees/small_vine_golden_oak.json
 8e64637bb525a0f65889c1a9bd25587f33f151b4 data/aether_redux/worldgen/density_function/cloudbed_noise.json
 451b1e0e2f3d4fed2dbdcdf69b42635e2e281ad5 data/aether_redux/worldgen/density_function/cloudbed_y_offset.json
-4a49ddaf174d128eb2ccf37958c733b98281d5ff data/aether_redux/worldgen/density_function/redux_3d_noise.json
+3a4411be9bbbdb357e5d6df3b5aa0f9d0df2433e data/aether_redux/worldgen/density_function/redux_3d_noise.json
+dcc46ca785c589381aebb71cc011c1b6865ace75 data/aether_redux/worldgen/density_function/redux_final_density.json
 23118968696a11d593cb21053cf6e6c6df685940 data/aether_redux/worldgen/density_function/the_aether/depth.json
 d7287e18eb8e02821afa7312ad97c077d8c0ef10 data/aether_redux/worldgen/placed_feature/cave_biome/blightmoss_sparse_vegetation.json
 2177105aa2600f9a146f67bc1ab5f59569155e01 data/aether_redux/worldgen/placed_feature/cave_biome/blightmoss_vegetation.json

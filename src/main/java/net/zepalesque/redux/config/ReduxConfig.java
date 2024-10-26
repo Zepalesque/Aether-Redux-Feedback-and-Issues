@@ -1,6 +1,7 @@
 package net.zepalesque.redux.config;
 
 import net.minecraftforge.common.ForgeConfigSpec;
+import net.zepalesque.redux.config.enums.AACompatType;
 import net.zepalesque.redux.config.enums.CockatriceModelType;
 import net.zepalesque.redux.config.enums.MimicModelType;
 import net.zepalesque.redux.config.enums.MoaModelType;
@@ -76,6 +77,8 @@ public class ReduxConfig {
         public final ForgeConfigSpec.BooleanValue vanilla_swets;
         public final ForgeConfigSpec.BooleanValue first_startup_aeroblender_setup;
 
+        public final ForgeConfigSpec.EnumValue<AACompatType> redux_noise;
+
         // TODO: organize
 
         public Common(ForgeConfigSpec.Builder builder) {
@@ -109,6 +112,7 @@ public class ReduxConfig {
             this.better_conversion_sounds = builder.comment("Makes blockstate conversion sounds (ambrosium, swet ball) better").define("Better Conversion Sounds", true);
             builder.pop(2);
             builder.push("Worldgen");
+            this.redux_noise = builder.comment("Uses an alternative island noise for the Aether. By default, this is disabled with the Ancient Aether mod installed.").defineEnum("Redux Noise", AACompatType.WITHOUT_AA);
             builder.push("Additional Features");
             this.mossy_holystone_ores = builder.comment("Enables Mossy Holystone as an ore. Configurable so that if you disable it, it's easier to tell if you've come across a dungeon.").worldRestart().define("Mossy Holystone Ores", true);
             this.enchanted_vines = builder.comment("Enables Enchanted/Gilded vines on trees").worldRestart().define("Enable Enchanted and Gilded Vines", true);

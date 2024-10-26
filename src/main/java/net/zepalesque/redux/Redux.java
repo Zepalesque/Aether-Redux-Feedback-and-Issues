@@ -355,6 +355,11 @@ public class Redux {
         Map<PackType, Integer> packTypes = Map.of(PackType.SERVER_DATA, SharedConstants.getCurrentVersion().getPackVersion(PackType.SERVER_DATA));
         packMeta.add(PackMetadataSection.TYPE, new PackMetadataSection(Component.literal("Aether: Redux data/resources"), SharedConstants.getCurrentVersion().getPackVersion(PackType.CLIENT_RESOURCES), packTypes));
         generator.addProvider(true, packMeta);
+
+        Path builtinData = packOutput.getOutputFolder().resolve("packs").resolve("data");
+
+        DataGenerator.PackGenerator noisePack = generator.new PackGenerator(event.includeServer(), "reduxnoise", new PackOutput(builtinData.resolve("redux_noise")));
+        noisePack.addProvider(output -> new ReduxRegistrySets.NoisePack(output, lookupProvider, Redux.MODID));
     }
 
     public  void packSetup(AddPackFindersEvent event) {
@@ -374,13 +379,19 @@ public class Redux {
             if (lostAetherCompat()) { this.setupMandatoryDataPack(event, "data/lost_content_data", "Lost Content Compat", "Compatibility with the Aether: Lost Content"); }
             if (deepAetherCompat()) { this.setupMandatoryDataPack(event, "data/deep_aether_data", "Deep Aether Compat", "Compatibility with Deep Aether"); }
             if (ancientAetherCompat()) { this.setupMandatoryDataPack(event, "data/ancient_aether_data", "Ancient Aether Compat", "Compatibility with Ancient Aether"); }
-            if (ReduxConfig.COMMON.cloud_layer_gen.get()) { this.setupBuiltinDatapack(event, "data/cloudbed", "Redux - Cloudbed", "Highlands-like Cloudbed"); }
 
-            if (ReduxConfig.COMMON.bronze_dungeon_upgrade.get()) { this.setupMandatoryDataPack(event, "data/dungeon_upgrades/bronze", "Bronze Dungeon Upgrade", "Configurable in config/aether_redux_common.toml"); }
+            String desc = "See config/aether_redux_common.toml";
 
-            if (ReduxConfig.COMMON.gravitite_ingot.get()) { this.setupMandatoryDataPack(event, "data/gravitite_ingot", "Redux - Gravitite Ingot", "Can be disabled in the common config"); }
+            if (ReduxConfig.COMMON.cloud_layer_gen.get()) { this.setupBuiltinDatapack(event, "data/cloudbed", "Redux - Cloudbed", desc); }
 
-            if (ReduxConfig.COMMON.dungeon_stone_recipes.get()) { this.setupMandatoryDataPack(event, "data/dungeon_stone_recipes", "Redux - Light Dungeon Stone Recipes", "Can be disabled in the common config"); }
+            if (ReduxConfig.COMMON.bronze_dungeon_upgrade.get()) { this.setupMandatoryDataPack(event, "data/dungeon_upgrades/bronze", "Bronze Dungeon Upgrade", desc); }
+
+            if (ReduxConfig.COMMON.gravitite_ingot.get()) { this.setupMandatoryDataPack(event, "data/gravitite_ingot", "Redux - Gravitite Ingot", desc); }
+
+            if (ReduxConfig.COMMON.dungeon_stone_recipes.get()) { this.setupMandatoryDataPack(event, "data/dungeon_stone_recipes", "Redux - Light Dungeon Stone Recipes", desc); }
+
+            if (ReduxConfig.COMMON.redux_noise.get().get()) { this.setupMandatoryDataPack(event, "data/redux_noise", "Redux - New Island Noise", desc); }
+
 
         }
 
