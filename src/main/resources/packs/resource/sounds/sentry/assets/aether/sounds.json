@@ -21,5 +21,14 @@
       "aether_redux:entity/sentry/jump2"
     ],
     "subtitle": "subtitles.aether_redux.entity.sentry_pounce"
-  }
+  },
+  {
+  "entity.sentry.squish": {
+    "replace": true,
+    "sounds": [
+      "aether_redux:entity/sentry/land1",
+      "aether_redux:entity/sentry/land2"
+    ],
+    "subtitle": "subtitles.aether_redux.entity.sentry_land"
+  },
 }

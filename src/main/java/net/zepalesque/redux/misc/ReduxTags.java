@@ -28,6 +28,7 @@ public class ReduxTags {
         public static final TagKey<Block> ENCHANTED_VINES_SKIP_PLACEMENT = tag("enchanted_vines_skip_placement");
         public static final TagKey<Block> MUSHROOM_CAPS = tag("mushroom_caps");
         public static final TagKey<Block> DO_NOT_REPLACE_AETHER_GRASS = tag("do_not_replace_aether_grass");
+        public static final TagKey<Block> ROCK_REPLACEABLE = tag("rock_replaceable");
 
         public static TagKey<Block> tag(String name) {
             return TagKey.create(Registries.BLOCK, Redux.locate(name));

@@ -22,4 +22,5 @@ public class ReduxFeatures {
     public static RegistryObject<Feature<NoneFeatureConfiguration>> TREE_AWARE_SNOW = FEATURES.register("tree_aware_snow", () -> new TreeAwareSnowLayerFeature(NoneFeatureConfiguration.CODEC));
     public static RegistryObject<Feature<UpwardVineFeature.Config>> UPWARD_VINE = FEATURES.register("upward_vine", () -> new UpwardVineFeature(UpwardVineFeature.Config.CODEC));
     public static RegistryObject<Feature<ConfiguredBoulder.Config>> CONFIGURED_BOULDER = FEATURES.register("configured_boulder", () -> new ConfiguredBoulder(ConfiguredBoulder.Config.CODEC));
+    public static RegistryObject<Feature<LargeRockFeature.Config>> LARGE_ROCK = FEATURES.register("large_rock", () -> new LargeRockFeature(LargeRockFeature.Config.CODEC));
 }
