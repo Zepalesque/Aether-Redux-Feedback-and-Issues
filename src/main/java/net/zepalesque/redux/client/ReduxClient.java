@@ -17,9 +17,6 @@ import net.zepalesque.redux.config.ReduxConfig;
 import net.zepalesque.redux.item.ReduxItems;
 import net.zepalesque.redux.item.accessory.VampireAmuletItem;
 import net.zepalesque.redux.item.weapons.SubzeroCrossbowItem;
-import software.bernie.geckolib.core.molang.LazyVariable;
-import software.bernie.geckolib.core.molang.MolangParser;
-import software.bernie.shadowed.eliotlash.mclib.math.Variable;
 
 import java.util.Optional;
 
