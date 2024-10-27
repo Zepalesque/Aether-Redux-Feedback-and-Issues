@@ -598,15 +598,10 @@ public class    ReduxFeatureConfig {
                         Optional.of(blocks.getOrThrow(ReduxTags.Blocks.ROCK_REPLACEABLE)), Optional.empty()));
 
         // Todo: Fungal Holystone?
-        register(context, SKYFIELDS_ROCK, ReduxFeatures.LARGE_ROCK.get(),
+        register(context, GLIMMERSTOOL_ROCK, ReduxFeatures.LARGE_ROCK.get(),
                 new LargeRockFeature.Config(prov(AetherFeatureStates.HOLYSTONE),
                         Optional.of(blocks.getOrThrow(ReduxTags.Blocks.ROCK_REPLACEABLE)),
                         Optional.of(patchData(32, 11, 3, prov(ReduxBlocks.SHIMMERSTOOL), BlockPredicate.matchesTag(ReduxTags.Blocks.AEVELIUM_GRASSES), Optional.of(0.75D)))));
-
-
-
-        register(context, GLIMMERSTOOL_ROCK, ReduxFeatures.PATCH_ROCK.get(),
-                blockBelowPlacementPatchRock(prov(AetherFeatureStates.HOLYSTONE), 32, 11, 3, prov(ReduxBlocks.SHIMMERSTOOL), BlockPredicate.matchesTag(ReduxTags.Blocks.AEVELIUM_GRASSES)));
 
         register(context, GLIMMERSTOOL_PATCH, Feature.FLOWER,
                 blockBelowPlacementPatch(32, 7, 3, prov(ReduxBlocks.SHIMMERSTOOL), BlockPredicate.matchesTag(ReduxTags.Blocks.AEVELIUM_GRASSES)));
@@ -643,11 +638,17 @@ public class    ReduxFeatureConfig {
 
         register(context, MOSSY_HOLYSTONE_ORE, Feature.ORE, new OreConfiguration(new TagMatchTest(AetherTags.Blocks.HOLYSTONE),
                 drops(AetherBlocks.MOSSY_HOLYSTONE), 24, 0.3F));
-        register(context, MOSSY_ROCK, ReduxFeatures.CONFIGURED_BOULDER.get(),
-                new ConfiguredBoulder.Config(prov(AetherBlocks.MOSSY_HOLYSTONE)));
 
-        register(context, ICESTONE_ROCK, ReduxFeatures.CONFIGURED_BOULDER.get(),
-                new ConfiguredBoulder.Config(prov(AetherFeatureStates.ICESTONE)));
+        register(context, MOSSY_ROCK, ReduxFeatures.LARGE_ROCK.get(),
+                new LargeRockFeature.Config(new WeightedStateProvider(new SimpleWeightedRandomList.Builder<BlockState>()
+                        .add(AetherFeatureStates.HOLYSTONE, 5)
+                        .add(drops(AetherBlocks.MOSSY_HOLYSTONE), 3)
+                ), Optional.of(blocks.getOrThrow(ReduxTags.Blocks.ROCK_REPLACEABLE)), Optional.empty()));
+
+        register(context, ICESTONE_ROCK, ReduxFeatures.LARGE_ROCK.get(),
+                new LargeRockFeature.Config(prov(AetherFeatureStates.ICESTONE),
+                        Optional.of(blocks.getOrThrow(ReduxTags.Blocks.ROCK_REPLACEABLE)), Optional.empty()));
+
 
         register(context, FIELDSPROOT_TREE, ReduxFeatures.FIELDSPROOT_TREE.get(),
                 new FieldsprootTreeFeature.Config(
@@ -894,14 +895,12 @@ public class    ReduxFeatureConfig {
         return new RandomPatchConfiguration(tries, xz, y, PlacementUtils.onlyWhenEmpty(
                 ReduxFeatures.TEST_BELOW_BLOCK.get(), new PredicateStateConfig(state, predicate)));
     }
-    private static ConfiguredPatchBoulder.Config blockBelowPlacementPatchRock(BlockStateProvider rock, int tries, int xz, int y, BlockStateProvider state, BlockPredicate predicate) {
-        return new ConfiguredPatchBoulder.Config(rock, tries, xz, y, PlacementUtils.onlyWhenEmpty(
-                ReduxFeatures.TEST_BELOW_BLOCK.get(), new PredicateStateConfig(state, predicate)));
-    }
+
     private static LargeRockFeature.PatchData patchData(int tries, int xz, int y, BlockStateProvider state, BlockPredicate predicate, Optional<Double> chance) {
         return new LargeRockFeature.PatchData(tries, xz, y, PlacementUtils.onlyWhenEmpty(
                 ReduxFeatures.TEST_BELOW_BLOCK.get(), new PredicateStateConfig(state, predicate)), chance);
     }
+    
     private static RandomPatchConfiguration blockTestPatch(int tries, int xz, int y, BlockStateProvider state, BlockPredicate predicate)
     {
         return new RandomPatchConfiguration(tries, xz, y, PlacementUtils.onlyWhenEmpty(
