@@ -1,14 +1,41 @@
 {
-  "type": "aether_redux:configured_boulder",
+  "type": "aether_redux:large_rock",
   "config": {
-    "state": {
-      "type": "minecraft:simple_state_provider",
-      "state": {
-        "Name": "aether_redux:blightmoss_holystone",
-        "Properties": {
-          "double_drops": "true"
+    "block": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "data": {
+            "Name": "aether:holystone",
+            "Properties": {
+              "double_drops": "true"
+            }
+          },
+          "weight": 12
+        },
+        {
+          "data": {
+            "Name": "aether_redux:blightmoss_holystone",
+            "Properties": {
+              "double_drops": "true"
+            }
+          },
+          "weight": 9
+        },
+        {
+          "data": {
+            "Name": "aether_redux:blightmoss_block"
+          },
+          "weight": 5
+        },
+        {
+          "data": {
+            "Name": "aether:zanite_ore"
+          },
+          "weight": 1
         }
-      }
-    }
+      ]
+    },
+    "replaceable_states": "#aether_redux:rock_replaceable"
   }
 }

@@ -1,11 +1,12 @@
 {
-  "type": "aether_redux:configured_boulder",
+  "type": "aether_redux:large_rock",
   "config": {
-    "state": {
+    "block": {
       "type": "minecraft:simple_state_provider",
       "state": {
         "Name": "aether:icestone"
       }
-    }
+    },
+    "replaceable_states": "#aether_redux:rock_replaceable"
   }
 }

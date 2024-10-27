@@ -1,14 +1,29 @@
 {
-  "type": "aether_redux:configured_boulder",
+  "type": "aether_redux:large_rock",
   "config": {
-    "state": {
-      "type": "minecraft:simple_state_provider",
-      "state": {
-        "Name": "aether:mossy_holystone",
-        "Properties": {
-          "double_drops": "true"
+    "block": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "data": {
+            "Name": "aether:holystone",
+            "Properties": {
+              "double_drops": "true"
+            }
+          },
+          "weight": 5
+        },
+        {
+          "data": {
+            "Name": "aether:mossy_holystone",
+            "Properties": {
+              "double_drops": "true"
+            }
+          },
+          "weight": 3
         }
-      }
-    }
+      ]
+    },
+    "replaceable_states": "#aether_redux:rock_replaceable"
   }
 }

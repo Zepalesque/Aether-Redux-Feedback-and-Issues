@@ -1,4 +1,4 @@
-// 1.20.1	2024-07-16T21:46:36.5659465	Tags for minecraft:block mod id aether_redux
+// 1.20.1	2024-10-26T20:26:35.1513692	Tags for minecraft:block mod id aether_redux
 8f59d0f2e59cb5eca343062c21759ff8593f2e46 data/aether/tags/blocks/aerclouds.json
 593f50c73d9619ba0b2f5bbedad8cf5bef48adbc data/aether/tags/blocks/aether_animals_spawnable_on.json
 1abbb8fbbd6aaa2a65960af8b043d21b8cd619e9 data/aether/tags/blocks/aether_dirt.json
@@ -27,6 +27,7 @@ fc9b66cee900f1b4f341fcec6da19eb45d575f43 data/aether_redux/tags/blocks/highlands
 06247534cf8f39fc0ad017530554c6010915a1d8 data/aether_redux/tags/blocks/jellyshroom_stems.json
 a92cb6ac0a495275e62e3f2c34b618add2d2853c data/aether_redux/tags/blocks/mushroom_caps.json
 ce3087631d37c89562a170802a2473a14f8d9153 data/aether_redux/tags/blocks/quicksoil_behavior.json
+69c396cb051bbe9a130e6979b67065e5041b179d data/aether_redux/tags/blocks/rock_replaceable.json
 22ee7218d1c999a0eb0ddf1bba7425c125a68c2a data/aether_redux/tags/blocks/sporing_blightwillow_logs.json
 16ef77309fae16577bda3e27ff7b957860a527c8 data/forge/tags/blocks/bookshelves.json
 0e8fb38437f81b67991a52679cfc519a1b68a2bf data/minecraft/tags/blocks/beacon_base_blocks.json
