@@ -17,7 +17,7 @@ public abstract class SentryMixin extends MobMixin {
     }
 
     @Override
-    protected void getAmbientSound(CallbackInfoReturnable<SoundEvent> cir) {
+    protected void redux$getAmbientSound(CallbackInfoReturnable<SoundEvent> cir) {
         Sentry mob = (Sentry) (Object) this;
         if (mob.isAwake())
         {

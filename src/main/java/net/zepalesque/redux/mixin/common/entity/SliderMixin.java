@@ -2,6 +2,7 @@ package net.zepalesque.redux.mixin.common.entity;
 
 import com.aetherteam.aether.entity.monster.dungeon.boss.Slider;
 import com.google.common.collect.ImmutableMap;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.util.Lazy;
@@ -15,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.Map;
 
 @Mixin(Slider.class)
-public class SliderMixin {
+public abstract class SliderMixin extends MobMixin {
 
     @Unique
     private static final Lazy<Map<Block, Block>> REDUX$CONVERSIONS = Lazy.of(() -> new ImmutableMap.Builder<Block, Block>()
@@ -32,5 +33,13 @@ public class SliderMixin {
         if (REDUX$CONVERSIONS.get().containsKey(state.getBlock())) {
             cir.setReturnValue(REDUX$CONVERSIONS.get().get(state.getBlock()).withPropertiesOf(state));
         }
+    }
+
+    @Override
+    protected void redux$getAmbientSound(CallbackInfoReturnable<SoundEvent> cir) {
+        if (((Slider) (Object) this).isAwake()) {
+            cir.setReturnValue(null);
+        }
+        super.redux$getAmbientSound(cir);
     }
 }

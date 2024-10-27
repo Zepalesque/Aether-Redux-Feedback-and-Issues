@@ -13,5 +13,5 @@ public abstract class MobMixin extends LivingEntityMixin {
     @Shadow protected int xpReward;
 
     @Inject(method = "getAmbientSound", at = @At("RETURN"), cancellable = true)
-    protected void getAmbientSound(CallbackInfoReturnable<SoundEvent> cir) {    }
+    protected void redux$getAmbientSound(CallbackInfoReturnable<SoundEvent> cir) {    }
 }
