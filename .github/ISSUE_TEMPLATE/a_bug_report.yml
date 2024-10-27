@@ -13,13 +13,23 @@ body:
     validations:
       required: true
   - type: input
-    id: mod-version
+    id: redux-version
     attributes:
-      label: Mod Version
+      label: Redux Version
       description: >-
-        What version of the mod are you using? Note: ‘Latest’ is not a valid
+        What version of the Aether: Redux (this mod) are you using? Note: ‘Latest’ is not a valid
         answer, please use the exact version.
-      placeholder: 'ex: 1.3.4'
+      placeholder: 'ex: 2.0.17'
+    validations:
+      required: true
+  - type: input
+    id: aether-version
+    attributes:
+      label: Aether Version
+      description: >-
+        What version of the base Aether mod are you using? Note: ‘Latest’ is not a valid
+        answer, please use the exact version.
+      placeholder: 'ex: 1.5'
     validations:
       required: true
   - type: input
