@@ -1,4 +1,4 @@
-// 1.20.1	2024-10-26T20:26:35.1673613	Registries
+// 1.20.1	2024-10-26T20:43:11.8753887	Registries
 1bf1e96a91388f7bf47c90dab07b1152d3861b11 data/aether/worldgen/configured_feature/crystal_tree.json
 3899e831707994c2ecc93af7d8997043a0f0a462 data/aether/worldgen/configured_feature/golden_oak_tree.json
 875593e37a52dd63b2d87226b0f0e5e76ef48247 data/aether/worldgen/configured_feature/grass_patch.json
@@ -94,6 +94,7 @@ c508ac603a9cc73b375c52f510767e28871ce1be data/aether_redux/worldgen/configured_f
 09465c84b082d75776540fda5846dd5bc28b04b8 data/aether_redux/worldgen/configured_feature/surface/icestone_rock.json
 fbd454d074fe339b7aba874b360779e11bcd2bc4 data/aether_redux/worldgen/configured_feature/surface/mossy_rock.json
 2213e72176b6b54a8d119ef4fb3c484131470825 data/aether_redux/worldgen/configured_feature/surface/shimmerstool_rock.json
+26021f09259b1a99e1da96ef106849f760dd6095 data/aether_redux/worldgen/configured_feature/surface/shrublands_rock.json
 b41385f04d713449a556707130ed1fa5c847f801 data/aether_redux/worldgen/configured_feature/surface/skyfields_rock.json
 327eb98d605f7d400cd0e70ed14976e8556fbaed data/aether_redux/worldgen/configured_feature/surface/snow_layer.json
 c508ac603a9cc73b375c52f510767e28871ce1be data/aether_redux/worldgen/configured_feature/surface/surface_rule_water_lake.json

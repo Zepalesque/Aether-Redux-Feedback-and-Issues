@@ -592,7 +592,6 @@ public class    ReduxFeatureConfig {
                 blockTestPatch(8, 3, 3, createLeafPileLayers(ReduxBlocks.GOLDEN_LEAF_PILE),
                         BlockPredicate.wouldSurvive(ReduxBlocks.AURUM.get().defaultBlockState(), BlockPos.ZERO)));
 
-
         register(context, SKYFIELDS_ROCK, ReduxFeatures.LARGE_ROCK.get(),
                 new LargeRockFeature.Config(prov(AetherFeatureStates.HOLYSTONE),
                         Optional.of(blocks.getOrThrow(ReduxTags.Blocks.ROCK_REPLACEABLE)), Optional.empty()));
@@ -643,6 +642,12 @@ public class    ReduxFeatureConfig {
                 new LargeRockFeature.Config(new WeightedStateProvider(new SimpleWeightedRandomList.Builder<BlockState>()
                         .add(AetherFeatureStates.HOLYSTONE, 5)
                         .add(drops(AetherBlocks.MOSSY_HOLYSTONE), 3)
+                ), Optional.of(blocks.getOrThrow(ReduxTags.Blocks.ROCK_REPLACEABLE)), Optional.empty()));
+
+        register(context, SHRUBLANDS_ROCK, ReduxFeatures.LARGE_ROCK.get(),
+                new LargeRockFeature.Config(new WeightedStateProvider(new SimpleWeightedRandomList.Builder<BlockState>()
+                        .add(AetherFeatureStates.HOLYSTONE, 5)
+                        .add(drops(AetherBlocks.MOSSY_HOLYSTONE), 2)
                 ), Optional.of(blocks.getOrThrow(ReduxTags.Blocks.ROCK_REPLACEABLE)), Optional.empty()));
 
         register(context, ICESTONE_ROCK, ReduxFeatures.LARGE_ROCK.get(),
@@ -900,7 +905,7 @@ public class    ReduxFeatureConfig {
         return new LargeRockFeature.PatchData(tries, xz, y, PlacementUtils.onlyWhenEmpty(
                 ReduxFeatures.TEST_BELOW_BLOCK.get(), new PredicateStateConfig(state, predicate)), chance);
     }
-    
+
     private static RandomPatchConfiguration blockTestPatch(int tries, int xz, int y, BlockStateProvider state, BlockPredicate predicate)
     {
         return new RandomPatchConfiguration(tries, xz, y, PlacementUtils.onlyWhenEmpty(
