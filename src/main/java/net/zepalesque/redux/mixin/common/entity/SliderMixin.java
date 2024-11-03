@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.Map;
 
 @Mixin(Slider.class)
-public abstract class SliderMixin extends MobMixin {
+public abstract class SliderMixin {
 
     @Unique
     private static final Lazy<Map<Block, Block>> REDUX$CONVERSIONS = Lazy.of(() -> new ImmutableMap.Builder<Block, Block>()
@@ -35,11 +35,10 @@ public abstract class SliderMixin extends MobMixin {
         }
     }
 
-    @Override
+    @Inject(method = "getAmbientSound", at = @At("RETURN"), cancellable = true)
     protected void redux$getAmbientSound(CallbackInfoReturnable<SoundEvent> cir) {
         if (((Slider) (Object) this).isAwake()) {
             cir.setReturnValue(null);
         }
-        super.redux$getAmbientSound(cir);
     }
 }
