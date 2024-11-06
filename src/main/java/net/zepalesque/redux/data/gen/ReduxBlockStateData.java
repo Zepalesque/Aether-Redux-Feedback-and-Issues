@@ -1,6 +1,7 @@
 package net.zepalesque.redux.data.gen;
 
 import com.aetherteam.aether.block.AetherBlocks;
+import net.minecraft.client.renderer.CubeMap;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.zepalesque.redux.Redux;

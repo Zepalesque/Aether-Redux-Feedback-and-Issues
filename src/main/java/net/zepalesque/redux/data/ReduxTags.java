@@ -26,7 +26,7 @@ public class ReduxTags {
         // Blocks that count as Coarse Aether Dirt
         public static final TagKey<Block> COARSE_AETHER_DIRT = tag("coarse_aether_dirt");
 
-        // Blocks that Golden Vines can grow on
+        // Blocks that can be replaced by generated rocks
         public static final TagKey<Block> ROCK_REPLACEABLE = tag("rock_replaceable");
 
 

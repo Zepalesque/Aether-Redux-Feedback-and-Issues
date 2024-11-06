@@ -46,6 +46,4 @@ public class ReduxItems {
     public static final DeferredItem<VeridiumAxeItem> INFUSED_VERIDIUM_AXE = ITEMS.register("infused_veridium_axe", () -> new VeridiumAxeItem(ReduxItemTiers.INFUSED_VERIDIUM, 1, -2.9F, new Item.Properties(), VERIDIUM_AXE));
     public static final DeferredItem<VeridiumShovelItem> INFUSED_VERIDIUM_SHOVEL = ITEMS.register("infused_veridium_shovel", () -> new VeridiumShovelItem(ReduxItemTiers.INFUSED_VERIDIUM, 0, -2.8F, new Item.Properties(), VERIDIUM_SHOVEL));
     public static final DeferredItem<VeridiumHoeItem> INFUSED_VERIDIUM_HOE = ITEMS.register("infused_veridium_hoe", () -> new VeridiumHoeItem(ReduxItemTiers.INFUSED_VERIDIUM, 0, -1.4F, new Item.Properties(), VERIDIUM_HOE));
-
-
 }

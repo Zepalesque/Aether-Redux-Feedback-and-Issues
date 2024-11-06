@@ -230,7 +230,7 @@ public class ReduxFeatureConfig extends ReduxFeatureBuilders {
                         .add(AetherFeatureStates.HOLYSTONE, 5)
                         .add(drops(ReduxStoneSets.GILDED_HOLYSTONE.block()), 3)
                         .add(AetherFeatureStates.AMBROSIUM_ORE, 1)
-                ), Optional.of(blocks.getOrThrow(ReduxTags.Blocks.ROCK_REPLACEABLE))));
+                ), Optional.of(blocks.getOrThrow(ReduxTags.Blocks.ROCK_REPLACEABLE)), Optional.empty()));
 
         // Overrides
         register(context, GRASS_PATCH, Feature.RANDOM_PATCH, patch(48, 7, 3, prov(ReduxBlocks.SHORT_AETHER_GRASS), NOT_ON_COARSE_DIRT));
