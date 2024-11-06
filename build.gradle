@@ -40,7 +40,7 @@ minecraft {
 
             property 'forge.enabledGameTestNamespaces', 'aether_redux'
 
-            args '--username', 'Zepalesque'
+            args '--username', Objects.requireNonNullElse(System.getenv("MC_USR_DEV"), "Dev");
 
             mods {
                 aether_redux {
