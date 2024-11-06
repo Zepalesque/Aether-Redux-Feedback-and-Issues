@@ -31,6 +31,8 @@ runs {
 
     client {
         systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
+
+        args '--username', Objects.requireNonNullElse(System.getenv("MC_USR_DEV"), "Dev");
     }
 
     server {
