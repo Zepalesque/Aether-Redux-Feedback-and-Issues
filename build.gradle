@@ -1,5 +1,8 @@
 import net.neoforged.gradle.common.tasks.JarJar
 
+
+// TODO: UPDATE FOR 1.21.1!!!!
+
 plugins {
     id 'java-library'
     id 'eclipse'
