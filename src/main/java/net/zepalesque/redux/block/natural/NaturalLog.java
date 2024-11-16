@@ -6,6 +6,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.zepalesque.redux.block.state.ReduxStates;
 
+// ln(...) real
 public class NaturalLog extends AetherLogBlock {
     public NaturalLog(Properties properties) {
         super(properties);

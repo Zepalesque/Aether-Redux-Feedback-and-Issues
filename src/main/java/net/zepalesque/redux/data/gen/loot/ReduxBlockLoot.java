@@ -3,6 +3,7 @@ package net.zepalesque.redux.data.gen.loot;
 import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.mixin.mixins.common.accessor.BlockLootAccessor;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
@@ -24,8 +25,8 @@ public class ReduxBlockLoot extends ReduxBlockLootProvider {
 
     private static final Set<Item> EXPLOSION_RESISTANT = Stream.of(AetherBlocks.TREASURE_CHEST.get()).map(ItemLike::asItem).collect(Collectors.toSet());
 
-    public ReduxBlockLoot() {
-        super(EXPLOSION_RESISTANT, FeatureFlags.REGISTRY.allFlags());
+    public ReduxBlockLoot(HolderLookup.Provider registries) {
+        super(EXPLOSION_RESISTANT, FeatureFlags.REGISTRY.allFlags(), registries);
     }
 
     @Override

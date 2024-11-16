@@ -9,6 +9,7 @@ import com.google.gson.JsonObject;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.AbstractPackResources;
 import net.minecraft.server.packs.CompositePackResources;
+import net.minecraft.server.packs.PackLocationInfo;
 import net.minecraft.server.packs.PackResources;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.metadata.pack.PackMetadataSection;
@@ -37,6 +38,8 @@ import java.util.Set;
 import java.util.function.Supplier;
 
 
+
+// frick, need to rewrite stuff
 // TODO: Wire up the data side of this
 public class ConfigAssembledPackResources extends AbstractPackResources {
 
@@ -44,8 +47,8 @@ public class ConfigAssembledPackResources extends AbstractPackResources {
     private final Map<String, Map<Supplier<Boolean>, PackResources>> assets;
     private final Path source;
     private static final Gson GSON = new Gson();
-    protected ConfigAssembledPackResources(String name, boolean builtin, ImmutableMap.Builder<Supplier<Boolean>, PackResources> builder, Path source) {
-        super(name, builtin);
+    protected ConfigAssembledPackResources(PackLocationInfo id, ImmutableMap.Builder<Supplier<Boolean>, PackResources> builder, Path source) {
+        super(id);
         this.source = source;
         Map<Supplier<Boolean>, PackResources> packs = builder.build();
         this.packs = packs;
@@ -152,15 +155,15 @@ public class ConfigAssembledPackResources extends AbstractPackResources {
     }
 
 
-    public record AssembledResourcesSupplier(boolean builtin, ImmutableMap.Builder<Supplier<Boolean>, PackResources> builder, Path source) implements Pack.ResourcesSupplier {
+    public record AssembledResourcesSupplier(ImmutableMap.Builder<Supplier<Boolean>, PackResources> builder, Path source) implements Pack.ResourcesSupplier {
         @Override
-        public PackResources openPrimary(String pId) {
-            return new ConfigAssembledPackResources(pId, this.builtin, this.builder, this.source);
+        public PackResources openPrimary(PackLocationInfo location) {
+            return new ConfigAssembledPackResources(location, this.builder, this.source);
         }
 
         @Override
-        public PackResources openFull(String id, Pack.Info info) {
-            PackResources packresources = this.openPrimary(id);
+        public PackResources openFull(PackLocationInfo location, Pack.Metadata info) {
+            PackResources packresources = this.openPrimary(location);
             List<String> list = info.overlays();
             if (list.isEmpty()) {
                 return packresources;
@@ -169,7 +172,7 @@ public class ConfigAssembledPackResources extends AbstractPackResources {
 
                 for (String s : list) {
                     Path path = this.source.resolve(s);
-                    list1.add(new ConfigAssembledPackResources(id, this.builtin, this.builder, path));
+                    list1.add(new ConfigAssembledPackResources(location, this.builder, path));
                 }
 
                 return new CompositePackResources(packresources, list1);

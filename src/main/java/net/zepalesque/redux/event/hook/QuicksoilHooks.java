@@ -1,13 +1,14 @@
 package net.zepalesque.redux.event.hook;
 
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.zepalesque.redux.data.ReduxTags;
 import net.zepalesque.redux.mixin.mixins.common.accessor.EntityAccessor;
 
 public class QuicksoilHooks {
 
-    public static boolean shouldAlterMovement(final LivingEntity entity) {
+    public static boolean shouldAlterMovement(final Entity entity) {
         return entity.level().isLoaded(((EntityAccessor) entity).callGetBlockPosBelowThatAffectsMyMovement()) &&
                 entity.onGround() &&
                 !entity.isInWater() &&
@@ -16,7 +17,7 @@ public class QuicksoilHooks {
                 && entity.level().getBlockState(((EntityAccessor) entity).callGetBlockPosBelowThatAffectsMyMovement()).is(ReduxTags.Blocks.QUICKSOIL_BEHAVIOR);
     }
 
-    public static void alterMovement(final LivingEntity entity) {
+    public static void alterMovement(final Entity entity) {
         entity.setDeltaMovement(entity.getDeltaMovement().multiply(1.7D, 1D, 1.7D));
         final double maxMotion = 1D;
         double x;

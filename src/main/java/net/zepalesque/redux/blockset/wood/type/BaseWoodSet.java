@@ -263,7 +263,7 @@ public class BaseWoodSet extends AbstractWoodSet implements ReduxGeneration {
     @Override
     protected DeferredBlock<StairBlock> stairs(DeferredRegister.Blocks registry, DeferredRegister.Items items, String id, MapColor color, SoundType soundType) {
         var block = registry.register(id + "_stairs", () -> new StairBlock(
-                () -> this.planks().get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(this.planks().get())
+                this.planks().get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(this.planks().get())
         ));
         items.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties()));
         return block;
@@ -914,36 +914,35 @@ public class BaseWoodSet extends AbstractWoodSet implements ReduxGeneration {
     }
 
     protected Supplier<? extends ItemLike> buildingBlocks(BuildCreativeModeTabContentsEvent event, Supplier<? extends ItemLike> prev) {
-        TabUtil.putAfter(prev, this.log(), event);
-        TabUtil.putAfter(this.log(), this.wood(), event);
-        TabUtil.putAfter(this.wood(), this.strippedLog(), event);
-        TabUtil.putAfter(this.strippedLog(), this.strippedWood(), event);
-        TabUtil.putAfter(this.strippedWood(), this.planks(), event);
-        TabUtil.putAfter(this.planks(), this.stairs(), event);
-        TabUtil.putAfter(this.stairs(), this.slab(), event);
-        TabUtil.putAfter(this.slab(), this.fence(), event);
-        TabUtil.putAfter(this.fence(), this.fenceGate(), event);
-        TabUtil.putAfter(this.fenceGate(), this.door(), event);
-        TabUtil.putAfter(this.door(), this.trapdoor(), event);
-        TabUtil.putAfter(this.trapdoor(), this.pressurePlate(), event);
-        TabUtil.putAfter(this.pressurePlate(), this.button(), event);
+        TabUtil.putAfter(event, prev,
+                this.log(),
+                this.wood(),
+                this.strippedLog(),
+                this.strippedWood(),
+                this.planks(),
+                this.stairs(),
+                this.slab(),
+                this.fence(),
+                this.fenceGate(),
+                this.door(),
+                this.trapdoor(),
+                this.pressurePlate(),
+                this.button());
         return this.button();
     }
 
     protected Supplier<? extends ItemLike> naturalBlocks(BuildCreativeModeTabContentsEvent event, Supplier<? extends ItemLike> prev) {
-        TabUtil.putAfter(prev, this.log(), event);
+        TabUtil.putAfter(event, prev, this.log());
         return this.log();
     }
 
     protected Supplier<? extends ItemLike> functionalBlocks(BuildCreativeModeTabContentsEvent event, Supplier<? extends ItemLike> prev) {
-        TabUtil.putAfter(prev, this.sign(), event);
-        TabUtil.putAfter(this.sign(), this.hangingSign(), event);
+        TabUtil.putAfter(event, prev, this.sign(), this.hangingSign());
         return this.hangingSign();
     }
 
     protected Supplier<? extends ItemLike> equipment(BuildCreativeModeTabContentsEvent event, Supplier<? extends ItemLike> prev) {
-        TabUtil.putAfter(prev, this.boatItem(), event);
-        TabUtil.putAfter(this.boatItem(), this.chestBoatItem(), event);
+        TabUtil.putAfter(event, prev, this.boatItem(), this.chestBoatItem());
         return this.chestBoatItem();
     }
 

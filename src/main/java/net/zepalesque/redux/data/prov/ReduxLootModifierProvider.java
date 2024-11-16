@@ -1,13 +1,20 @@
 package net.zepalesque.redux.data.prov;
 
 import net.minecraft.advancements.critereon.EnchantmentPredicate;
+import net.minecraft.advancements.critereon.ItemEnchantmentsPredicate;
 import net.minecraft.advancements.critereon.ItemPredicate;
+import net.minecraft.advancements.critereon.ItemSubPredicates;
 import net.minecraft.advancements.critereon.MinMaxBounds;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponentPredicate;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.item.enchantment.ItemEnchantments;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
@@ -23,30 +30,16 @@ import net.zepalesque.redux.loot.modifer.RawOreModifier;
 import net.zepalesque.zenith.Zenith;
 import net.zepalesque.zenith.loot.condition.ConditionLootModule;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public abstract class ReduxLootModifierProvider extends GlobalLootModifierProvider {
-    protected final CompletableFuture<HolderLookup.Provider> lookup;
     public ReduxLootModifierProvider(PackOutput output, String modid, CompletableFuture<HolderLookup.Provider> lookup) {
-        super(output, modid);
-        this.lookup = lookup;
-    }
-    protected static final LootItemCondition.Builder HAS_SILK_TOUCH = MatchTool.toolMatches(ItemPredicate.Builder.item().hasEnchantment(new EnchantmentPredicate(Enchantments.SILK_TOUCH, MinMaxBounds.Ints.atLeast(1))));
-
-    @Override
-    protected void start() { }
-
-    @Override
-    public CompletableFuture<?> run(CachedOutput cache) {
-        return CompletableFuture.allOf(this.doHolderLookupModifiers(), super.run(cache));
+        super(output, lookup, modid);
     }
 
-    protected CompletableFuture<HolderLookup.Provider> doHolderLookupModifiers() {
-        return this.lookup.thenApply(provider -> {
-            this.withHolderLookups(provider);
-            return provider;
-        });
+    protected LootItemCondition.Builder hasSilkTouch() {
+        HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
+        return MatchTool.toolMatches(ItemPredicate.Builder.item().withSubPredicate(ItemSubPredicates.ENCHANTMENTS, ItemEnchantmentsPredicate.enchantments(List.of(new EnchantmentPredicate(registrylookup.getOrThrow(Enchantments.SILK_TOUCH), MinMaxBounds.Ints.atLeast(1))))));
     }
-
-    protected abstract void withHolderLookups(HolderLookup.Provider provider);
 }

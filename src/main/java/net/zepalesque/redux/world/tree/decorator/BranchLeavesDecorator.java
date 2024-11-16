@@ -3,6 +3,7 @@ package net.zepalesque.redux.world.tree.decorator;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -20,7 +21,7 @@ import java.util.List;
 
 public class BranchLeavesDecorator extends TreeDecorator {
 
-    public static final Codec<BranchLeavesDecorator> CODEC = RecordCodecBuilder.create((vines) ->
+    public static final MapCodec<BranchLeavesDecorator> CODEC = RecordCodecBuilder.mapCodec((vines) ->
             vines.group(Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter((config) -> config.probability),
                             IntProvider.CODEC.fieldOf("range").forGetter((config) -> config.range),
                             IntProvider.CODEC.fieldOf("radius").forGetter((config) -> config.radius),

@@ -21,6 +21,6 @@ public class ReduxSounds {
 
 
     private static DeferredHolder<SoundEvent, SoundEvent> register(String location) {
-        return SOUNDS.register(location, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(Redux.MODID, location)));
+        return SOUNDS.register(location, () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(Redux.MODID, location)));
     }
 }

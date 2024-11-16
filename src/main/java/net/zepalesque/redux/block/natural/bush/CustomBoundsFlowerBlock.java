@@ -3,6 +3,7 @@ package net.zepalesque.redux.block.natural.bush;
 import com.aetherteam.aether.block.AetherBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -26,7 +27,7 @@ public class CustomBoundsFlowerBlock extends FlowerBlock {
 
     private final VoxelShape shape;
 
-    public CustomBoundsFlowerBlock(VoxelShape shape, Supplier<MobEffect> effectSupplier, int pEffectDuration, Properties pProperties) {
+    public CustomBoundsFlowerBlock(VoxelShape shape, Holder<MobEffect> effectSupplier, int pEffectDuration, Properties pProperties) {
         super(effectSupplier, pEffectDuration, pProperties);
         this.shape = shape;
     }
@@ -38,7 +39,7 @@ public class CustomBoundsFlowerBlock extends FlowerBlock {
 
     public static class Enchanted extends CustomBoundsFlowerBlock {
 
-        public Enchanted(VoxelShape shape, Supplier<MobEffect> effectSupplier, int pEffectDuration, Properties pProperties) {
+        public Enchanted(VoxelShape shape, Holder<MobEffect> effectSupplier, int pEffectDuration, Properties pProperties) {
             super(shape, effectSupplier, pEffectDuration, pProperties);
             this.registerDefaultState(this.defaultBlockState().setValue(ReduxStates.ENCHANTED, false));
         }

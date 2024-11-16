@@ -89,7 +89,7 @@ public abstract class AbstractBookshelfSet<B extends BookshelfBlock> extends Log
 
     @Override
     protected Supplier<? extends ItemLike> functionalBlocks(BuildCreativeModeTabContentsEvent event, Supplier<? extends ItemLike> prev) {
-        TabUtil.putAfter(prev, this.bookshelf(), event);
+        TabUtil.putAfter(event, prev, this.bookshelf());
         return super.functionalBlocks(event, this.bookshelf());
     }
 

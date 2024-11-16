@@ -4,9 +4,12 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.AxeItem;
+import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.item.PickaxeItem;
+import net.minecraft.world.item.ShovelItem;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.zepalesque.redux.Redux;
@@ -38,12 +41,12 @@ public class ReduxItems {
     public static final DeferredItem<Item> REFINED_SENTRITE = ITEMS.register("refined_sentrite", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> SENTRITE_CHUNK = ITEMS.register("sentrite_chunk", () -> new Item(new Item.Properties()));
 
-    public static final DeferredItem<VeridiumPickaxeItem.Uninfused> VERIDIUM_PICKAXE = ITEMS.register("veridium_pickaxe", () -> new VeridiumPickaxeItem.Uninfused(ReduxItemTiers.VERIDIUM, 0, -2.9F, new Item.Properties()));
-    public static final DeferredItem<VeridiumAxeItem.Uninfused> VERIDIUM_AXE = ITEMS.register("veridium_axe", () -> new VeridiumAxeItem.Uninfused(ReduxItemTiers.VERIDIUM, 1, 0 -3.2F, new Item.Properties()));
-    public static final DeferredItem<VeridiumShovelItem.Uninfused> VERIDIUM_SHOVEL = ITEMS.register("veridium_shovel", () -> new VeridiumShovelItem.Uninfused(ReduxItemTiers.VERIDIUM, 0, -3.1F, new Item.Properties()));
-    public static final DeferredItem<VeridiumHoeItem.Uninfused> VERIDIUM_HOE = ITEMS.register("veridium_hoe", () -> new VeridiumHoeItem.Uninfused(ReduxItemTiers.VERIDIUM, 0, -1.7F, new Item.Properties()));
-    public static final DeferredItem<VeridiumPickaxeItem> INFUSED_VERIDIUM_PICKAXE = ITEMS.register("infused_veridium_pickaxe", () -> new VeridiumPickaxeItem(ReduxItemTiers.INFUSED_VERIDIUM, 1, -2.6F, new Item.Properties(), VERIDIUM_PICKAXE));
-    public static final DeferredItem<VeridiumAxeItem> INFUSED_VERIDIUM_AXE = ITEMS.register("infused_veridium_axe", () -> new VeridiumAxeItem(ReduxItemTiers.INFUSED_VERIDIUM, 1, -2.9F, new Item.Properties(), VERIDIUM_AXE));
-    public static final DeferredItem<VeridiumShovelItem> INFUSED_VERIDIUM_SHOVEL = ITEMS.register("infused_veridium_shovel", () -> new VeridiumShovelItem(ReduxItemTiers.INFUSED_VERIDIUM, 0, -2.8F, new Item.Properties(), VERIDIUM_SHOVEL));
-    public static final DeferredItem<VeridiumHoeItem> INFUSED_VERIDIUM_HOE = ITEMS.register("infused_veridium_hoe", () -> new VeridiumHoeItem(ReduxItemTiers.INFUSED_VERIDIUM, 0, -1.4F, new Item.Properties(), VERIDIUM_HOE));
+    public static final DeferredItem<VeridiumPickaxeItem.Uninfused> VERIDIUM_PICKAXE = ITEMS.register("veridium_pickaxe", () -> new VeridiumPickaxeItem.Uninfused(ReduxItemTiers.VERIDIUM, new Item.Properties().attributes(PickaxeItem.createAttributes(ReduxItemTiers.VERIDIUM, 0, -2.9F))));
+    public static final DeferredItem<VeridiumAxeItem.Uninfused> VERIDIUM_AXE = ITEMS.register("veridium_axe", () -> new VeridiumAxeItem.Uninfused(ReduxItemTiers.VERIDIUM, new Item.Properties().attributes(AxeItem.createAttributes(ReduxItemTiers.VERIDIUM, 1, 0 -3.2F))));
+    public static final DeferredItem<VeridiumShovelItem.Uninfused> VERIDIUM_SHOVEL = ITEMS.register("veridium_shovel", () -> new VeridiumShovelItem.Uninfused(ReduxItemTiers.VERIDIUM, new Item.Properties().attributes(ShovelItem.createAttributes(ReduxItemTiers.VERIDIUM, 0, -3.1F))));
+    public static final DeferredItem<VeridiumHoeItem.Uninfused> VERIDIUM_HOE = ITEMS.register("veridium_hoe", () -> new VeridiumHoeItem.Uninfused(ReduxItemTiers.VERIDIUM, new Item.Properties().attributes(HoeItem.createAttributes(ReduxItemTiers.VERIDIUM, 0, -1.7F))));
+    public static final DeferredItem<VeridiumPickaxeItem> INFUSED_VERIDIUM_PICKAXE = ITEMS.register("infused_veridium_pickaxe", () -> new VeridiumPickaxeItem(ReduxItemTiers.INFUSED_VERIDIUM, new Item.Properties().attributes(PickaxeItem.createAttributes(ReduxItemTiers.INFUSED_VERIDIUM, 1, -2.6F)), VERIDIUM_PICKAXE));
+    public static final DeferredItem<VeridiumAxeItem> INFUSED_VERIDIUM_AXE = ITEMS.register("infused_veridium_axe", () -> new VeridiumAxeItem(ReduxItemTiers.INFUSED_VERIDIUM, new Item.Properties().attributes(AxeItem.createAttributes(ReduxItemTiers.INFUSED_VERIDIUM, 1, -2.9F)), VERIDIUM_AXE));
+    public static final DeferredItem<VeridiumShovelItem> INFUSED_VERIDIUM_SHOVEL = ITEMS.register("infused_veridium_shovel", () -> new VeridiumShovelItem(ReduxItemTiers.INFUSED_VERIDIUM, new Item.Properties().attributes(ShovelItem.createAttributes(ReduxItemTiers.INFUSED_VERIDIUM, 0, -2.8F)), VERIDIUM_SHOVEL));
+    public static final DeferredItem<VeridiumHoeItem> INFUSED_VERIDIUM_HOE = ITEMS.register("infused_veridium_hoe", () -> new VeridiumHoeItem(ReduxItemTiers.INFUSED_VERIDIUM, new Item.Properties().attributes(HoeItem.createAttributes(ReduxItemTiers.INFUSED_VERIDIUM, 0, -1.4F)), VERIDIUM_HOE));
 }

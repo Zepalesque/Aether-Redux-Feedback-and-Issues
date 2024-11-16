@@ -110,7 +110,7 @@ public abstract class ReduxItemModelProvider extends AetherItemModelProvider {
         ResourceLocation side = ReduxBlockStateProvider.extendStatic(this.texture(ReduxBlockStateProvider.nameStatic(baseBlock), location), "_side");
         ResourceLocation end = ReduxBlockStateProvider.extendStatic(this.texture(ReduxBlockStateProvider.nameStatic(baseBlock), location), "_top");
         this.withExistingParent(this.blockName(block), BLOCK_FOLDER + "/cube_column")
-                .texture("overlay", new ResourceLocation(Aether.MODID, "block/" + overlay))
+                .texture("overlay", ResourceLocation.fromNamespaceAndPath(Aether.MODID, "block/" + overlay))
                 .texture("side", side)
                 .texture("end", end)
                 .element().from(0.0F, 0.0F, 0.0F).to(16.0F, 16.0F, 16.0F)
@@ -135,7 +135,7 @@ public abstract class ReduxItemModelProvider extends AetherItemModelProvider {
 
     public void itemOverlayDungeonBlock(Block block, Block baseBlock, String overlay, String folder, String suffix) {
         this.withExistingParent(this.blockName(block), this.mcLoc("block/cube"))
-                .texture("overlay", new ResourceLocation(Aether.MODID, "block/dungeon/" + overlay)).texture("face", this.texture(this.blockName(baseBlock) + suffix, folder))
+                .texture("overlay", ResourceLocation.fromNamespaceAndPath(Aether.MODID, "block/dungeon/" + overlay)).texture("face", this.texture(this.blockName(baseBlock) + suffix, folder))
                 .element().from(0.0F, 0.0F, 0.0F).to(16.0F, 16.0F, 16.0F).allFaces((direction, builder) -> builder.texture("#face").cullface(direction).end()).end()
                 .element().from(0.0F, 0.0F, -0.1F).to(16.0F, 16.0F, -0.1F).rotation().angle(0.0F).axis(Direction.Axis.Y).origin(8.0F, 8.0F, 6.9F).end().face(Direction.NORTH).texture("#overlay").emissivity(15, 15).end().end()
                 .transforms()
@@ -151,7 +151,7 @@ public abstract class ReduxItemModelProvider extends AetherItemModelProvider {
 
     public void itemOverlayDungeonBlock(Block block, Block baseBlock, String folder, String overlay) {
         this.withExistingParent(this.blockName(block), this.mcLoc("block/cube"))
-                .texture("overlay", new ResourceLocation(Aether.MODID, "block/dungeon/" + overlay)).texture("face", this.texture(this.blockName(baseBlock), folder))
+                .texture("overlay", ResourceLocation.fromNamespaceAndPath(Aether.MODID, "block/dungeon/" + overlay)).texture("face", this.texture(this.blockName(baseBlock), folder))
                 .element().from(0.0F, 0.0F, 0.0F).to(16.0F, 16.0F, 16.0F).allFaces((direction, builder) -> builder.texture("#face").cullface(direction).end()).end()
                 .element().from(0.0F, 0.0F, -0.1F).to(16.0F, 16.0F, -0.1F).rotation().angle(0.0F).axis(Direction.Axis.Y).origin(8.0F, 8.0F, 6.9F).end().face(Direction.NORTH).texture("#overlay").emissivity(15, 15).end().end()
                 .transforms()

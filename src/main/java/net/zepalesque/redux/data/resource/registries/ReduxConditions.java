@@ -1,6 +1,6 @@
 package net.zepalesque.redux.data.resource.registries;
 
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.zepalesque.redux.Redux;
 import net.zepalesque.redux.config.ReduxConfig;
@@ -21,7 +21,7 @@ public class ReduxConditions {
     public static final ResourceKey<Condition<?>> CLOUDBED = createKey("cloudbed");
 
 
-    public static void bootstrap(BootstapContext<Condition<?>> context) {
+    public static void bootstrap(BootstrapContext<Condition<?>> context) {
         context.register(DEEP, new ModLoadedCondition("deep_aether"));
         context.register(GENESIS, new ModLoadedCondition("aether_genesis"));
         context.register(LOST, new ModLoadedCondition("lost_aether_content"));

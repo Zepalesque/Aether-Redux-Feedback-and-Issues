@@ -9,15 +9,17 @@ import net.minecraft.world.item.PickaxeItem;
 import net.zepalesque.redux.data.ReduxTags;
 import net.zepalesque.redux.data.ReduxTags.Entities;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(PickaxeItem.class)
 public class PickaxeItemMixin extends DiggerItemMixin {
 
-    // Can't really do much about this one unfortunately
     @Override
-    protected void hurtEnemy(ItemStack pStack, LivingEntity pTarget, LivingEntity pAttacker, CallbackInfoReturnable<Boolean> cir) {
-        pStack.hurtAndBreak(pTarget.getType().is(Entities.VALID_PICKAXE_TARGETS) && pStack.is(AetherTags.Items.SLIDER_DAMAGING_ITEMS) ? 1 : 2, pAttacker, (consumer) -> consumer.broadcastBreakEvent(EquipmentSlot.MAINHAND));
-        cir.setReturnValue(true);
+    protected void postHurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker, CallbackInfo ci) {
+        if (target.getType().is(Entities.VALID_PICKAXE_TARGETS) && stack.is(AetherTags.Items.SLIDER_DAMAGING_ITEMS)) {
+            stack.hurtAndBreak(1, attacker, EquipmentSlot.MAINHAND);
+            ci.cancel();
+        }
     }
 }

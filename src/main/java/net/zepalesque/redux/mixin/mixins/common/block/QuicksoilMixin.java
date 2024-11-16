@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class QuicksoilMixin extends BlockBehaviorMixin {
 
     @Override
-    public void redux$pathFindable(BlockState state, BlockGetter level, BlockPos pos, PathComputationType type, CallbackInfoReturnable<Boolean> cir) {
+    public void redux$pathFindable(BlockState state, PathComputationType type, CallbackInfoReturnable<Boolean> cir) {
         if (ReduxConfig.SERVER.revamped_quicksoil_movement.get() && type == PathComputationType.LAND) {
             cir.setReturnValue(false);
         }

@@ -16,7 +16,7 @@ public class ReduxPackConfig {
         builder.put(ReduxConfig.CLIENT.tintable_grass, createPack("resource/tintable_grass"));
         builder.put(ReduxConfig.CLIENT.jappafied_textures, createPack("resource/jappafied"));
 
-        return new ConfigAssembledPackResources.AssembledResourcesSupplier(true, builder, path);
+        return new ConfigAssembledPackResources.AssembledResourcesSupplier(builder, path);
     }
 
     public static PathPackResources createPack(String path) {

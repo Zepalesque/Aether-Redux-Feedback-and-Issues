@@ -4,7 +4,7 @@ import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.NoiseData;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -29,7 +29,7 @@ public class ReduxDensityFunctions extends ReduxNoiseBuilders {
     public static final ResourceKey<DensityFunction> REDUX_3D_NOISE = createKey("base_3d_noise_redux");
     public static final ResourceKey<DensityFunction> REDUX_FINAL_DENSITY = createKey("redux_final_density");
 
-    public static void bootstrap(BootstapContext<DensityFunction> context) {
+    public static void bootstrap(BootstrapContext<DensityFunction> context) {
         HolderGetter<DensityFunction> functions = context.lookup(Registries.DENSITY_FUNCTION);
         context.register(CLOUDBED_NOISE, DensityFunctions.mul(new PerlinNoiseFunction(new NormalNoise.NoiseParameters(0, 1, 1, 1, 1, 1), 0.01D, 0.0D, 42), DensityFunctions.constant(1.5D)));
 
@@ -48,7 +48,7 @@ public class ReduxDensityFunctions extends ReduxNoiseBuilders {
     }
 
     private static ResourceKey<DensityFunction> createKey(String name) {
-        return ResourceKey.create(Registries.DENSITY_FUNCTION, new ResourceLocation(Redux.MODID, name));
+        return ResourceKey.create(Registries.DENSITY_FUNCTION, Redux.loc(name));
     }
 
     public static DensityFunction get(HolderGetter<DensityFunction> densityFunctions, ResourceKey<DensityFunction> key) {

@@ -14,6 +14,7 @@ import net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator;
 import net.minecraft.world.level.levelgen.NoiseGeneratorSettings;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.server.ServerAboutToStartEvent;
 import net.zepalesque.redux.Redux;
@@ -24,7 +25,7 @@ import terrablender.api.SurfaceRuleManager;
 import java.util.ArrayList;
 import java.util.List;
 
-@Mod.EventBusSubscriber(modid = Redux.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+@EventBusSubscriber(modid = Redux.MODID, bus = EventBusSubscriber.Bus.GAME)
 public class ReduxSurfaceRules {
     @SubscribeEvent
     public static void onServerAboutToStart(ServerAboutToStartEvent event) {

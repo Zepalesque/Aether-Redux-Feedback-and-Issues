@@ -25,7 +25,7 @@ public class RunelightBlock extends Block {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
         if (this.isValidForInteraction(player)) {
             if (!level.isClientSide()) {
                 state = state.cycle(LIT);
@@ -37,8 +37,10 @@ public class RunelightBlock extends Block {
                 return InteractionResult.SUCCESS;
             }
         }
-        return super.use(state, level, pos, player, hand, hit);
+        return super.useWithoutItem(state, level, pos, player, hit);
     }
+
+
 
     public boolean isValidForInteraction(Player player) {
         return !this.creativeInteractOnly || player.getAbilities().instabuild;

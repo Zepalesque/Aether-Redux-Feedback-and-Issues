@@ -4,8 +4,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod.EventBusSubscriber;
-import net.neoforged.neoforge.common.ToolAction;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.common.ItemAbility;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.zepalesque.redux.Redux;
@@ -20,7 +20,7 @@ public class ToolsListener {
         LevelAccessor levelAccessor = event.getLevel();
         BlockPos pos = event.getPos();
         BlockState oldState = event.getState();
-        ToolAction toolAction = event.getToolAction();
+        ItemAbility toolAction = event.getItemAbility();
         BlockState newState = ToolActionHooks.setupToolActions(levelAccessor, pos, oldState, toolAction);
         if (newState != oldState && !event.isSimulated() && !event.isCanceled()) {
             event.setFinalState(newState);

@@ -28,7 +28,7 @@ public class ReduxFlowerSets {
 
     public static final BaseFlowerSet<CustomBoundsFlowerBlock.Enchanted> AURUM = register(new EnchantedFlowerSet<>("aurum", "natural/",
             () -> new CustomBoundsFlowerBlock.Enchanted(CommonPlantBounds.FLOWER,
-                    () -> MobEffects.LUCK, 60, Properties.ofFullCopy(Blocks.DANDELION).hasPostProcess((s, l, p) -> true)), 1, 0xFFFFFF)
+                    MobEffects.LUCK, 60, Properties.ofFullCopy(Blocks.DANDELION).hasPostProcess((s, l, p) -> true)), 1, 0xFFFFFF)
             .tabAfter(AetherCreativeTabs.AETHER_NATURAL_BLOCKS, AetherBlocks.WHITE_FLOWER, BlockSet.TabAdditionPhase.BEFORE)
             .craftsIntoShapeless(1, () -> Items.YELLOW_DYE, 1, RecipeCategory.MISC)
             .withFlowerTag(BlockTags.FLOWERS)

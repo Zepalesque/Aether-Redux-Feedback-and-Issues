@@ -1,7 +1,7 @@
 package net.zepalesque.redux.data.resource.registries;
 
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.biome.Biome;
 import net.zepalesque.redux.Redux;
@@ -26,7 +26,7 @@ public class ReduxBiomes {
         return ResourceKey.create(Registries.BIOME, Redux.loc(name));
     }
 
-    public static void bootstrap(BootstapContext<Biome> context) {
+    public static void bootstrap(BootstrapContext<Biome> context) {
         context.register(GILDED_GROVES, GildedGroves.generate(context));
     }
 }

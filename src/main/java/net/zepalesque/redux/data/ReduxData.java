@@ -50,7 +50,7 @@ public class ReduxData {
 
         // Server Data
         generator.addProvider(event.includeServer(), new ReduxRecipeData(packOutput, lookupProvider));
-        generator.addProvider(event.includeServer(), ReduxLootData.create(packOutput));
+        generator.addProvider(event.includeServer(), ReduxLootData.create(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), new ReduxMapData(packOutput, lookupProvider));
         DatapackBuiltinEntriesProvider registrySets = new ReduxRegistrySets(packOutput, lookupProvider, Redux.MODID);
         // Use for structure and damage type data, plus any custom ones that need to access the condition registry

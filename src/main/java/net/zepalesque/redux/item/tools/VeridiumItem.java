@@ -1,6 +1,8 @@
 package net.zepalesque.redux.item.tools;
 
 import net.minecraft.core.Holder;
+import net.minecraft.core.component.DataComponentMap;
+import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.nbt.ByteTag;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundSoundPacket;
@@ -15,10 +17,12 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.zepalesque.redux.client.audio.ReduxSounds;
 import net.zepalesque.redux.config.ReduxConfig;
+import net.zepalesque.redux.item.components.ReduxDataComponents;
 import net.zepalesque.redux.recipe.recipes.InfusionRecipe;
 import net.zepalesque.zenith.item.CustomStackingBehavior;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Objects;
 import java.util.Optional;
 
 public interface VeridiumItem extends CustomStackingBehavior {
@@ -31,9 +35,9 @@ public interface VeridiumItem extends CustomStackingBehavior {
 
     default ItemStack getUninfusedStack(ItemStack stack) {
         ItemStack i = new ItemStack(this.getUninfusedItem(stack));
-        CompoundTag tag = stack.getOrCreateTag().copy();
-        tag.remove(NBT_KEY);
-        i.setTag(tag);
+        DataComponentMap map = stack.getComponents();
+        i.applyComponents(map);
+        i.remove(ReduxDataComponents.INFUSION);
         return i;
     }
 
@@ -49,14 +53,13 @@ public interface VeridiumItem extends CustomStackingBehavior {
             return original;
         }
         int max = ReduxConfig.SERVER.max_veridium_tool_infusion.get();
-        CompoundTag tag = original.getOrCreateTag();
-        // CompoundTags already return 0 if they do not contain the given byte key, and as the config has a minimum value of 1, it will skip this and add infusion if the item doesn't have the tag
-        if (tag.getByte(NBT_KEY) >= max) {
+        int i = Objects.requireNonNullElse(original.get(ReduxDataComponents.INFUSION), 0);
+        // The integer i will already be zero if the component is not present, and as the config has a minimum value of 1, it will skip this and add infusion if the item doesn't have the component
+        if (i >= max) {
             return null;
         } else {
-            // As the above comment mentions, CompoundTags will return 0 when the byte key isn't present. This will still result in the correct value, as it will add the amount to zero.
-            byte infusion = (byte) Math.min(tag.getByte(NBT_KEY) + additional.getByte(InfusionRecipe.ADDED_INFUSION), max);
-            original.addTagElement(NBT_KEY, ByteTag.valueOf(infusion));
+            int infusion = (byte) Math.min(i + additional.getByte(InfusionRecipe.ADDED_INFUSION), max);
+            original.applyComponents(DataComponentPatch.builder().set(ReduxDataComponents.INFUSION.get(), infusion).build());
             return original;
         }
     }
@@ -70,11 +73,11 @@ public interface VeridiumItem extends CustomStackingBehavior {
         if (user instanceof Player p && p.isCreative()) {
             return null;
         }
+        int original = Objects.requireNonNullElse(stack.get(ReduxDataComponents.INFUSION), 0);
 
-        CompoundTag tag = stack.getOrCreateTag();
-        if (tag.getByte(NBT_KEY) > amount) {
-            byte infusion = (byte) (tag.getByte(NBT_KEY) - amount);
-            stack.addTagElement(NBT_KEY, ByteTag.valueOf(infusion));
+        if (original > amount) {
+            int infusion = (byte) (original - amount);
+            stack.set(ReduxDataComponents.INFUSION.get(), infusion);
         } else {
             return this.getUninfusedStack(stack);
         }

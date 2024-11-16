@@ -110,7 +110,7 @@ public class BaseStoneSet extends AbstractStoneSet implements MutableLoreGenerat
 
     @Override
     protected DeferredBlock<StairBlock> stairs(DeferredRegister.Blocks registry, DeferredRegister.Items items, String id, MapColor color, SoundType soundType, float breakTime, float blastResistance) {
-        var block = registry.register(this.baseName(false) + "_stairs", () -> new StairBlock(() -> this.block().get().defaultBlockState(),
+        var block = registry.register(this.baseName(false) + "_stairs", () -> new StairBlock(this.block().get().defaultBlockState(),
                 BlockBehaviour.Properties.of()
                         .strength(breakTime, blastResistance)
                         .mapColor(color)
@@ -373,12 +373,8 @@ public class BaseStoneSet extends AbstractStoneSet implements MutableLoreGenerat
                 Supplier<? extends ItemLike> addAfter = triple.getColumnKey();
                 Pair<Boolean, TabAdditionPhase> pair = triple.getValue();
                 if (pair.getSecond() == phase) {
-                    TabUtil.putAfter(addAfter, this.block(), event);
-                    if (pair.getFirst()) {
-                        TabUtil.putAfter(this.block(), this.stairs(), event);
-                        TabUtil.putAfter(this.stairs(), this.slab(), event);
-                        TabUtil.putAfter(this.slab(), this.wall(), event);
-                    }
+                    TabUtil.putAfter(event, addAfter, this.block());
+                    if (pair.getFirst()) TabUtil.putAfter(event, this.block(), this.stairs(), this.slab(), this.wall());
                 }
             }
         }
@@ -388,14 +384,8 @@ public class BaseStoneSet extends AbstractStoneSet implements MutableLoreGenerat
                 Supplier<? extends ItemLike> addBefore = triple.getColumnKey();
                 Pair<Boolean, TabAdditionPhase> pair = triple.getValue();
                 if (pair.getSecond() == phase) {
-                    if (pair.getFirst()) {
-                        TabUtil.putBefore(addBefore, this.wall(), event);
-                        TabUtil.putBefore(this.wall(), this.slab(), event);
-                        TabUtil.putBefore(this.slab(), this.stairs(), event);
-                        TabUtil.putBefore(this.stairs(), this.block(), event);
-                    } else {
-                        TabUtil.putBefore(addBefore, this.block(), event);
-                    }
+                    if (pair.getFirst()) TabUtil.putBefore(event, addBefore, this.wall(), this.slab(), this.stairs(), this.block());
+                    else TabUtil.putBefore(event, addBefore, this.block());
                 }
             }
         }
@@ -405,13 +395,10 @@ public class BaseStoneSet extends AbstractStoneSet implements MutableLoreGenerat
                 boolean addAll = triple.getValue();
                 TabAdditionPhase current = triple.getColumnKey();
                 if (current == phase) {
-                    TabUtil.add(this.block(), event);
-                    if (addAll) {
-                        TabUtil.add(this.stairs(), event);
-                        TabUtil.add(this.slab(), event);
-                        TabUtil.add(this.wall(), event);
-                    }
+                    TabUtil.put(event, this.block());
+                    if (addAll) TabUtil.put(event, this.stairs(), this.slab(), this.wall());
                 }
+
             }
         }
         return null;

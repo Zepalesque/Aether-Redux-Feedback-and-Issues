@@ -5,7 +5,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.neoforged.neoforge.common.world.StructureModifier;
@@ -23,7 +23,7 @@ public class ReduxStructureModifiers {
         return ResourceKey.create(NeoForgeRegistries.Keys.STRUCTURE_MODIFIERS, Redux.loc(name));
     }
 
-    public static void bootstrap(BootstapContext<StructureModifier> context) {
+    public static void bootstrap(BootstrapContext<StructureModifier> context) {
         HolderGetter<Structure> structures = context.lookup(Registries.STRUCTURE);
         HolderGetter<Condition<?>> conditions = context.lookup(Zenith.Keys.CONDITION);
 

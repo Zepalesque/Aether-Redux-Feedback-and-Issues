@@ -19,6 +19,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.zepalesque.redux.data.ReduxTags;
 import net.zepalesque.redux.item.TooltipUtils;
+import net.zepalesque.redux.item.components.ReduxDataComponents;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -28,8 +29,8 @@ import java.util.function.Supplier;
 public class VeridiumHoeItem extends HoeItem implements VeridiumItem {
     private final Supplier<? extends Item> uninfused;
 
-    public VeridiumHoeItem(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties, Supplier<? extends Item> uninfused) {
-        super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties);
+    public VeridiumHoeItem(Tier pTier, Properties pProperties, Supplier<? extends Item> uninfused) {
+        super(pTier, pProperties);
         this.uninfused = uninfused;
     }
 
@@ -39,13 +40,13 @@ public class VeridiumHoeItem extends HoeItem implements VeridiumItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltips, TooltipFlag advanced) {
-        MutableComponent infusion = Component.translatable("tooltip.aether_redux.infusion_charge", stack.getTag() == null ? 0 : stack.getTag().getByte(VeridiumItem.NBT_KEY)).withStyle(ChatFormatting.GRAY);
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltips, TooltipFlag advanced) {
+        MutableComponent infusion = Component.translatable("tooltip.aether_redux.infusion_charge", !stack.has(ReduxDataComponents.INFUSION) ? 0 : stack.get(ReduxDataComponents.INFUSION.get())).withStyle(ChatFormatting.GRAY);
 
         tooltips.add(infusion);
         Component info = TooltipUtils.TOOLTIP_SHIFT_FOR_INFO.apply(Component.translatable("gui.aether_redux.infusion_info"));
         tooltips.add(info);
-        super.appendHoverText(stack, level, tooltips, advanced);
+        super.appendHoverText(stack, context, tooltips, advanced);
     }
 
     @Override
@@ -100,21 +101,21 @@ public class VeridiumHoeItem extends HoeItem implements VeridiumItem {
     }
 
     @Override
-    public <T extends LivingEntity> int damageItem(ItemStack stack, int amount, T entity, Consumer<T> onBroken) {
+    public <T extends LivingEntity> int damageItem(ItemStack stack, int amount, @Nullable T entity, Consumer<Item> onBroken) {
         return super.damageItem(stack, amount, entity, onBroken) * VeridiumItem.DURABILITY_DMG_MULTIPLIER;
     }
 
     public static class Uninfused extends HoeItem {
 
-        public Uninfused(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties) {
-            super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties);
+        public Uninfused(Tier pTier, Properties pProperties) {
+            super(pTier, pProperties);
         }
 
         @Override
-        public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltips, TooltipFlag advanced) {
+        public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltips, TooltipFlag advanced) {
             Component info = TooltipUtils.TOOLTIP_SHIFT_FOR_INFO.apply(Component.translatable("gui.aether_redux.infusion_info"));
             tooltips.add(info);
-            super.appendHoverText(stack, level, tooltips, advanced);
+            super.appendHoverText(stack, context, tooltips, advanced);
         }
     }
 }

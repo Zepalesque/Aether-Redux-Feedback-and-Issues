@@ -1,7 +1,4 @@
-import net.neoforged.gradle.common.tasks.JarJar
-
-
-// TODO: UPDATE FOR 1.21.1!!!!
+import javax.annotation.Nullable
 
 plugins {
     id 'java-library'
@@ -9,46 +6,62 @@ plugins {
     id 'idea'
     id 'maven-publish'
     id 'io.github.0ffz.github-packages' version '[1,2)'
-    id 'net.neoforged.gradle.userdev' version '7.0.97'
+    id 'net.neoforged.moddev' version "${moddevgradle_version}"
 }
 
-version = "${mc_version}-${mod_version}-neoforge"
+version = "${minecraft_version}-${mod_version}-neoforge"
 group = "net.zepalesque.redux"
 
 base {
     archivesName = mod_id
 }
-// Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
-minecraft.accessTransformers.file rootProject.file('src/main/resources/META-INF/accesstransformer.cfg')
 
-runs {
-    configureEach {
-        systemProperty 'forge.logging.markers', 'REGISTRIES'
+// Mojang ships Java 21 to end users in 1.21+, so your mod should target Java 21.
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
-        systemProperty 'forge.logging.console.level', 'debug'
+neoForge {
 
-        modSource project.sourceSets.main
+    version = project.neo_version
+    runs {
+        configureEach {
+            systemProperty 'forge.logging.markers', 'REGISTRIES'
+
+            logLevel = org.slf4j.event.Level.DEBUG
+        }
+
+        client {
+            client()
+            systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
+
+            @Nullable String username = System.getenv "MC_USR_DEV";
+            if (username != null) programArguments.addAll '--username', username
+        }
+
+        server {
+            server()
+            systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
+            programArgument '--nogui'
+        }
+
+        gameTestServer {
+            type = "gameTestServer"
+            systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
+        }
+
+        data {
+            data()
+            programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath(), '--existing-mod', 'aether'
+        }
     }
-
-    client {
-        systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
-
-        programArguments.addAll '--username', Objects.requireNonNullElse(System.getenv("MC_USR_DEV"), "Dev");
+    mods {
+        "${mod_id}" {
+            sourceSet(sourceSets.main)
+        }
     }
-
-    server {
-        systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
-        programArgument '--nogui'
-    }
-
-    gameTestServer {
-        systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
-    }
-
-    data {
-        programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath(), '--existing-mod', 'aether'
+    parchment {
+        minecraftVersion = "${mappings_mc_ver}"
+        mappingsVersion = "${mappings}"
     }
 }
 
@@ -58,82 +71,92 @@ configurations {
     runtimeClasspath.extendsFrom localRuntime
 }
 
-subsystems {
-    parchment {
-        minecraftVersion = "${mc_version}"
-        mappingsVersion = "${mappings}"
-    }
-}
-
 dependencies {
-    implementation "net.neoforged:neoforge:${neoforge_version}"
 
     implementation "com.aetherteam.aether:aether:${aether_version}"
     implementation "com.aetherteam.nitrogen:nitrogen_internals:${nitrogen_version}"
     implementation "com.aetherteam.cumulus:cumulus_menus:${project.cumulus_version}"
-    implementation "net.zepalesque.zenith:zenith:${mc_version}-${zenith_version}-neoforge"
-    implementation "top.theillusivec4.curios:curios-neoforge:${curios_version}+${mc_version}"
+    implementation "net.zepalesque.zenith:zenith:${minecraft_version}-${zenith_version}-neoforge"
+    implementation "io.wispforest:accessories-neoforge:${project.accessories_version}+${project.minecraft_version}"
 
-    implementation "curse.maven:aeroblender-879879:${project.aeroblender_version}"
+
+    implementation "blank:aeroblender-${project.aeroblender_version}:${project.aeroblender_version}"
     implementation "com.github.glitchfiend:TerraBlender-neoforge:${project.terrablender_version}"
 
-    jarJar("curse.maven:aeroblender-879879:${project.aeroblender_version}") {
-        jarJar.ranged(it, "[${project.aeroblender_version},)")
-        jarJar.pin(it, "${project.aeroblender_version}")
+    // Workspace mods + Other Dependencies
+    runtimeOnly "curse.maven:appleskin-248787:${project.appleskin_version}"
+    runtimeOnly "curse.maven:spark-361579:${project.spark_version}"
+    runtimeOnly "curse.maven:cyanide-541676:${project.cyanide_version}"
+    implementation "curse.maven:jade-324717:${project.jade_version}"
+
+    jarJar("blank:aeroblender-${project.aeroblender_version}:${project.aeroblender_version}") {
+        version {
+            strictly "[${project.aeroblender_version},)"
+            prefer "${project.aeroblender_version}"
+        }
     }
 
     jarJar("com.github.glitchfiend:TerraBlender-neoforge:${project.terrablender_version}") {
-        jarJar.ranged(it, "[${project.terrablender_version_minimum},${project.terrablender_version_maximum})")
-        jarJar.pin(it, "${project.terrablender_version}")
+        version {
+            strictly "${project.terrablender_version_range}"
+            prefer "${project.terrablender_version}"
+        }
     }
 
     jarJar("net.zepalesque.zenith:zenith:${zenith_version}") {
-        jarJar.ranged(it, "[${zenith_version},)")
-        jarJar.pin(it, "${zenith_version}")
+        version {
+            strictly "[${project.zenith_version},)"
+            prefer "${project.zenith_version}"
+        }
     }
 }
 
 repositories {
+    maven { url 'https://maven.wispforest.io/releases' }
+    maven { url 'https://maven.su5ed.dev/releases' }
+    maven { url 'https://maven.fabricmc.net' }
+    maven { url 'https://maven.shedaniel.me/' }
     maven { url = "https://jitpack.io" }
     maven { url = "https://maven.blamejared.com" }
     maven { url = "https://maven.theillusivec4.top/" }
     maven { url = "https://gitlab.com/api/v4/projects/21830712/packages/maven" }
     maven { url = "https://www.cursemaven.com" }
     maven { url = 'https://maven.minecraftforge.net/' }
+    maven { url = 'https://maven.parchmentmc.org' }
     maven githubPackage.invoke("The-Aether-Team/The-Aether")
     maven githubPackage.invoke("The-Aether-Team/Nitrogen")
     maven githubPackage.invoke("The-Aether-Team/Cumulus")
     maven githubPackage.invoke("Zepalesque/Zenith")
+    flatDir { dir 'libs' }
 }
 
-tasks.withType(ProcessResources).configureEach {
+var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
     var replaceProperties = [
-            mc_version             : mc_version,
-            mod_id                 : mod_id,
-            mod_name               : mod_name,
-            mod_version            : mod_version,
-            zenith_version         : zenith_version,
+            mod_id                      : mod_id,
+            mod_name                    : mod_name,
+            mod_version                 : mod_version,
+            mod_license                 : mod_license,
+            mod_url                     : mod_url,
+            mod_tracker                 : mod_tracker,
+            mod_credits                 : mod_credits,
+            mod_authors                 : mod_authors,
+            mod_description             : mod_description,
+            minecraft_version           : minecraft_version,
+            minecraft_version_range     : minecraft_version_range,
+            neo_version                 : neo_version,
+            neo_version_range           : neo_version_range,
+            loader_version_range        : loader_version_range,
+            zenith_version              : zenith_version,
+            aether_version              : aether_version
     ]
     inputs.properties replaceProperties
-
-    filesMatching(['META-INF/mods.toml']) {
-        expand replaceProperties
-    }
+    expand replaceProperties
+    from "src/main/templates"
+    into "build/generated/sources/modMetadata"
 }
+sourceSets.main.resources.srcDir generateModMetadata
+neoForge.ideSyncTask generateModMetadata
 
-tasks.named('jar', Jar).configure {
-    manifest {
-        attributes([
-                "Specification-Title"     : project.mod_name,
-                "Specification-Vendor"    : "Zepalesque",
-                "Specification-Version"   : "1", // We are version 1 of ourselves
-                "Implementation-Title"    : project.mod_name,
-                "Implementation-Version"  : project.jar.archiveVersion,
-                "Implementation-Vendor"   : "Zepalesque",
-                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
-        ])
-    }
-}
 
 compileJava {
     options.incremental = false

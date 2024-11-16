@@ -246,7 +246,7 @@ public abstract class BaseFlowerSet<B extends Block> extends AbstractFlowerSet i
             if (event.getTab() == tabToAddTo.get()) {
                 Pair<Supplier<? extends ItemLike>, TabAdditionPhase> pair = entry.getValue();
                 if (phase == pair.getSecond()) {
-                    TabUtil.putAfter(pair.getFirst(), this.flower(), event);
+                    TabUtil.putAfter(event, pair.getFirst(), this.flower());
                 }
             }
         }
@@ -255,7 +255,7 @@ public abstract class BaseFlowerSet<B extends Block> extends AbstractFlowerSet i
             if (event.getTab() == tabToAddTo.get()) {
                 Pair<Supplier<? extends ItemLike>, TabAdditionPhase> pair = entry.getValue();
                 if (phase == pair.getSecond()) {
-                    TabUtil.putBefore(pair.getFirst(), this.flower(), event);
+                    TabUtil.putBefore(event, pair.getFirst(), this.flower());
                 }
             }
         }
@@ -264,7 +264,7 @@ public abstract class BaseFlowerSet<B extends Block> extends AbstractFlowerSet i
             if (event.getTab() == tabToAddTo.get()) {
                 TabAdditionPhase current = entry.getValue();
                 if (phase == current) {
-                    TabUtil.add(this.flower(), event);
+                    TabUtil.put(event, this.flower());
                 }
             }
         }

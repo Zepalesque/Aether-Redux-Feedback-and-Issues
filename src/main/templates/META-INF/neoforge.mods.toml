@@ -29,13 +29,13 @@ side = "BOTH"
 [[dependencies.${mod_id}]]]
 modId = "zenith"
 type = "required" #mandatory
-versionRange = "${zenith_version_range}"
+versionRange = "[${zenith_version},)"
 ordering = "NONE"
 side = "BOTH"
 [[dependencies.${mod_id}]]]
 modId = "aether"
 type = "required" #mandatory
-versionRange = "${aether_version_range}"
+versionRange = "[${aether_version},)"
 ordering = "AFTER"
 side = "BOTH"
 [[dependencies.${mod_id}]]]

@@ -1,11 +1,13 @@
 package net.zepalesque.redux;
 
 import com.mojang.logging.LogUtils;
+import io.github.razordevs.aeroblender.aether.AetherRuleCategory;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -24,6 +26,7 @@ import net.zepalesque.redux.config.ReduxConfigHandler;
 import net.zepalesque.redux.data.ReduxData;
 import net.zepalesque.redux.entity.ReduxEntities;
 import net.zepalesque.redux.item.ReduxItems;
+import net.zepalesque.redux.item.components.ReduxDataComponents;
 import net.zepalesque.redux.loot.modifer.ReduxLootModifiers;
 import net.zepalesque.redux.pack.PackUtils;
 import net.zepalesque.redux.pack.ReduxPackConfig;
@@ -35,9 +38,6 @@ import net.zepalesque.redux.world.biome.tint.ReduxBiomeTints;
 import net.zepalesque.redux.world.feature.gen.ReduxFeatures;
 import net.zepalesque.redux.world.tree.decorator.ReduxTreeDecorators;
 import net.zepalesque.redux.world.tree.foliage.ReduxFoliagePlacers;
-import net.zepalesque.zenith.api.blockset.AbstractFlowerSet;
-import net.zepalesque.zenith.api.blockset.AbstractStoneSet;
-import net.zepalesque.zenith.api.blockset.AbstractWoodSet;
 import net.zepalesque.zenith.api.blockset.BlockSet;
 import org.slf4j.Logger;
 import teamrazor.aeroblender.aether.AetherRuleCategory;
@@ -54,7 +54,7 @@ public class Redux {
 
     public static final Collection<BlockSet> BLOCK_SETS = new ArrayList<>();
 
-    public Redux(IEventBus bus, Dist dist) {
+    public Redux(ModContainer mod, IEventBus bus, Dist dist) {
         bus.addListener(ReduxData::dataSetup);
         bus.addListener(this::commonSetup);
         bus.addListener(this::registerDataMaps);
@@ -82,14 +82,15 @@ public class Redux {
                 ReduxRecipes.Serializers.SERIALIZERS,
                 ReduxSounds.SOUNDS,
                 ReduxLootModifiers.GLOBAL_LOOT_MODIFIERS,
-                ReduxTreeDecorators.TREE_DECORATORS
+                ReduxTreeDecorators.TREE_DECORATORS,
+                ReduxDataComponents.TYPES
         };
 
         for (DeferredRegister<?> register : registers) {
             register.register(bus);
         }
 
-        ReduxConfigHandler.setup(bus);
+        ReduxConfigHandler.setup(mod, bus);
 
         ReduxConfig.SERVER.registerSerializer();
         ReduxConfig.COMMON.registerSerializer();
@@ -97,7 +98,7 @@ public class Redux {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-            Regions.register(new ReduxRegion(new ResourceLocation(MODID, "aether_redux_region"), /*ReduxConfig.COMMON.region_size.get()*/ 20));
+            Regions.register(new ReduxRegion(loc("aether_redux_region"), /*ReduxConfig.COMMON.region_size.get()*/ 20));
             SurfaceRuleManager.addSurfaceRules(AetherRuleCategory.THE_AETHER, "aether_redux", ReduxSurfaceRules.makeRules());
             ReduxBlocks.registerFlammability();
             ReduxBlocks.registerToolConversions();
@@ -119,7 +120,7 @@ public class Redux {
     }
 
     public static ResourceLocation loc(String path) {
-        return new ResourceLocation(MODID, path);
+        return ResourceLocation.fromNamespaceAndPath(MODID, path);
     }
 
     public static boolean compat(String modid) {

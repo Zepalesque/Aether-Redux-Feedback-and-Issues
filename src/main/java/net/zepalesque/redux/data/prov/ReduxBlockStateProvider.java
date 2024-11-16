@@ -152,7 +152,7 @@ public abstract class ReduxBlockStateProvider extends AetherBlockStateProvider {
     }
 
     public static ResourceLocation extendStatic(ResourceLocation location, String suffix) {
-        return new ResourceLocation(location.getNamespace(), location.getPath() + suffix);
+        return ResourceLocation.fromNamespaceAndPath(location.getNamespace(), location.getPath() + suffix);
     }
 
     public static String nameStatic(Block block) {
@@ -336,7 +336,7 @@ public abstract class ReduxBlockStateProvider extends AetherBlockStateProvider {
         ModelFile cross = this.models().withExistingParent(this.name(block), Redux.loc("block/template/cross/large_clover"))
                 .texture("stem", this.modLoc("block/" + location + this.name(block) + "_stem"))
                 .texture("top", this.modLoc("block/" + location + this.name(block) + "_top"))
-                .renderType(new ResourceLocation("cutout"));
+                .renderType(ResourceLocation.withDefaultNamespace("cutout"));
         this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(cross));
     }
 
@@ -344,7 +344,7 @@ public abstract class ReduxBlockStateProvider extends AetherBlockStateProvider {
         ModelFile pot = this.models().withExistingParent(this.name(block), Redux.loc("block/template/pot/flower_pot_clover"))
                 .texture("stem", this.modLoc("block/" + location + this.name(flower) + "_stem"))
                 .texture("top", this.modLoc("block/" + location + this.name(flower) + "_top"))
-                .renderType(new ResourceLocation("cutout"));
+                .renderType(ResourceLocation.withDefaultNamespace("cutout"));
         this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(pot));
     }
 
@@ -361,7 +361,7 @@ public abstract class ReduxBlockStateProvider extends AetherBlockStateProvider {
 
 
     public ResourceLocation texture(Block block, String location) {
-        return new ResourceLocation(BuiltInRegistries.BLOCK.getKey(block).getNamespace(), "block/" + location + name(block));
+        return ResourceLocation.fromNamespaceAndPath(BuiltInRegistries.BLOCK.getKey(block).getNamespace(), "block/" + location + name(block));
     }
 
 }

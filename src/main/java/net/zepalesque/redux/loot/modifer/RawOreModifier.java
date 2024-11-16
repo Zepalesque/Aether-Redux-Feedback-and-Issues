@@ -1,6 +1,8 @@
 package net.zepalesque.redux.loot.modifer;
 
+import com.aetherteam.nitrogen.loot.modifiers.NitrogenLootModifiers;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -16,8 +18,8 @@ import net.neoforged.neoforge.common.loot.LootModifier;
 import java.util.List;
 
 public class RawOreModifier extends LootModifier {
-    private static final Codec<LootItemFunction[]> LOOT_FUNCTIONS_CODEC = LootItemFunctions.CODEC.listOf().xmap(list -> list.toArray(LootItemFunction[]::new), List::of);
-    public static final Codec<RawOreModifier> CODEC = RecordCodecBuilder.create((instance) -> instance.group(
+    private static final Codec<LootItemFunction[]> LOOT_FUNCTIONS_CODEC = LootItemFunctions.ROOT_CODEC.listOf().xmap(list -> list.toArray(LootItemFunction[]::new), List::of);
+    public static final MapCodec<RawOreModifier> CODEC = RecordCodecBuilder.mapCodec((instance) -> instance.group(
             BuiltInRegistries.ITEM.byNameCodec().fieldOf("removed_item").forGetter(modifier -> modifier.toRemove),
             ItemStack.CODEC.fieldOf("added_item").forGetter(modifier -> modifier.rawOre),
             LOOT_FUNCTIONS_CODEC.fieldOf("functions").forGetter(modifier -> modifier.functions),
@@ -35,7 +37,6 @@ public class RawOreModifier extends LootModifier {
         this.functions = functions;
     }
 
-
     public ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> lootStacks, LootContext context) {
         lootStacks.removeIf((itemStack) -> itemStack.is(this.toRemove));
         ItemStack i = this.rawOre;
@@ -47,7 +48,7 @@ public class RawOreModifier extends LootModifier {
     }
 
     @Override
-    public Codec<? extends IGlobalLootModifier> codec() {
+    public MapCodec<? extends IGlobalLootModifier> codec() {
         return CODEC;
     }
 }

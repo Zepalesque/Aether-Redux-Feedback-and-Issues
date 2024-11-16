@@ -3,8 +3,11 @@ package net.zepalesque.redux.data.prov.loot;
 import com.aetherteam.aether.data.providers.AetherBlockLootSubProvider;
 import com.aetherteam.aether.loot.functions.DoubleDrops;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
@@ -27,8 +30,8 @@ import java.util.function.Function;
 // Many of these are just public overrides with no differences, as this is used by the BlockSets
 public abstract class ReduxBlockLootProvider extends AetherBlockLootSubProvider {
 
-    public ReduxBlockLootProvider(Set<Item> items, FeatureFlagSet flags) {
-        super(items, flags);
+    public ReduxBlockLootProvider(Set<Item> items, FeatureFlagSet flags, HolderLookup.Provider registries) {
+        super(items, flags, registries);
     }
 
     protected LootTable.Builder naturalDropBase(Block block, ItemLike other) {
@@ -108,7 +111,8 @@ public abstract class ReduxBlockLootProvider extends AetherBlockLootSubProvider 
 
     // Drops another without shears
     public Function<Block, LootTable.Builder> shearsOr(ItemLike drop, float chance, float min, float max) {
-        return (block) -> createSilkTouchOrShearsDispatchTable(block, this.applyExplosionDecay(block, LootItem.lootTableItem(drop).when(LootItemRandomChanceCondition.randomChance(chance)).apply(SetItemCountFunction.setCount(UniformGenerator.between(min, max))).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE, 2))));
+        HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
+        return (block) -> createSilkTouchOrShearsDispatchTable(block, this.applyExplosionDecay(block, LootItem.lootTableItem(drop).when(LootItemRandomChanceCondition.randomChance(chance)).apply(SetItemCountFunction.setCount(UniformGenerator.between(min, max))).apply(ApplyBonusCount.addUniformBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE)))));
     }
 
     public Function<Block, LootTable.Builder> shearsOr(ItemLike drop, float chance) {
