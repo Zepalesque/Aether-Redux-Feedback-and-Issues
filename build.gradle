@@ -73,9 +73,9 @@ configurations {
 
 dependencies {
 
-    implementation "com.aetherteam.aether:aether:${minecraft_version}-${aether_version}"
-    implementation "com.aetherteam.nitrogen:nitrogen_internals:${nitrogen_version}"
-    implementation "com.aetherteam.cumulus:cumulus_menus:${project.cumulus_version}"
+    implementation "com.aetherteam.aether:aether:${minecraft_version}-${aether_version}-neoforge"
+    implementation "com.aetherteam.nitrogen:nitrogen_internals:${minecraft_version}-${nitrogen_version}-neoforge"
+    implementation "com.aetherteam.cumulus:cumulus_menus:${minecraft_version}-${project.cumulus_version}-neoforge"
     implementation "net.zepalesque.zenith:zenith:${minecraft_version}-${zenith_version}-neoforge"
     implementation "io.wispforest:accessories-neoforge:${project.accessories_version}+${project.minecraft_version}"
 

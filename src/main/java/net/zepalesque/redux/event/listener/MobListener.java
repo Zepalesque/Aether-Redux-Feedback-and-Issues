@@ -14,7 +14,7 @@ import net.zepalesque.redux.event.hook.QuicksoilHooks;
 public class MobListener {
 
     @SubscribeEvent
-    public static void handleQuicksoilMovement(EntityTickEvent event) {
+    public static void handleQuicksoilMovement(EntityTickEvent.Post event) {
         final Entity entity = event.getEntity();
         if (ReduxConfig.SERVER.revamped_quicksoil_movement.get() && QuicksoilHooks.shouldAlterMovement(entity)) {
             QuicksoilHooks.alterMovement(entity);

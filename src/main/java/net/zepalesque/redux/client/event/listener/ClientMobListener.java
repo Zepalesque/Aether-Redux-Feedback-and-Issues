@@ -17,7 +17,7 @@ import net.zepalesque.redux.event.hook.QuicksoilHooks;
 public class ClientMobListener {
 
     @SubscribeEvent
-    public static void cancelSneak(EntityTickEvent event) {
+    public static void cancelSneak(EntityTickEvent.Post event) {
         final Entity entity = event.getEntity();
         if (ReduxConfig.SERVER.revamped_quicksoil_movement.get() && QuicksoilHooks.shouldAlterMovement(entity)) {
             KeyHooks.cancelKey(entity, Minecraft.getInstance().options.keyShift);
