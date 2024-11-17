@@ -3,7 +3,7 @@
   "package": "net.zepalesque.redux.mixin.mixins",
   "plugin": "net.zepalesque.redux.mixin.ReduxMixinPlugin",
   "minVersion": "0.8",
-  "compatibilityLevel": "JAVA_17",
+  "compatibilityLevel": "JAVA_21",
   "refmap": "aether_redux.refmap.json",
   "mixins": [
     "common.TabUtilMixin",
