@@ -73,7 +73,7 @@ configurations {
 
 dependencies {
 
-    implementation "com.aetherteam.aether:aether:${aether_version}"
+    implementation "com.aetherteam.aether:aether:${minecraft_version}-${aether_version}"
     implementation "com.aetherteam.nitrogen:nitrogen_internals:${nitrogen_version}"
     implementation "com.aetherteam.cumulus:cumulus_menus:${project.cumulus_version}"
     implementation "net.zepalesque.zenith:zenith:${minecraft_version}-${zenith_version}-neoforge"

@@ -26,19 +26,19 @@ type = "required"
 versionRange="${minecraft_version_range}"
 ordering = "NONE"
 side = "BOTH"
-[[dependencies.${mod_id}]]]
+[[dependencies.${mod_id}]]
 modId = "zenith"
 type = "required" #mandatory
 versionRange = "[${zenith_version},)"
 ordering = "NONE"
 side = "BOTH"
-[[dependencies.${mod_id}]]]
+[[dependencies.${mod_id}]]
 modId = "aether"
 type = "required" #mandatory
 versionRange = "[${aether_version},)"
 ordering = "AFTER"
 side = "BOTH"
-[[dependencies.${mod_id}]]]
+[[dependencies.${mod_id}]]
 modId = "aeroblender"
 type = "required" #mandatory
 versionRange = "[0,)"

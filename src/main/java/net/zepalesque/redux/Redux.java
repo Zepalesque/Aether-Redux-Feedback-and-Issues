@@ -40,7 +40,6 @@ import net.zepalesque.redux.world.tree.decorator.ReduxTreeDecorators;
 import net.zepalesque.redux.world.tree.foliage.ReduxFoliagePlacers;
 import net.zepalesque.zenith.api.blockset.BlockSet;
 import org.slf4j.Logger;
-import teamrazor.aeroblender.aether.AetherRuleCategory;
 import terrablender.api.Regions;
 import terrablender.api.SurfaceRuleManager;
 
