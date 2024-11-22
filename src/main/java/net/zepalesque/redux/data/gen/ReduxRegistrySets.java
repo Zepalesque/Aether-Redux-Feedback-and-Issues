@@ -5,6 +5,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import net.zepalesque.redux.data.resource.registries.ReduxBiomeModifiers;
@@ -40,9 +41,10 @@ public class ReduxRegistrySets extends DatapackBuiltinEntriesProvider {
         List<String> list = Lists.newArrayList();
         list.add(Aether.MODID);
         list.add(modid);
-        list.addAll(Arrays.stream(otherIds).toList());
+            list.addAll(Arrays.stream(otherIds).toList());
         return Set.copyOf(list);
     }
+
 
 
     public static class NoisePack extends DatapackBuiltinEntriesProvider {

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "sentrite_chunk_to_refined_sentrite",
+  "ingredients": [
+    {
+      "item": "aether_redux:refined_sentrite"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "aether_redux:sentrite_chunk"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "aether_redux:sentrite"
+    },
+    "H": {
+      "item": "aether:holystone"
+    }
+  },
+  "pattern": [
+    "#H",
+    "H#"
+  ],
+  "result": {
+    "count": 4,
+    "id": "aether:carved_stone"
+  }
+}

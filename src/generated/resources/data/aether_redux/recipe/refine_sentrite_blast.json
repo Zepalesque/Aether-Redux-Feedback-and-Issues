@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 150,
+  "experience": 0.8,
+  "ingredient": {
+    "item": "aether_redux:sentrite"
+  },
+  "result": {
+    "count": 1,
+    "id": "aether_redux:refined_sentrite"
+  }
+}

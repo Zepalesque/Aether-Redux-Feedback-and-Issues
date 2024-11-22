@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.8,
+  "ingredient": {
+    "item": "aether_redux:veridium_ore"
+  },
+  "result": {
+    "count": 1,
+    "id": "aether_redux:veridium_ingot"
+  }
+}

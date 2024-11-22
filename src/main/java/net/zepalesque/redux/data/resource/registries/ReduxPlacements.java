@@ -83,6 +83,8 @@ public class ReduxPlacements {
                 BiomeFilter.biome()
         );
 
+
+
 //        register(context, GILDED_HOLYSTONE_ORE, configs.getOrThrow(ReduxFeatureConfig.GILDED_HOLYSTONE_ORE),
 //                CountPlacement.of(24),
 //                InSquarePlacement.spread(),

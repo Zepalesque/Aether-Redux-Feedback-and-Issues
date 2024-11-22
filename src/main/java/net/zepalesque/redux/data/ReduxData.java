@@ -1,5 +1,6 @@
 package net.zepalesque.redux.data;
 
+import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.data.generators.tags.AetherEntityTagData;
 import net.minecraft.DetectedVersion;
 import net.minecraft.core.HolderLookup;

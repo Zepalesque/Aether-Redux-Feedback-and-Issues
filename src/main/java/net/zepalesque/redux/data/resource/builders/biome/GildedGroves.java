@@ -79,6 +79,7 @@ public class GildedGroves {
                 .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ReduxPlacements.SPARSE_ZANITE_ORE)
                 .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, AetherPlacedFeatures.ORE_GRAVITITE_BURIED_PLACEMENT)
                 .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, AetherPlacedFeatures.ORE_GRAVITITE_PLACEMENT)
+
                 //.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ReduxPlacements.GILDED_HOLYSTONE_ORE)
                 // TODO vvv
                 //.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ReduxPlacements.DIVINITE_ORE_INCREASED)

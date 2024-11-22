@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.8,
+  "ingredient": {
+    "item": "aether_redux:raw_veridium"
+  },
+  "result": {
+    "count": 1,
+    "id": "aether_redux:veridium_ingot"
+  }
+}

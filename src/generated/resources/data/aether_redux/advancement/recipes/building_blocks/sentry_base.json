@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_sentry_stone": {
+      "conditions": {
+        "items": [
+          {
+            "items": "aether:sentry_stone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "aether_redux:sentry_base"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_sentry_stone"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "aether_redux:sentry_base"
+    ]
+  }
+}

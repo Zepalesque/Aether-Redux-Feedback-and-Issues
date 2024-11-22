@@ -1,0 +1,13 @@
+{
+  "type": "aether_redux:infusion",
+  "additional_data": {
+    "added_infusion": 4
+  },
+  "ingredient": {
+    "item": "aether_redux:infused_veridium_pickaxe"
+  },
+  "result": {
+    "item": "aether_redux:infused_veridium_pickaxe"
+  },
+  "sound": "aether_redux:item.generic.infuse"
+}

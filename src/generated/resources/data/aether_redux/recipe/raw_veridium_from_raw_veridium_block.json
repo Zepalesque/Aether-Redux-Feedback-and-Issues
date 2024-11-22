@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "raw_veridium",
+  "ingredients": [
+    {
+      "item": "aether_redux:raw_veridium_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "aether_redux:raw_veridium"
+  }
+}

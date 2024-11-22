@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "aether_redux:veridium_hoe"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_veridium_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": "aether_redux:veridium_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_veridium_ingot"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "aether_redux:veridium_hoe"
+    ]
+  }
+}

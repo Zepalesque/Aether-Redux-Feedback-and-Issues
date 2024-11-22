@@ -54,7 +54,7 @@ public class Redux {
     public static final Collection<BlockSet> BLOCK_SETS = new ArrayList<>();
 
     public Redux(ModContainer mod, IEventBus bus, Dist dist) {
-        bus.addListener(ReduxData::dataSetup);
+        bus.addListener(EventPriority.LOWEST, ReduxData::dataSetup);
         bus.addListener(this::commonSetup);
         bus.addListener(this::registerDataMaps);
         bus.addListener(this::packSetup);
