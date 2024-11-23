@@ -78,15 +78,10 @@ public class ReduxTabs {
             );
 
             TabUtil.putAfter(event, AetherBlocks.BOSS_DOORWAY_SENTRY_STONE,
-                    ReduxBlocks.BOSS_DOORWAY_SENTRY_BASE
-            );
-
-            TabUtil.putAfter(event, ReduxBlocks.BOSS_DOORWAY_SENTRY_PILLAR,
+                    ReduxBlocks.BOSS_DOORWAY_SENTRY_BASE,
+                    ReduxBlocks.BOSS_DOORWAY_SENTRY_PILLAR,
                     ReduxStoneSets.SENTRITE_BRICKS.block(),
-                    ReduxBlocks.LOCKED_SENTRITE_BRICKS
-            );
-
-            TabUtil.putAfter(event, ReduxBlocks.LOCKED_SENTRITE_BRICKS,
+                    ReduxBlocks.LOCKED_SENTRITE_BRICKS,
                     ReduxBlocks.RUNELIGHT,
                     ReduxBlocks.LOCKED_RUNELIGHT
             );
