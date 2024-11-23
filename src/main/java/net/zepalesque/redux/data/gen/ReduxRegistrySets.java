@@ -1,8 +1,11 @@
 package net.zepalesque.redux.data.gen;
 
 import com.aetherteam.aether.Aether;
+import net.minecraft.core.Cloner;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.RegistrySetBuilder;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
@@ -45,8 +48,6 @@ public class ReduxRegistrySets extends DatapackBuiltinEntriesProvider {
         return Set.copyOf(list);
     }
 
-
-
     public static class NoisePack extends DatapackBuiltinEntriesProvider {
         public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
                 .add(Registries.NOISE_SETTINGS, ReduxNoiseSettings.NoisePack::bootstrap);
@@ -55,4 +56,5 @@ public class ReduxRegistrySets extends DatapackBuiltinEntriesProvider {
             super(output, registries, BUILDER, buildModidList(modid, otherIds));
         }
     }
+
 }

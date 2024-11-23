@@ -7,8 +7,12 @@
       "fog": 12502245,
       "sky": 10462429
     },
-    "fog_map": {},
-    "sky_map": {}
+    "fog_map": {
+      "aether_redux:gilded_groves": 14539226
+    },
+    "sky_map": {
+      "aether_redux:gilded_groves": 12893610
+    }
   },
   "when": "aether_redux:sky_colors"
 }

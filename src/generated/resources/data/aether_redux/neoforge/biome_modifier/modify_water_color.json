@@ -10,12 +10,14 @@
     "fog_map": {
       "aether:skyroot_forest": 1317921,
       "aether:skyroot_meadow": 1778984,
-      "aether:skyroot_woodland": 1054492
+      "aether:skyroot_woodland": 1054492,
+      "aether_redux:gilded_groves": 1976875
     },
     "water_map": {
       "aether:skyroot_forest": 7973060,
       "aether:skyroot_meadow": 9554136,
-      "aether:skyroot_woodland": 6984885
+      "aether:skyroot_woodland": 6984885,
+      "aether_redux:gilded_groves": 9028038
     }
   },
   "when": "aether_redux:water_colors"

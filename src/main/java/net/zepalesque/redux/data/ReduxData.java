@@ -1,6 +1,7 @@
 package net.zepalesque.redux.data;
 
 import com.aetherteam.aether.Aether;
+import com.aetherteam.aether.data.generators.AetherRegistrySets;
 import com.aetherteam.aether.data.generators.tags.AetherEntityTagData;
 import net.minecraft.DetectedVersion;
 import net.minecraft.core.HolderLookup;
@@ -49,14 +50,18 @@ public class ReduxData {
         generator.addProvider(event.includeClient(), new ReduxParticleData(packOutput, fileHelper));
         generator.addProvider(event.includeClient(), new ReduxSoundsData(packOutput, fileHelper));
 
+        // TODO: look into better solutions for this
+        AetherRegistrySets patch = new AetherRegistrySets(packOutput, lookupProvider);
+        lookupProvider = patch.getRegistryProvider();
+
         // Server Data
+        DatapackBuiltinEntriesProvider registrySets = new ReduxRegistrySets(packOutput, lookupProvider, Redux.MODID);
+            // Use for structure and damage type data, plus any custom ones that need to access the condition registry
+        CompletableFuture<Provider> registryProvider = registrySets.getRegistryProvider();
+        generator.addProvider(event.includeServer(), registrySets);
         generator.addProvider(event.includeServer(), new ReduxRecipeData(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), ReduxLootData.create(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), new ReduxMapData(packOutput, lookupProvider));
-        DatapackBuiltinEntriesProvider registrySets = new ReduxRegistrySets(packOutput, lookupProvider, Redux.MODID);
-        // Use for structure and damage type data, plus any custom ones that need to access the condition registry
-        CompletableFuture<Provider> registryProvider = registrySets.getRegistryProvider();
-        generator.addProvider(event.includeServer(), registrySets);
         generator.addProvider(event.includeServer(), new ReduxLootModifierData(packOutput, registryProvider));
 
         // Tags
@@ -77,6 +82,7 @@ public class ReduxData {
         Path builtinData = packOutput.getOutputFolder().resolve("packs").resolve("data");
         
         DataGenerator.PackGenerator noisePack = generator.new PackGenerator(event.includeServer(), "reduxnoise", new PackOutput(builtinData.resolve("redux_noise")));
-        noisePack.addProvider(output -> new ReduxRegistrySets.NoisePack(output, lookupProvider, Redux.MODID));
+        CompletableFuture<Provider> finalLookupProvider = lookupProvider;
+        noisePack.addProvider(output -> new ReduxRegistrySets.NoisePack(output, finalLookupProvider, Redux.MODID));
     }
 }

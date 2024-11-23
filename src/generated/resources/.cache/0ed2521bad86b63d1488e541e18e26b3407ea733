@@ -1,4 +1,5 @@
-// 1.21.1	2024-11-23T13:51:28.7508444	Tags for minecraft:worldgen/biome mod id aether_redux
+// 1.21.1	2024-11-23T15:32:13.7494876	Tags for minecraft:worldgen/biome mod id aether_redux
+d591ac95cd16961b6595722d490f78ed27818c49 data/aether/tags/worldgen/biome/is_aether.json
 6425e7e0a57a451843094090fa1e31c9fbd4c5e0 data/aether_redux/tags/worldgen/biome/has_cloudbed.json
 6425e7e0a57a451843094090fa1e31c9fbd4c5e0 data/aether_redux/tags/worldgen/biome/has_sentrite.json
 6425e7e0a57a451843094090fa1e31c9fbd4c5e0 data/aether_redux/tags/worldgen/biome/should_modify_music.json

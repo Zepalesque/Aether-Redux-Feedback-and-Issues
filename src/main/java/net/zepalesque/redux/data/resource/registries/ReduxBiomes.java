@@ -27,6 +27,6 @@ public class ReduxBiomes {
     }
 
     public static void bootstrap(BootstrapContext<Biome> context) {
-//        context.register(GILDED_GROVES, GildedGroves.generate(context));
+        context.register(GILDED_GROVES, GildedGroves.generate(context));
     }
 }
