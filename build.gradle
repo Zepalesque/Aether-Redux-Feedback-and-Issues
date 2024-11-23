@@ -86,7 +86,7 @@ dependencies {
     // Workspace mods + Other Dependencies
     runtimeOnly "curse.maven:appleskin-248787:${project.appleskin_version}"
     runtimeOnly "curse.maven:spark-361579:${project.spark_version}"
-//    runtimeOnly "curse.maven:cyanide-541676:${project.cyanide_version}"
+    runtimeOnly "curse.maven:cyanide-541676:${project.cyanide_version}"
     implementation "curse.maven:jade-324717:${project.jade_version}"
 
     jarJar("blank:aeroblender-${project.aeroblender_version}:${project.aeroblender_version}") {
