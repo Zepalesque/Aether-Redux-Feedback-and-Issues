@@ -55,10 +55,10 @@ public class ReduxBiomeModifiers {
         BiomeModifier sky = new SkiesModifier(
                 Optional.of(new SkiesModifier.DefaultSkySettings(biomes.getOrThrow(ReduxTags.Biomes.MODIFY_SKY_COLOR), Optional.of(0x9FA4DD), Optional.of(0xBEC4E5))),
                 ImmutableMap.<Holder<Biome>, Integer>builder() // sky
-                        .put(biomes.getOrThrow(ReduxBiomes.GILDED_GROVES), 0xC4BDAA)
+//                        .put(biomes.getOrThrow(ReduxBiomes.GILDED_GROVES), 0xC4BDAA)
                         .build(),
                 ImmutableMap.<Holder<Biome>, Integer>builder() // fog
-                        .put(biomes.getOrThrow(ReduxBiomes.GILDED_GROVES), 0xDDD9DA)
+//                        .put(biomes.getOrThrow(ReduxBiomes.GILDED_GROVES), 0xDDD9DA)
                         .build());
         context.register(SKY_COLOR_AETHER, new ConditionalBiomeModifier(Holder.direct(sky), conditions.get(ReduxConditions.SKY_COLORS).orElseThrow()));
 
@@ -68,13 +68,13 @@ public class ReduxBiomeModifiers {
                         .put(biomes.getOrThrow(AetherBiomes.SKYROOT_MEADOW), 0x91C8D8)
                         .put(biomes.getOrThrow(AetherBiomes.SKYROOT_FOREST), 0x79A8C4)
                         .put(biomes.getOrThrow(AetherBiomes.SKYROOT_WOODLAND), 0x6A94B5)
-                        .put(biomes.getOrThrow(ReduxBiomes.GILDED_GROVES), 0x89C1C6)
+//                        .put(biomes.getOrThrow(ReduxBiomes.GILDED_GROVES), 0x89C1C6)
                         .build(),
                 ImmutableMap.<Holder<Biome>, Integer>builder() // fog
                         .put(biomes.getOrThrow(AetherBiomes.SKYROOT_MEADOW), 0x1B2528)
                         .put(biomes.getOrThrow(AetherBiomes.SKYROOT_FOREST), 0x141C21)
                         .put(biomes.getOrThrow(AetherBiomes.SKYROOT_WOODLAND), 0x10171C)
-                        .put(biomes.getOrThrow(ReduxBiomes.GILDED_GROVES), 0x1E2A2B)
+//                        .put(biomes.getOrThrow(ReduxBiomes.GILDED_GROVES), 0x1E2A2B)
                         .build());
         context.register(WATER_COLOR_AETHER, new ConditionalBiomeModifier(Holder.direct(water), conditions.get(ReduxConditions.WATER_COLORS).orElseThrow()));
 
