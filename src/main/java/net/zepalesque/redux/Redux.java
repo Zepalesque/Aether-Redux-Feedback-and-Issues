@@ -97,7 +97,7 @@ public class Redux {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-//            Regions.register(new ReduxRegion(loc("aether_redux_region"), /*ReduxConfig.COMMON.region_size.get()*/ 20));
+            Regions.register(new ReduxRegion(loc("aether_redux_region"), /*ReduxConfig.COMMON.region_size.get()*/ 20));
             SurfaceRuleManager.addSurfaceRules(AetherRuleCategory.THE_AETHER, "aether_redux", ReduxSurfaceRules.makeRules());
             ReduxBlocks.registerFlammability();
             ReduxBlocks.registerToolConversions();
