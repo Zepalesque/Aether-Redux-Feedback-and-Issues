@@ -39,10 +39,8 @@
       "type": "zenith:int_provider_trunk",
       "height": {
         "type": "minecraft:uniform",
-        "value": {
-          "max_inclusive": 12,
-          "min_inclusive": 8
-        }
+        "max_inclusive": 12,
+        "min_inclusive": 8
       }
     },
     "trunk_provider": {

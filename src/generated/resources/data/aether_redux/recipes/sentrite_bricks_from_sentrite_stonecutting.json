@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 1,
-  "ingredient": {
-    "item": "aether_redux:sentrite"
-  },
-  "result": "aether_redux:sentrite_bricks"
-}

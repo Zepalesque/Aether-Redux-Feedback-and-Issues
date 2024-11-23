@@ -6,10 +6,8 @@
         "type": "aether_redux:golden_vines",
         "length": {
           "type": "minecraft:uniform",
-          "value": {
-            "max_inclusive": 5,
-            "min_inclusive": 1
-          }
+          "max_inclusive": 5,
+          "min_inclusive": 1
         },
         "plant_body_provider": {
           "type": "minecraft:simple_state_provider",
@@ -66,10 +64,8 @@
       "type": "zenith:int_provider_trunk",
       "height": {
         "type": "minecraft:uniform",
-        "value": {
-          "max_inclusive": 14,
-          "min_inclusive": 11
-        }
+        "max_inclusive": 14,
+        "min_inclusive": 11
       }
     },
     "trunk_provider": {

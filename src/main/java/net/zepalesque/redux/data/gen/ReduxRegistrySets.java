@@ -41,7 +41,7 @@ public class ReduxRegistrySets extends DatapackBuiltinEntriesProvider {
         List<String> list = Lists.newArrayList();
         list.add(Aether.MODID);
         list.add(modid);
-            list.addAll(Arrays.stream(otherIds).toList());
+        list.addAll(Arrays.stream(otherIds).toList());
         return Set.copyOf(list);
     }
 
