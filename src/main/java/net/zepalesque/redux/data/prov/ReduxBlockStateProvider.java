@@ -372,7 +372,7 @@ public abstract class ReduxBlockStateProvider extends AetherBlockStateProvider {
                     boolean r = state.getValue(LogicatorBlock.RIGHT);
                     String configuration = "";
                     if (l || r) {
-                        configuration = configuration + '_';
+                        configuration = configuration + "_in_";
 
                         if (l) configuration = configuration + 'l';
                         if (r) configuration = configuration + 'r';
