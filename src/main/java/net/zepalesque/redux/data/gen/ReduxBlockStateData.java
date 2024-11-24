@@ -68,5 +68,7 @@ public class ReduxBlockStateData extends ReduxBlockStateProvider {
         this.cropOccluded(ReduxBlocks.GOLDEN_VINES.get(), "natural/");
         this.cropOccluded(ReduxBlocks.GOLDEN_VINES_PLANT.get(), "natural/");
 
+        this.logicator(ReduxBlocks.LOGICATOR.get(), "redstone/");
+
     }
 }

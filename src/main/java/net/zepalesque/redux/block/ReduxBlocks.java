@@ -12,6 +12,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ChainBlock;
 import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraft.world.level.block.LanternBlock;
+import net.minecraft.world.level.block.RepeaterBlock;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -33,6 +34,7 @@ import net.zepalesque.redux.block.natural.GoldenCloversBlock;
 import net.zepalesque.redux.block.natural.crop.WyndoatsBlock;
 import net.zepalesque.redux.block.natural.leaves.FallingLeavesBlock;
 import net.zepalesque.redux.block.natural.leaves.LeafPileBlock;
+import net.zepalesque.redux.block.redstone.LogicatorBlock;
 import net.zepalesque.redux.block.state.ReduxBlockBuilders;
 import net.zepalesque.redux.client.particle.ReduxParticles;
 import net.zepalesque.redux.event.hook.ToolActionHooks;
@@ -186,7 +188,6 @@ public class ReduxBlocks extends ReduxBlockBuilders {
             )
     );
 
-
     public static DeferredBlock<GoldenVinesHeadBlock> GOLDEN_VINES = register("golden_vines",
             () -> new GoldenVinesHeadBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WEEPING_VINES)
                     .mapColor(MapColor.GOLD).sound(SoundType.CAVE_VINES), BlockTags.LEAVES));
@@ -195,6 +196,9 @@ public class ReduxBlocks extends ReduxBlockBuilders {
             () -> new GoldenVinesBodyBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WEEPING_VINES_PLANT)
                     .mapColor(MapColor.GOLD).sound(SoundType.CAVE_VINES), BlockTags.LEAVES));
 
+    public static final DeferredBlock<LogicatorBlock> LOGICATOR = register("logicator",
+            () -> new LogicatorBlock(BlockBehaviour.Properties.of().instabreak().sound(SoundType.STONE).pushReaction(PushReaction.DESTROY))
+    );
 
     public static void registerFlammability() {
         FireAccessor accessor = (FireAccessor) Blocks.FIRE;

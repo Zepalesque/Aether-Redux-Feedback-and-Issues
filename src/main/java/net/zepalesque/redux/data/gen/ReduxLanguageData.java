@@ -79,6 +79,10 @@ public class ReduxLanguageData extends ReduxLanguageProvider {
         addBlock(ReduxBlocks.POTTED_SKYSPROUTS);
         addLore(ReduxBlocks.SKYSPROUTS, "A relative of the common Wyndsprouts, this flowering grass is found in the Skyfields.");
 
+        addBlock(ReduxBlocks.LOGICATOR, "Redstone Logicator");
+        // TODO
+        addLore(ReduxBlocks.LOGICATOR, "missingno");
+
 
         addItem(ReduxItems.WYND_OATS);
         addLore(ReduxItems.WYND_OATS, "A pile of Wynd Oats. These can be grown into the Wynd Oat plant.");

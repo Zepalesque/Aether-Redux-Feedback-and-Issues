@@ -1,0 +1,177 @@
+package net.zepalesque.redux.block.redstone;
+
+import com.mojang.serialization.MapCodec;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.particles.DustParticleOptions;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.SignalGetter;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.DiodeBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.ticks.TickPriority;
+import net.zepalesque.redux.block.state.ReduxStates;
+import net.zepalesque.redux.block.state.enums.LogicatorMode;
+
+public class LogicatorBlock extends DiodeBlock {
+    public static final MapCodec<LogicatorBlock> CODEC = simpleCodec(LogicatorBlock::new);
+    public static final EnumProperty<LogicatorMode> MODE = ReduxStates.MODE_LOGICATOR;
+    public static final BooleanProperty LEFT = ReduxStates.LEFT_INPUT, RIGHT = ReduxStates.RIGHT_INPUT;
+
+
+    @Override
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+        if (!player.getAbilities().mayBuild) {
+            return InteractionResult.PASS;
+        } else {
+            state = ReduxStates.mapValue(state, MODE, LogicatorMode::flipOperationType);
+            float f = state.getValue(MODE).isOr() ? 0.55F : 0.5F;
+            // TODO: Create new sound event
+            level.playSound(player, pos, SoundEvents.COMPARATOR_CLICK, SoundSource.BLOCKS, 0.3F, f);
+            level.setBlock(pos, state, 2);
+            this.refreshOutputState(level, state, pos);
+            return InteractionResult.sidedSuccess(level.isClientSide);
+        }
+    }
+
+    protected static int getLeftInput(SignalGetter level, BlockPos pos, BlockState state) {
+        Direction direction = state.getValue(FACING);
+        // Counterintuitive, but DiodeBlocks are placed backwards
+        Direction left = direction.getClockWise();
+        return level.getControlInputSignal(pos.relative(left), left, false);
+    }
+
+    protected static int getRightInput(SignalGetter level, BlockPos pos, BlockState state) {
+        Direction direction = state.getValue(FACING);
+        // Counterintuitive, but DiodeBlocks are placed backwards
+        Direction right = direction.getCounterClockWise();
+        return level.getControlInputSignal(pos.relative(right), right, false);
+    }
+
+    protected static int getBackInput(SignalGetter level, BlockPos pos, BlockState state) {
+        Direction direction = state.getValue(FACING);
+        Direction back = direction.getOpposite();
+        return level.getControlInputSignal(pos.relative(back), back, false);
+    }
+
+    protected boolean shouldHaveLeftInput(SignalGetter level, BlockPos pos, BlockState state) {
+        return getLeftInput(level, pos, state) > 0;
+    }
+    protected boolean shouldHaveRightInput(SignalGetter level, BlockPos pos, BlockState state) {
+        return getRightInput(level, pos, state) > 0;
+    }
+    protected boolean shouldBeExclusive(SignalGetter level, BlockPos pos, BlockState state) {
+        return getBackInput(level, pos, state) > 0;
+    }
+
+
+
+
+
+    @Override
+    protected boolean shouldTurnOn(Level level, BlockPos pos, BlockState state) {
+        LogicatorMode mode = state.getValue(MODE);
+        boolean l = state.getValue(LEFT);
+        boolean r = state.getValue(RIGHT);
+
+        return mode.operate(l, r);
+    }
+
+    protected void refreshOutputState(Level level, BlockState state, BlockPos pos) {
+        if (!this.isLocked(level, pos, state)) {
+            BlockState oldState = state;
+            boolean l = getLeftInput(level, pos, state) > 0;
+            boolean r = getRightInput(level, pos, state) > 0;
+            boolean exclusive = getBackInput(level, pos, state) > 0;
+            boolean or = state.getValue(MODE).isOr();
+            boolean powered = this.shouldTurnOn(level, pos, state);
+
+            state = state
+                    .setValue(MODE, LogicatorMode.getMode(exclusive, or))
+                    .setValue(LEFT, l)
+                    .setValue(RIGHT, r)
+                    .setValue(POWERED, powered);
+
+            if (state != oldState) {
+                level.setBlock(pos, state, 2);
+                level.scheduleTick(pos, this, this.getDelay(state), TickPriority.VERY_HIGH);
+                this.updateNeighborsInFront(level, pos, state);
+            }
+        }
+    }
+
+    protected void checkTickOnNeighbor(Level level, BlockPos pos, BlockState state) {
+        if (!this.isLocked(level, pos, state)) {
+            boolean wasOn = state.getValue(POWERED);
+            boolean shouldTurnOn = this.shouldTurnOn(level, pos, state);
+            boolean hadInputL = state.getValue(LEFT);
+            boolean shouldHaveInputL = shouldHaveLeftInput(level, pos, state);
+            boolean hadInputR = state.getValue(RIGHT);
+            boolean shouldHaveInputR = shouldHaveRightInput(level, pos, state);
+            boolean wasExclusive = state.getValue(MODE).isExclusive();
+            boolean shouldBeExclusive = shouldBeExclusive(level, pos, state);
+            if ((wasOn != shouldTurnOn || hadInputL != shouldHaveInputL || hadInputR != shouldHaveInputR || wasExclusive != shouldBeExclusive) && !level.getBlockTicks().willTickThisTick(pos, this)) {
+                TickPriority tickpriority = TickPriority.HIGH;
+                if (this.shouldPrioritize(level, pos, state)) {
+                    tickpriority = TickPriority.EXTREMELY_HIGH;
+                } else if (wasOn) {
+                    tickpriority = TickPriority.VERY_HIGH;
+                }
+
+                level.scheduleTick(pos, this, this.getDelay(state), tickpriority);
+            }
+        }
+    }
+
+    @Override
+    public boolean getWeakChanges(BlockState state, LevelReader level, BlockPos pos) {
+        return super.getWeakChanges(state, level, pos);
+    }
+
+    @Override
+    protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        refreshOutputState(level, state, pos);
+    }
+
+    public LogicatorBlock(Properties properties) {
+        super(properties);
+    }
+
+    @Override
+    protected MapCodec<? extends DiodeBlock> codec() {
+        return CODEC;
+    }
+
+    @Override
+    protected int getDelay(BlockState state) {
+        return 1;
+    }
+
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(FACING, MODE, LEFT, RIGHT);
+    }
+
+    @Override
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+        if (state.getValue(MODE).isOr()) {
+            double d0 = (double)pos.getX() + 0.5 + (random.nextDouble() - 0.5) * 0.2;
+            double d1 = (double)pos.getY() + 0.4 + (random.nextDouble() - 0.5) * 0.2;
+            double d2 = (double)pos.getZ() + 0.5 + (random.nextDouble() - 0.5) * 0.2;
+
+            if (random.nextBoolean())
+                level.addParticle(DustParticleOptions.REDSTONE, d0, d1, d2, 0.0, 0.0, 0.0);
+        }
+    }
+}
