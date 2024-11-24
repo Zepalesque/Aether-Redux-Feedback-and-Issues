@@ -4,7 +4,7 @@
 	"textures": {
 		"particle": "#top",
 		"slab": "block/smooth_stone",
-		"lit": "block/redstone_torch",
+		"lit": "block/redstone_torch"
 	},
 	"elements": [
 		{
