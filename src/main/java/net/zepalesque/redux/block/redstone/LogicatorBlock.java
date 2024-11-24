@@ -58,7 +58,7 @@ public class LogicatorBlock extends DiodeBlock {
         Direction direction = state.getValue(FACING);
         // Counterintuitive, but DiodeBlocks are placed backwards
         Direction left = direction.getClockWise();
-        return level.getControlInputSignal(pos.relative(left), left, false);
+        return level.getSignal(pos.relative(left), left);
     }
 
     protected static int getRightInput(SignalGetter level, BlockPos pos, BlockState state) {
