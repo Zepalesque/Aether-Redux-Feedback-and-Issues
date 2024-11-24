@@ -1,0 +1,7 @@
+{
+  "parent": "aether_redux:block/template/redstone/template_logicator_or",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "top": "aether_redux:block/redstone/logicator_r_out"
+  }
+}

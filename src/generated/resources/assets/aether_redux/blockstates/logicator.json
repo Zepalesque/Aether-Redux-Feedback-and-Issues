@@ -1,0 +1,484 @@
+{
+  "variants": {
+    "facing=east,left_input=false,mode=and,powered=false,right_input=false": {
+      "model": "aether_redux:block/logicator_and",
+      "y": 90
+    },
+    "facing=east,left_input=false,mode=and,powered=false,right_input=true": {
+      "model": "aether_redux:block/logicator_and_r",
+      "y": 90
+    },
+    "facing=east,left_input=false,mode=and,powered=true,right_input=false": {
+      "model": "aether_redux:block/logicator_and_out",
+      "y": 90
+    },
+    "facing=east,left_input=false,mode=and,powered=true,right_input=true": {
+      "model": "aether_redux:block/logicator_and_r_out",
+      "y": 90
+    },
+    "facing=east,left_input=false,mode=or,powered=false,right_input=false": {
+      "model": "aether_redux:block/logicator_or",
+      "y": 90
+    },
+    "facing=east,left_input=false,mode=or,powered=false,right_input=true": {
+      "model": "aether_redux:block/logicator_or_r",
+      "y": 90
+    },
+    "facing=east,left_input=false,mode=or,powered=true,right_input=false": {
+      "model": "aether_redux:block/logicator_or_out",
+      "y": 90
+    },
+    "facing=east,left_input=false,mode=or,powered=true,right_input=true": {
+      "model": "aether_redux:block/logicator_or_r_out",
+      "y": 90
+    },
+    "facing=east,left_input=false,mode=xnor,powered=false,right_input=false": {
+      "model": "aether_redux:block/logicator_xnor",
+      "y": 90
+    },
+    "facing=east,left_input=false,mode=xnor,powered=false,right_input=true": {
+      "model": "aether_redux:block/logicator_xnor_r",
+      "y": 90
+    },
+    "facing=east,left_input=false,mode=xnor,powered=true,right_input=false": {
+      "model": "aether_redux:block/logicator_xnor_out",
+      "y": 90
+    },
+    "facing=east,left_input=false,mode=xnor,powered=true,right_input=true": {
+      "model": "aether_redux:block/logicator_xnor_r_out",
+      "y": 90
+    },
+    "facing=east,left_input=false,mode=xor,powered=false,right_input=false": {
+      "model": "aether_redux:block/logicator_xor",
+      "y": 90
+    },
+    "facing=east,left_input=false,mode=xor,powered=false,right_input=true": {
+      "model": "aether_redux:block/logicator_xor_r",
+      "y": 90
+    },
+    "facing=east,left_input=false,mode=xor,powered=true,right_input=false": {
+      "model": "aether_redux:block/logicator_xor_out",
+      "y": 90
+    },
+    "facing=east,left_input=false,mode=xor,powered=true,right_input=true": {
+      "model": "aether_redux:block/logicator_xor_r_out",
+      "y": 90
+    },
+    "facing=east,left_input=true,mode=and,powered=false,right_input=false": {
+      "model": "aether_redux:block/logicator_and_l",
+      "y": 90
+    },
+    "facing=east,left_input=true,mode=and,powered=false,right_input=true": {
+      "model": "aether_redux:block/logicator_and_lr",
+      "y": 90
+    },
+    "facing=east,left_input=true,mode=and,powered=true,right_input=false": {
+      "model": "aether_redux:block/logicator_and_l_out",
+      "y": 90
+    },
+    "facing=east,left_input=true,mode=and,powered=true,right_input=true": {
+      "model": "aether_redux:block/logicator_and_lr_out",
+      "y": 90
+    },
+    "facing=east,left_input=true,mode=or,powered=false,right_input=false": {
+      "model": "aether_redux:block/logicator_or_l",
+      "y": 90
+    },
+    "facing=east,left_input=true,mode=or,powered=false,right_input=true": {
+      "model": "aether_redux:block/logicator_or_lr",
+      "y": 90
+    },
+    "facing=east,left_input=true,mode=or,powered=true,right_input=false": {
+      "model": "aether_redux:block/logicator_or_l_out",
+      "y": 90
+    },
+    "facing=east,left_input=true,mode=or,powered=true,right_input=true": {
+      "model": "aether_redux:block/logicator_or_lr_out",
+      "y": 90
+    },
+    "facing=east,left_input=true,mode=xnor,powered=false,right_input=false": {
+      "model": "aether_redux:block/logicator_xnor_l",
+      "y": 90
+    },
+    "facing=east,left_input=true,mode=xnor,powered=false,right_input=true": {
+      "model": "aether_redux:block/logicator_xnor_lr",
+      "y": 90
+    },
+    "facing=east,left_input=true,mode=xnor,powered=true,right_input=false": {
+      "model": "aether_redux:block/logicator_xnor_l_out",
+      "y": 90
+    },
+    "facing=east,left_input=true,mode=xnor,powered=true,right_input=true": {
+      "model": "aether_redux:block/logicator_xnor_lr_out",
+      "y": 90
+    },
+    "facing=east,left_input=true,mode=xor,powered=false,right_input=false": {
+      "model": "aether_redux:block/logicator_xor_l",
+      "y": 90
+    },
+    "facing=east,left_input=true,mode=xor,powered=false,right_input=true": {
+      "model": "aether_redux:block/logicator_xor_lr",
+      "y": 90
+    },
+    "facing=east,left_input=true,mode=xor,powered=true,right_input=false": {
+      "model": "aether_redux:block/logicator_xor_l_out",
+      "y": 90
+    },
+    "facing=east,left_input=true,mode=xor,powered=true,right_input=true": {
+      "model": "aether_redux:block/logicator_xor_lr_out",
+      "y": 90
+    },
+    "facing=north,left_input=false,mode=and,powered=false,right_input=false": {
+      "model": "aether_redux:block/logicator_and"
+    },
+    "facing=north,left_input=false,mode=and,powered=false,right_input=true": {
+      "model": "aether_redux:block/logicator_and_r"
+    },
+    "facing=north,left_input=false,mode=and,powered=true,right_input=false": {
+      "model": "aether_redux:block/logicator_and_out"
+    },
+    "facing=north,left_input=false,mode=and,powered=true,right_input=true": {
+      "model": "aether_redux:block/logicator_and_r_out"
+    },
+    "facing=north,left_input=false,mode=or,powered=false,right_input=false": {
+      "model": "aether_redux:block/logicator_or"
+    },
+    "facing=north,left_input=false,mode=or,powered=false,right_input=true": {
+      "model": "aether_redux:block/logicator_or_r"
+    },
+    "facing=north,left_input=false,mode=or,powered=true,right_input=false": {
+      "model": "aether_redux:block/logicator_or_out"
+    },
+    "facing=north,left_input=false,mode=or,powered=true,right_input=true": {
+      "model": "aether_redux:block/logicator_or_r_out"
+    },
+    "facing=north,left_input=false,mode=xnor,powered=false,right_input=false": {
+      "model": "aether_redux:block/logicator_xnor"
+    },
+    "facing=north,left_input=false,mode=xnor,powered=false,right_input=true": {
+      "model": "aether_redux:block/logicator_xnor_r"
+    },
+    "facing=north,left_input=false,mode=xnor,powered=true,right_input=false": {
+      "model": "aether_redux:block/logicator_xnor_out"
+    },
+    "facing=north,left_input=false,mode=xnor,powered=true,right_input=true": {
+      "model": "aether_redux:block/logicator_xnor_r_out"
+    },
+    "facing=north,left_input=false,mode=xor,powered=false,right_input=false": {
+      "model": "aether_redux:block/logicator_xor"
+    },
+    "facing=north,left_input=false,mode=xor,powered=false,right_input=true": {
+      "model": "aether_redux:block/logicator_xor_r"
+    },
+    "facing=north,left_input=false,mode=xor,powered=true,right_input=false": {
+      "model": "aether_redux:block/logicator_xor_out"
+    },
+    "facing=north,left_input=false,mode=xor,powered=true,right_input=true": {
+      "model": "aether_redux:block/logicator_xor_r_out"
+    },
+    "facing=north,left_input=true,mode=and,powered=false,right_input=false": {
+      "model": "aether_redux:block/logicator_and_l"
+    },
+    "facing=north,left_input=true,mode=and,powered=false,right_input=true": {
+      "model": "aether_redux:block/logicator_and_lr"
+    },
+    "facing=north,left_input=true,mode=and,powered=true,right_input=false": {
+      "model": "aether_redux:block/logicator_and_l_out"
+    },
+    "facing=north,left_input=true,mode=and,powered=true,right_input=true": {
+      "model": "aether_redux:block/logicator_and_lr_out"
+    },
+    "facing=north,left_input=true,mode=or,powered=false,right_input=false": {
+      "model": "aether_redux:block/logicator_or_l"
+    },
+    "facing=north,left_input=true,mode=or,powered=false,right_input=true": {
+      "model": "aether_redux:block/logicator_or_lr"
+    },
+    "facing=north,left_input=true,mode=or,powered=true,right_input=false": {
+      "model": "aether_redux:block/logicator_or_l_out"
+    },
+    "facing=north,left_input=true,mode=or,powered=true,right_input=true": {
+      "model": "aether_redux:block/logicator_or_lr_out"
+    },
+    "facing=north,left_input=true,mode=xnor,powered=false,right_input=false": {
+      "model": "aether_redux:block/logicator_xnor_l"
+    },
+    "facing=north,left_input=true,mode=xnor,powered=false,right_input=true": {
+      "model": "aether_redux:block/logicator_xnor_lr"
+    },
+    "facing=north,left_input=true,mode=xnor,powered=true,right_input=false": {
+      "model": "aether_redux:block/logicator_xnor_l_out"
+    },
+    "facing=north,left_input=true,mode=xnor,powered=true,right_input=true": {
+      "model": "aether_redux:block/logicator_xnor_lr_out"
+    },
+    "facing=north,left_input=true,mode=xor,powered=false,right_input=false": {
+      "model": "aether_redux:block/logicator_xor_l"
+    },
+    "facing=north,left_input=true,mode=xor,powered=false,right_input=true": {
+      "model": "aether_redux:block/logicator_xor_lr"
+    },
+    "facing=north,left_input=true,mode=xor,powered=true,right_input=false": {
+      "model": "aether_redux:block/logicator_xor_l_out"
+    },
+    "facing=north,left_input=true,mode=xor,powered=true,right_input=true": {
+      "model": "aether_redux:block/logicator_xor_lr_out"
+    },
+    "facing=south,left_input=false,mode=and,powered=false,right_input=false": {
+      "model": "aether_redux:block/logicator_and",
+      "y": 180
+    },
+    "facing=south,left_input=false,mode=and,powered=false,right_input=true": {
+      "model": "aether_redux:block/logicator_and_r",
+      "y": 180
+    },
+    "facing=south,left_input=false,mode=and,powered=true,right_input=false": {
+      "model": "aether_redux:block/logicator_and_out",
+      "y": 180
+    },
+    "facing=south,left_input=false,mode=and,powered=true,right_input=true": {
+      "model": "aether_redux:block/logicator_and_r_out",
+      "y": 180
+    },
+    "facing=south,left_input=false,mode=or,powered=false,right_input=false": {
+      "model": "aether_redux:block/logicator_or",
+      "y": 180
+    },
+    "facing=south,left_input=false,mode=or,powered=false,right_input=true": {
+      "model": "aether_redux:block/logicator_or_r",
+      "y": 180
+    },
+    "facing=south,left_input=false,mode=or,powered=true,right_input=false": {
+      "model": "aether_redux:block/logicator_or_out",
+      "y": 180
+    },
+    "facing=south,left_input=false,mode=or,powered=true,right_input=true": {
+      "model": "aether_redux:block/logicator_or_r_out",
+      "y": 180
+    },
+    "facing=south,left_input=false,mode=xnor,powered=false,right_input=false": {
+      "model": "aether_redux:block/logicator_xnor",
+      "y": 180
+    },
+    "facing=south,left_input=false,mode=xnor,powered=false,right_input=true": {
+      "model": "aether_redux:block/logicator_xnor_r",
+      "y": 180
+    },
+    "facing=south,left_input=false,mode=xnor,powered=true,right_input=false": {
+      "model": "aether_redux:block/logicator_xnor_out",
+      "y": 180
+    },
+    "facing=south,left_input=false,mode=xnor,powered=true,right_input=true": {
+      "model": "aether_redux:block/logicator_xnor_r_out",
+      "y": 180
+    },
+    "facing=south,left_input=false,mode=xor,powered=false,right_input=false": {
+      "model": "aether_redux:block/logicator_xor",
+      "y": 180
+    },
+    "facing=south,left_input=false,mode=xor,powered=false,right_input=true": {
+      "model": "aether_redux:block/logicator_xor_r",
+      "y": 180
+    },
+    "facing=south,left_input=false,mode=xor,powered=true,right_input=false": {
+      "model": "aether_redux:block/logicator_xor_out",
+      "y": 180
+    },
+    "facing=south,left_input=false,mode=xor,powered=true,right_input=true": {
+      "model": "aether_redux:block/logicator_xor_r_out",
+      "y": 180
+    },
+    "facing=south,left_input=true,mode=and,powered=false,right_input=false": {
+      "model": "aether_redux:block/logicator_and_l",
+      "y": 180
+    },
+    "facing=south,left_input=true,mode=and,powered=false,right_input=true": {
+      "model": "aether_redux:block/logicator_and_lr",
+      "y": 180
+    },
+    "facing=south,left_input=true,mode=and,powered=true,right_input=false": {
+      "model": "aether_redux:block/logicator_and_l_out",
+      "y": 180
+    },
+    "facing=south,left_input=true,mode=and,powered=true,right_input=true": {
+      "model": "aether_redux:block/logicator_and_lr_out",
+      "y": 180
+    },
+    "facing=south,left_input=true,mode=or,powered=false,right_input=false": {
+      "model": "aether_redux:block/logicator_or_l",
+      "y": 180
+    },
+    "facing=south,left_input=true,mode=or,powered=false,right_input=true": {
+      "model": "aether_redux:block/logicator_or_lr",
+      "y": 180
+    },
+    "facing=south,left_input=true,mode=or,powered=true,right_input=false": {
+      "model": "aether_redux:block/logicator_or_l_out",
+      "y": 180
+    },
+    "facing=south,left_input=true,mode=or,powered=true,right_input=true": {
+      "model": "aether_redux:block/logicator_or_lr_out",
+      "y": 180
+    },
+    "facing=south,left_input=true,mode=xnor,powered=false,right_input=false": {
+      "model": "aether_redux:block/logicator_xnor_l",
+      "y": 180
+    },
+    "facing=south,left_input=true,mode=xnor,powered=false,right_input=true": {
+      "model": "aether_redux:block/logicator_xnor_lr",
+      "y": 180
+    },
+    "facing=south,left_input=true,mode=xnor,powered=true,right_input=false": {
+      "model": "aether_redux:block/logicator_xnor_l_out",
+      "y": 180
+    },
+    "facing=south,left_input=true,mode=xnor,powered=true,right_input=true": {
+      "model": "aether_redux:block/logicator_xnor_lr_out",
+      "y": 180
+    },
+    "facing=south,left_input=true,mode=xor,powered=false,right_input=false": {
+      "model": "aether_redux:block/logicator_xor_l",
+      "y": 180
+    },
+    "facing=south,left_input=true,mode=xor,powered=false,right_input=true": {
+      "model": "aether_redux:block/logicator_xor_lr",
+      "y": 180
+    },
+    "facing=south,left_input=true,mode=xor,powered=true,right_input=false": {
+      "model": "aether_redux:block/logicator_xor_l_out",
+      "y": 180
+    },
+    "facing=south,left_input=true,mode=xor,powered=true,right_input=true": {
+      "model": "aether_redux:block/logicator_xor_lr_out",
+      "y": 180
+    },
+    "facing=west,left_input=false,mode=and,powered=false,right_input=false": {
+      "model": "aether_redux:block/logicator_and",
+      "y": 270
+    },
+    "facing=west,left_input=false,mode=and,powered=false,right_input=true": {
+      "model": "aether_redux:block/logicator_and_r",
+      "y": 270
+    },
+    "facing=west,left_input=false,mode=and,powered=true,right_input=false": {
+      "model": "aether_redux:block/logicator_and_out",
+      "y": 270
+    },
+    "facing=west,left_input=false,mode=and,powered=true,right_input=true": {
+      "model": "aether_redux:block/logicator_and_r_out",
+      "y": 270
+    },
+    "facing=west,left_input=false,mode=or,powered=false,right_input=false": {
+      "model": "aether_redux:block/logicator_or",
+      "y": 270
+    },
+    "facing=west,left_input=false,mode=or,powered=false,right_input=true": {
+      "model": "aether_redux:block/logicator_or_r",
+      "y": 270
+    },
+    "facing=west,left_input=false,mode=or,powered=true,right_input=false": {
+      "model": "aether_redux:block/logicator_or_out",
+      "y": 270
+    },
+    "facing=west,left_input=false,mode=or,powered=true,right_input=true": {
+      "model": "aether_redux:block/logicator_or_r_out",
+      "y": 270
+    },
+    "facing=west,left_input=false,mode=xnor,powered=false,right_input=false": {
+      "model": "aether_redux:block/logicator_xnor",
+      "y": 270
+    },
+    "facing=west,left_input=false,mode=xnor,powered=false,right_input=true": {
+      "model": "aether_redux:block/logicator_xnor_r",
+      "y": 270
+    },
+    "facing=west,left_input=false,mode=xnor,powered=true,right_input=false": {
+      "model": "aether_redux:block/logicator_xnor_out",
+      "y": 270
+    },
+    "facing=west,left_input=false,mode=xnor,powered=true,right_input=true": {
+      "model": "aether_redux:block/logicator_xnor_r_out",
+      "y": 270
+    },
+    "facing=west,left_input=false,mode=xor,powered=false,right_input=false": {
+      "model": "aether_redux:block/logicator_xor",
+      "y": 270
+    },
+    "facing=west,left_input=false,mode=xor,powered=false,right_input=true": {
+      "model": "aether_redux:block/logicator_xor_r",
+      "y": 270
+    },
+    "facing=west,left_input=false,mode=xor,powered=true,right_input=false": {
+      "model": "aether_redux:block/logicator_xor_out",
+      "y": 270
+    },
+    "facing=west,left_input=false,mode=xor,powered=true,right_input=true": {
+      "model": "aether_redux:block/logicator_xor_r_out",
+      "y": 270
+    },
+    "facing=west,left_input=true,mode=and,powered=false,right_input=false": {
+      "model": "aether_redux:block/logicator_and_l",
+      "y": 270
+    },
+    "facing=west,left_input=true,mode=and,powered=false,right_input=true": {
+      "model": "aether_redux:block/logicator_and_lr",
+      "y": 270
+    },
+    "facing=west,left_input=true,mode=and,powered=true,right_input=false": {
+      "model": "aether_redux:block/logicator_and_l_out",
+      "y": 270
+    },
+    "facing=west,left_input=true,mode=and,powered=true,right_input=true": {
+      "model": "aether_redux:block/logicator_and_lr_out",
+      "y": 270
+    },
+    "facing=west,left_input=true,mode=or,powered=false,right_input=false": {
+      "model": "aether_redux:block/logicator_or_l",
+      "y": 270
+    },
+    "facing=west,left_input=true,mode=or,powered=false,right_input=true": {
+      "model": "aether_redux:block/logicator_or_lr",
+      "y": 270
+    },
+    "facing=west,left_input=true,mode=or,powered=true,right_input=false": {
+      "model": "aether_redux:block/logicator_or_l_out",
+      "y": 270
+    },
+    "facing=west,left_input=true,mode=or,powered=true,right_input=true": {
+      "model": "aether_redux:block/logicator_or_lr_out",
+      "y": 270
+    },
+    "facing=west,left_input=true,mode=xnor,powered=false,right_input=false": {
+      "model": "aether_redux:block/logicator_xnor_l",
+      "y": 270
+    },
+    "facing=west,left_input=true,mode=xnor,powered=false,right_input=true": {
+      "model": "aether_redux:block/logicator_xnor_lr",
+      "y": 270
+    },
+    "facing=west,left_input=true,mode=xnor,powered=true,right_input=false": {
+      "model": "aether_redux:block/logicator_xnor_l_out",
+      "y": 270
+    },
+    "facing=west,left_input=true,mode=xnor,powered=true,right_input=true": {
+      "model": "aether_redux:block/logicator_xnor_lr_out",
+      "y": 270
+    },
+    "facing=west,left_input=true,mode=xor,powered=false,right_input=false": {
+      "model": "aether_redux:block/logicator_xor_l",
+      "y": 270
+    },
+    "facing=west,left_input=true,mode=xor,powered=false,right_input=true": {
+      "model": "aether_redux:block/logicator_xor_lr",
+      "y": 270
+    },
+    "facing=west,left_input=true,mode=xor,powered=true,right_input=false": {
+      "model": "aether_redux:block/logicator_xor_l_out",
+      "y": 270
+    },
+    "facing=west,left_input=true,mode=xor,powered=true,right_input=true": {
+      "model": "aether_redux:block/logicator_xor_lr_out",
+      "y": 270
+    }
+  }
+}
