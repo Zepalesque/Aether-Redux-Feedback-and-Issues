@@ -364,7 +364,7 @@ public abstract class ReduxBlockStateProvider extends AetherBlockStateProvider {
         String name = this.name(block);
         this.getVariantBuilder(block).forAllStates(
                 state -> {
-                    Direction d = state.getValue(DiodeBlock.FACING).getOpposite();
+                    Direction d = state.getValue(DiodeBlock.FACING);
                     LogicatorMode mode = state.getValue(LogicatorBlock.MODE);
                     String baseTextureName = mode.isExclusive() ? name + "_exculusive" : name;
                     String baseModelName = name + '_' + mode.getSerializedName();

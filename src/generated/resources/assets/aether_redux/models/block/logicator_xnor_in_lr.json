@@ -2,6 +2,6 @@
   "parent": "aether_redux:block/template/redstone/template_logicator_and",
   "render_type": "minecraft:cutout",
   "textures": {
-    "top": "aether_redux:block/redstone/logicator_l_out"
+    "top": "aether_redux:block/redstone/logicator_exculusive_in_lr"
   }
 }
