@@ -3,7 +3,10 @@ package net.zepalesque.redux.item;
 import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.item.AetherCreativeTabs;
 import com.aetherteam.aether.item.AetherItems;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -23,6 +26,7 @@ import java.util.function.Supplier;
 public class ReduxTabs {
     
     @SubscribeEvent(priority = EventPriority.LOWEST)
+    @SuppressWarnings("unchecked")
     public static void buildCreativeModeTabs(BuildCreativeModeTabContentsEvent event) {
         CreativeModeTab tab = event.getTab();
 
@@ -126,6 +130,12 @@ public class ReduxTabs {
                     ReduxItems.WYND_OATS,
                     ReduxItems.WYND_OAT_PANICLE
             );
+        }
+
+        CreativeModeTab redstone = BuiltInRegistries.CREATIVE_MODE_TAB.get(CreativeModeTabs.REDSTONE_BLOCKS);
+
+        if (tab == redstone) {
+            TabUtil.putAfter(event, () -> Items.COMPARATOR, ReduxBlocks.LOGICATOR);
         }
 
 

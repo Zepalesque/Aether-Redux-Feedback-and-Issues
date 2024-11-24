@@ -29,6 +29,9 @@ public class LogicatorBlock extends DiodeBlock {
     public static final EnumProperty<LogicatorMode> MODE = ReduxStates.MODE_LOGICATOR;
     public static final BooleanProperty LEFT = ReduxStates.LEFT_INPUT, RIGHT = ReduxStates.RIGHT_INPUT;
 
+    public LogicatorBlock(Properties properties) {
+        super(properties);
+    }
 
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
@@ -74,11 +77,7 @@ public class LogicatorBlock extends DiodeBlock {
     protected boolean shouldBeExclusive(SignalGetter level, BlockPos pos, BlockState state) {
         return getBackInput(level, pos, state) > 0;
     }
-
-
-
-
-
+    
     @Override
     protected boolean shouldTurnOn(Level level, BlockPos pos, BlockState state) {
         LogicatorMode mode = state.getValue(MODE);
@@ -144,10 +143,6 @@ public class LogicatorBlock extends DiodeBlock {
         refreshOutputState(level, state, pos);
     }
 
-    public LogicatorBlock(Properties properties) {
-        super(properties);
-    }
-
     @Override
     protected MapCodec<? extends DiodeBlock> codec() {
         return CODEC;
@@ -160,7 +155,7 @@ public class LogicatorBlock extends DiodeBlock {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, MODE, LEFT, RIGHT);
+        builder.add(FACING, MODE, LEFT, RIGHT, POWERED);
     }
 
     @Override

@@ -64,6 +64,7 @@ public class Redux {
             bus.addListener(ReduxColors::resolvers);
         }
 
+        // TODO: Replace with Reflection#initialize?
         ReduxWoodSets.init();
         ReduxStoneSets.init();
         ReduxFlowerSets.init();
