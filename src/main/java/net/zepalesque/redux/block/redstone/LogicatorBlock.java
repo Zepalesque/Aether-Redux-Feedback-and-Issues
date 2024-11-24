@@ -116,6 +116,7 @@ public class LogicatorBlock extends DiodeBlock {
         }
     }
 
+    @Override
     protected void checkTickOnNeighbor(Level level, BlockPos pos, BlockState state) {
         if (!this.isLocked(level, pos, state)) {
             boolean wasOn = state.getValue(POWERED);
