@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "aether_redux:block/misc/logicator"
+    "layer0": "aether_redux:item/misc/logicator"
   }
 }

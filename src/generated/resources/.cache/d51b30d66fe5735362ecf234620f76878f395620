@@ -1,4 +1,4 @@
-// 1.21.1	2024-11-24T14:16:38.7757396	Item Models: aether_redux
+// 1.21.1	2024-11-24T14:38:08.3493187	Item Models: aether_redux
 795ee016e7dad0d6ac42593c58ba258161615647 assets/aether_redux/models/item/aurum.json
 a083a7311bfd77483a76afa2e0b34a2dca856c28 assets/aether_redux/models/item/blightmoss_holystone.json
 693490b382231c95e748c88f8daa13be00cd8ceb assets/aether_redux/models/item/blightmoss_holystone_slab.json
@@ -48,7 +48,7 @@ b7a76be36d161bbb3c1c88a291640d20ed9d590a assets/aether_redux/models/item/infused
 bc3db77b4defe372d9b4e6bae1a00d4d7e8e4509 assets/aether_redux/models/item/locked_sentrite_bricks.json
 589c7014433ed44348fdc22f7b6e5953a9309781 assets/aether_redux/models/item/locked_sentry_base.json
 74f57902f32679621621dcb5fcebce7b375bd214 assets/aether_redux/models/item/locked_sentry_pillar.json
-3df7306c1d62b0e04380846d4dec835b564c92ef assets/aether_redux/models/item/logicator.json
+11107c9d0152f7017b3fa0e6d47ff6ed2b84cca2 assets/aether_redux/models/item/logicator.json
 db2e8281ad71d5c0c277e3921bef5ed2aa32b5d4 assets/aether_redux/models/item/lucky_clover.json
 d8de2565b035201fb855f38b6083299efcc91e31 assets/aether_redux/models/item/raw_veridium.json
 8a433ef11c34eda652a3186b21612f69a875b6e8 assets/aether_redux/models/item/raw_veridium_block.json

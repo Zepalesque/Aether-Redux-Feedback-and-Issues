@@ -70,8 +70,8 @@ public class LogicatorBlock extends DiodeBlock {
 
     protected static int getBackInput(SignalGetter level, BlockPos pos, BlockState state) {
         Direction direction = state.getValue(FACING);
-        Direction back = direction.getOpposite();
-        return level.getSignal(pos.relative(back), back);
+        // Counterintuitive, but DiodeBlocks are placed backwards
+        return level.getSignal(pos.relative(direction), direction);
     }
 
     protected boolean shouldHaveLeftInput(SignalGetter level, BlockPos pos, BlockState state) {
