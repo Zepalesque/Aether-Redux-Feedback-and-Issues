@@ -10,6 +10,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.SignalGetter;
@@ -84,12 +85,17 @@ public class LogicatorBlock extends DiodeBlock {
         return getBackInput(level, pos, state) > 0;
     }
 
+
+    @Override
+    protected void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean isMoving) {
+        super.onPlace(state, level, pos, oldState, isMoving);
+    }
+
     @Override
     protected boolean shouldTurnOn(Level level, BlockPos pos, BlockState state) {
         LogicatorMode mode = state.getValue(MODE);
-        boolean l = state.getValue(LEFT);
-        boolean r = state.getValue(RIGHT);
-
+        boolean l = this.shouldHaveLeftInput(level, pos, state);
+        boolean r = this.shouldHaveRightInput(level, pos, state);
         return mode.operate(l, r);
     }
 
