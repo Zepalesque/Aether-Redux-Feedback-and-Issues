@@ -9,7 +9,9 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
@@ -87,8 +89,10 @@ public class LogicatorBlock extends DiodeBlock {
 
 
     @Override
-    protected void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean isMoving) {
-        super.onPlace(state, level, pos, oldState, isMoving);
+    public void setPlacedBy(Level level, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
+        if (this.shouldUpdateOnPlacement(level, pos, state)) {
+            level.scheduleTick(pos, this, 1);
+        }
     }
 
     @Override
@@ -97,6 +101,15 @@ public class LogicatorBlock extends DiodeBlock {
         boolean l = this.shouldHaveLeftInput(level, pos, state);
         boolean r = this.shouldHaveRightInput(level, pos, state);
         return mode.operate(l, r);
+    }
+
+    protected boolean shouldUpdateOnPlacement(Level level, BlockPos pos, BlockState state) {
+        LogicatorMode mode = state.getValue(MODE);
+        boolean exclusive = this.shouldBeExclusive(level, pos, state);
+        LogicatorMode correct = mode.withExclusivity(exclusive);
+        boolean l = this.shouldHaveLeftInput(level, pos, state);
+        boolean r = this.shouldHaveRightInput(level, pos, state);
+        return correct != mode || l || r /*|| correct.operate(l, r) l and r are both false by here */ || correct.operate(false, false);
     }
 
     protected void refreshOutputState(Level level, BlockState state, BlockPos pos) {

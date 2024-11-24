@@ -43,6 +43,10 @@ public enum LogicatorMode implements StringRepresentable {
         };
     }
 
+    public LogicatorMode withExclusivity(boolean exclusivity) {
+        return this.isExclusive() == exclusivity ? this : this.flipExclusivity();
+    }
+
     public boolean isExclusive() {
         return this == XOR || this == XNOR;
     }
