@@ -31,6 +31,12 @@ public class LogicatorBlock extends DiodeBlock {
 
     public LogicatorBlock(Properties properties) {
         super(properties);
+        BlockState b = this.defaultBlockState()
+                .setValue(FACING, Direction.NORTH)
+                .setValue(POWERED, false)
+                .setValue(LEFT, false).setValue(RIGHT, false)
+                .setValue(MODE, LogicatorMode.AND);
+        this.registerDefaultState(b);
     }
 
     @Override
@@ -59,13 +65,13 @@ public class LogicatorBlock extends DiodeBlock {
         Direction direction = state.getValue(FACING);
         // Counterintuitive, but DiodeBlocks are placed backwards
         Direction right = direction.getCounterClockWise();
-        return level.getControlInputSignal(pos.relative(right), right, false);
+        return level.getSignal(pos.relative(right), right);
     }
 
     protected static int getBackInput(SignalGetter level, BlockPos pos, BlockState state) {
         Direction direction = state.getValue(FACING);
         Direction back = direction.getOpposite();
-        return level.getControlInputSignal(pos.relative(back), back, false);
+        return level.getSignal(pos.relative(back), back);
     }
 
     protected boolean shouldHaveLeftInput(SignalGetter level, BlockPos pos, BlockState state) {
@@ -77,7 +83,7 @@ public class LogicatorBlock extends DiodeBlock {
     protected boolean shouldBeExclusive(SignalGetter level, BlockPos pos, BlockState state) {
         return getBackInput(level, pos, state) > 0;
     }
-    
+
     @Override
     protected boolean shouldTurnOn(Level level, BlockPos pos, BlockState state) {
         LogicatorMode mode = state.getValue(MODE);
@@ -90,9 +96,9 @@ public class LogicatorBlock extends DiodeBlock {
     protected void refreshOutputState(Level level, BlockState state, BlockPos pos) {
         if (!this.isLocked(level, pos, state)) {
             BlockState oldState = state;
-            boolean l = getLeftInput(level, pos, state) > 0;
-            boolean r = getRightInput(level, pos, state) > 0;
-            boolean exclusive = getBackInput(level, pos, state) > 0;
+            boolean l = shouldHaveLeftInput(level, pos, state);
+            boolean r = shouldHaveRightInput(level, pos, state);
+            boolean exclusive = shouldBeExclusive(level, pos, state);
             boolean or = state.getValue(MODE).isOr();
             boolean powered = this.shouldTurnOn(level, pos, state);
 

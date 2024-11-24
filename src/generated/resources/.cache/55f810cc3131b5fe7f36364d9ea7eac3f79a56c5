@@ -1,4 +1,4 @@
-// 1.21.1	2024-11-24T14:19:39.106014	Block States: aether_redux
+// 1.21.1	2024-11-24T14:23:13.7914791	Block States: aether_redux
 6d5a134587a37ec8ac1798d9ca3e527d0a1d99b9 assets/aether_redux/blockstates/aurum.json
 18cd9d7be4a20d14e14911da277c38674c1d5bd7 assets/aether_redux/blockstates/blightmoss_holystone.json
 4a9e03ff69be912c7f686d6ca7b72f228650f9e4 assets/aether_redux/blockstates/blightmoss_holystone_slab.json
@@ -45,7 +45,7 @@ d80b7e6ca0b3e637c0688a9fe669c2c29c5b57a7 assets/aether_redux/blockstates/golden_
 32325c658f9a9ae024be2ac574624a9273b991ea assets/aether_redux/blockstates/locked_sentrite_bricks.json
 7d12edcaa718e32b7d2de5ce75bea10b010c3c78 assets/aether_redux/blockstates/locked_sentry_base.json
 e404e8960beb87e7f65d409e66ffaabc6edc7e60 assets/aether_redux/blockstates/locked_sentry_pillar.json
-c6b75655e27dd0a4d617a404c45f4bdbdec9121f assets/aether_redux/blockstates/logicator.json
+40458ab9f1572df662fc0a955db70ab5b856fbcc assets/aether_redux/blockstates/logicator.json
 6fef1e080dbd1903c1214bd47a10aecfc26d763d assets/aether_redux/blockstates/lucky_clover.json
 c2a6c9ff05c765e9e807be8739922ac671d43c69 assets/aether_redux/blockstates/potted_aurum.json
 30706a9e97d9d08e7b11a99f7be3304534b9fc92 assets/aether_redux/blockstates/potted_gildenroot_sapling.json
