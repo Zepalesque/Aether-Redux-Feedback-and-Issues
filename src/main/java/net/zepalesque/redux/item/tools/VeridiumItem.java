@@ -35,8 +35,8 @@ public interface VeridiumItem extends CustomStackingBehavior {
 
     default ItemStack getUninfusedStack(ItemStack stack) {
         ItemStack i = new ItemStack(this.getUninfusedItem(stack));
-        DataComponentMap map = stack.getComponents();
-        i.applyComponents(map);
+        DataComponentPatch patch = stack.getComponentsPatch();
+        i.applyComponents(patch);
         i.remove(ReduxDataComponents.INFUSION);
         return i;
     }

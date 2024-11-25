@@ -164,5 +164,6 @@ public class ReduxLanguageData extends ReduxLanguageProvider {
 
         addSubtitle(ReduxSounds.INFUSE_ITEM, DatagenUtil::subtitleFor, "Item infuses");
         addSubtitle(ReduxSounds.INFUSION_EXPIRE, DatagenUtil::subtitleFor, "Item infusion runs out");
+        addSubtitle(ReduxSounds.LOGICATOR_CLICK, DatagenUtil::subtitleFor, "Logicator clicks");
     }
 }

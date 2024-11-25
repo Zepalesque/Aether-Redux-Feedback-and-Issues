@@ -26,6 +26,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.ticks.TickPriority;
 import net.zepalesque.redux.block.state.ReduxStates;
 import net.zepalesque.redux.block.state.enums.LogicatorMode;
+import net.zepalesque.redux.client.audio.ReduxSounds;
 
 public class LogicatorBlock extends DiodeBlock {
     public static final MapCodec<LogicatorBlock> CODEC = simpleCodec(LogicatorBlock::new);
@@ -49,8 +50,7 @@ public class LogicatorBlock extends DiodeBlock {
         } else {
             state = ReduxStates.mapValue(state, MODE, LogicatorMode::flipOperationType);
             float f = state.getValue(MODE).isOr() ? 0.55F : 0.5F;
-            // TODO: Create new sound event
-            level.playSound(player, pos, SoundEvents.COMPARATOR_CLICK, SoundSource.BLOCKS, 0.3F, f);
+            level.playSound(player, pos, ReduxSounds.LOGICATOR_CLICK.get(), SoundSource.BLOCKS, 0.3F, f);
             level.setBlock(pos, state, 2);
             this.refreshOutputState(level, state, pos);
             return InteractionResult.sidedSuccess(level.isClientSide);

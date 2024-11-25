@@ -10,6 +10,9 @@ import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Blocks;
 import net.zepalesque.redux.Redux;
 import net.zepalesque.redux.block.ReduxBlocks;
 import net.zepalesque.redux.blockset.flower.ReduxFlowerSets;
@@ -146,6 +149,17 @@ public class ReduxRecipeData extends ReduxRecipeProvider {
                 .pattern("N")
                 .unlockedBy(getHasName(ReduxItems.SENTRITE_CHUNK.get()), has(ReduxItems.SENTRITE_CHUNK.get()))
                 .unlockedBy(getHasName(ReduxItems.REFINED_SENTRITE.get()), has(ReduxItems.REFINED_SENTRITE.get()))
+                .save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, ReduxBlocks.LOGICATOR.get())
+                .define('S', Blocks.STONE)
+                .define('R', Items.REDSTONE)
+                .define('T', Blocks.REDSTONE_TORCH)
+                // TODO: switch this to Sentry Chip/Circuit
+                .define('V', ReduxItems.VERIDIUM_INGOT.get())
+                .pattern("RTR")
+                .pattern("SVS")
+                .unlockedBy(ReduxRecipeProvider.getHasName(ReduxItems.VERIDIUM_INGOT.get()), ReduxRecipeProvider.has(ReduxItems.VERIDIUM_INGOT.get()))
                 .save(output);
 
         oreBlockStorageRecipesRecipesWithCustomUnpacking(output, RecipeCategory.MISC, ReduxItems.VERIDIUM_INGOT.get(), RecipeCategory.BUILDING_BLOCKS, ReduxBlocks.VERIDIUM_BLOCK.get(), "veridium_ingot_from_veridium_block", "veridium_ingot");
