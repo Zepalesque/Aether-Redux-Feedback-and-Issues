@@ -1,4 +1,4 @@
-// 1.21.1	2024-11-23T13:51:28.7758278	Recipes
+// 1.21.1	2024-11-24T21:49:29.7688258	Recipes
 80670ad04257de5fe15bbcc07a79ed8cc98a5a03 data/aether_redux/advancement/recipes/building_blocks/blightmoss_holystone_slab.json
 69e74450ee260004ebf12e02fd39ab046e831170 data/aether_redux/advancement/recipes/building_blocks/blightmoss_holystone_stairs.json
 f5a5a2f6bbc0f4b1711be56aab53205ed56ab41a data/aether_redux/advancement/recipes/building_blocks/blightmoss_holystone_wall.json
@@ -65,6 +65,7 @@ af0474f30e7392bd83c46c87587285271e82e2cc data/aether_redux/advancement/recipes/m
 2ac362f7603c58134db787c16ac8e9f74fe8e347 data/aether_redux/advancement/recipes/redstone/crystal_fence_gate.json
 b3b0a04c6ec6af23d06de1831a6a851d6f8f6501 data/aether_redux/advancement/recipes/redstone/crystal_pressure_plate.json
 63876f2c84db133f45e74bdd70f50ba665e660b1 data/aether_redux/advancement/recipes/redstone/crystal_trapdoor.json
+8f46711a9e6b8e7c2ffd380061d8e01d59cbca43 data/aether_redux/advancement/recipes/redstone/logicator.json
 0deda143e7cbe11d3a788366474511eeb2f05229 data/aether_redux/advancement/recipes/tools/veridium_axe.json
 ed69b0157fb5500d4283c660db523b86b333a34f data/aether_redux/advancement/recipes/tools/veridium_hoe.json
 75b02aaf797bee42ef7cb12edb9b08895a1b5dce data/aether_redux/advancement/recipes/tools/veridium_pickaxe.json
@@ -103,6 +104,7 @@ c54f0f937b3739ecbfcd87664aa555a6a8fa8eb3 data/aether_redux/recipe/crystal_wood.j
 c004a1a030e875fbd684e327499fdd52b55ce77b data/aether_redux/recipe/gildenroot_leaf_pile.json
 410e15e612b8a0d4da9d5cbd46fcbbfe675879b9 data/aether_redux/recipe/gildenroot_sapling.json
 cba403e51ae0984997fd41e1ea7164a004ae3ff3 data/aether_redux/recipe/golden_oak_leaf_pile.json
+94469cf787e48a938ec1941c9b5c1d420196bdd9 data/aether_redux/recipe/logicator.json
 985e44c6025d3afbbc9a5b5c65b9f78b80c41a69 data/aether_redux/recipe/raw_veridium_block.json
 3e63c72bab72b030de2a8ee9efd5dcc60e3bf3f7 data/aether_redux/recipe/raw_veridium_from_raw_veridium_block.json
 eb0efb36c3c7a7301dd4af9c63e26101b96ceb01 data/aether_redux/recipe/refined_sentrite.json

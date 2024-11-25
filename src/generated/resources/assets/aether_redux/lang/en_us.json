@@ -133,7 +133,7 @@
   "lore.block.aether_redux.golden_clovers": "A nice patch of clovers that can be found in the Gilded Groves.",
   "lore.block.aether_redux.golden_oak_leaf_pile": "A pile of Golden Oak Leaves. These can be stacked on top of eachother to make various sizes!",
   "lore.block.aether_redux.golden_vines": "A golden vine that grows in a symbiotic relationship with Golden Oak trees when they are healthy, such as when found in the Gilded Groves",
-  "lore.block.aether_redux.logicator": "missingno",
+  "lore.block.aether_redux.logicator": "A fascinating circuit made with an exotic material not found in the Aether - Redstone. This little diode takes in two inputs on the side, and will perform a logical operation on the two for the output. The operation is controlled by the torch on the top and the back input. The torch controls AND/OR mode, and the back input controls exclusivity (XNOR/XOR).",
   "lore.block.aether_redux.lucky_clover": "A large four-leaved clover found in the Gilded Groves. Makes a nice decoration, and can be placed in a flower pot!",
   "lore.block.aether_redux.raw_veridium_block": "A block of raw Veridium. This can be crafted from Raw Veridium.",
   "lore.block.aether_redux.refined_sentrite_block": "A block of the refined form of Sentrite, crafted with Refined Sentrite.",
@@ -182,6 +182,7 @@
   "pack.aether_redux.mod.description": "The Aether: Redux Resources",
   "pack.aether_redux.tintable_grass.description": "Grass tint textures for the Aether: Redux",
   "pack.aether_redux.tintable_grass.title": "Redux - Tintable Grass",
+  "subtitles.aether_redux.block.logicator.click": "Logicator clicks",
   "subtitles.aether_redux.item.generic.infuse": "Item infuses",
   "subtitles.aether_redux.item.generic.infusion_expire": "Item infusion runs out",
   "tooltip.aether_redux.infusion_charge": "Infusion Charge: %s"

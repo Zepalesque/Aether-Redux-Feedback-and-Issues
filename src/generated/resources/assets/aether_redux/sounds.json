@@ -1,4 +1,10 @@
 {
+  "block.logicator.click": {
+    "sounds": [
+      "random/click"
+    ],
+    "subtitle": "subtitles.aether_redux.block.logicator.click"
+  },
   "item.generic.infuse": {
     "sounds": [
       "aether_redux:item/generic/infuse_item"

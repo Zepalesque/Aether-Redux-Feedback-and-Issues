@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "S": {
+      "item": "minecraft:stone"
+    },
+    "T": {
+      "item": "minecraft:redstone_torch"
+    },
+    "V": {
+      "item": "aether_redux:veridium_ingot"
+    }
+  },
+  "pattern": [
+    "RTR",
+    "SVS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "aether_redux:logicator"
+  }
+}
