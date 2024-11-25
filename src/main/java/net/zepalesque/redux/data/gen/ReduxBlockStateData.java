@@ -53,7 +53,7 @@ public class ReduxBlockStateData extends ReduxBlockStateProvider {
         this.dungeonBlock(ReduxBlocks.LOCKED_SENTRITE_BRICKS.get(), ReduxStoneSets.SENTRITE_BRICKS.block().get(), "construction/");
 
         this.crossTintedOverlay(ReduxBlocks.WYNDSPROUTS.get(), "natural/");
-        this.cropGrowable(ReduxBlocks.WYNDOATS.get(), "natural/", WyndoatsBlock.AGE);
+        this.cropGrowable(ReduxBlocks.WYNDOATS.get(), "crop/", WyndoatsBlock.AGE);
 
         this.block(ReduxBlocks.REFINED_SENTRITE_BLOCK.get(), "construction/");
         this.chain(ReduxBlocks.SENTRITE_CHAIN.get(), "construction/");
