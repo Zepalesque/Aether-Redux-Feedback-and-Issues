@@ -84,6 +84,8 @@ public class ReduxFeatureConfig extends ReduxFeatureBuilders {
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> AMBROSIUM_ROCK = createKey("ambrosium_rock");
 
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WYNDSPROUTS_PATCH = createKey(name(ReduxBlocks.WYNDSPROUTS) + "_patch");
+
     // Overrides
     public static final ResourceKey<ConfiguredFeature<?, ?>> GRASS_BONEMEAL = createKey("aether_grass_bonemeal");
     public static final ResourceKey<ConfiguredFeature<?, ?>> GRASS_PATCH = AetherConfiguredFeatures.GRASS_PATCH_CONFIGURATION;
@@ -93,10 +95,7 @@ public class ReduxFeatureConfig extends ReduxFeatureBuilders {
     public static final ResourceKey<ConfiguredFeature<?, ?>> SKYROOT_TREE = AetherConfiguredFeatures.SKYROOT_TREE_CONFIGURATION;
     public static final ResourceKey<ConfiguredFeature<?, ?>> GOLDEN_OAK_TREE = AetherConfiguredFeatures.GOLDEN_OAK_TREE_CONFIGURATION;
 
-
-
-
-    // bootstap
+    // rip bootstap :pensive:
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configs = context.lookup(Registries.CONFIGURED_FEATURE);
         HolderGetter<DensityFunction> functions = context.lookup(Registries.DENSITY_FUNCTION);
@@ -256,5 +255,8 @@ public class ReduxFeatureConfig extends ReduxFeatureBuilders {
                         new SkyrootFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)),
                         new TwoLayersFeatureSize(1, 0, 1)
                 ).ignoreVines().build());
+
+        register(context, WYNDSPROUTS_PATCH, Feature.FLOWER,
+                patch(24, 5, 3, prov(ReduxBlocks.WYNDSPROUTS)));
     }
 }

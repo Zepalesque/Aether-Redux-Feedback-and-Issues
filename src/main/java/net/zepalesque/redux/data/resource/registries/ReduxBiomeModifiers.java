@@ -35,6 +35,7 @@ public class ReduxBiomeModifiers {
     public static final ResourceKey<BiomeModifier> WATER_COLOR_AETHER = createKey("modify_water_color");
     public static final ResourceKey<BiomeModifier> MUSIC_MODIFY = createKey("modify_music");
     public static final ResourceKey<BiomeModifier> ADD_SENTRITE = createKey("add_sentrite");
+    public static final ResourceKey<BiomeModifier> ADD_WYNDSPROUTS = createKey("add_wyndsprouts");
 
     private static ResourceKey<BiomeModifier> createKey(String name) {
         return ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, Redux.loc(name));
@@ -85,6 +86,10 @@ public class ReduxBiomeModifiers {
         context.register(ADD_SENTRITE, new BiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(ReduxTags.Biomes.HAS_SENTRITE), HolderSet.direct(features.getOrThrow(ReduxPlacements.SENTRITE_ORE)),
                 GenerationStep.Decoration.UNDERGROUND_ORES));
+
+        context.register(ADD_WYNDSPROUTS, new BiomeModifiers.AddFeaturesBiomeModifier(
+                biomes.getOrThrow(ReduxTags.Biomes.HAS_WYNDSPROUTS), HolderSet.direct(features.getOrThrow(ReduxPlacements.WYNDSPROUTS_PATCH)),
+                GenerationStep.Decoration.VEGETAL_DECORATION));
 
 
     }

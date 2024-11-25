@@ -65,10 +65,9 @@ public class ReduxPlacements {
     public static final ResourceKey<PlacedFeature> DENSE_ZANITE_ORE = createKey("dense_zanite_ore");
     public static final ResourceKey<PlacedFeature> DENSE_AMBROSIUM_ORE = createKey("dense_ambrosium_ore");
     public static final ResourceKey<PlacedFeature> SURFACE_RULE_WATER_LAKE = copyKey(ReduxFeatureConfig.SURFACE_RULE_WATER_LAKE);
+    public static final ResourceKey<PlacedFeature> WYNDSPROUTS_PATCH = copyKey(ReduxFeatureConfig.WYNDSPROUTS_PATCH);
 
     public static final ResourceKey<PlacedFeature> BONEMEAL_OVERRIDE = AetherPlacedFeatures.AETHER_GRASS_BONEMEAL;
-
-
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configs = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -80,6 +79,13 @@ public class ReduxPlacements {
         register(context, SENTRITE_ORE, configs.getOrThrow(ReduxFeatureConfig.SENTRITE_ORE),
                 InSquarePlacement.spread(),
                 HeightRangePlacement.of(TrapezoidHeight.of(VerticalAnchor.BOTTOM, VerticalAnchor.aboveBottom(128))),
+                BiomeFilter.biome()
+        );
+
+        register(context, WYNDSPROUTS_PATCH, configs.getOrThrow(ReduxFeatureConfig.WYNDSPROUTS_PATCH),
+                threshold,
+                ImprovedLayerPlacementModifier.of(Heightmap.Types.MOTION_BLOCKING, UniformInt.of(0, 1), 4),
+                RarityFilter.onAverageOnceEvery(4),
                 BiomeFilter.biome()
         );
 
