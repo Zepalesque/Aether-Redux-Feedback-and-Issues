@@ -80,7 +80,7 @@ public class GildedGroves {
                 .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, AetherPlacedFeatures.ORE_GRAVITITE_BURIED_PLACEMENT)
                 .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, AetherPlacedFeatures.ORE_GRAVITITE_PLACEMENT)
 
-                //.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ReduxPlacements.GILDED_HOLYSTONE_ORE)
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ReduxPlacements.GILDED_HOLYSTONE_ORE)
                 // TODO vvv
                 //.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ReduxPlacements.DIVINITE_ORE_INCREASED)
 
@@ -92,6 +92,7 @@ public class GildedGroves {
                 .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ReduxPlacements.AURUM_PATCH)
                 .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ReduxPlacements.GOLDEN_CLOVERS_PATCH)
                 .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ReduxPlacements.LUCKY_CLOVER_PATCH)
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ReduxPlacements.SPARSE_WYNDSPROUTS_PATCH)
 
                 .addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, AetherPlacedFeatures.COLD_AERCLOUD_PLACEMENT)
                 .addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, ReduxPlacements.SPARSE_BLUE_AERCLOUD)

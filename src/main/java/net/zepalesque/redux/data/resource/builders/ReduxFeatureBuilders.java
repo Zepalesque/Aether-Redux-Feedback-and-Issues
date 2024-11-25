@@ -1,6 +1,7 @@
 package net.zepalesque.redux.data.resource.builders;
 
 import com.aetherteam.aether.block.AetherBlockStateProperties;
+import com.aetherteam.aether.data.resources.builders.AetherConfiguredFeatureBuilders;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Vec3i;
 import net.minecraft.core.registries.Registries;
@@ -29,7 +30,7 @@ import net.zepalesque.zenith.world.feature.gen.ZenithFeatures;
 
 import java.util.function.Supplier;
 
-public class ReduxFeatureBuilders {
+public class ReduxFeatureBuilders extends AetherConfiguredFeatureBuilders {
 
     public static final BlockPredicate NOT_ON_COARSE_DIRT = BlockPredicate.not(BlockPredicate.matchesTag(new Vec3i(0, -1, 0), ReduxTags.Blocks.COARSE_AETHER_DIRT));
 

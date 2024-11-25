@@ -41,11 +41,13 @@ import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 import net.minecraft.world.level.levelgen.placement.RarityFilter;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.zepalesque.redux.Redux;
+import net.zepalesque.redux.block.ReduxBlocks;
+import net.zepalesque.redux.data.resource.builders.ReduxPlacementBuilders;
 import net.zepalesque.zenith.world.feature.placement.ConditionPlacementModule;
 
 import java.util.List;
 
-public class ReduxPlacements {
+public class ReduxPlacements extends ReduxPlacementBuilders {
 
     public static final ResourceKey<PlacedFeature> CLOUDBED = copyKey(ReduxFeatureConfig.CLOUDBED);
     public static final ResourceKey<PlacedFeature> SENTRITE_ORE = copyKey(ReduxFeatureConfig.SENTRITE_ORE);
@@ -67,6 +69,8 @@ public class ReduxPlacements {
     public static final ResourceKey<PlacedFeature> SURFACE_RULE_WATER_LAKE = copyKey(ReduxFeatureConfig.SURFACE_RULE_WATER_LAKE);
     public static final ResourceKey<PlacedFeature> WYNDSPROUTS_PATCH = copyKey(ReduxFeatureConfig.WYNDSPROUTS_PATCH);
 
+    public static final ResourceKey<PlacedFeature> SPARSE_WYNDSPROUTS_PATCH = createKey("sparse_" + name(ReduxBlocks.WYNDSPROUTS) + "_patch");
+
     public static final ResourceKey<PlacedFeature> BONEMEAL_OVERRIDE = AetherPlacedFeatures.AETHER_GRASS_BONEMEAL;
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
@@ -86,6 +90,13 @@ public class ReduxPlacements {
                 threshold,
                 ImprovedLayerPlacementModifier.of(Heightmap.Types.MOTION_BLOCKING, UniformInt.of(0, 1), 4),
                 RarityFilter.onAverageOnceEvery(4),
+                BiomeFilter.biome()
+        );
+
+        register(context, SPARSE_WYNDSPROUTS_PATCH, configs.getOrThrow(ReduxFeatureConfig.WYNDSPROUTS_PATCH),
+                threshold,
+                ImprovedLayerPlacementModifier.of(Heightmap.Types.MOTION_BLOCKING, UniformInt.of(0, 1), 4),
+                RarityFilter.onAverageOnceEvery(8),
                 BiomeFilter.biome()
         );
 
@@ -172,30 +183,5 @@ public class ReduxPlacements {
                 BiomeFilter.biome()
         );
     }
-
-    private static void register(BootstrapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, Holder<ConfiguredFeature<?, ?>> configuration, List<PlacementModifier> modifiers) {
-        context.register(key, new PlacedFeature(configuration, List.copyOf(modifiers)));
-    }
-
-    private static void register(BootstrapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, Holder<ConfiguredFeature<?, ?>> configuration, PlacementModifier... modifiers) {
-        register(context, key, configuration, List.of(modifiers));
-    }
-
-    private static ResourceKey<PlacedFeature> createKey(String name) {
-        return ResourceKey.create(Registries.PLACED_FEATURE, Redux.loc(name));
-    }
-
-    private static ResourceKey<PlacedFeature> copyKey(ResourceKey<ConfiguredFeature<?, ?>> configFeat) {
-        return createKey(configFeat.location().getPath());
-    }
-
-    private static ResourceKey<PlacedFeature> aetherKey(String name) {
-        return ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(Aether.MODID, name));
-    }
-
-    private static String name(DeferredHolder<?, ?> reg) {
-        return reg.getId().getPath();
-    }
-
 
 }
