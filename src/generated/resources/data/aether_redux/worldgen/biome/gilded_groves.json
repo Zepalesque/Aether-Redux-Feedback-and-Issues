@@ -47,7 +47,8 @@
       "aether:grass_patch",
       "aether_redux:aurum_patch",
       "aether_redux:golden_clovers_patch",
-      "aether_redux:lucky_clover_patch"
+      "aether_redux:lucky_clover_patch",
+      "aether_redux:sparse_wyndsprouts_patch"
     ],
     [
       "aether:cold_aercloud",
