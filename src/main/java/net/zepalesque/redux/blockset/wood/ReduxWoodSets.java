@@ -15,8 +15,4 @@ public class ReduxWoodSets {
         Redux.BLOCK_SETS.add(set);
         return set;
     }
-
-    public static void init() {
-        // Manually load class
-    }
 }

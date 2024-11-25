@@ -57,6 +57,4 @@ public class ReduxStoneSets {
         Redux.BLOCK_SETS.add(set);
         return set;
     }
-
-    public static void init() {}
 }

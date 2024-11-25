@@ -1,5 +1,6 @@
 package net.zepalesque.redux;
 
+import com.google.common.reflect.Reflection;
 import com.mojang.logging.LogUtils;
 import io.github.razordevs.aeroblender.aether.AetherRuleCategory;
 import net.minecraft.resources.ResourceLocation;
@@ -64,10 +65,7 @@ public class Redux {
             bus.addListener(ReduxColors::resolvers);
         }
 
-        // TODO: Replace with Reflection#initialize?
-        ReduxWoodSets.init();
-        ReduxStoneSets.init();
-        ReduxFlowerSets.init();
+        Reflection.initialize(ReduxWoodSets.class, ReduxStoneSets.class, ReduxFlowerSets.class);
 
         DeferredRegister<?>[] registers = {
                 ReduxBlocks.BLOCKS,
