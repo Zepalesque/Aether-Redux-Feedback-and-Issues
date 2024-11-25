@@ -35,17 +35,25 @@ public class ReduxTabs {
         }
 
         if (tab == AetherCreativeTabs.AETHER_NATURAL_BLOCKS.get()) {
+
+            TabUtil.putAfter(event, AetherBlocks.AETHER_GRASS_BLOCK,
+                    ReduxBlocks.SHORT_AETHER_GRASS,
+                    ReduxBlocks.WYNDSPROUTS
+            );
+
+
+
             TabUtil.putAfter(event,AetherBlocks.SKYROOT_LEAVES,
                     ReduxBlocks.SKYROOT_LEAF_PILE,
                     ReduxBlocks.GILDENROOT_LEAVES,
                     ReduxBlocks.GILDENROOT_LEAF_PILE
             );
 
+
+
             TabUtil.putAfter(event, AetherBlocks.GOLDEN_OAK_LEAVES, ReduxBlocks.GOLDEN_OAK_LEAF_PILE);
             TabUtil.putAfter(event, ReduxFlowerSets.AURUM.flower(), ReduxBlocks.GOLDEN_CLOVERS);
-        }
-
-        if (tab == AetherCreativeTabs.AETHER_DUNGEON_BLOCKS.get()) {
+        } else if (tab == AetherCreativeTabs.AETHER_DUNGEON_BLOCKS.get()) {
             TabUtil.putAfter(event, AetherBlocks.CARVED_STONE,
                     ReduxBlocks.CARVED_BASE,
                     ReduxBlocks.CARVED_PILLAR
@@ -88,9 +96,7 @@ public class ReduxTabs {
                     ReduxBlocks.RUNELIGHT,
                     ReduxBlocks.LOCKED_RUNELIGHT
             );
-        }
-
-        if (tab == AetherCreativeTabs.AETHER_BUILDING_BLOCKS.get()) {
+        } else if (tab == AetherCreativeTabs.AETHER_BUILDING_BLOCKS.get()) {
             TabUtil.putAfter(event, AetherBlocks.ZANITE_BLOCK,
                     ReduxBlocks.RAW_VERIDIUM_BLOCK,
                     ReduxBlocks.VERIDIUM_BLOCK,
@@ -98,9 +104,7 @@ public class ReduxTabs {
             );
 
             TabUtil.put(event, ReduxBlocks.SENTRITE_LANTERN, ReduxBlocks.SENTRITE_CHAIN);
-        }
-
-        if (tab == AetherCreativeTabs.AETHER_EQUIPMENT_AND_UTILITIES.get()) {
+        } else if (tab == AetherCreativeTabs.AETHER_EQUIPMENT_AND_UTILITIES.get()) {
             TabUtil.putBefore(event, AetherItems.GRAVITITE_SWORD,
                     ReduxItems.INFUSED_VERIDIUM_HOE,
                     ReduxItems.INFUSED_VERIDIUM_AXE,
@@ -114,9 +118,7 @@ public class ReduxTabs {
                     ReduxItems.VERIDIUM_SHOVEL/*,
                     ReduxItems.VERIDIUM_SWORD*/
             );
-        }
-
-        if (tab == AetherCreativeTabs.AETHER_INGREDIENTS.get()) {
+        } else if (tab == AetherCreativeTabs.AETHER_INGREDIENTS.get()) {
             TabUtil.putAfter(event, AetherItems.ZANITE_GEMSTONE,
                     ReduxItems.RAW_VERIDIUM,
                     ReduxItems.VERIDIUM_INGOT,
@@ -129,6 +131,8 @@ public class ReduxTabs {
                     ReduxItems.WYND_OATS,
                     ReduxItems.WYND_OAT_PANICLE
             );
+        } else if (tab == AetherCreativeTabs.AETHER_REDSTONE_BLOCKS.get()) {
+            TabUtil.put(event, ReduxBlocks.LOGICATOR);
         }
 
         CreativeModeTab redstone = BuiltInRegistries.CREATIVE_MODE_TAB.get(CreativeModeTabs.REDSTONE_BLOCKS);
