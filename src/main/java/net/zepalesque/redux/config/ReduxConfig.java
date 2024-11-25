@@ -78,12 +78,12 @@ public class ReduxConfig {
                     .comment("Use nice falling leaf particles for Aether leaf blocks")
                     .define("Leaf Particles", true);
             builder.pop();
-            builder.push("Built-in Packs");
+            builder.push("Builtin Resource Pack Customization");
             tintable_grass = builder
                     .comment("Use modified models to allow tintable Aether Grass blocks and plants. Only disable if you know what you're doing!")
                     .define("Tinted Grass", true);
             jappafied_textures = builder
-                    .comment("Use textures designed to fit with the Jappafied Aethers resource pack. May be merged into the main pack at some point.")
+                    .comment("Use textures designed to fit with the Jappafied Aethers resource pack.")
                     .define("Jappafied Textures", false);
             builder.pop();
         }

@@ -41,7 +41,7 @@ public class VeridiumPickaxeItem extends PickaxeItem implements VeridiumItem {
         MutableComponent infusion = Component.translatable("tooltip.aether_redux.infusion_charge", !stack.has(ReduxDataComponents.INFUSION) ? 0 : stack.get(ReduxDataComponents.INFUSION.get())).withStyle(ChatFormatting.GRAY);
 
         tooltips.add(infusion);
-        Component info = TooltipUtils.TOOLTIP_SHIFT_FOR_INFO.apply(Component.translatable("gui.aether_redux.infusion_info"));
+        Component info = TooltipUtils.TOOLTIP_SHIFT_FOR_INFO.apply(HOVER_TOOLTIP);
         tooltips.add(info);
         super.appendHoverText(stack, context, tooltips, advanced);
     }
@@ -94,7 +94,7 @@ public class VeridiumPickaxeItem extends PickaxeItem implements VeridiumItem {
 
         @Override
         public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltips, TooltipFlag advanced) {
-            Component info = TooltipUtils.TOOLTIP_SHIFT_FOR_INFO.apply(Component.translatable("gui.aether_redux.infusion_info"));
+            Component info = TooltipUtils.TOOLTIP_SHIFT_FOR_INFO.apply(HOVER_TOOLTIP);
             tooltips.add(info);
             super.appendHoverText(stack, context, tooltips, advanced);
         }

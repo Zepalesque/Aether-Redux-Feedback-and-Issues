@@ -1,10 +1,12 @@
 package net.zepalesque.redux.item.tools;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.nbt.ByteTag;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundSoundPacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
@@ -30,6 +32,7 @@ public interface VeridiumItem extends CustomStackingBehavior {
     String NBT_KEY = "infusion_level";
     String INFUSION_AMOUNT = "infusion_increase";
     int DURABILITY_DMG_MULTIPLIER = 4;
+    Component HOVER_TOOLTIP = Component.translatable("gui.aether_redux.infusion_info").withStyle(ChatFormatting.GRAY);
 
     Item getUninfusedItem(ItemStack stack);
 
