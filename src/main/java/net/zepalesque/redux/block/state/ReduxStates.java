@@ -7,6 +7,7 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.zepalesque.redux.block.state.enums.GrassSize;
 import net.zepalesque.redux.block.state.enums.LogicatorMode;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.util.function.UnaryOperator;
@@ -34,7 +35,7 @@ public class ReduxStates {
     }
 
     // TODO: Move to Zenith
-    public static @Nullable <P extends Comparable<P>> BlockState setIfDifferent(BlockState state, Property<P> property, UnaryOperator<P> operation) {
+    public static <P extends Comparable<P>> BlockState setIfDifferent(BlockState state, Property<P> property, UnaryOperator<P> operation) {
         P original = state.getValue(property);
         P mapped = operation.apply(original);
         return state.setValue(property, mapped);

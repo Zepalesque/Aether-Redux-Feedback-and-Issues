@@ -29,7 +29,7 @@ public class SliderMixin {
             .build()
     );
 
-    // TODO: Pull request for a system for this in the base mod
+    // TODO: use mod's system when it is fixed
     @Inject(method = "convertBlock", at = @At("HEAD"), cancellable = true, remap = false)
     protected void redux$convertBlock(BlockState state, CallbackInfoReturnable<BlockState> cir) {
         if (REDUX$CONVERSIONS.get().containsKey(state.getBlock())) {

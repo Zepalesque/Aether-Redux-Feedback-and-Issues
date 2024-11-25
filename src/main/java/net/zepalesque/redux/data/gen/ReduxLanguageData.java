@@ -80,7 +80,6 @@ public class ReduxLanguageData extends ReduxLanguageProvider {
         addLore(ReduxBlocks.SKYSPROUTS, "A relative of the common Wyndsprouts, this flowering grass is found in the Skyfields.");
 
         addBlock(ReduxBlocks.LOGICATOR, "Redstone Logicator");
-        // TODO
         addLore(ReduxBlocks.LOGICATOR, "A fascinating circuit made with an exotic material not found in the Aether - Redstone. This little diode takes in two inputs on the side, and will perform a logical operation on the two for the output. The operation is controlled by the torch on the top and the back input. The torch controls AND/OR mode, and the back input controls exclusivity (XNOR/XOR).");
 
 

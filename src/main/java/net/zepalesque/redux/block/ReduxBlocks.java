@@ -3,7 +3,6 @@ package net.zepalesque.redux.block;
 import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.block.dungeon.DoorwayBlock;
 import com.aetherteam.aether.block.dungeon.TrappedBlock;
-import com.aetherteam.aether.block.natural.AetherBushBlock;
 import com.aetherteam.aether.block.natural.AetherDoubleDropBlock;
 import com.aetherteam.aether.entity.AetherEntityTypes;
 import net.minecraft.tags.BlockTags;
@@ -12,7 +11,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ChainBlock;
 import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraft.world.level.block.LanternBlock;
-import net.minecraft.world.level.block.RepeaterBlock;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -28,8 +26,8 @@ import net.zepalesque.redux.block.dungeon.DoorwayPillarBlock;
 import net.zepalesque.redux.block.dungeon.RunelightBlock;
 import net.zepalesque.redux.block.dungeon.TrappedPillarBlock;
 import net.zepalesque.redux.block.natural.AetherShortGrassBlock;
-import net.zepalesque.redux.block.natural.GoldenVinesHeadBlock;
-import net.zepalesque.redux.block.natural.GoldenVinesBodyBlock;
+import net.zepalesque.redux.block.natural.HangingAetherVinesHead;
+import net.zepalesque.redux.block.natural.HangingAetherVinesBody;
 import net.zepalesque.redux.block.natural.GoldenCloversBlock;
 import net.zepalesque.redux.block.natural.bush.CustomBoundsBushBlock;
 import net.zepalesque.redux.block.natural.crop.WyndoatsBlock;
@@ -190,13 +188,13 @@ public class ReduxBlocks extends ReduxBlockBuilders {
             )
     );
 
-    public static DeferredBlock<GoldenVinesHeadBlock> GOLDEN_VINES = register("golden_vines",
-            () -> new GoldenVinesHeadBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WEEPING_VINES)
-                    .mapColor(MapColor.GOLD).sound(SoundType.CAVE_VINES), BlockTags.LEAVES));
+    public static DeferredBlock<HangingAetherVinesHead> GOLDEN_VINES = register("golden_vines",
+            () -> new HangingAetherVinesHead(BlockBehaviour.Properties.ofFullCopy(Blocks.WEEPING_VINES)
+                    .mapColor(MapColor.GOLD).sound(SoundType.CAVE_VINES), BlockTags.LEAVES, ReduxBlocks.GOLDEN_VINES_PLANT));
 
-    public static DeferredBlock<GoldenVinesBodyBlock> GOLDEN_VINES_PLANT = BLOCKS.register("golden_vines_plant",
-            () -> new GoldenVinesBodyBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WEEPING_VINES_PLANT)
-                    .mapColor(MapColor.GOLD).sound(SoundType.CAVE_VINES), BlockTags.LEAVES));
+    public static DeferredBlock<HangingAetherVinesBody> GOLDEN_VINES_PLANT = BLOCKS.register("golden_vines_plant",
+            () -> new HangingAetherVinesBody(BlockBehaviour.Properties.ofFullCopy(Blocks.WEEPING_VINES_PLANT)
+                    .mapColor(MapColor.GOLD).sound(SoundType.CAVE_VINES), BlockTags.LEAVES, ReduxBlocks.GOLDEN_VINES));
 
     public static final DeferredBlock<LogicatorBlock> LOGICATOR = register("logicator",
             () -> new LogicatorBlock(BlockBehaviour.Properties.of().instabreak().sound(SoundType.STONE).pushReaction(PushReaction.DESTROY))

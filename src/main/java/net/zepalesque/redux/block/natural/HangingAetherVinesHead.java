@@ -4,7 +4,8 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.BlockParticleOption;
+import net.minecraft.core.Holder;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
@@ -18,21 +19,24 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.zepalesque.redux.block.ReduxBlocks;
 
-public class GoldenVinesHeadBlock extends GrowingPlantHeadBlock {
+public class HangingAetherVinesHead extends GrowingPlantHeadBlock {
     protected static final VoxelShape SHAPE = Block.box(2.0D, 10.0D, 2.0D, 14.0D, 16.0D, 14.0D);
 
     private final TagKey<Block> leafTag;
+    private final Holder<Block> body;
 
-    public GoldenVinesHeadBlock(Properties properties, TagKey<Block> leafTag) {
+    public HangingAetherVinesHead(Properties properties, TagKey<Block> leafTag, Holder<Block> body) {
         super(properties, Direction.DOWN, SHAPE, false, 0.1D);
         this.leafTag = leafTag;
+        this.body = body;
     }
 
-    public static final MapCodec<GoldenVinesHeadBlock> CODEC = RecordCodecBuilder.mapCodec(builder ->
+    public static final MapCodec<HangingAetherVinesHead> CODEC = RecordCodecBuilder.mapCodec(builder ->
             builder.group(
                     propertiesCodec(),
-                    TagKey.codec(Registries.BLOCK).fieldOf("leaf_tag").forGetter(block -> block.leafTag))
-                    .apply(builder, GoldenVinesHeadBlock::new));
+                            TagKey.codec(Registries.BLOCK).fieldOf("leaf_tag").forGetter(block -> block.leafTag),
+                            BuiltInRegistries.BLOCK.holderByNameCodec().fieldOf("body_block").forGetter(block -> block.body))
+                    .apply(builder, HangingAetherVinesHead::new));
 
 
     @Override
@@ -47,7 +51,7 @@ public class GoldenVinesHeadBlock extends GrowingPlantHeadBlock {
 
     @Override
     protected Block getBodyBlock() {
-        return ReduxBlocks.GOLDEN_VINES_PLANT.get();
+        return this.body.value();
     }
 
     @Override
@@ -55,9 +59,7 @@ public class GoldenVinesHeadBlock extends GrowingPlantHeadBlock {
         return NetherVines.isValidGrowthState(p_154971_);
     }
 
-
     public int getLength(Level level, BlockPos pos) {
-        BlockPos.MutableBlockPos mutableBlockPos = pos.mutable();
         int i = 0;
         while (!level.isOutsideBuildHeight(pos.getY() + i) && level.isStateAtPosition(pos.above(i), state -> state.is(this.getHeadBlock()) || state.is(this.getBodyBlock()))) {
             i++;
