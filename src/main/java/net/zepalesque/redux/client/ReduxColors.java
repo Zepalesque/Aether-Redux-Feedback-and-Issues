@@ -42,7 +42,8 @@ public class ReduxColors {
                 AetherBlocks.WHITE_FLOWER.get(),
                 AetherBlocks.POTTED_WHITE_FLOWER.get(),
                 AetherBlocks.PURPLE_FLOWER.get(),
-                AetherBlocks.POTTED_PURPLE_FLOWER.get()
+                AetherBlocks.POTTED_PURPLE_FLOWER.get(),
+                ReduxBlocks.WYNDSPROUTS.get()
         );
         for (BlockSet set : Redux.BLOCK_SETS) {
             if (set instanceof TintableSet tintable && set instanceof AbstractFlowerSet flowerSet) {
@@ -56,10 +57,10 @@ public class ReduxColors {
         event.register((stack, tintIndex) -> tintIndex == 1 ? Tints.AETHER_GRASS_COLOR : 0xFFFFFF,
                 AetherBlocks.AETHER_GRASS_BLOCK.get(),
                 AetherBlocks.WHITE_FLOWER.get(),
-                AetherBlocks.PURPLE_FLOWER.get()/*,
+                AetherBlocks.PURPLE_FLOWER.get(),/*
                 ReduxBlocks.FLAREBLOSSOM.get(),
-                ReduxBlocks.INFERNIA.get(),
-                ReduxBlocks.WYNDSPROUTS.get()*/
+                ReduxBlocks.INFERNIA.get(),*/
+                ReduxBlocks.WYNDSPROUTS.get()
         );
         event.register((stack, tintIndex) -> tintIndex == 0 ? Tints.AETHER_GRASS_COLOR : 0xFFFFFF,
                 ReduxBlocks.SHORT_AETHER_GRASS.get()/*,
