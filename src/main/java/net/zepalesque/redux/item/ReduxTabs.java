@@ -26,7 +26,6 @@ import java.util.function.Supplier;
 public class ReduxTabs {
     
     @SubscribeEvent(priority = EventPriority.LOWEST)
-    @SuppressWarnings("unchecked")
     public static void buildCreativeModeTabs(BuildCreativeModeTabContentsEvent event) {
         CreativeModeTab tab = event.getTab();
 
