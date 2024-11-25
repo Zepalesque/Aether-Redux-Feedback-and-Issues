@@ -20,6 +20,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
+// TODO: Make golden oak spawn with these when grown on enchanted aether grass
 public class GoldenVineDecorator extends TreeDecorator {
 
     public static final MapCodec<GoldenVineDecorator> CODEC = RecordCodecBuilder.mapCodec((vines) ->

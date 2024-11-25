@@ -1,4 +1,4 @@
-// 1.21.1	2024-11-24T14:34:00.9009052	Block States: aether_redux
+// 1.21.1	2024-11-24T22:00:09.5214596	Block States: aether_redux
 6d5a134587a37ec8ac1798d9ca3e527d0a1d99b9 assets/aether_redux/blockstates/aurum.json
 18cd9d7be4a20d14e14911da277c38674c1d5bd7 assets/aether_redux/blockstates/blightmoss_holystone.json
 4a9e03ff69be912c7f686d6ca7b72f228650f9e4 assets/aether_redux/blockstates/blightmoss_holystone_slab.json
@@ -329,10 +329,10 @@ b028518ca193a7ff6dc2efa7dc017a4bb06abcc8 assets/aether_redux/models/block/wooden
 7df824528a89188dfca655a6f1d17e6170226ab4 assets/aether_redux/models/block/wooden_side_tall_alt.json
 e3b82cea5206cc7f8b2cc19f92467be3e1dcaa4a assets/aether_redux/models/block/wooden_side_tall_alt_short.json
 a5d249d2a9d5b781f9af3e4d68590fc16487d480 assets/aether_redux/models/block/wooden_side_tall_short.json
-4a4aabb2e24316fba006d6c1e414a085a0f7e5ea assets/aether_redux/models/block/wyndoats_stage0.json
-df490a6276d4fc122387e4f73acbe2ede47ad0bc assets/aether_redux/models/block/wyndoats_stage1.json
-c912535723a71b3a13370dac74fc7ce871fd73f0 assets/aether_redux/models/block/wyndoats_stage2.json
-9027956490fb26cdb6e2f07125572484a48ddd44 assets/aether_redux/models/block/wyndoats_stage3.json
-af54885be8670f70616d7261de87694c12fe3718 assets/aether_redux/models/block/wyndoats_stage4.json
-f3959c6d76b878b0b88a597343f58d5fb1cad1d9 assets/aether_redux/models/block/wyndoats_stage5.json
+b3e5680fefee4179c09df12b6e4de12041d2f57a assets/aether_redux/models/block/wyndoats_stage0.json
+ed81f2637bbce347772c9dd2b202fc7bc16bc8a2 assets/aether_redux/models/block/wyndoats_stage1.json
+c091bba792ee93b0ec96b1b8c6689279f85787ef assets/aether_redux/models/block/wyndoats_stage2.json
+d03f012f56ec75ab08b20ece0a355bcad0244b21 assets/aether_redux/models/block/wyndoats_stage3.json
+a1c5c50784719c19bde33860f3cf79659610923f assets/aether_redux/models/block/wyndoats_stage4.json
+07f1e12bb68f47fbfc4e5035df8563907f902065 assets/aether_redux/models/block/wyndoats_stage5.json
 88cd95b3772772dc2b8879a927df93c67613da2d assets/aether_redux/models/block/wyndsprouts.json

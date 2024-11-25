@@ -2,6 +2,6 @@
   "parent": "aether_redux:block/template/crop/crop_lowered",
   "render_type": "minecraft:cutout",
   "textures": {
-    "plant": "aether_redux:block/natural/wyndoats_stage3"
+    "plant": "aether_redux:block/crop/wyndoats_stage3"
   }
 }
