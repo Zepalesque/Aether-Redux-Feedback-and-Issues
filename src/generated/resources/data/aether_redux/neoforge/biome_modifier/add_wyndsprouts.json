@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#aether_redux:has_wyndsprouts",
+  "features": "aether_redux:wyndsprouts_patch",
+  "step": "vegetal_decoration"
+}

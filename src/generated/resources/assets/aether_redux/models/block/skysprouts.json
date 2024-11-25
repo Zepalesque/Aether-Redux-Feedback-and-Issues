@@ -1,0 +1,8 @@
+{
+  "parent": "aether_redux:block/template/cross/cross_tinted_overlay",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "cross": "aether_redux:block/natural/skysprouts",
+    "overlay": "aether_redux:block/natural/skysprouts_overlay"
+  }
+}
