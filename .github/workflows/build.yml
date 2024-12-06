@@ -17,10 +17,12 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-
       - name: Build with Gradle
         uses: gradle/actions/setup-gradle@v3
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_ACTOR: ${{ github.actor }}
         with:
           arguments: build
+          server-username: GITHUB_TOKEN
+          server-password: GITHUB_ACTOR
