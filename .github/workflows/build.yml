@@ -40,9 +40,7 @@ jobs:
         run: |
           export $(echo "ARTIFACT_NAME=$(echo $(ls | head -n 1 | sed 's/\.[^.]*$//'));")
           
-#          echo "ARTIFACT_NAME=${var1artifact}" >> "$GITHUB_ENV";
           echo "Stored artifact name as \"$ARTIFACT_NAME\"";
-#          unset var1artifact
       - name: Upload JAR
         uses: actions/upload-artifact@v4
         env:
