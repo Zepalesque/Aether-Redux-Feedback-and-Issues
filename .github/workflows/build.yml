@@ -8,8 +8,6 @@ jobs:
     permissions:
       contents: read
       packages: read
-    env:
-      ARTIFACT_NAME: mod-jar
     steps:
 
       - name: Checkout repository
@@ -38,13 +36,11 @@ jobs:
         id: jar-name
         working-directory: build/libs
         run: |
-          export $(echo "ARTIFACT_NAME=$(echo $(ls | head -n 1 | sed 's/\.[^.]*$//'));")
-          
-          echo "Stored artifact name as \"$ARTIFACT_NAME\"";
+          var1=$(echo $(ls | head -n 1 | sed 's/\.[^.]*$//'))
+          echo "ARTIFACT_NAME=$(echo $var1)" >> $GITHUB_OUTPUT
+          echo "Stored artifact name as \"$var1\"";
       - name: Upload JAR
         uses: actions/upload-artifact@v4
-        env:
-          ARTIFACT: ${{ steps.jar-name.outputs.ARTIFACT_NAME }}
         with:
-          name: "${{ env.ARTIFACT_NAME }}-EXTRACT-ME"
+          name: "${{ steps.jar-name.outputs.ARTIFACT_NAME }}-EXTRACT-ME"
           path: "build/libs/*"
