@@ -80,7 +80,7 @@ dependencies {
     implementation "io.wispforest:accessories-neoforge:${project.accessories_version}+${project.minecraft_version}"
 
 
-    implementation "blank:aeroblender-${project.aeroblender_version}:${project.aeroblender_version}"
+    implementation "curse.maven:aeroblender-879879:${project.aeroblender_version}"
     implementation "com.github.glitchfiend:TerraBlender-neoforge:${project.terrablender_version}"
 
     // Workspace mods + Other Dependencies
@@ -90,7 +90,7 @@ dependencies {
     runtimeOnly "curse.maven:configured-457570:${project.configured_version}"
     implementation "curse.maven:jade-324717:${project.jade_version}"
 
-    jarJar("blank:aeroblender-${project.aeroblender_version}:${project.aeroblender_version}") {
+    jarJar("curse.maven:aeroblender-879879:${project.aeroblender_version}") {
         version {
             strictly "[${project.aeroblender_version},)"
             prefer "${project.aeroblender_version}"
