@@ -41,6 +41,8 @@ jobs:
 
       - name: Upload JAR
         uses: actions/upload-artifact@v4
+        env:
+          ARTIFACT: ${{ steps.color-selector.outputs.ARTIFACT_NAME }}
         with:
-          name: ${{ steps.jar-name.outputs.ARTIFACT_NAME }}-EXTRACT-ME
-          path: build/libs/${{ steps.jar-name.outputs.ARTIFACT_NAME }}.jar
+          name: "${{ env.ARTIFACT }}-EXTRACT-ME"
+          path: "build/libs/${{ env.ARTIFACT }}.jar"
