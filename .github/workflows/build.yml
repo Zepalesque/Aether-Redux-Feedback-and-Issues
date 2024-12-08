@@ -24,6 +24,10 @@ jobs:
           distribution: 'temurin'
       - name: Build with Gradle
         uses: gradle/actions/setup-gradle@v3
-
         with:
           arguments: build
+      - name: Upload JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: mod-jar
+          path: build/libs/*
