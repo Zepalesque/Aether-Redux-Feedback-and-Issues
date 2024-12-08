@@ -104,10 +104,10 @@ dependencies {
         }
     }
 
-    jarJar("net.zepalesque.zenith:zenith:${zenith_version}") {
+    jarJar("net.zepalesque.zenith:zenith:${minecraft_version}-${zenith_version}-neoforge") {
         version {
-            strictly "[${project.zenith_version},)"
-            prefer "${project.zenith_version}"
+            strictly "[${minecraft_version}-${zenith_version}-neoforge,)"
+            prefer "${minecraft_version}-${zenith_version}-neoforge"
         }
     }
 }
