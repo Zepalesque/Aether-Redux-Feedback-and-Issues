@@ -14,7 +14,11 @@ You can report bugs, suggest changes, or give ideas for new features in the [Iss
 If you want to contribute code or language translations, you can create a [pull request,](https://github.com/Zepalesque/The-Aether-Redux/pulls) and if everything checks out, it is likely to get added!
 
 # License
-The code and assets for this mod are all [ARR,](https://en.wikipedia.org/wiki/All_rights_reserved) *however* if you are trying to figure out how to do something, feel free to look at the mod's code for reference on how to implement whatever that may be. If other mods didn't do this, I'd likely never have been able to make a lot of really cool features in the mod, so I want other people to be able to do the same using my code as well.
+[![Asset license (Unlicensed)](https://img.shields.io/badge/assets%20license-All%20Rights%20Reserved-red.svg?style=flat-square)](https://en.wikipedia.org/wiki/All_rights_reserved)
+[![Code license (LGPL v3.0)](https://img.shields.io/badge/code%20license-LGPL%20v3.0-green.svg?style=flat-square)](https://github.com/Zepalesque/The-Aether-Redux/blob/1.21.1/LICENSE.txt)
 
+The assets for this mod are **unlicensed and [all rights are reserved](https://en.wikipedia.org/wiki/All_rights_reserved) by Zepalesque.**
+
+The code for the mod is licensed under the LGPL v3.0 license.
 # Credits (WIP)
 Issue templates for this repository were created using [Issue Forms Creator](https://issue-forms-creator.netlify.app/new)
