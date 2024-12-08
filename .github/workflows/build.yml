@@ -39,8 +39,7 @@ jobs:
           filename=$(echo $(ls | head -n 1 | sed 's/\.[^.]*$//'))
           echo "ARTIFACT_NAME=$(echo $filename)" >> $GITHUB_OUTPUT
           echo "Stored artifact name as \"$filename\"";
-          ls
-          mv build/libs/$filename.jar build/libs/$filename-bleeding-edge.jar
+          mv $filename.jar $filename-bleeding-edge.jar
       - name: Upload JAR
         uses: actions/upload-artifact@v4
         with:
