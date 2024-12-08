@@ -8,6 +8,8 @@ jobs:
     permissions:
       contents: read
       packages: read
+    env:
+      ARTIFACT_NAME: mod-jar
     steps:
 
       - name: Checkout repository
@@ -35,14 +37,19 @@ jobs:
         run: ./gradlew build
 
       - name: Store JAR name as environment variable
+
         id: jar-name
         working-directory: build/libs
-        run: var1artifact=$(echo $(ls | head -n 1 | sed 's/\.[^.]*$//')); echo "ARTIFACT_NAME=$var1artifact" >> "$GITHUB_ENV"; echo "Stored artifact name as \"$var1artifact\""; unset var1artifact
-
+        run: |
+          export $(echo "ARTIFACT_NAME=$(echo $(ls | head -n 1 | sed 's/\.[^.]*$//'));")
+          
+#          echo "ARTIFACT_NAME=${var1artifact}" >> "$GITHUB_ENV";
+          echo "Stored artifact name as \"$ARTIFACT_NAME\"";
+#          unset var1artifact
       - name: Upload JAR
         uses: actions/upload-artifact@v4
         env:
           ARTIFACT: ${{ steps.jar-name.outputs.ARTIFACT_NAME }}
         with:
-          name: "${{ env.ARTIFACT }}-EXTRACT-ME"
-          path: "build/libs/${{ env.ARTIFACT }}.jar"
+          name: "${{ env.ARTIFACT_NAME }}-EXTRACT-ME"
+          path: "build/libs/*"
