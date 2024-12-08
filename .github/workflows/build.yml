@@ -18,7 +18,9 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
       - name: Build with Gradle
-        uses: gradle/actions/setup-gradle@v3
+        uses:
+          gradle/actions/setup-gradle@v3
+          s4u/maven-settings-action@v3.1.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_ACTOR: ${{ github.actor }}
@@ -26,3 +28,4 @@ jobs:
           arguments: build
           server-username: GITHUB_TOKEN
           server-password: GITHUB_ACTOR
+          servers: '[{"id": "serverId", "username": "${env.GITHUB_ACTOR}", "password": "${env.GITHUB_TOKEN}"}]'
