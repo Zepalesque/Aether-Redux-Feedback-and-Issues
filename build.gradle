@@ -91,10 +91,7 @@ dependencies {
     implementation "curse.maven:jade-324717:${project.jade_version}"
 
     jarJar("curse.maven:aeroblender-879879:${project.aeroblender_version}") {
-        version {
-            strictly "[${project.aeroblender_version},)"
-            prefer "${project.aeroblender_version}"
-        }
+        version {}
     }
 
     jarJar("com.github.glitchfiend:TerraBlender-neoforge:${project.terrablender_version}") {
