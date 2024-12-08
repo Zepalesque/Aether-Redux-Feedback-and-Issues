@@ -29,5 +29,5 @@ jobs:
       - name: Upload JAR
         uses: actions/upload-artifact@v4
         with:
-          name: mod-jar
+          name: mod-jar-EXTRACT-ME
           path: build/libs/*
