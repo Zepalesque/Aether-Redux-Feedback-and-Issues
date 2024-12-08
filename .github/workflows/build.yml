@@ -11,21 +11,20 @@ jobs:
         with:
           fetch-depth: 0
           fetch-tags: true
-
+      - name: Setup Maven Settings
+        uses: s4u/maven-settings-action@v3.1.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_ACTOR: ${{ github.actor }}
+        with:
+          servers: '[{"id": "serverId", "username": "${env.GITHUB_ACTOR}", "password": "${env.GITHUB_TOKEN}"}]'
       - name: Setup JDK 17
         uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
       - name: Build with Gradle
-        uses:
-          gradle/actions/setup-gradle@v3
-          s4u/maven-settings-action@v3.1.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_ACTOR: ${{ github.actor }}
+        uses: gradle/actions/setup-gradle@v3
+
         with:
           arguments: build
-          server-username: GITHUB_TOKEN
-          server-password: GITHUB_ACTOR
-          servers: '[{"id": "serverId", "username": "${env.GITHUB_ACTOR}", "password": "${env.GITHUB_TOKEN}"}]'
