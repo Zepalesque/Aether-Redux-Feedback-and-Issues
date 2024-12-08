@@ -26,8 +26,8 @@ jobs:
         uses: gradle/actions/setup-gradle@v3
         with:
           arguments: build
-      - run: cd build/libs
-      - run: echo $(ls | head -n 1 | sed 's/\.[^.]*$//') >> $GITHUB_ENV
+      - name: Store JAR name as environment variable
+        run: cd build/libs; echo $(ls | head -n 1 | sed 's/\.[^.]*$//') >> $GITHUB_ENV
       - name: Upload JAR
         uses: actions/upload-artifact@v4
         with:
