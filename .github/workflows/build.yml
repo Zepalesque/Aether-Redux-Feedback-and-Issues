@@ -37,7 +37,6 @@ jobs:
         run: ./gradlew build
 
       - name: Store JAR name as environment variable
-
         id: jar-name
         working-directory: build/libs
         run: |
