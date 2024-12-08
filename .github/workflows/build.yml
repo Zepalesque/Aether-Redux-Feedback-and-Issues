@@ -27,9 +27,10 @@ jobs:
         with:
           arguments: build
       - name: Store JAR name as environment variable
-        run: cd build/libs; var1artifact=$(echo $(ls | head -n 1 | sed 's/\.[^.]*$//')); var1artifact >> $GITHUB_ENV; echo "Stored artifact name as \"$$GITHUB_ENV\""; unset var1artifact
+        id: jar-name
+        run: cd build/libs; var1artifact=$(echo $(ls | head -n 1 | sed 's/\.[^.]*$//'));  "ARTIFACT_NAME=$var1artifact" >> $GITHUB_ENV; echo "Stored artifact name as \"$var1artifact\""; unset var1artifact
       - name: Upload JAR
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.GITHUB_ENV }}-EXTRACT-ME
-          path: build/libs/${{ env.GITHUB_ENV }}.jar
+          name: ${{ steps.jar-name.outputs.ARTIFACT_NAME }}-EXTRACT-ME
+          path: build/libs/${{ steps.jar-name.outputs.ARTIFACT_NAME }}.jar
