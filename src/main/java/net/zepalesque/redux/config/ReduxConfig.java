@@ -2,7 +2,8 @@ package net.zepalesque.redux.config;
 
 import net.neoforged.neoforge.common.ModConfigSpec;
 import net.zepalesque.redux.config.enums.AACompatType;
-import net.zepalesque.zenith.config.DataSerializableConfig;
+import net.zepalesque.redux.pack.ReduxPackConfig;
+import net.zepalesque.zenith.api.config.DataSerializableConfig;
 import org.apache.commons.lang3.tuple.Pair;
 
 public class ReduxConfig {
@@ -71,6 +72,7 @@ public class ReduxConfig {
 
         public final ModConfigSpec.ConfigValue<Boolean> tintable_grass;
         public final ModConfigSpec.ConfigValue<Boolean> jappafied_textures;
+        public final ModConfigSpec.ConfigValue<Boolean> slider_sfx;
 
         public Client(ModConfigSpec.Builder builder) {
             builder.push("Visual");
@@ -79,12 +81,15 @@ public class ReduxConfig {
                     .define("Leaf Particles", true);
             builder.pop();
             builder.push("Builtin Resource Pack Customization");
-            tintable_grass = builder
+            tintable_grass = ReduxPackConfig.register(builder
                     .comment("Use modified models to allow tintable Aether Grass blocks and plants. Only disable if you know what you're doing!")
-                    .define("Tinted Grass", true);
-            jappafied_textures = builder
+                    .define("Tinted Grass", true), "resource/", "tintable_grass");
+            jappafied_textures = ReduxPackConfig.register(builder
                     .comment("Use textures designed to fit with the Jappafied Aethers resource pack.")
-                    .define("Jappafied Textures", false);
+                    .define("Jappafied Textures", false), "resource/", "jappafied");
+            slider_sfx = ReduxPackConfig.register(builder
+                    .comment("Improve the hurt, death, and ambient sounds of the Slider.")
+                    .define("Slider SFX Upgrades", true), "resource/sfx/", "slider");
             builder.pop();
         }
     }

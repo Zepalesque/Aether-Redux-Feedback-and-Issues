@@ -1,4 +1,4 @@
-package net.zepalesque.redux.item;
+package net.zepalesque.redux.item.util;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;

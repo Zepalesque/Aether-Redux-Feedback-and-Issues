@@ -1,0 +1,21 @@
+{
+  "entity.slider.ambient": {
+    "replace": true,
+    "sounds": [
+      "aether_redux:entity/slider/drone1",
+      "aether_redux:entity/slider/drone2",
+      "aether_redux:entity/slider/drone3",
+      "aether_redux:entity/slider/drone4"
+    ],
+    "subtitle": "subtitles.aether.entity.slider.ambient"
+  },
+  "entity.slider.hurt": {
+    "replace": true,
+    "sounds": [
+      "aether_redux:entity/slider/hit1",
+      "aether_redux:entity/slider/hit2",
+      "aether_redux:entity/slider/hit3"
+    ],
+    "subtitle": "subtitles.aether.entity.slider.hurt"
+  }
+}

@@ -100,6 +100,7 @@ public class Redux {
             SurfaceRuleManager.addSurfaceRules(AetherRuleCategory.THE_AETHER, "aether_redux", ReduxSurfaceRules.makeRules());
             ReduxBlocks.registerFlammability();
             ReduxBlocks.registerToolConversions();
+            ReduxEntities.addBossConversions();
         });
     }
 

@@ -1,6 +1,5 @@
-package net.zepalesque.redux.item.combat;
+package net.zepalesque.redux.item.property;
 
-import com.aetherteam.aether.AetherTags;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Tier;

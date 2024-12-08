@@ -12,6 +12,7 @@
     "common.accessor.WallBlockAccessor",
     "common.block.BlockBehaviorMixin",
     "common.block.QuicksoilMixin",
+    "common.entity.MobMixin",
     "common.entity.SliderMixin",
     "common.item.DiggerItemMixin",
     "common.item.PickaxeItemMixin",

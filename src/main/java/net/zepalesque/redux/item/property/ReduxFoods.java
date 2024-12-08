@@ -1,4 +1,4 @@
-package net.zepalesque.redux.item;
+package net.zepalesque.redux.item.property;
 
 import net.minecraft.world.food.FoodProperties;
 

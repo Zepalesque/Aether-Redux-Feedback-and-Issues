@@ -1,10 +1,7 @@
 package net.zepalesque.redux.pack;
 
-import com.aetherteam.aether.client.CombinedPackResources;
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.AbstractPackResources;
@@ -12,12 +9,9 @@ import net.minecraft.server.packs.CompositePackResources;
 import net.minecraft.server.packs.PackLocationInfo;
 import net.minecraft.server.packs.PackResources;
 import net.minecraft.server.packs.PackType;
-import net.minecraft.server.packs.metadata.pack.PackMetadataSection;
 import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.resources.IoSupplier;
-import net.neoforged.neoforge.common.conditions.ConditionalOps;
 import net.zepalesque.redux.Redux;
-import org.apache.commons.compress.utils.Lists;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -29,7 +23,6 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -47,10 +40,9 @@ public class ConfigAssembledPackResources extends AbstractPackResources {
     private final Map<String, Map<Supplier<Boolean>, PackResources>> assets;
     private final Path source;
     private static final Gson GSON = new Gson();
-    protected ConfigAssembledPackResources(PackLocationInfo id, ImmutableMap.Builder<Supplier<Boolean>, PackResources> builder, Path source) {
+    protected ConfigAssembledPackResources(PackLocationInfo id, ImmutableMap<Supplier<Boolean>, PackResources> packs, Path source) {
         super(id);
         this.source = source;
-        Map<Supplier<Boolean>, PackResources> packs = builder.build();
         this.packs = packs;
         this.assets = this.buildNamespaceMap(PackType.CLIENT_RESOURCES, packs);
     }
@@ -155,10 +147,10 @@ public class ConfigAssembledPackResources extends AbstractPackResources {
     }
 
 
-    public record AssembledResourcesSupplier(ImmutableMap.Builder<Supplier<Boolean>, PackResources> builder, Path source) implements Pack.ResourcesSupplier {
+    public record AssembledResourcesSupplier(ImmutableMap<Supplier<Boolean>, PackResources> packs, Path source) implements Pack.ResourcesSupplier {
         @Override
         public PackResources openPrimary(PackLocationInfo location) {
-            return new ConfigAssembledPackResources(location, this.builder, this.source);
+            return new ConfigAssembledPackResources(location, this.packs, this.source);
         }
 
         @Override
@@ -172,7 +164,7 @@ public class ConfigAssembledPackResources extends AbstractPackResources {
 
                 for (String s : list) {
                     Path path = this.source.resolve(s);
-                    list1.add(new ConfigAssembledPackResources(location, this.builder, path));
+                    list1.add(new ConfigAssembledPackResources(location, this.packs, path));
                 }
 
                 return new CompositePackResources(packresources, list1);
