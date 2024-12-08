@@ -26,8 +26,10 @@ jobs:
         uses: gradle/actions/setup-gradle@v3
         with:
           arguments: build
+      - run: cd build/libs
+      - run: echo $(ls | head -n 1 | sed 's/\.[^.]*$//') >> $GITHUB_ENV
       - name: Upload JAR
         uses: actions/upload-artifact@v4
         with:
-          name: mod-jar-EXTRACT-ME
-          path: build/libs/*
+          name: ${GITHUB_ENV}-EXTRACT-ME
+          path: build/libs/${GITHUB_ENV}.jar
