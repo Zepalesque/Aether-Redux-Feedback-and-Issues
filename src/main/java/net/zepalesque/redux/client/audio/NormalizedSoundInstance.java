@@ -8,12 +8,13 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundSource;
 import org.jetbrains.annotations.Nullable;
 
+// TODO: Move to Zenith and properly document
 public class NormalizedSoundInstance implements SoundInstance {
 
     private final SoundInstance inner;
-    private final int flags;
+    private final byte flags;
 
-    private static final int[] powers = { 0b1, 0b10, 0b100, 0b1000, 0b10000, 0b100000, 0b1000000 };
+    private static final byte[] powers = { 0b1, 0b10, 0b100, 0b1000, 0b10000, 0b100000, 0b1000000 };
 
 
     /*
@@ -25,23 +26,20 @@ public class NormalizedSoundInstance implements SoundInstance {
      * 16: getVolume
      * 32: getPitch
      * 64: getAttenuation
-     *
      */
-    public NormalizedSoundInstance(SoundInstance inner, int flags) {
 
+    public NormalizedSoundInstance(SoundInstance inner, int flags) {
         this.inner = inner;
-        this.flags = flags;
+        this.flags = (byte) flags;
     }
 
     private boolean getFlag(int index) {
         return (flags & powers[index]) != 0;
     }
 
-
-
     @Override
     public ResourceLocation getLocation() {
-        return null;
+        return inner.getLocation();
     }
 
     @Nullable

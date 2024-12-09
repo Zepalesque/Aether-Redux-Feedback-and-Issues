@@ -17,6 +17,5 @@ public class SoundListener {
             SoundInstance normalized = new NormalizedSoundInstance(event.getSound(), 32);
             event.setSound(normalized);
         }
-
     }
 }

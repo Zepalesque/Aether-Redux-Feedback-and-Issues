@@ -11,7 +11,7 @@ import net.zepalesque.redux.config.ReduxConfig;
 
 public class SoundHooks {
     public static boolean shouldNormalizePitch(SoundInstance instance) {
-        return ReduxConfig.CLIENT.slider_sfx.get() && instance.getLocation().equals(AetherSoundEvents.ENTITY_SLIDER_AMBIENT.getId());
+        return instance != null && ReduxConfig.CLIENT.slider_sfx.get() && instance.getLocation().equals(AetherSoundEvents.ENTITY_SLIDER_AMBIENT.getId());
     }
 
 }
