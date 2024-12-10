@@ -66,6 +66,7 @@ public class Redux {
         bus.addListener(this::commonSetup);
         bus.addListener(this::registerDataMaps);
         bus.addListener(this::packSetup);
+        bus.addListener(this::registerPackets);
         if (dist == Dist.CLIENT) {
             bus.addListener(EventPriority.LOWEST, ReduxColors::blockColors);
             bus.addListener(ReduxColors::itemColors);
