@@ -34,6 +34,7 @@ import net.zepalesque.redux.item.ReduxItems;
 import net.zepalesque.redux.item.components.ReduxDataComponents;
 import net.zepalesque.redux.loot.modifer.ReduxLootModifiers;
 import net.zepalesque.redux.network.packet.AerjumpPacket;
+import net.zepalesque.redux.network.packet.ReduxPlayerSyncPacket;
 import net.zepalesque.redux.pack.PackUtils;
 import net.zepalesque.redux.pack.ReduxPackConfig;
 import net.zepalesque.redux.recipe.ReduxRecipes;
@@ -117,6 +118,7 @@ public class Redux {
         registrar.playToServer(AerjumpPacket.Request.TYPE, AerjumpPacket.Request.STREAM_CODEC, AerjumpPacket.Request::execute);
         registrar.playToClient(AerjumpPacket.Accepted.TYPE, AerjumpPacket.Accepted.STREAM_CODEC, AerjumpPacket.Accepted::execute);
         registrar.playToClient(AerjumpPacket.Particles.TYPE, AerjumpPacket.Particles.STREAM_CODEC, AerjumpPacket.Particles::execute);
+        registrar.playBidirectional(ReduxPlayerSyncPacket.TYPE, ReduxPlayerSyncPacket.STREAM_CODEC, ReduxPlayerSyncPacket::execute);
     }
 
     private void registerDataMaps(RegisterDataMapTypesEvent event) {

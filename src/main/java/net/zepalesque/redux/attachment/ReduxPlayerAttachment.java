@@ -13,6 +13,7 @@ import net.minecraft.world.level.Level;
 import net.zepalesque.redux.client.audio.ReduxSounds;
 import net.zepalesque.redux.client.particle.ReduxParticles;
 import net.zepalesque.redux.item.ReduxItems;
+import net.zepalesque.redux.network.packet.ReduxPlayerSyncPacket;
 import org.apache.commons.lang3.tuple.Triple;
 import org.jetbrains.annotations.NotNull;
 
@@ -181,10 +182,15 @@ public class ReduxPlayerAttachment implements INBTSynchable {
             }
         }
     }
-    
+
     @Override
     public Map<String, Triple<Type, Consumer<Object>, Supplier<Object>>> getSynchableFunctions() {
         return synchableFunctions;
+    }
+
+    @Override
+    public SyncPacket getSyncPacket(int playerID, String key, Type type, Object value) {
+        return new ReduxPlayerSyncPacket(playerID, key, type, value);
     }
 
     public static @NotNull ReduxPlayerAttachment get(@NotNull Player player) {
