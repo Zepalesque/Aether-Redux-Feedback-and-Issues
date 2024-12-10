@@ -121,6 +121,7 @@ public class ReduxPlayerAttachment implements INBTSynchable {
 
     public void onUpdate(Player player) {
         this.tickAirTime(player);
+        this.tickAerjumps(player);
     }
 
     private Map<ResourceLocation, Integer> getAerjumpCountModifiers() {
@@ -135,6 +136,12 @@ public class ReduxPlayerAttachment implements INBTSynchable {
         }
     }
 
+    private void tickAerjumps(Player player) {
+        if (player.onGround()) {
+            this.performedAerjumps = 0;
+        }
+    }
+
     private boolean aerjumpsOnCooldown(Player player) {
         return player.getCooldowns().isOnCooldown(ReduxItems.AERBOUND_CAPE.get());
     }
@@ -144,7 +151,7 @@ public class ReduxPlayerAttachment implements INBTSynchable {
     }
 
     public boolean canAerjump(Player player) {
-        return !this.aerjumpsOnCooldown(player) && this.getPerformedAerjumps() < this.getMaxAerjumps() && !player.isInWater() && !player.mayFly() && !player.isSpectator() && !player.isPassenger();
+        return !this.aerjumpsOnCooldown(player) && this.getPerformedAerjumps() < this.getMaxAerjumps() && !player.isInWater() && this.getAirTime() >= 3 && !player.mayFly() && !player.isSpectator() && !player.isPassenger();
     }
 
     public void prepareAerjump(Player player) {
