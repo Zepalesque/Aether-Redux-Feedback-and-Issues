@@ -83,6 +83,9 @@ public class ReduxLanguageData extends ReduxLanguageProvider {
         addLore(ReduxBlocks.LOGICATOR, "A fascinating circuit made with an exotic material not found in the Aether - Redstone. This little diode takes in two inputs on the side, and will perform a logical operation on the two for the output. The operation is controlled by the torch on the top and the back input. The torch controls AND/OR mode, and the back input controls exclusivity (XNOR/XOR).");
 
 
+        addItem(ReduxItems.AERBOUND_CAPE);
+        addLore(ReduxItems.AERBOUND_CAPE, "A cape found in the Bronze Dungeon. It allows the wearer to double-jump!");
+
         addItem(ReduxItems.WYND_OATS);
         addLore(ReduxItems.WYND_OATS, "A pile of Wynd Oats. These can be grown into the Wynd Oat plant.");
         addItem(ReduxItems.WYND_OAT_PANICLE);
@@ -150,9 +153,12 @@ public class ReduxLanguageData extends ReduxLanguageProvider {
         addBlock(ReduxBlocks.REFINED_SENTRITE_BLOCK, "Block of Refined Sentrite");
         addLore(ReduxBlocks.REFINED_SENTRITE_BLOCK, "A block of the refined form of Sentrite, crafted with Refined Sentrite.");
 
-        addGuiText("shift_info", "Hold [%s] for more info...");
+        addTooltip("shift_info", "Hold [%s] for more info...");
         addTooltip("infusion_charge", "Infusion Charge: %s");
-        addGuiText("infusion_info", "Can be infused by right-clicking with an Ambrosium Shard");
+        addTooltip("infusion_info", "Can be infused by right-clicking the item in your inventory while hovering over it with an Ambrosium Shard");
+        addTooltip("aerbound_cape_aerjump_ability", "Grants ability to double jump by pressing [%s]");
+
+        addTooltip("cape_modifier", "When on Back");
 
         addPackDescription("mod", "The Aether: Redux Resources");
         addPackTitle("tintable_grass", "Redux - Tintable Grass");
@@ -164,5 +170,6 @@ public class ReduxLanguageData extends ReduxLanguageProvider {
         addSubtitle(ReduxSounds.INFUSE_ITEM, DatagenUtil::subtitleFor, "Item infuses");
         addSubtitle(ReduxSounds.INFUSION_EXPIRE, DatagenUtil::subtitleFor, "Item infusion runs out");
         addSubtitle(ReduxSounds.LOGICATOR_CLICK, DatagenUtil::subtitleFor, "Logicator clicks");
+        addSubtitle(ReduxSounds.AERJUMP, DatagenUtil::subtitleFor, "Something aerjumps");
     }
 }

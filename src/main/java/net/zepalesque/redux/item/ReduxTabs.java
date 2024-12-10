@@ -133,11 +133,9 @@ public class ReduxTabs {
             );
         } else if (tab == AetherCreativeTabs.AETHER_REDSTONE_BLOCKS.get()) {
             TabUtil.put(event, ReduxBlocks.LOGICATOR);
-        }
-
-        CreativeModeTab redstone = BuiltInRegistries.CREATIVE_MODE_TAB.get(CreativeModeTabs.REDSTONE_BLOCKS);
-
-        if (tab == redstone) {
+        } else if (tab == AetherCreativeTabs.AETHER_ARMOR_AND_ACCESSORIES.get()) {
+            TabUtil.putAfter(event, AetherItems.SWET_CAPE, ReduxItems.AERBOUND_CAPE);
+        } else if (tab == BuiltInRegistries.CREATIVE_MODE_TAB.get(CreativeModeTabs.REDSTONE_BLOCKS)) {
             TabUtil.putAfter(event, () -> Items.COMPARATOR, ReduxBlocks.LOGICATOR);
         }
 

@@ -1,5 +1,6 @@
 package net.zepalesque.redux;
 
+import com.aetherteam.aether.item.AetherItems;
 import com.google.common.reflect.Reflection;
 import com.mojang.logging.LogUtils;
 import io.github.razordevs.aeroblender.aether.AetherRuleCategory;
@@ -13,8 +14,11 @@ import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
+import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
+import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.datamaps.RegisterDataMapTypesEvent;
+import net.zepalesque.redux.attachment.ReduxDataAttachments;
 import net.zepalesque.redux.block.ReduxBlocks;
 import net.zepalesque.redux.blockset.flower.ReduxFlowerSets;
 import net.zepalesque.redux.blockset.stone.ReduxStoneSets;
@@ -29,6 +33,7 @@ import net.zepalesque.redux.entity.ReduxEntities;
 import net.zepalesque.redux.item.ReduxItems;
 import net.zepalesque.redux.item.components.ReduxDataComponents;
 import net.zepalesque.redux.loot.modifer.ReduxLootModifiers;
+import net.zepalesque.redux.network.packet.AerjumpPacket;
 import net.zepalesque.redux.pack.PackUtils;
 import net.zepalesque.redux.pack.ReduxPackConfig;
 import net.zepalesque.redux.recipe.ReduxRecipes;
@@ -40,6 +45,7 @@ import net.zepalesque.redux.world.feature.gen.ReduxFeatures;
 import net.zepalesque.redux.world.tree.decorator.ReduxTreeDecorators;
 import net.zepalesque.redux.world.tree.foliage.ReduxFoliagePlacers;
 import net.zepalesque.zenith.api.blockset.BlockSet;
+import net.zepalesque.zenith.network.packet.BiomeTintSyncPacket;
 import org.slf4j.Logger;
 import terrablender.api.Regions;
 import terrablender.api.SurfaceRuleManager;
@@ -81,7 +87,8 @@ public class Redux {
                 ReduxSounds.SOUNDS,
                 ReduxLootModifiers.GLOBAL_LOOT_MODIFIERS,
                 ReduxTreeDecorators.TREE_DECORATORS,
-                ReduxDataComponents.TYPES
+                ReduxDataComponents.TYPES,
+                ReduxDataAttachments.ATTACHMENTS
         };
 
         for (DeferredRegister<?> register : registers) {
@@ -100,8 +107,16 @@ public class Redux {
             SurfaceRuleManager.addSurfaceRules(AetherRuleCategory.THE_AETHER, "aether_redux", ReduxSurfaceRules.makeRules());
             ReduxBlocks.registerFlammability();
             ReduxBlocks.registerToolConversions();
+            ReduxItems.registerAccessories();
             ReduxEntities.addBossConversions();
         });
+    }
+
+    public void registerPackets(RegisterPayloadHandlersEvent event) {
+        PayloadRegistrar registrar = event.registrar(MODID).versioned("1.0.0").optional();
+        registrar.playToServer(AerjumpPacket.Request.TYPE, AerjumpPacket.Request.STREAM_CODEC, AerjumpPacket.Request::execute);
+        registrar.playToClient(AerjumpPacket.Accepted.TYPE, AerjumpPacket.Accepted.STREAM_CODEC, AerjumpPacket.Accepted::execute);
+        registrar.playToClient(AerjumpPacket.Particles.TYPE, AerjumpPacket.Particles.STREAM_CODEC, AerjumpPacket.Particles::execute);
     }
 
     private void registerDataMaps(RegisterDataMapTypesEvent event) {

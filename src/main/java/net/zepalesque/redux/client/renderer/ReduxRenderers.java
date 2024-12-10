@@ -13,4 +13,7 @@ public class ReduxRenderers {
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
         Redux.BLOCK_SETS.forEach(set -> set.registerRenderers(event));
     }
+
+    public static void registerAccessoryRenderers() {
+    }
 }

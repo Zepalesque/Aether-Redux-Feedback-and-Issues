@@ -32,6 +32,9 @@ public class ReduxItemTagsData extends ReduxItemTagsProvider {
 
         this.tag(AetherTags.Items.SLIDER_DAMAGING_ITEMS).add(ReduxItems.VERIDIUM_PICKAXE.get(), ReduxItems.INFUSED_VERIDIUM_PICKAXE.get());
 
+        this.tag(AetherTags.Items.BRONZE_DUNGEON_LOOT).add(ReduxItems.AERBOUND_CAPE.get());
+        this.tag(AetherTags.Items.ACCESSORIES_CAPES).add(ReduxItems.AERBOUND_CAPE.get());
+
         this.tag(AetherTags.Items.TREATED_AS_AETHER_ITEM).add(
                 ReduxItems.VERIDIUM_PICKAXE.get(),
                 ReduxItems.VERIDIUM_AXE.get(),

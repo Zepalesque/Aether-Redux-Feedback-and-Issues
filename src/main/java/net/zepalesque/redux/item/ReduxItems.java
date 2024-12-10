@@ -1,5 +1,8 @@
 package net.zepalesque.redux.item;
 
+import com.aetherteam.aether.item.AetherItems;
+import io.wispforest.accessories.api.AccessoriesAPI;
+import io.wispforest.accessories.api.Accessory;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
@@ -14,6 +17,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.zepalesque.redux.Redux;
 import net.zepalesque.redux.block.ReduxBlocks;
+import net.zepalesque.redux.item.accessories.cape.AerboundCapeItem;
 import net.zepalesque.redux.item.property.ReduxFoods;
 import net.zepalesque.redux.item.property.ReduxItemTiers;
 import net.zepalesque.redux.item.tools.VeridiumAxeItem;
@@ -24,10 +28,6 @@ import net.zepalesque.redux.item.tools.VeridiumShovelItem;
 import java.util.function.UnaryOperator;
 
 public class ReduxItems {
-
-
-    public static final UnaryOperator<Component> TOOLTIP_SHIFT_FOR_INFO = (component -> Screen.hasShiftDown() ? component : Component.translatable("gui.aether_redux.shift_info", Minecraft.getInstance().options.keyShift.getKey().getDisplayName().getString()).withStyle(ChatFormatting.DARK_GRAY));
-
 
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Redux.MODID);
 
@@ -50,4 +50,14 @@ public class ReduxItems {
     public static final DeferredItem<VeridiumAxeItem> INFUSED_VERIDIUM_AXE = ITEMS.register("infused_veridium_axe", () -> new VeridiumAxeItem(ReduxItemTiers.INFUSED_VERIDIUM, new Item.Properties().attributes(AxeItem.createAttributes(ReduxItemTiers.INFUSED_VERIDIUM, 1, -2.9F)), VERIDIUM_AXE));
     public static final DeferredItem<VeridiumShovelItem> INFUSED_VERIDIUM_SHOVEL = ITEMS.register("infused_veridium_shovel", () -> new VeridiumShovelItem(ReduxItemTiers.INFUSED_VERIDIUM, new Item.Properties().attributes(ShovelItem.createAttributes(ReduxItemTiers.INFUSED_VERIDIUM, 0, -2.8F)), VERIDIUM_SHOVEL));
     public static final DeferredItem<VeridiumHoeItem> INFUSED_VERIDIUM_HOE = ITEMS.register("infused_veridium_hoe", () -> new VeridiumHoeItem(ReduxItemTiers.INFUSED_VERIDIUM, new Item.Properties().attributes(HoeItem.createAttributes(ReduxItemTiers.INFUSED_VERIDIUM, 0, -1.4F)), VERIDIUM_HOE));
+
+    public static final DeferredItem<AerboundCapeItem> AERBOUND_CAPE = ITEMS.register("aerbound_cape", () -> new AerboundCapeItem(new Item.Properties().stacksTo(1).rarity(AetherItems.AETHER_LOOT)));
+
+    public static void registerAccessories() {
+        registerAccessory(AERBOUND_CAPE.get());
+    }
+
+    private static <T extends Item & Accessory> void registerAccessory(T accessory) {
+        AccessoriesAPI.registerAccessory(accessory, accessory);
+    }
 }

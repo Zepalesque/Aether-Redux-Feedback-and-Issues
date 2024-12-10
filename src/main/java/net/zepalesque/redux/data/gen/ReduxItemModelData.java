@@ -83,6 +83,8 @@ public class ReduxItemModelData extends ReduxItemModelProvider {
         this.itemBlockFlatOther(ReduxBlocks.GOLDEN_VINES.get(), ReduxBlocks.GOLDEN_VINES_PLANT.get(), "natural/");
 
         this.item(ReduxBlocks.LOGICATOR.get().asItem(), "misc/");
+
+        this.item(ReduxItems.AERBOUND_CAPE.get(), "accessories/");
     }
 
 

@@ -11,7 +11,7 @@ public class TooltipUtils {
     /**
      * Returns the given component, or the default message if the shift key is up.
      */
-    public static final UnaryOperator<Component> TOOLTIP_SHIFT_FOR_INFO = (component -> Screen.hasShiftDown() ? component : Component.translatable("gui.aether_redux.shift_info", Minecraft.getInstance().options.keyShift.getKey().getDisplayName().getString()).withStyle(ChatFormatting.DARK_GRAY));
+    public static final UnaryOperator<Component> TOOLTIP_SHIFT_FOR_INFO = (component -> Screen.hasShiftDown() ? component : Component.translatable("tooltip.aether_redux.shift_info", Minecraft.getInstance().options.keyShift.getKey().getDisplayName().getString()).withStyle(ChatFormatting.DARK_GRAY));
     /**
      * Returns the given component, or null if the shift key is up.
      */

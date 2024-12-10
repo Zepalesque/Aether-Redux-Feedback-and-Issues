@@ -23,5 +23,8 @@ public class ReduxSoundsData extends ReduxSoundsProvider {
         this.add(ReduxSounds.LOGICATOR_CLICK, sound ->
                 definition().with(sound("random/click"))
                         .subtitle(DatagenUtil.subtitleFor(sound)));
+        this.add(ReduxSounds.AERJUMP, sound ->
+                definition().with(sound("aether_redux:item/aerbound_cape/aerjump"))
+                        .subtitle(DatagenUtil.subtitleFor(sound)));
     }
 }
