@@ -14,6 +14,7 @@ import net.zepalesque.redux.client.audio.ReduxSounds;
 import net.zepalesque.redux.client.particle.ReduxParticles;
 import net.zepalesque.redux.item.ReduxItems;
 import net.zepalesque.redux.network.packet.ReduxPlayerSyncPacket;
+import net.zepalesque.zenith.util.codec.UnboundedHashMapCodec;
 import org.apache.commons.lang3.tuple.Triple;
 import org.jetbrains.annotations.NotNull;
 
@@ -46,7 +47,7 @@ public class ReduxPlayerAttachment implements INBTSynchable {
     }
 
     public static final Codec<ReduxPlayerAttachment> CODEC = RecordCodecBuilder.create(instance -> instance.group(
-            ExtraCodecs.strictUnboundedMap(ResourceLocation.CODEC, Codec.INT).fieldOf("aerjump_count_modifiers").forGetter(ReduxPlayerAttachment::getAerjumpCountModifiers),
+            UnboundedHashMapCodec.of(ResourceLocation.CODEC, Codec.INT).fieldOf("aerjump_count_modifiers").forGetter(ReduxPlayerAttachment::getAerjumpCountModifiers),
             Codec.INT.fieldOf("base_aerjumps").forGetter(ReduxPlayerAttachment::getBaseAerjumps),
             Codec.INT.fieldOf("performed_aerjumps").forGetter(ReduxPlayerAttachment::getPerformedAerjumps),
             Codec.intRange(0, 3).fieldOf("aerjump_air_time").forGetter(ReduxPlayerAttachment::getAirTime)
