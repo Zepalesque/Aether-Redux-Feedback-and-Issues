@@ -25,7 +25,7 @@ import java.util.function.Supplier;
 
 public class ReduxPlayerAttachment implements INBTSynchable {
 
-
+    // TODO: Investigate, do any of these values actually NEED to be synchronized?
     private final Map<String, Triple<Type, Consumer<Object>, Supplier<Object>>> synchableFunctions = Map.ofEntries(
             Map.entry("max_aerjumps", Triple.of(Type.INT, (object) -> this.setMaxAerjumps((int) object), this::getMaxAerjumps)),
             Map.entry("base_aerjumps", Triple.of(Type.INT, (object) -> this.setBaseAerjumps((int) object), this::getBaseAerjumps)),

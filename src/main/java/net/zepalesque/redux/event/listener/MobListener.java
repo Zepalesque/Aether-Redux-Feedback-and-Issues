@@ -39,7 +39,7 @@ public class MobListener {
             ReduxPlayerAttachment attachment = ReduxPlayerAttachment.get(player);
             int jumps = attachment.getPrevPerformedAerjumps();
             if (attachment.getPrevPerformedAerjumps() > 0) {
-                float distance = event.getDistance() - jumps - 0.5F;
+                float distance = event.getDistance() - jumps - 1F;
                 event.setDistance(distance);
             }
         }
