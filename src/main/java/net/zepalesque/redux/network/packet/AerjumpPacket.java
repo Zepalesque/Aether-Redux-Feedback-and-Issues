@@ -39,7 +39,7 @@ public class AerjumpPacket {
             if (player.getServer() != null && player.getId() == packet.playerID() && player instanceof ServerPlayer sp) {
                 ReduxPlayerAttachment attachment = ReduxPlayerAttachment.get(sp);
                 int jumpIndex = attachment.getPerformedAerjumps();
-                if (attachment.tryAerjump(sp, jumpIndex)) {
+                 if (attachment.tryAerjump(sp, jumpIndex)) {
                     double x = sp.getX();
                     double y = sp.getY();
                     double z = sp.getZ();
