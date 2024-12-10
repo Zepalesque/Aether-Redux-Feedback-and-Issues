@@ -36,7 +36,7 @@ public class ReduxPlayerAttachment implements INBTSynchable {
     // TODO: Flesh out into bigger system in Zenith? Add registerable operators?
     private final Map<ResourceLocation, Integer> aerjumpCountModifiers;
 
-    private int performedAerjumps = 0, baseAerjumps = 0, airTime = 0;
+    private int performedAerjumps = 0, baseAerjumps = 0, airTime = 0, prevPerformedAerjumps = 0;
 
     // cached value, updated when modifiers are added/removed
     private int maxAerjumps = 0;
@@ -50,13 +50,15 @@ public class ReduxPlayerAttachment implements INBTSynchable {
             UnboundedHashMapCodec.of(ResourceLocation.CODEC, Codec.INT).fieldOf("aerjump_count_modifiers").forGetter(ReduxPlayerAttachment::getAerjumpCountModifiers),
             Codec.INT.fieldOf("base_aerjumps").forGetter(ReduxPlayerAttachment::getBaseAerjumps),
             Codec.INT.fieldOf("performed_aerjumps").forGetter(ReduxPlayerAttachment::getPerformedAerjumps),
+            Codec.INT.fieldOf("performed_aerjumps_last_tick").forGetter(ReduxPlayerAttachment::getPrevPerformedAerjumps),
             Codec.intRange(0, 3).fieldOf("aerjump_air_time").forGetter(ReduxPlayerAttachment::getAirTime)
     ).apply(instance, ReduxPlayerAttachment::new));
 
-    private ReduxPlayerAttachment(Map<ResourceLocation, Integer> aerjumpCountModifiers, int baseAerjumps, int performedAerjumps, int airTime) {
+    private ReduxPlayerAttachment(Map<ResourceLocation, Integer> aerjumpCountModifiers, int baseAerjumps, int performedAerjumps, int prevPerformedAerjumps, int airTime) {
         this.aerjumpCountModifiers = aerjumpCountModifiers;
         this.baseAerjumps = baseAerjumps;
         this.performedAerjumps = performedAerjumps;
+        this.prevPerformedAerjumps = prevPerformedAerjumps;
         this.airTime = airTime;
         this.maxAerjumps = aerjumpCountModifiers.isEmpty() ? baseAerjumps : this.calcAerjumpMax();
     }
@@ -103,6 +105,10 @@ public class ReduxPlayerAttachment implements INBTSynchable {
         return this.performedAerjumps;
     }
 
+    public int getPrevPerformedAerjumps() {
+        return prevPerformedAerjumps;
+    }
+
     private void setMaxAerjumps(int maxAerjumps) {
         this.maxAerjumps = maxAerjumps;
     }
@@ -137,6 +143,7 @@ public class ReduxPlayerAttachment implements INBTSynchable {
     }
 
     private void tickAerjumps(Player player) {
+        this.prevPerformedAerjumps = this.getPerformedAerjumps();
         if (player.onGround()) {
             this.setSynched(player.getId(), Direction.CLIENT, "performed_aerjumps", 0);
         }
