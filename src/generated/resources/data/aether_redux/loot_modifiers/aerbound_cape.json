@@ -1,0 +1,23 @@
+{
+  "type": "nitrogen_internals:add_dungeon_loot",
+  "conditions": [
+    {
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "aether:chests/dungeon/bronze/bronze_dungeon_reward"
+    },
+    {
+      "chance": 0.75,
+      "condition": "minecraft:random_chance"
+    }
+  ],
+  "entries": [
+    {
+      "data": {
+        "count": 1,
+        "id": "aether_redux:aerbound_cape"
+      },
+      "weight": 1
+    }
+  ],
+  "rolls": 1
+}

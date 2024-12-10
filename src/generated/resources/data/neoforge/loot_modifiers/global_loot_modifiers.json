@@ -1,6 +1,7 @@
 {
   "entries": [
-    "aether_redux:raw_veridium"
+    "aether_redux:raw_veridium",
+    "aether_redux:aerbound_cape"
   ],
   "replace": false
 }
