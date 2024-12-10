@@ -59,8 +59,6 @@ public class AerboundCapeItem extends CapeItem {
 
     @Override
     public void getAttributesTooltip(ItemStack stack, SlotType type, List<Component> tooltips, TooltipContext tooltipContext, TooltipFlag tooltipType) {
-        tooltips.add(Component.empty());
-        tooltips.add(Component.translatable("tooltip.aether_redux.cape_modifier").withStyle(ChatFormatting.GRAY));
         tooltips.add(Component.translatable("tooltip.aether_redux.aerbound_cape_aerjump_ability", Minecraft.getInstance().options.keyJump.getKey().getDisplayName()).withStyle(ChatFormatting.BLUE));
         super.getAttributesTooltip(stack, type, tooltips, tooltipContext, tooltipType);
     }

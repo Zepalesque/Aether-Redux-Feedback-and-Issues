@@ -181,18 +181,10 @@ public class ReduxPlayerAttachment implements INBTSynchable {
             }
         }
     }
-
-
-
-
+    
     @Override
     public Map<String, Triple<Type, Consumer<Object>, Supplier<Object>>> getSynchableFunctions() {
-        return null;
-    }
-
-    @Override
-    public SyncPacket getSyncPacket(int entityID, String key, Type type, Object value) {
-        return null;
+        return synchableFunctions;
     }
 
     public static @NotNull ReduxPlayerAttachment get(@NotNull Player player) {
