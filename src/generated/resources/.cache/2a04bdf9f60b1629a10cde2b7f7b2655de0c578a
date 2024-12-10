@@ -1,5 +1,7 @@
-// 1.21.1	2024-11-23T13:51:28.7718308	Tags for minecraft:item mod id aether_redux
+// 1.21.1	2024-12-09T19:33:03.1621072	Tags for minecraft:item mod id aether_redux
+8d17c36582b2a10c1b19cd86cac220b5e90dc908 data/aether/tags/item/accessories_capes.json
 c191bd82d7ab0270a08a0b6d99db3860549e07ea data/aether/tags/item/boss_doorway_dungeon_blocks.json
+8d17c36582b2a10c1b19cd86cac220b5e90dc908 data/aether/tags/item/bronze_dungeon_loot.json
 184faca5516506997d979aa45bfac63b68600825 data/aether/tags/item/dungeon_blocks.json
 752d7b101062e40cc5449bf130575be14909a28b data/aether/tags/item/flying_cow_temptation_items.json
 079f532874a02f79935f6a4082693e47575060f5 data/aether/tags/item/locked_dungeon_blocks.json

@@ -81,8 +81,7 @@
   "block.aether_redux.wyndsprouts": "Wyndsprouts",
   "entity.aether_redux.crystal_boat": "Crystal Boat",
   "entity.aether_redux.crystal_chest_boat": "Crystal Boat with Chest",
-  "gui.aether_redux.infusion_info": "Can be infused by right-clicking with an Ambrosium Shard",
-  "gui.aether_redux.shift_info": "Hold [%s] for more info...",
+  "item.aether_redux.aerbound_cape": "Aerbound Cape",
   "item.aether_redux.crystal_boat": "Crystal Boat",
   "item.aether_redux.crystal_chest_boat": "Crystal Boat with Chest",
   "item.aether_redux.infused_veridium_axe": "Infused Veridium Axe",
@@ -160,6 +159,7 @@
   "lore.block.aether_redux.veridium_block": "A block of pure Veridium. This can be crafted from Veridium Ingots.",
   "lore.block.aether_redux.veridium_ore": "The ore of Veridium. This can be found around the Aether",
   "lore.block.aether_redux.wyndsprouts": "A common plant found in the Aether. They occasionally drop Wynd Oats, the main edible source of grain in the Aether.",
+  "lore.item.aether_redux.aerbound_cape": "A cape found in the Bronze Dungeon. It allows the wearer to double-jump!",
   "lore.item.aether_redux.crystal_boat": "Crafted from Crystal Planks. While the Aether does not have many large bodies of water, a boat can occasionally be a useful tool for crossing large distances over ice!",
   "lore.item.aether_redux.crystal_chest_boat": "ACrystal Boat with a handy chest in the back. Helpful for transporting more items over long stretches of water, which are famously difficult to find in the Aether.",
   "lore.item.aether_redux.infused_veridium_axe": "A axe made of Veridium. This can be infused by right-clicking with an Ambrosium Shard to make it far more powerful for a short time!",
@@ -183,7 +183,12 @@
   "pack.aether_redux.tintable_grass.description": "Grass tint textures for the Aether: Redux",
   "pack.aether_redux.tintable_grass.title": "Redux - Tintable Grass",
   "subtitles.aether_redux.block.logicator.click": "Logicator clicks",
+  "subtitles.aether_redux.item.aerbound_cape.aerjump": "Something aerjumps",
   "subtitles.aether_redux.item.generic.infuse": "Item infuses",
   "subtitles.aether_redux.item.generic.infusion_expire": "Item infusion runs out",
-  "tooltip.aether_redux.infusion_charge": "Infusion Charge: %s"
+  "tooltip.aether_redux.aerbound_cape_aerjump_ability": "Grants ability to double jump by pressing [%s]",
+  "tooltip.aether_redux.cape_modifier": "When on Back",
+  "tooltip.aether_redux.infusion_charge": "Infusion Charge: %s",
+  "tooltip.aether_redux.infusion_info": "Can be infused by right-clicking the item in your inventory while hovering over it with an Ambrosium Shard",
+  "tooltip.aether_redux.shift_info": "Hold [%s] for more info..."
 }

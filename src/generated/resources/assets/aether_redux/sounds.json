@@ -5,6 +5,12 @@
     ],
     "subtitle": "subtitles.aether_redux.block.logicator.click"
   },
+  "item.aerbound_cape.aerjump": {
+    "sounds": [
+      "aether_redux:item/aerbound_cape/aerjump"
+    ],
+    "subtitle": "subtitles.aether_redux.item.aerbound_cape.aerjump"
+  },
   "item.generic.infuse": {
     "sounds": [
       "aether_redux:item/generic/infuse_item"
