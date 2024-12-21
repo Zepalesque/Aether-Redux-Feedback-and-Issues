@@ -145,6 +145,11 @@ public class ReduxBlocks extends ReduxBlockBuilders {
     public static DeferredBlock<Block> SENTRITE_BARS = register("sentrite_bars",
             () -> new IronBarsBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BARS).mapColor(MapColor.DEEPSLATE)));
 
+
+    public static DeferredBlock<Block> RUNIC_LANTERN = register("runic_lantern",
+            () -> new LanternBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.LANTERN).mapColor(MapColor.DEEPSLATE).lightLevel(state -> 8)));
+
+
     public static final DeferredBlock<Block> VERIDIUM_ORE = register(
             "veridium_ore",
             () -> new AetherDoubleDropBlock(

@@ -123,6 +123,9 @@ public class ReduxLanguageData extends ReduxLanguageProvider {
         addBlock(ReduxBlocks.SENTRITE_BARS);
         addLore(ReduxBlocks.SENTRITE_BARS, "Metallic bars of purified Sentrite. These can be used as decorative fences or windows!");
 
+        addBlock(ReduxBlocks.RUNIC_LANTERN);
+        addLore(ReduxBlocks.RUNIC_LANTERN, "A lantern made with Sentry technology. You can place it on the ground or hang it on the ceiling!");
+
         addItem(ReduxItems.VERIDIUM_PICKAXE);
         addLore(ReduxItems.VERIDIUM_PICKAXE, "A pickaxe made of Veridium. This can be infused by right-clicking with an Ambrosium Shard to make it far more powerful for a short time!");
         addItem(ReduxItems.INFUSED_VERIDIUM_PICKAXE);

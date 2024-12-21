@@ -94,7 +94,8 @@ public class ReduxTabs {
                     ReduxStoneSets.SENTRITE_BRICKS.block(),
                     ReduxBlocks.LOCKED_SENTRITE_BRICKS,
                     ReduxBlocks.RUNELIGHT,
-                    ReduxBlocks.LOCKED_RUNELIGHT
+                    ReduxBlocks.LOCKED_RUNELIGHT,
+                    ReduxBlocks.RUNIC_LANTERN
             );
         } else if (tab == AetherCreativeTabs.AETHER_BUILDING_BLOCKS.get()) {
             TabUtil.putAfter(event, AetherBlocks.ZANITE_BLOCK,

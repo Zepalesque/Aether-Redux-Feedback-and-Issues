@@ -82,6 +82,7 @@ public class ReduxBlockLoot extends ReduxBlockLootProvider {
         this.dropSelf(ReduxBlocks.SENTRITE_LANTERN.get());
         this.dropSelf(ReduxBlocks.SENTRITE_BARS.get());
         this.dropSelf(ReduxBlocks.REFINED_SENTRITE_BLOCK.get());
+        this.dropSelf(ReduxBlocks.RUNIC_LANTERN.get());
 
         this.dropSelf(ReduxBlocks.VERIDIUM_ORE.get());
         this.dropSelf(ReduxBlocks.VERIDIUM_BLOCK.get());
