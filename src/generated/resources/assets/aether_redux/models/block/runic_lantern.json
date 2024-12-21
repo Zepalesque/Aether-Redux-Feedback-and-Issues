@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_lantern",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "lantern": "aether_redux:block/dungeon/runic_lantern"
+  }
+}

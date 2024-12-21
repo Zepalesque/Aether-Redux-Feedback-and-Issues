@@ -1,4 +1,4 @@
-// 1.21.1	2024-12-20T20:16:03.1520045	Tags for minecraft:block mod id aether_redux
+// 1.21.1	2024-12-21T14:18:20.4570769	Tags for minecraft:block mod id aether_redux
 f88e31ba010e8b41d4256635de26d1cf8a0aa221 data/aether/tags/block/aether_animals_spawnable_on.json
 c191bd82d7ab0270a08a0b6d99db3860549e07ea data/aether/tags/block/boss_doorway_dungeon_blocks.json
 0bd5b2c5e211b2dd7346d4ad438675e1279452ca data/aether/tags/block/dungeon_blocks.json
@@ -6,7 +6,7 @@ c191bd82d7ab0270a08a0b6d99db3860549e07ea data/aether/tags/block/boss_doorway_dun
 1da24719bdf8ede41a69286763554958c408486f data/aether/tags/block/sentry_blocks.json
 f88e31ba010e8b41d4256635de26d1cf8a0aa221 data/aether/tags/block/swet_spawnable_on.json
 def6d9c61e45ecd875098eeb799975a50e3d3000 data/aether/tags/block/trapped_dungeon_blocks.json
-1441096f0a5ae928df8560daa9deb440e68d5de1 data/aether/tags/block/treated_as_aether_block.json
+93e10142ebb69441acf964f8af45cac6b8e16f4d data/aether/tags/block/treated_as_aether_block.json
 ff76e071710735bec611ec58205f07d13cb675bd data/aether_redux/tags/block/crystal_logs.json
 f88e31ba010e8b41d4256635de26d1cf8a0aa221 data/aether_redux/tags/block/enchanted_grass_blocks.json
 326897805dd0e252157208ee77d3437b3626f008 data/aether_redux/tags/block/quicksoil_behavior.json
@@ -29,7 +29,7 @@ cd7b6b7b6f06dae08f6bdaf2872e9c9febd0fe72 data/minecraft/tags/block/leaves.json
 5295d732f1c22a1f48681f9c064f14692726fdb3 data/minecraft/tags/block/logs.json
 9c45368b08909c3be45110e285aa25ee5c55221a data/minecraft/tags/block/mineable/axe.json
 8608c339523fb0a1a430fc0ed215b5170aafcc45 data/minecraft/tags/block/mineable/hoe.json
-0349d4415d15740e127d26f11d6df222498b41e4 data/minecraft/tags/block/mineable/pickaxe.json
+4c22d9524be29566feca7b56ec070b7762d90c65 data/minecraft/tags/block/mineable/pickaxe.json
 5cd5ffad520e1c7cf286cda27f5d056a1a8e7658 data/minecraft/tags/block/needs_stone_tool.json
 761d9af3851563316242dac11105074c9f83e129 data/minecraft/tags/block/planks.json
 837b682599201a182ed81a4a941b4b5faae2ebdf data/minecraft/tags/block/replaceable.json

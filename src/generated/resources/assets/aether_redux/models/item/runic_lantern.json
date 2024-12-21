@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "aether_redux:item/misc/sentrite_bars"
+    "layer0": "aether_redux:item/misc/runic_lantern"
   }
 }

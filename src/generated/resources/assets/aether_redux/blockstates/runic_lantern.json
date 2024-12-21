@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "hanging=false,waterlogged=false": {
+      "model": "aether_redux:block/runic_lantern"
+    },
+    "hanging=false,waterlogged=true": {
+      "model": "aether_redux:block/runic_lantern"
+    },
+    "hanging=true,waterlogged=false": {
+      "model": "aether_redux:block/hanging_runic_lantern"
+    },
+    "hanging=true,waterlogged=true": {
+      "model": "aether_redux:block/hanging_runic_lantern"
+    }
+  }
+}
