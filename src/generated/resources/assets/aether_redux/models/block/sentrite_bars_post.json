@@ -1,0 +1,7 @@
+{
+  "parent": "aether_redux:block/template/construction/bars/template_bars_post",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "bars": "aether_redux:block/construction/sentrite_bars"
+  }
+}

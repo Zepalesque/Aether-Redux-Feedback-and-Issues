@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": {
+      "item": "aether_redux:refined_sentrite"
+    }
+  },
+  "pattern": [
+    "PPP",
+    "PPP"
+  ],
+  "result": {
+    "count": 16,
+    "id": "aether_redux:sentrite_bars"
+  }
+}

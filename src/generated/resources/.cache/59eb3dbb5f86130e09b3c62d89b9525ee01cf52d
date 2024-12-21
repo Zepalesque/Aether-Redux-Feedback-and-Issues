@@ -1,4 +1,4 @@
-// 1.21.1	2024-11-24T14:16:38.7817353	Loot Tables
+// 1.21.1	2024-12-20T20:16:03.1400124	Loot Tables
 c6156555dc4897939b617dabc4521b7fa52feba0 data/aether_redux/loot_table/blocks/aurum.json
 16b03329a81906c5130061c5ea9ae1168890a761 data/aether_redux/loot_table/blocks/blightmoss_holystone.json
 95ce5e6d7a83e0c7f242a6389d5a3a39c565d8c8 data/aether_redux/loot_table/blocks/blightmoss_holystone_slab.json
@@ -56,6 +56,7 @@ a8bc8724f9f839107bd4f743549a92ecd6053197 data/aether_redux/loot_table/blocks/pot
 0ebc7dcb8eb4341e49b22474ca24a82197aa4203 data/aether_redux/loot_table/blocks/refined_sentrite_block.json
 d5f58f0628fd8f86bc78b66978c3c1ca732d9549 data/aether_redux/loot_table/blocks/runelight.json
 853ffb6317f8b66383cc6222a9f5b7e9981debeb data/aether_redux/loot_table/blocks/sentrite.json
+8b67ccfaaab195faa5d1ac6dce268443c9e882f2 data/aether_redux/loot_table/blocks/sentrite_bars.json
 49834448dd8324265edd752f9816a5a2bdba3c52 data/aether_redux/loot_table/blocks/sentrite_bricks.json
 6e90b18d32ef3e9581d5363d24436e6f99686ebe data/aether_redux/loot_table/blocks/sentrite_brick_slab.json
 52222e5bb58cec609afd3af6e0b1c9337661dfbc data/aether_redux/loot_table/blocks/sentrite_brick_stairs.json
