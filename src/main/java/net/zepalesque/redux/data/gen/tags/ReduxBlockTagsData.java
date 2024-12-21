@@ -134,6 +134,7 @@ public class ReduxBlockTagsData extends ReduxBlockTagsProvider {
                 ReduxBlocks.RUNELIGHT.get(),
                 ReduxBlocks.SENTRITE_CHAIN.get(),
                 ReduxBlocks.SENTRITE_LANTERN.get(),
+                ReduxBlocks.SENTRITE_BARS.get(),
                 ReduxBlocks.VERIDIUM_ORE.get(),
                 ReduxBlocks.RAW_VERIDIUM_BLOCK.get(),
                 ReduxBlocks.VERIDIUM_BLOCK.get(),

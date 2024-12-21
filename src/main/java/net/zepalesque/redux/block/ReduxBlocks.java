@@ -10,6 +10,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ChainBlock;
 import net.minecraft.world.level.block.FlowerPotBlock;
+import net.minecraft.world.level.block.IronBarsBlock;
 import net.minecraft.world.level.block.LanternBlock;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SoundType;
@@ -140,6 +141,9 @@ public class ReduxBlocks extends ReduxBlockBuilders {
 
     public static DeferredBlock<Block> SENTRITE_LANTERN = register("sentrite_lantern",
             () -> new LanternBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.LANTERN).mapColor(MapColor.DEEPSLATE).lightLevel(state -> 13)));
+
+    public static DeferredBlock<Block> SENTRITE_BARS = register("sentrite_bars",
+            () -> new IronBarsBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BARS).mapColor(MapColor.DEEPSLATE)));
 
     public static final DeferredBlock<Block> VERIDIUM_ORE = register(
             "veridium_ore",

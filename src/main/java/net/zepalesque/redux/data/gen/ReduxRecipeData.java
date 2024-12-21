@@ -141,6 +141,13 @@ public class ReduxRecipeData extends ReduxRecipeProvider {
                 .unlockedBy(getHasName(AetherItems.AMBROSIUM_SHARD.get()), has(AetherItems.AMBROSIUM_SHARD.get()))
                 .save(output);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ReduxBlocks.SENTRITE_BARS.get(), 16)
+                .define('P', ReduxItems.REFINED_SENTRITE.get())
+                .pattern("PPP")
+                .pattern("PPP")
+                .unlockedBy(getHasName(ReduxItems.REFINED_SENTRITE.get()), has(ReduxItems.REFINED_SENTRITE.get()))
+                .save(output);
+
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ReduxBlocks.SENTRITE_CHAIN.get(), 3)
                 .define('I', ReduxItems.REFINED_SENTRITE.get())
                 .define('N', ReduxItems.SENTRITE_CHUNK.get())

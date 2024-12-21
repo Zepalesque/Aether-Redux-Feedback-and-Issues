@@ -103,7 +103,7 @@ public class ReduxTabs {
                     ReduxBlocks.REFINED_SENTRITE_BLOCK
             );
 
-            TabUtil.put(event, ReduxBlocks.SENTRITE_LANTERN, ReduxBlocks.SENTRITE_CHAIN);
+            TabUtil.put(event, ReduxBlocks.SENTRITE_CHAIN, ReduxBlocks.SENTRITE_BARS);
         } else if (tab == AetherCreativeTabs.AETHER_EQUIPMENT_AND_UTILITIES.get()) {
             TabUtil.putBefore(event, AetherItems.GRAVITITE_SWORD,
                     ReduxItems.INFUSED_VERIDIUM_HOE,
@@ -135,6 +135,8 @@ public class ReduxTabs {
             TabUtil.put(event, ReduxBlocks.LOGICATOR);
         } else if (tab == AetherCreativeTabs.AETHER_ARMOR_AND_ACCESSORIES.get()) {
             TabUtil.putAfter(event, AetherItems.SWET_CAPE, ReduxItems.AERBOUND_CAPE);
+        } else if (tab == AetherCreativeTabs.AETHER_FUNCTIONAL_BLOCKS.get()) {
+            TabUtil.putAfter(event, AetherBlocks.AMBROSIUM_TORCH, ReduxBlocks.SENTRITE_LANTERN);
         } else if (tab == BuiltInRegistries.CREATIVE_MODE_TAB.get(CreativeModeTabs.REDSTONE_BLOCKS)) {
             TabUtil.putAfter(event, () -> Items.COMPARATOR, ReduxBlocks.LOGICATOR);
         }

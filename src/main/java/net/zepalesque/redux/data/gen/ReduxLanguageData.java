@@ -119,7 +119,9 @@ public class ReduxLanguageData extends ReduxLanguageProvider {
         addBlock(ReduxBlocks.SENTRITE_CHAIN);
         addLore(ReduxBlocks.SENTRITE_CHAIN, "A chain made of purified Sentrite. This is crafted with a piece of Refined Sentrite and two Sentrite Chunks.");
         addBlock(ReduxBlocks.SENTRITE_LANTERN);
-        addLore(ReduxBlocks.SENTRITE_LANTERN, "A lantern made of Sentrite. You can place it on the ground or hang it on the ceiling!");
+        addLore(ReduxBlocks.SENTRITE_LANTERN, "A lantern made of purified Sentrite. You can place it on the ground or hang it on the ceiling!");
+        addBlock(ReduxBlocks.SENTRITE_BARS);
+        addLore(ReduxBlocks.SENTRITE_BARS, "Metallic bars of purified Sentrite. These can be used as decorative fences or windows!");
 
         addItem(ReduxItems.VERIDIUM_PICKAXE);
         addLore(ReduxItems.VERIDIUM_PICKAXE, "A pickaxe made of Veridium. This can be infused by right-clicking with an Ambrosium Shard to make it far more powerful for a short time!");

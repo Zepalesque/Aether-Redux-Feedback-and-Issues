@@ -64,6 +64,7 @@ public class ReduxItemModelData extends ReduxItemModelProvider {
 
         this.item(ReduxBlocks.SENTRITE_LANTERN.get().asItem(), "misc/");
         this.item(ReduxBlocks.SENTRITE_CHAIN.get().asItem(), "misc/");
+        this.itemBlockFlat(ReduxBlocks.SENTRITE_BARS.get(), "construction/");
 
         this.handheldItem(ReduxItems.VERIDIUM_PICKAXE.get(), "tools/");
         this.handheldGlow(ReduxItems.INFUSED_VERIDIUM_PICKAXE.get(), "tools/");

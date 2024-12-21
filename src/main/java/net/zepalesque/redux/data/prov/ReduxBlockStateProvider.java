@@ -8,10 +8,13 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.ChainBlock;
+import net.minecraft.world.level.block.CrossCollisionBlock;
 import net.minecraft.world.level.block.DiodeBlock;
+import net.minecraft.world.level.block.IronBarsBlock;
 import net.minecraft.world.level.block.LanternBlock;
 import net.minecraft.world.level.block.PinkPetalsBlock;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
@@ -19,6 +22,7 @@ import net.neoforged.neoforge.client.model.generators.ModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.client.model.generators.ModelProvider;
 import net.neoforged.neoforge.client.model.generators.MultiPartBlockStateBuilder;
+import net.neoforged.neoforge.client.model.generators.MultiPartBlockStateBuilder.PartBuilder;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.zepalesque.redux.Redux;
@@ -29,6 +33,9 @@ import net.zepalesque.redux.block.natural.leaves.LeafPileBlock;
 import net.zepalesque.redux.block.redstone.LogicatorBlock;
 import net.zepalesque.redux.block.state.ReduxStates;
 import net.zepalesque.redux.block.state.enums.LogicatorMode;
+
+import java.util.Arrays;
+import java.util.Map;
 
 public abstract class ReduxBlockStateProvider extends AetherBlockStateProvider {
 
@@ -257,6 +264,59 @@ public abstract class ReduxBlockStateProvider extends AetherBlockStateProvider {
             if (axis != Direction.Axis.Y) { builder = builder.rotationX(90); }
             return builder.build();
         }));
+    }
+
+    public void metalBars(Block block, String location) {
+        final Map<Direction, BooleanProperty> directionProperties = Map.ofEntries(
+                Map.entry(Direction.NORTH, IronBarsBlock.NORTH),
+                Map.entry(Direction.SOUTH, IronBarsBlock.SOUTH),
+                Map.entry(Direction.EAST, IronBarsBlock.EAST),
+                Map.entry(Direction.WEST, IronBarsBlock.WEST)
+        );
+
+        ModelFile cap = this.models().withExistingParent(this.name(block) + "_cap", Redux.loc("block/template/construction/bars/template_bars_cap"))
+                .texture("bars", this.texture(this.name(block), location))
+                .renderType("cutout");
+        ModelFile capAlt = this.models().withExistingParent(this.name(block) + "_cap_alt", Redux.loc("block/template/construction/bars/template_bars_cap_alt"))
+                .texture("bars", this.texture(this.name(block), location))
+                .renderType("cutout");
+        ModelFile post = this.models().withExistingParent(this.name(block) + "_post", Redux.loc("block/template/construction/bars/template_bars_post"))
+                .texture("bars", this.texture(this.name(block), location))
+                .renderType("cutout");
+        ModelFile postEnds = this.models().withExistingParent(this.name(block) + "_post_ends", Redux.loc("block/template/construction/bars/template_bars_post_ends"))
+                .texture("bars", this.texture(this.name(block), location))
+                .renderType("cutout");
+        ModelFile side = this.models().withExistingParent(this.name(block) + "_side", Redux.loc("block/template/construction/bars/template_bars_side"))
+                .texture("bars", this.texture(this.name(block), location))
+                .renderType("cutout");
+        ModelFile sideAlt = this.models().withExistingParent(this.name(block) + "_side_alt", Redux.loc("block/template/construction/bars/template_bars_side_alt"))
+                .texture("bars", this.texture(this.name(block), location))
+                .renderType("cutout");
+
+        MultiPartBlockStateBuilder builder = this.getMultipartBuilder(block);
+        builder.part().modelFile(postEnds).addModel().end();
+        builder.part().modelFile(post).addModel()
+                .condition(CrossCollisionBlock.NORTH, false)
+                .condition(CrossCollisionBlock.SOUTH, false)
+                .condition(CrossCollisionBlock.EAST, false)
+                .condition(CrossCollisionBlock.WEST, false)
+                .end();
+
+        for (Map.Entry<Direction, BooleanProperty> entry : directionProperties.entrySet()) {
+            Direction d = entry.getKey();
+            BooleanProperty b = entry.getValue();
+            Direction[] others = { d.getClockWise(), d.getOpposite(), d.getCounterClockWise() };
+            boolean useAlt = d == Direction.SOUTH || d == Direction.WEST;
+            int rot = d.getAxis() == Direction.Axis.Z ? 0 : 90;
+
+            PartBuilder b1 = builder.part().modelFile(useAlt ? capAlt : cap).rotationY(rot).addModel().condition(b, true);
+            for (Direction other : others) {
+                b1.condition(directionProperties.get(other), false);
+            }
+            b1.end();
+
+            builder.part().modelFile(useAlt ? sideAlt : side).rotationY(rot).addModel().condition(b, true).end();
+        }
     }
 
     public void potAlt(Block block, Block flower, String location) {
