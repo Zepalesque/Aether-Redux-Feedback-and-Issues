@@ -13,6 +13,8 @@ import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
+import net.zepalesque.zenith.util.EasingUtil;
+import net.zepalesque.zenith.util.MathUtil;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
@@ -76,19 +78,19 @@ public class WhirlwindModel<T extends AbstractWhirlwind> extends EntityModel<T> 
 	@Override
 	public void setupAnim(@NotNull T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		final int mask = 0b00000000111111111111111111111111;
-		final int offset = 5;
-		final int length = 5;
+		final int offset = 3;
+		final int length = 11;
 		final int total = length + offset * 3;
 		if (ageInTicks < total) {
 			for (int i = 0; i < 4; i++) {
-				float prog = Math.clamp(ageInTicks - offset * i, 0, length) / length;
-				int a = (Math.round(255F * prog) << 24) | mask;
+				float prog = MathUtil.clampedInverp(ageInTicks - 1 - offset * i, 0, length);
+				int a = (Math.round(255F * EasingUtil.Sinusoidal.inOut(prog)) << 24) | mask;
 				alpha[i] = a;
 			}
 		} else if (entity.deathTime < total && entity.deathTime > 0) {
 			for (int i = 0; i < 4; i++) {
-				float prog = 1F - Math.clamp(entity.deathTime + ageInTicks % 1 - offset * i, 0, length) / length;
-				int a = (Math.round(255F * prog) << 24) | mask;
+				float prog = 1 - MathUtil.clampedInverp(ageInTicks - 1 - offset * i, 0, length);
+				int a = (Math.round(255F * EasingUtil.Sinusoidal.inOut(prog)) << 24) | mask;
 				alpha[i] = a;
 			}
 		} if (entity.deathTime >= total) {
