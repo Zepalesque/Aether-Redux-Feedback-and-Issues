@@ -193,7 +193,7 @@ public class ReduxPlayerAttachment implements INBTSynchable {
         if (level != null) {
             RandomSource random = level.getRandom();
             double radius = 1.25D;
-            double height = 0.3 aD;
+            double height = 0.3D;
             for (int i = 0; i < 12; i++) {
                 double x2 = x + (random.nextDouble() * radius) - (radius * 0.5D);
                 double y2 = y + (random.nextDouble() * height);
