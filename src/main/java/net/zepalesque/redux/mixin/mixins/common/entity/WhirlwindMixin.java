@@ -14,15 +14,17 @@ import java.util.stream.Stream;
 
 @Mixin(AbstractWhirlwind.class)
 public class WhirlwindMixin extends MobMixin {
-    @Inject(method = "tick", at = @At(value = "INVOKE", target = "Lcom/aetherteam/aether/entity/monster/AbstractWhirlwind;discard()V"))
+    @Inject(method = "tick", at = @At(value = "INVOKE", target = "Lcom/aetherteam/aether/entity/monster/AbstractWhirlwind;discard()V"), cancellable = true)
     protected void redux$dissipate(CallbackInfo ci) {
         AbstractWhirlwind self = ((AbstractWhirlwind) (Object) this);
-        self.hurt(self.damageSources().genericKill(), Float.MAX_VALUE);
+        self.setHealth(0.0F);
+        ci.cancel();
     }
-    @Inject(method = "kill", at = @At(value = "HEAD"))
+    @Inject(method = "kill", at = @At(value = "HEAD"), cancellable = true)
     protected void redux$kill(CallbackInfo ci) {
         AbstractWhirlwind self = ((AbstractWhirlwind) (Object) this);
-        self.hurt(self.damageSources().genericKill(), Float.MAX_VALUE);
+        self.setHealth(0.0F);
+        ci.cancel();
     }
 
     @WrapOperation(method = "aiStep", at = @At(value = "INVOKE", target = "Ljava/util/stream/Stream;toList()Ljava/util/List;"))

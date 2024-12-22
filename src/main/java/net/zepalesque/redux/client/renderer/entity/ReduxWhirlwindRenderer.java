@@ -41,11 +41,11 @@ public class ReduxWhirlwindRenderer<T extends AbstractWhirlwind> extends LivingE
 
     @Override
     public void render(T entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
-        float age = (float)entity.tickCount + partialTicks;
+        float age = this.getBob(entity, partialTicks);
         VertexConsumer vertexconsumer = buffer.getBuffer(RenderType.breezeWind(TEXTURE_LOCATION, this.xOffset(age) % 1.0F, 0.0F));
         poseStack.pushPose();
         this.model.setupAnim(entity, 0.0F, 0.0F, age, 0.0F, 0.0F);
-        poseStack.translate(0.0F, (entity.getBbHeight() + 0.6875F), 0.0F);
+        poseStack.translate(0.0F, (entity.getBbHeight()/* + 0.6875F*/), 0.0F);
         poseStack.mulPose(Axis.ZP.rotationDegrees(180.0F));
         this.model.renderToBuffer(poseStack, vertexconsumer, packedLight, OverlayTexture.NO_OVERLAY);
         poseStack.popPose();

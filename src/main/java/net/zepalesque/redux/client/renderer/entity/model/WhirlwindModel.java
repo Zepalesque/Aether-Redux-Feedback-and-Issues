@@ -27,7 +27,7 @@ public class WhirlwindModel<T extends AbstractWhirlwind> extends EntityModel<T> 
 	private final ModelPart whirl_top;
 	private final ModelPart top_render;
 
-	private final int[] alpha = {-1, -1, -1, -1};
+	private int[] alpha = {-1, -1, -1, -1};
 
 	public WhirlwindModel(ModelPart root) {
 		this.whirl_body = root.getChild("whirl_body");
@@ -79,13 +79,13 @@ public class WhirlwindModel<T extends AbstractWhirlwind> extends EntityModel<T> 
 		final int total = length + offset * 3;
 		if (ageInTicks < total) {
 			for (int i = 0; i < 4; i++) {
-				float prog = Math.clamp(ageInTicks - offset * i, 0, 5);
-				int a = ((int) (0xFF * prog) << 24) | 0b00000000111111111111111111111111;
+				float prog = Math.clamp(ageInTicks - offset * i, 0, length) / length;
+				int a = (Math.round(255F * prog) << 24) | 0b00000000111111111111111111111111;
 				alpha[i] = a;
 			}
 		} else if (entity.deathTime < total && entity.deathTime > 0) {
 			for (int i = 0; i < 4; i++) {
-				float prog = 5 - Math.clamp(entity.deathTime + (ageInTicks % 1) - offset * i, 0, 5);
+				float prog = 5 - Math.clamp(entity.deathTime + (ageInTicks % 1) - offset * i, 0, length)  / length;
 				int a = ((int) (0xFF * prog) << 24) | 0b00000000111111111111111111111111;
 				alpha[i] = a;
 			}
@@ -94,14 +94,17 @@ public class WhirlwindModel<T extends AbstractWhirlwind> extends EntityModel<T> 
 
 		this.whirl_body.getAllParts().forEach(ModelPart::resetPose);
 		float f = ageInTicks * (float) Math.PI * -0.1F * 3.0F;
-		this.whirl_top.x = Mth.sin(f) * 0.5F * 0.4F * 3.0F;
-		this.whirl_top.z = Mth.cos(f) * 0.4F * 3.0F;
-		this.whirl_upper.x = Mth.cos(f) * 1.0F * 0.6F * 3.0F;
-		this.whirl_upper.z = Mth.sin(f) * 1.0F * 0.6F * 3.0F;
-		this.whirl_lower.x = Mth.sin(f) * 0.5F * 0.8F * 3.0F;
-		this.whirl_lower.z = Mth.cos(f) * 0.8F * 3.0F;
-		this.whirl_bottom.x = Mth.cos(f) * -0.25F * 1.0F * 3.0F;
-		this.whirl_bottom.z = Mth.sin(f) * -0.25F * 1.0F * 3.0F;
+		this.bottom_render.x = Mth.cos(f) * -0.25F * 1.0F * 3.0F;
+		this.bottom_render.z = Mth.sin(f) * -0.25F * 1.0F * 3.0F;
+
+		this.lower_render.x = this.bottom_render.x + Mth.sin(f) * 0.5F * 0.8F * 3.0F;
+		this.lower_render.z = this.bottom_render.z + Mth.cos(f) * 0.8F * 3.0F;
+
+		this.upper_render.x = this.lower_render.x + Mth.cos(f) * 1.0F * 0.6F * 3.0F;
+		this.upper_render.z = this.lower_render.z + Mth.sin(f) * 1.0F * 0.6F * 3.0F;
+
+		this.top_render.x = this.top_render.x + Mth.sin(f) * 0.5F * 0.4F * 3.0F;
+		this.top_render.z = this.top_render.z + Mth.cos(f) * 0.4F * 3.0F;
 	}
 
 	@Override
@@ -110,6 +113,8 @@ public class WhirlwindModel<T extends AbstractWhirlwind> extends EntityModel<T> 
 		lower_render.render(poseStack, buffer, packedLight, packedOverlay, color & alpha[1]);
 		upper_render.render(poseStack, buffer, packedLight, packedOverlay, color & alpha[2]);
 		top_render.render(poseStack, buffer, packedLight, packedOverlay, color & alpha[3]);
+		alpha = new int[]{-1, -1, -1, -1};
+
 	}
 
 
