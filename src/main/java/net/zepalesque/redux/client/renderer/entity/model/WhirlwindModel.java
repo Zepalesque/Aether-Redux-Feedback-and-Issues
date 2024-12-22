@@ -14,7 +14,6 @@ import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
 import net.zepalesque.zenith.util.EasingUtil;
-import net.zepalesque.zenith.util.MathUtil;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
@@ -83,13 +82,13 @@ public class WhirlwindModel<T extends AbstractWhirlwind> extends EntityModel<T> 
 		final int total = length + offset * 3;
 		if (ageInTicks < total) {
 			for (int i = 0; i < 4; i++) {
-				float prog = MathUtil.clampedInverp(ageInTicks - 1 - offset * i, 0, length);
+				float prog = Math.clamp(ageInTicks - 1 - offset * i, 0, length) / length;
 				int a = (Math.round(255F * EasingUtil.Sinusoidal.inOut(prog)) << 24) | mask;
 				alpha[i] = a;
 			}
 		} else if (entity.deathTime < total && entity.deathTime > 0) {
 			for (int i = 0; i < 4; i++) {
-				float prog = 1 - MathUtil.clampedInverp(ageInTicks - 1 - offset * i, 0, length);
+				float prog = 1F - Math.clamp(entity.deathTime + ageInTicks % 1 - offset * i, 0, length) / length;
 				int a = (Math.round(255F * EasingUtil.Sinusoidal.inOut(prog)) << 24) | mask;
 				alpha[i] = a;
 			}
