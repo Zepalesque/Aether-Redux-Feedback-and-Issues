@@ -1,12 +1,15 @@
 package net.zepalesque.redux.event.listener;
 
 import com.aetherteam.aether.attachment.AetherPlayerAttachment;
+import com.aetherteam.aether.entity.AetherEntityTypes;
 import com.aetherteam.aether.item.EquipmentUtil;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.EntityEvent;
 import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import net.zepalesque.redux.Redux;
@@ -42,6 +45,13 @@ public class MobListener {
                 float distance = event.getDistance() - jumps - 1F;
                 event.setDistance(distance);
             }
+        }
+    }
+
+    @SubscribeEvent
+    public static void initializeBoundingBoxes(EntityEvent.Size event) {
+        if (event.getEntity().getType().equals(AetherEntityTypes.WHIRLWIND.get())) {
+            event.setNewSize(EntityDimensions.fixed(2.25F, 4.125F));
         }
     }
 }

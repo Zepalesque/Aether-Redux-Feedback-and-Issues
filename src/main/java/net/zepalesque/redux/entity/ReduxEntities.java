@@ -1,5 +1,6 @@
 package net.zepalesque.redux.entity;
 
+import com.aetherteam.aether.entity.AetherEntityTypes;
 import com.aetherteam.aether.entity.monster.dungeon.boss.Slider;
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -11,6 +12,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import net.zepalesque.redux.Redux;
 import net.zepalesque.redux.block.ReduxBlocks;
 import net.zepalesque.redux.blockset.stone.ReduxStoneSets;
+import net.zepalesque.redux.config.ReduxConfig;
 import org.spongepowered.asm.mixin.Unique;
 
 import java.util.Map;
@@ -29,4 +31,5 @@ public class ReduxEntities {
         slider.put(ReduxBlocks.LOCKED_RUNELIGHT.get(), state -> ReduxBlocks.RUNELIGHT.get().defaultBlockState());
         slider.put(ReduxBlocks.LOCKED_SENTRITE_BRICKS.get(), state -> ReduxStoneSets.SENTRITE_BRICKS.block().get().defaultBlockState());
     }
+
 }

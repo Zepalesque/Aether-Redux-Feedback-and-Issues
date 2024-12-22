@@ -13,6 +13,7 @@ import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 
@@ -65,35 +66,38 @@ public class WhirlwindModel<T extends AbstractWhirlwind> extends EntityModel<T> 
 
 		PartDefinition whirl_top = whirl_upper.addOrReplaceChild("whirl_top", CubeListBuilder.create(), PartPose.offset(0.0F, -20.0F, 0.0F));
 
-		PartDefinition top_render = whirl_top.addOrReplaceChild("top_render", CubeListBuilder.create().texOffs(116, 18).addBox(-9.0F, -33.0F, -9.0F, 18.0F, 12.0F, 18.0F, new CubeDeformation(0.0F))
-				.texOffs(160, 12).addBox(-12.0F, -33.0F, -12.0F, 24.0F, 12.0F, 24.0F, new CubeDeformation(0.0F))
-				.texOffs(0, 0).addBox(-18.0F, -33.0F, -18.0F, 36.0F, 12.0F, 36.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
+		PartDefinition top_render = whirl_top.addOrReplaceChild("top_render", CubeListBuilder.create().texOffs(116, 18).addBox(-9.0F, -53.0F, -9.0F, 18.0F, 12.0F, 18.0F, new CubeDeformation(0.0F))
+				.texOffs(160, 12).addBox(-12.0F, -53.0F, -12.0F, 24.0F, 12.0F, 24.0F, new CubeDeformation(0.0F))
+				.texOffs(0, 0).addBox(-18.0F, -53.0F, -18.0F, 36.0F, 12.0F, 36.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 0.0F, 0.0F));
 
 		return LayerDefinition.create(meshdefinition, 256, 256);
 	}
 
 	@Override
-	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+	public void setupAnim(@NotNull T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+		final int mask = 0b00000000111111111111111111111111;
 		final int offset = 5;
 		final int length = 5;
 		final int total = length + offset * 3;
 		if (ageInTicks < total) {
 			for (int i = 0; i < 4; i++) {
 				float prog = Math.clamp(ageInTicks - offset * i, 0, length) / length;
-				int a = (Math.round(255F * prog) << 24) | 0b00000000111111111111111111111111;
+				int a = (Math.round(255F * prog) << 24) | mask;
 				alpha[i] = a;
 			}
 		} else if (entity.deathTime < total && entity.deathTime > 0) {
 			for (int i = 0; i < 4; i++) {
-				float prog = 1 - Math.clamp(entity.deathTime + (ageInTicks % 1) - offset * i, 0, length) / length;
-				int a = ((int) (0xFF * prog) << 24) | 0b00000000111111111111111111111111;
+				float prog = 1F - Math.clamp(entity.deathTime + ageInTicks % 1 - offset * i, 0, length) / length;
+				int a = (Math.round(255F * prog) << 24) | mask;
 				alpha[i] = a;
 			}
+		} if (entity.deathTime >= total) {
+			alpha = new int[]{mask, mask, mask, mask};
 		}
 
 
 		this.whirl_body.getAllParts().forEach(ModelPart::resetPose);
-		float f = ageInTicks * (float) Math.PI * -0.1F * 3.0F;
+		float f = ageInTicks * (float) Math.PI * -0.1F;
 		this.bottom_render.x = Mth.cos(f) * -0.25F * 1.0F * 3.0F;
 		this.bottom_render.z = Mth.sin(f) * -0.25F * 1.0F * 3.0F;
 
@@ -114,7 +118,6 @@ public class WhirlwindModel<T extends AbstractWhirlwind> extends EntityModel<T> 
 		upper_render.render(poseStack, buffer, packedLight, packedOverlay, color & alpha[2]);
 		top_render.render(poseStack, buffer, packedLight, packedOverlay, color & alpha[3]);
 		alpha = new int[]{-1, -1, -1, -1};
-
 	}
 
 
