@@ -4,11 +4,14 @@ import com.aetherteam.nitrogen.attachment.INBTSynchable;
 import com.aetherteam.nitrogen.network.packet.SyncPacket;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.core.particles.ParticleType;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.zepalesque.redux.client.audio.ReduxSounds;
 import net.zepalesque.redux.client.particle.ReduxParticles;
@@ -189,11 +192,13 @@ public class ReduxPlayerAttachment implements INBTSynchable {
     public static void spawnAerjumpParticles(Level level, double x, double y, double z) {
         if (level != null) {
             RandomSource random = level.getRandom();
+            double radius = 1.25D;
+            double height = 0.3 aD;
             for (int i = 0; i < 12; i++) {
-                double x2 = x + (random.nextDouble() * 1.5) - (1.5 * 0.5D);
-                double y2 = y + (random.nextDouble() * 0.4D);
-                double z2 = z + (random.nextDouble() * 1.5) - (1.5 * 0.5D);
-                level.addParticle(ReduxParticles.SHINY_CLOUD, x2, y2, z2, 0.0D, random.nextDouble() * 0.03D, 0.0D);
+                double x2 = x + (random.nextDouble() * radius) - (radius * 0.5D);
+                double y2 = y + (random.nextDouble() * height);
+                double z2 = z + (random.nextDouble() * radius) - (radius * 0.5D);
+                level.addParticle(ParticleTypes.SMALL_GUST, x2, y2, z2, 0.0D, random.nextDouble() * -0.1D, 0.0D);
             }
         }
     }
