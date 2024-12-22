@@ -85,7 +85,7 @@ public class WhirlwindModel<T extends AbstractWhirlwind> extends EntityModel<T> 
 			}
 		} else if (entity.deathTime < total && entity.deathTime > 0) {
 			for (int i = 0; i < 4; i++) {
-				float prog = 5 - Math.clamp(entity.deathTime + (ageInTicks % 1) - offset * i, 0, length)  / length;
+				float prog = 1 - Math.clamp(entity.deathTime + (ageInTicks % 1) - offset * i, 0, length) / length;
 				int a = ((int) (0xFF * prog) << 24) | 0b00000000111111111111111111111111;
 				alpha[i] = a;
 			}
