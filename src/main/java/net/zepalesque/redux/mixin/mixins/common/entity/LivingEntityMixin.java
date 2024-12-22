@@ -4,6 +4,7 @@ import com.aetherteam.aether.entity.monster.dungeon.boss.Slider;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.phys.AABB;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -24,4 +25,7 @@ public class LivingEntityMixin {
 
     @Inject(method = "pushEntities", at = @At("HEAD"), cancellable = true)
     protected void redux$pushEntities(CallbackInfo ci) {}
+
+    @Inject(method = "getBoundingBoxForCulling", at = @At("HEAD"), cancellable = true)
+    protected void redux$cullBox(CallbackInfoReturnable<AABB> cir) {}
 }

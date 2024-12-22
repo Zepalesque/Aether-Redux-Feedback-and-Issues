@@ -48,10 +48,10 @@ public class MobListener {
         }
     }
 
-    @SubscribeEvent
+/*    @SubscribeEvent
     public static void initializeBoundingBoxes(EntityEvent.Size event) {
         if (event.getEntity().getType().equals(AetherEntityTypes.WHIRLWIND.get())) {
             event.setNewSize(EntityDimensions.fixed(2.25F, 4.125F));
         }
-    }
+    }*/
 }

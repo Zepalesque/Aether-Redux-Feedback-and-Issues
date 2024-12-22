@@ -39,10 +39,11 @@ public class WhirlwindMixin extends LivingEntityMixin {
         }
     }
 
-    @WrapOperation(method = "aiStep", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/phys/AABB;expandTowards(DDD)Lnet/minecraft/world/phys/AABB;"))
-    protected AABB redux$swirlMobs(AABB instance, double x, double y, double z, Operation<AABB> original) {
-        AABB oldBox = new AABB(instance.minX + 0.425F, instance.minY, instance.minZ + 0.425F, instance.maxX - 0.425F, instance.maxY - 3.325F, instance.maxZ - 0.425F);
-        return original.call(oldBox, x, y, z);
+    @Override
+    protected void redux$cullBox(CallbackInfoReturnable<AABB> cir) {
+        AABB box = ((AbstractWhirlwind) (Object) this).getBoundingBox();
+        AABB larger = new AABB(box.minX - 0.425F, box.minY, box.minZ - 0.425F, box.maxX + 0.425F, box.maxY + 3.325F, box.maxZ + 0.425F);
+        cir.setReturnValue(larger);
     }
 
     @Override
@@ -53,20 +54,5 @@ public class WhirlwindMixin extends LivingEntityMixin {
     @WrapWithCondition(method = "aiStep", at = @At(value = "INVOKE", target = "Lcom/aetherteam/aether/entity/monster/AbstractWhirlwind;spawnParticles()V"))
     protected boolean redux$spawnParticles(AbstractWhirlwind instance) {
         return false;
-    }
-
-    @Override
-    protected void redux$isPushable(CallbackInfoReturnable<Boolean> cir) {
-        cir.setReturnValue(false);
-    }
-
-    @Override
-    protected void redux$doPush(Entity entity, CallbackInfo ci) {
-        ci.cancel();
-    }
-
-    @Override
-    protected void redux$pushEntities(CallbackInfo ci) {
-        ci.cancel();
     }
 }
