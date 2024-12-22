@@ -14,6 +14,7 @@
     "common.block.QuicksoilMixin",
     "common.entity.MobMixin",
     "common.entity.SliderMixin",
+    "common.entity.WhirlwindMixin",
     "common.item.DiggerItemMixin",
     "common.item.PickaxeItemMixin",
     "common.world.structure.BronzeBossMixin",
