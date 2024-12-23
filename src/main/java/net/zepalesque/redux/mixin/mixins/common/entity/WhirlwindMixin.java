@@ -6,6 +6,7 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.phys.AABB;
+import net.zepalesque.redux.config.ReduxConfig;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -19,14 +20,12 @@ import java.util.stream.Stream;
 public class WhirlwindMixin extends LivingEntityMixin {
     @Inject(method = "tick", at = @At(value = "INVOKE", target = "Lcom/aetherteam/aether/entity/monster/AbstractWhirlwind;discard()V"), cancellable = true)
     protected void redux$dissipate(CallbackInfo ci) {
-        AbstractWhirlwind self = ((AbstractWhirlwind) (Object) this);
-        self.setHealth(0.0F);
+        ((AbstractWhirlwind) (Object) this).setHealth(0.0F);
         ci.cancel();
     }
     @Inject(method = "kill", at = @At(value = "HEAD"), cancellable = true)
     protected void redux$kill(CallbackInfo ci) {
-        AbstractWhirlwind self = ((AbstractWhirlwind) (Object) this);
-        self.setHealth(0.0F);
+        ((AbstractWhirlwind) (Object) this).setHealth(0.0F);
         ci.cancel();
     }
 
@@ -53,6 +52,6 @@ public class WhirlwindMixin extends LivingEntityMixin {
 
     @WrapWithCondition(method = "aiStep", at = @At(value = "INVOKE", target = "Lcom/aetherteam/aether/entity/monster/AbstractWhirlwind;spawnParticles()V"))
     protected boolean redux$spawnParticles(AbstractWhirlwind instance) {
-        return false;
+        return !ReduxConfig.CLIENT.improved_whirlwinds.get() && !((AbstractWhirlwind) (Object) this).isDeadOrDying();
     }
 }

@@ -69,6 +69,7 @@ public class ReduxConfig {
     public static class Client {
 
         public final ModConfigSpec.ConfigValue<Boolean> leaf_particles;
+        public final ModConfigSpec.ConfigValue<Boolean> improved_whirlwinds;
 
         public final ModConfigSpec.ConfigValue<Boolean> tintable_grass;
         public final ModConfigSpec.ConfigValue<Boolean> jappafied_textures;
@@ -79,6 +80,10 @@ public class ReduxConfig {
             leaf_particles = builder
                     .comment("Use nice falling leaf particles for Aether leaf blocks")
                     .define("Leaf Particles", true);
+            builder.pop();
+            improved_whirlwinds = builder
+                    .comment("Gives Whirlwinds a new design, based on Minecraft 1.21's new Breeze mob")
+                    .define("Improved Whirlwinds", true);
             builder.pop();
             builder.push("Builtin Resource Pack Customization");
             tintable_grass = ReduxPackConfig.register(builder

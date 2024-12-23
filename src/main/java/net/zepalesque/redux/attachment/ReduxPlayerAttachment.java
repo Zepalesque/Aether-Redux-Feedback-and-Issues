@@ -198,7 +198,7 @@ public class ReduxPlayerAttachment implements INBTSynchable {
                 double x2 = x + (random.nextDouble() * radius) - (radius * 0.5D);
                 double y2 = y + (random.nextDouble() * height);
                 double z2 = z + (random.nextDouble() * radius) - (radius * 0.5D);
-                level.addParticle(ParticleTypes.SMALL_GUST, x2, y2, z2, 0.0D, random.nextDouble() * -0.1D, 0.0D);
+                level.addParticle(ReduxParticles.SHINY_CLOUD, x2, y2, z2, 0.0D, random.nextDouble() * -0.1D, 0.0D);
             }
         }
     }

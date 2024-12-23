@@ -26,6 +26,7 @@ import net.minecraft.world.inventory.InventoryMenu;
 import net.zepalesque.redux.Redux;
 import net.zepalesque.redux.client.renderer.ReduxRenderers;
 import net.zepalesque.redux.client.renderer.entity.model.WhirlwindModel;
+import net.zepalesque.redux.config.ReduxConfig;
 import org.jetbrains.annotations.NotNull;
 
 public class ReduxWhirlwindRenderer<T extends AbstractWhirlwind> extends LivingEntityRenderer<T, EntityModel<T>> {
@@ -46,13 +47,16 @@ public class ReduxWhirlwindRenderer<T extends AbstractWhirlwind> extends LivingE
 
     @Override
     public void render(@NotNull T entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
-        float age = this.getBob(entity, partialTicks);
-        VertexConsumer vertexconsumer = buffer.getBuffer(RenderType.breezeWind(getTextureLocation(entity), this.xOffset(age) % 1.0F, 0.0F));
-        poseStack.pushPose();
-        this.model.setupAnim(entity, 0.0F, 0.0F, age, 0.0F, 0.0F);
-        poseStack.mulPose(Axis.ZP.rotationDegrees(180.0F));
-        this.model.renderToBuffer(poseStack, vertexconsumer, packedLight, OverlayTexture.NO_OVERLAY);
-        poseStack.popPose();
+        if (ReduxConfig.CLIENT.improved_whirlwinds.get()) {
+            float age = this.getBob(entity, partialTicks);
+            VertexConsumer vertexconsumer = buffer.getBuffer(RenderType.breezeWind(getTextureLocation(entity), this.xOffset(age) % 1.0F, 0.0F));
+            poseStack.pushPose();
+            this.model.setupAnim(entity, 0.0F, 0.0F, age, 0.0F, 0.0F);
+            poseStack.mulPose(Axis.ZP.rotationDegrees(180.0F));
+            if (entity.getType() == AetherEntityTypes.EVIL_WHIRLWIND.get()) poseStack.scale(1.25F, 1.25F, 1.25F);
+            this.model.renderToBuffer(poseStack, vertexconsumer, packedLight, OverlayTexture.NO_OVERLAY);
+            poseStack.popPose();
+        }
     }
 
     private float xOffset(float tickCount) {
