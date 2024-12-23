@@ -77,15 +77,18 @@ public class ReduxConfig {
 
         public Client(ModConfigSpec.Builder builder) {
             builder.push("Visual");
+
             leaf_particles = builder
                     .comment("Use nice falling leaf particles for Aether leaf blocks")
                     .define("Leaf Particles", true);
-            builder.pop();
             improved_whirlwinds = builder
                     .comment("Gives Whirlwinds a new design, based on Minecraft 1.21's new Breeze mob")
                     .define("Improved Whirlwinds", true);
+
             builder.pop();
+
             builder.push("Builtin Resource Pack Customization");
+
             tintable_grass = ReduxPackConfig.register(builder
                     .comment("Use modified models to allow tintable Aether Grass blocks and plants. Only disable if you know what you're doing!")
                     .define("Tinted Grass", true), "resource/", "tintable_grass");
@@ -95,6 +98,7 @@ public class ReduxConfig {
             slider_sfx = ReduxPackConfig.register(builder
                     .comment("Improve the hurt, death, and ambient sounds of the Slider.")
                     .define("Slider SFX Upgrades", true), "resource/sfx/", "slider");
+
             builder.pop();
         }
     }

@@ -1,6 +1,7 @@
 package net.zepalesque.redux.client.renderer.entity.model;
 
 
+import com.aetherteam.aether.entity.AetherEntityTypes;
 import com.aetherteam.aether.entity.monster.AbstractWhirlwind;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -96,20 +97,24 @@ public class WhirlwindModel<T extends AbstractWhirlwind> extends EntityModel<T> 
 			alpha = new int[]{mask, mask, mask, mask};
 		}
 
+		boolean flag = entity.getType() == AetherEntityTypes.EVIL_WHIRLWIND.get();
+
+		float speedModif = flag ? -0.2F : -0.1F;
+		float amountModif = flag ? 5.0F : 3.0F;
 
 		this.whirl_body.getAllParts().forEach(ModelPart::resetPose);
-		float f = ageInTicks * (float) Math.PI * -0.1F;
-		this.bottom_render.x = Mth.cos(f) * -0.25F * 1.0F * 3.0F;
-		this.bottom_render.z = Mth.sin(f) * -0.25F * 1.0F * 3.0F;
+		float f = ageInTicks * (float) Math.PI * speedModif;
+		this.bottom_render.x = Mth.cos(f) * -0.25F * 1.0F * amountModif;
+		this.bottom_render.z = Mth.sin(f) * -0.25F * 1.0F * amountModif;
 
-		this.lower_render.x = this.bottom_render.x + Mth.sin(f) * 0.5F * 0.8F * 3.0F;
-		this.lower_render.z = this.bottom_render.z + Mth.cos(f) * 0.8F * 3.0F;
+		this.lower_render.x = this.bottom_render.x + Mth.sin(f) * 0.5F * 0.8F * amountModif;
+		this.lower_render.z = this.bottom_render.z + Mth.cos(f) * 0.8F * amountModif;
 
-		this.upper_render.x = this.lower_render.x + Mth.cos(f) * 1.0F * 0.6F * 3.0F;
-		this.upper_render.z = this.lower_render.z + Mth.sin(f) * 1.0F * 0.6F * 3.0F;
+		this.upper_render.x = this.lower_render.x + Mth.cos(f) * 1.0F * 0.6F * amountModif;
+		this.upper_render.z = this.lower_render.z + Mth.sin(f) * 1.0F * 0.6F * amountModif;
 
-		this.top_render.x = this.top_render.x + Mth.sin(f) * 0.5F * 0.4F * 3.0F;
-		this.top_render.z = this.top_render.z + Mth.cos(f) * 0.4F * 3.0F;
+		this.top_render.x = this.top_render.x + Mth.sin(f) * 0.5F * 0.4F * amountModif;
+		this.top_render.z = this.top_render.z + Mth.cos(f) * 0.4F * amountModif;
 	}
 
 	@Override
