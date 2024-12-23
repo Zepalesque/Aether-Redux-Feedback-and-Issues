@@ -86,13 +86,13 @@ public class ReduxGlowParticle extends TextureSheetParticle {
 
       public Particle createParticle(SimpleParticleType type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
          ReduxGlowParticle lightning = new ReduxGlowParticle(level, x, y, z, 0.5D - ReduxGlowParticle.RANDOM.nextDouble(), ySpeed, 0.5D - ReduxGlowParticle.RANDOM.nextDouble(), this.sprite, true);
-         lightning.pickSprite(this.sprite);
-         lightning.yd *= 0.05F;
+         lightning.yd *= 0.0125F;
          if (xSpeed == 0.0D && zSpeed == 0.0D) {
-            lightning.xd *= 0.05F;
-            lightning.zd *= 0.05F;
+            lightning.xd *= 0.0125F;
+            lightning.zd *= 0.0125F;
          }
-         lightning.setLifetime((int)(16.0D / (level.random.nextDouble() * 0.8D + 0.2D)));
+         lightning.quadSize *= 2;
+         lightning.setLifetime(10);
          return lightning;
       }
    }

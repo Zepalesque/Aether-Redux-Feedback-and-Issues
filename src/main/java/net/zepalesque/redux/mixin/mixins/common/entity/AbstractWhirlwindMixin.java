@@ -1,13 +1,9 @@
 package net.zepalesque.redux.mixin.mixins.common.entity;
 
 import com.aetherteam.aether.entity.monster.AbstractWhirlwind;
-import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.phys.AABB;
-import net.zepalesque.redux.config.ReduxConfig;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -18,7 +14,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 @Mixin(AbstractWhirlwind.class)
-public class WhirlwindMixin extends LivingEntityMixin {
+public class AbstractWhirlwindMixin extends LivingEntityMixin {
     @Inject(method = "tick", at = @At(value = "INVOKE", target = "Lcom/aetherteam/aether/entity/monster/AbstractWhirlwind;discard()V"), cancellable = true)
     protected void redux$dissipate(CallbackInfo ci) {
         ((AbstractWhirlwind) (Object) this).setHealth(0.0F);
@@ -51,8 +47,5 @@ public class WhirlwindMixin extends LivingEntityMixin {
         ci.cancel();
     }
 
-    @WrapWithCondition(method = "aiStep", at = @At(value = "INVOKE", target = "Lcom/aetherteam/aether/entity/monster/AbstractWhirlwind;spawnParticles()V"))
-    protected boolean redux$spawnParticles(AbstractWhirlwind instance) {
-        return !ReduxConfig.CLIENT.improved_whirlwinds.get() && !((AbstractWhirlwind) (Object) this).isDeadOrDying();
-    }
+
 }
