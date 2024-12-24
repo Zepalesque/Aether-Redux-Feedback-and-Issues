@@ -30,7 +30,7 @@ public class ReduxGlowParticle extends TextureSheetParticle {
    }
 
    public ParticleRenderType getRenderType() {
-      return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
+      return ParticleRenderType.PARTICLE_SHEET_OPAQUE;
    }
 
    public int getLightColor(float partialTick) {
@@ -91,7 +91,6 @@ public class ReduxGlowParticle extends TextureSheetParticle {
             lightning.xd *= 0.0125F;
             lightning.zd *= 0.0125F;
          }
-         lightning.quadSize *= 2;
          lightning.setLifetime(10);
          return lightning;
       }

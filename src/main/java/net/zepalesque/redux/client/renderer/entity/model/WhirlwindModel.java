@@ -99,8 +99,8 @@ public class WhirlwindModel<T extends AbstractWhirlwind> extends EntityModel<T> 
 
 		boolean flag = entity.getType() == AetherEntityTypes.EVIL_WHIRLWIND.get();
 
-		float speedModif = flag ? -0.2F : -0.1F;
-		float amountModif = flag ? 5.0F : 3.0F;
+		float speedModif = flag ? -0.075F : -0.1F;
+		float amountModif = flag ? 4.0F : 3.0F;
 
 		this.whirl_body.getAllParts().forEach(ModelPart::resetPose);
 		float f = ageInTicks * (float) Math.PI * speedModif;
