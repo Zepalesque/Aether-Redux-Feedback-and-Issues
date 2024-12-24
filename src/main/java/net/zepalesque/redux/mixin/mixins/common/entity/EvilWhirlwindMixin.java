@@ -17,7 +17,7 @@ public class EvilWhirlwindMixin extends AbstractWhirlwindMixin {
     protected void redux$spawnParticles(CallbackInfo ci) {
         if (ReduxConfig.CLIENT.improved_whirlwinds.get()) {
             EvilWhirlwind self = (EvilWhirlwind) (Object) this;
-            if (self.getRandom().nextFloat() < 0.5) {
+            if (self.getRandom().nextFloat() < 0.65 && self.tickCount > 10 && self.deathTime < 10) {
                 final double minRadius = 4.5F / 16;
                 final double maxRadius = 22.5F / 16;
                 double rX = self.getRandom().nextDouble();
@@ -25,7 +25,7 @@ public class EvilWhirlwindMixin extends AbstractWhirlwindMixin {
                 double rZ = self.getRandom().nextDouble();
 
                 double radius = Mth.lerp(rY, minRadius, maxRadius);
-                double height = Mth.lerp(rY, 0, 4);
+                double height = Mth.lerp(rY, 0.5, 3.5);
 
                 double x = self.getX() - Mth.lerp(rX, -radius, radius);
                 double y = self.getY() + height;
