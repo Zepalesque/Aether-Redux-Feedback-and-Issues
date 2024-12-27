@@ -19,7 +19,9 @@ import net.zepalesque.redux.client.renderer.entity.model.WhirlwindModel;
 import net.zepalesque.redux.config.ReduxConfig;
 import org.jetbrains.annotations.NotNull;
 
-public class ReduxWhirlwindRenderer<T extends AbstractWhirlwind> extends LivingEntityRenderer<T, EntityModel<T>> implements ICachedPostRenderer<T> {
+// TODO: USE MAP FOR CACHES, computeIfAbsent + Map<T, Cache<T>>
+// TODO: Also, maybe every 100 or so frames (arbitrary, could also be every frame if it's not too resource-intensive) check each entity cache and ensure all are alive, remove ones that aren't
+public class ReduxWhirlwindRenderer<T extends AbstractWhirlwind> extends LivingEntityRenderer<T, WhirlwindModel<T>> implements ICachedPostRenderer<T> {
 
     private static final ResourceLocation WHIRLWIND = ResourceLocation.fromNamespaceAndPath(Aether.MODID, "textures/entity/whirlwind/whirlwind.png");
     private static final ResourceLocation EVIL_WHIRLWIND = ResourceLocation.fromNamespaceAndPath(Aether.MODID, "textures/entity/whirlwind/evil_whirlwind.png");
