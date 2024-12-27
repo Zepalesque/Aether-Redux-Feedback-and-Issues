@@ -12,12 +12,16 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
 import net.zepalesque.redux.client.renderer.ReduxRenderTypes;
 import net.zepalesque.redux.client.renderer.ReduxRenderers;
 import net.zepalesque.redux.client.renderer.api.ICachedPostRenderer;
 import net.zepalesque.redux.client.renderer.entity.model.WhirlwindModel;
 import net.zepalesque.redux.config.ReduxConfig;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.HashMap;
+import java.util.Map;
 
 // TODO: USE MAP FOR CACHES, computeIfAbsent + Map<T, Cache<T>>
 // TODO: Also, maybe every 100 or so frames (arbitrary, could also be every frame if it's not too resource-intensive) check each entity cache and ensure all are alive, remove ones that aren't
@@ -26,10 +30,9 @@ public class ReduxWhirlwindRenderer<T extends AbstractWhirlwind> extends LivingE
     private static final ResourceLocation WHIRLWIND = ResourceLocation.fromNamespaceAndPath(Aether.MODID, "textures/entity/whirlwind/whirlwind.png");
     private static final ResourceLocation EVIL_WHIRLWIND = ResourceLocation.fromNamespaceAndPath(Aether.MODID, "textures/entity/whirlwind/evil_whirlwind.png");
 
-    private final Cache<T> cache;
+    private final Map<T, Cache<T>> caches = new HashMap<>();
     public ReduxWhirlwindRenderer(EntityRendererProvider.Context context) {
         super(context, new WhirlwindModel<>(context.bakeLayer(ReduxRenderers.ModelLayers.WHIRLWIND)), 0.0F);
-        this.cache = new Cache<>();
     }
 
     @Override
@@ -41,12 +44,12 @@ public class ReduxWhirlwindRenderer<T extends AbstractWhirlwind> extends LivingE
 
     @Override
     public void render(@NotNull T entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
-        this.getCache().cache(entity, entityYaw, partialTicks, poseStack, buffer, packedLight);
+        this.getCaches().computeIfAbsent(entity, Cache::new).cache(entityYaw, partialTicks, poseStack, buffer, packedLight);
     }
 
     @Override
-    public Cache<T> getCache() {
-        return this.cache;
+    public Map<T, Cache<T>> getCaches() {
+        return this.caches;
     }
 
     public void internalRender(@NotNull T entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
@@ -62,6 +65,7 @@ public class ReduxWhirlwindRenderer<T extends AbstractWhirlwind> extends LivingE
             this.model.renderToBuffer(poseStack, vertexconsumer, packedLight, OverlayTexture.NO_OVERLAY);
             poseStack.popPose();
         }
+
 
     }
 

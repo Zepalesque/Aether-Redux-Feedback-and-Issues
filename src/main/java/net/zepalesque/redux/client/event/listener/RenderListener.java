@@ -92,7 +92,7 @@ public class RenderListener {
             double d0 = z + vec3.z();
             poseStack.pushPose();
             poseStack.translate(d2, d3, d0);
-            post.actuallyRender();
+            post.actuallyRender(entity);
             poseStack.popPose();
         }
     }
