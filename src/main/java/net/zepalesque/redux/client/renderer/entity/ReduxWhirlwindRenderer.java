@@ -39,7 +39,7 @@ public class ReduxWhirlwindRenderer<T extends AbstractWhirlwind> extends LivingE
 
     @Override
     public void render(@NotNull T entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
-        this.cache.cache(entity, entityYaw, partialTicks, poseStack, buffer, packedLight);
+        this.getCache().cache(entity, entityYaw, partialTicks, poseStack, buffer, packedLight);
     }
 
     @Override

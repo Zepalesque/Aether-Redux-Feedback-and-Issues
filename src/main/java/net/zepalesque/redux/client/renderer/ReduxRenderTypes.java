@@ -23,7 +23,7 @@ public class ReduxRenderTypes {
                         .setCullState(RenderType.NO_CULL)
                         .setLightmapState(RenderType.LIGHTMAP)
                         .setOverlayState(RenderType.NO_OVERLAY)
-                        .setWriteMaskState(RenderType.COLOR_WRITE)
+                        .setWriteMaskState(RenderType.COLOR_DEPTH_WRITE)
                         .createCompositeState(false)
         );
     }

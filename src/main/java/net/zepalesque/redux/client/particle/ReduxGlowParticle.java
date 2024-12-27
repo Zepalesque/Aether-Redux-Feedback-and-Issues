@@ -47,6 +47,8 @@ public class ReduxGlowParticle extends TextureSheetParticle {
       return j | k << 16;
    }
 
+
+
    @Override
    public void tick() {
       super.tick();
