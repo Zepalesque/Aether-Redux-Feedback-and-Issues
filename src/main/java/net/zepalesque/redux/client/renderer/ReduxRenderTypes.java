@@ -24,6 +24,7 @@ public class ReduxRenderTypes {
                         .setLightmapState(RenderType.LIGHTMAP)
                         .setOverlayState(RenderType.NO_OVERLAY)
                         .setWriteMaskState(RenderType.COLOR_DEPTH_WRITE)
+                        .setOutputState(RenderType.PARTICLES_TARGET)
                         .createCompositeState(false)
         );
     }
