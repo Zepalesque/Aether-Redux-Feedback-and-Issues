@@ -14,12 +14,12 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.zepalesque.redux.client.renderer.ReduxRenderTypes;
 import net.zepalesque.redux.client.renderer.ReduxRenderers;
-import net.zepalesque.redux.client.renderer.api.ICachedRerender;
+import net.zepalesque.redux.client.renderer.api.ICachedPostRenderer;
 import net.zepalesque.redux.client.renderer.entity.model.WhirlwindModel;
 import net.zepalesque.redux.config.ReduxConfig;
 import org.jetbrains.annotations.NotNull;
 
-public class ReduxWhirlwindRenderer<T extends AbstractWhirlwind> extends LivingEntityRenderer<T, EntityModel<T>> implements ICachedRerender<T> {
+public class ReduxWhirlwindRenderer<T extends AbstractWhirlwind> extends LivingEntityRenderer<T, EntityModel<T>> implements ICachedPostRenderer<T> {
 
     private static final ResourceLocation WHIRLWIND = ResourceLocation.fromNamespaceAndPath(Aether.MODID, "textures/entity/whirlwind/whirlwind.png");
     private static final ResourceLocation EVIL_WHIRLWIND = ResourceLocation.fromNamespaceAndPath(Aether.MODID, "textures/entity/whirlwind/evil_whirlwind.png");

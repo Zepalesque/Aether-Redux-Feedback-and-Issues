@@ -6,7 +6,8 @@ import net.minecraft.world.entity.Entity;
 import net.zepalesque.zenith.util.lambda.Consumers;
 import org.jetbrains.annotations.NotNull;
 
-public interface ICachedRerender<T extends Entity> {
+// TODO: Move to Zenith
+public interface ICachedPostRenderer<T extends Entity> {
 
     default boolean actuallyRender() {
         Cache<T> cache = this.getCache();
