@@ -14,17 +14,20 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.zepalesque.redux.client.renderer.ReduxRenderTypes;
 import net.zepalesque.redux.client.renderer.ReduxRenderers;
+import net.zepalesque.redux.client.renderer.api.ICachedRerender;
 import net.zepalesque.redux.client.renderer.entity.model.WhirlwindModel;
 import net.zepalesque.redux.config.ReduxConfig;
 import org.jetbrains.annotations.NotNull;
 
-public class ReduxWhirlwindRenderer<T extends AbstractWhirlwind> extends LivingEntityRenderer<T, EntityModel<T>> {
+public class ReduxWhirlwindRenderer<T extends AbstractWhirlwind> extends LivingEntityRenderer<T, EntityModel<T>> implements ICachedRerender<T> {
 
     private static final ResourceLocation WHIRLWIND = ResourceLocation.fromNamespaceAndPath(Aether.MODID, "textures/entity/whirlwind/whirlwind.png");
     private static final ResourceLocation EVIL_WHIRLWIND = ResourceLocation.fromNamespaceAndPath(Aether.MODID, "textures/entity/whirlwind/evil_whirlwind.png");
 
+    private final Cache<T> cache;
     public ReduxWhirlwindRenderer(EntityRendererProvider.Context context) {
         super(context, new WhirlwindModel<>(context.bakeLayer(ReduxRenderers.ModelLayers.WHIRLWIND)), 0.0F);
+        this.cache = new Cache<>();
     }
 
     @Override
@@ -36,8 +39,16 @@ public class ReduxWhirlwindRenderer<T extends AbstractWhirlwind> extends LivingE
 
     @Override
     public void render(@NotNull T entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
-        if (ReduxConfig.CLIENT.improved_whirlwinds.get()) {
+        this.cache.cache(entity, entityYaw, partialTicks, poseStack, buffer, packedLight);
+    }
 
+    @Override
+    public Cache<T> getCache() {
+        return this.cache;
+    }
+
+    public void internalRender(@NotNull T entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
+        if (ReduxConfig.CLIENT.improved_whirlwinds.get()) {
             boolean isEvil = entity.getType() == AetherEntityTypes.EVIL_WHIRLWIND.get();
             float age = this.getBob(entity, partialTicks);
             VertexConsumer vertexconsumer = buffer.getBuffer(ReduxRenderTypes.whirlwind(getTextureLocation(entity), this.xOffset(age, isEvil) % 1.0F, 0.0F));
@@ -49,6 +60,7 @@ public class ReduxWhirlwindRenderer<T extends AbstractWhirlwind> extends LivingE
             this.model.renderToBuffer(poseStack, vertexconsumer, packedLight, OverlayTexture.NO_OVERLAY);
             poseStack.popPose();
         }
+
     }
 
 
@@ -58,4 +70,7 @@ public class ReduxWhirlwindRenderer<T extends AbstractWhirlwind> extends LivingE
 
     @Override
     protected void setupRotations(@NotNull AbstractWhirlwind entity, @NotNull PoseStack poseStack, float bob, float yBodyRot, float partialTick, float scale) { }
+
+
+
 }
