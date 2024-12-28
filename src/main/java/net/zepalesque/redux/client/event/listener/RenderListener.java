@@ -10,6 +10,7 @@ import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderBuffers;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -26,12 +27,14 @@ import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
 import net.zepalesque.redux.Redux;
 import net.zepalesque.redux.client.renderer.api.IPostRenderer;
 
+import java.util.Iterator;
+
 @EventBusSubscriber(Dist.CLIENT)
 public class RenderListener {
 
     @SubscribeEvent
     public static void renderPost(RenderLevelStageEvent event) {
-        if (event.getStage() == RenderLevelStageEvent.Stage.AFTER_PARTICLES) {
+        if (event.getStage() == RenderLevelStageEvent.Stage.AFTER_WEATHER) {
             LevelRenderer renderer = event.getLevelRenderer();
             Minecraft minecraft = Minecraft.getInstance();
             LocalPlayer player = minecraft.player;
@@ -52,7 +55,8 @@ public class RenderListener {
 
             PoseStack posestack = event.getPoseStack();
 
-            for (Entity entity : level.entitiesForRendering()) {
+            for (Iterator<Entity> iterator = level.entitiesForRendering().iterator(); iterator.hasNext(); ) {
+                Entity entity = iterator.next();
                 if (entity.getType() == AetherEntityTypes.WHIRLWIND.get() || entity.getType() == AetherEntityTypes.EVIL_WHIRLWIND.get()) {
                     if (dispatch.shouldRender(entity, frustum, x, y, z) || entity.hasIndirectPassenger(player)) {
                         BlockPos blockpos = entity.blockPosition();
@@ -68,9 +72,14 @@ public class RenderListener {
 
                             float f2 = deltaTracker.getGameTimeDeltaPartialTick(!tickratemanager.isEntityFrozen(entity));
                             renderEntity(entity, x, y, z, f2, posestack, multibuffersource, dispatch);
+                            if (Minecraft.useShaderTransparency() && !iterator.hasNext()) {
+                                renderEntity(entity, x, y, z, f2, posestack, multibuffersource, dispatch);
+                            }
                         }
                     }
                 }
+
+
             }
         }
     }

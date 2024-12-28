@@ -23,7 +23,7 @@ public class ReduxRenderTypes {
                         .setCullState(RenderType.NO_CULL)
                         .setLightmapState(RenderType.LIGHTMAP)
                         .setOverlayState(RenderType.NO_OVERLAY)
-                        .setOutputState(RenderType.PARTICLES_TARGET)
+                        .setOutputState(RenderType.WEATHER_TARGET)
                         .createCompositeState(false)
         );
     }
