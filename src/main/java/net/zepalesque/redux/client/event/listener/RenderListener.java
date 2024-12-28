@@ -1,6 +1,7 @@
 package net.zepalesque.redux.client.event.listener;
 
 import com.aetherteam.aether.entity.AetherEntityTypes;
+import com.google.common.collect.Iterators;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Camera;
 import net.minecraft.client.DeltaTracker;
@@ -28,6 +29,7 @@ import net.zepalesque.redux.Redux;
 import net.zepalesque.redux.client.renderer.api.IPostRenderer;
 
 import java.util.Iterator;
+import java.util.stream.StreamSupport;
 
 @EventBusSubscriber(Dist.CLIENT)
 public class RenderListener {
@@ -55,26 +57,28 @@ public class RenderListener {
 
             PoseStack posestack = event.getPoseStack();
 
-            for (Iterator<Entity> iterator = level.entitiesForRendering().iterator(); iterator.hasNext(); ) {
+
+            for (Iterator<Entity> iterator =
+                 Iterators.filter(level.entitiesForRendering().iterator(), e -> e.getType() == AetherEntityTypes.WHIRLWIND.get() || e.getType() == AetherEntityTypes.EVIL_WHIRLWIND.get());
+                 iterator.hasNext(); ) {
                 Entity entity = iterator.next();
-                if (entity.getType() == AetherEntityTypes.WHIRLWIND.get() || entity.getType() == AetherEntityTypes.EVIL_WHIRLWIND.get()) {
-                    if (dispatch.shouldRender(entity, frustum, x, y, z) || entity.hasIndirectPassenger(player)) {
-                        BlockPos blockpos = entity.blockPosition();
-                        if ((level.isOutsideBuildHeight(blockpos.getY()) || renderer.isSectionCompiled(blockpos))
-                                && (
-                                entity != camera.getEntity()
-                                        || camera.isDetached()
-                                        || camera.getEntity() instanceof LivingEntity && ((LivingEntity) camera.getEntity()).isSleeping()
-                        )) {
+                if (dispatch.shouldRender(entity, frustum, x, y, z) || entity.hasIndirectPassenger(player)) {
+                    BlockPos blockpos = entity.blockPosition();
+                    if ((level.isOutsideBuildHeight(blockpos.getY()) || renderer.isSectionCompiled(blockpos))
+                            && (
+                            entity != camera.getEntity()
+                                    || camera.isDetached()
+                                    || camera.getEntity() instanceof LivingEntity && ((LivingEntity) camera.getEntity()).isSleeping()
+                    )) {
 
-                            MultiBufferSource multibuffersource = buffers.bufferSource();
+                        MultiBufferSource multibuffersource = buffers.bufferSource();
 
 
-                            float f2 = deltaTracker.getGameTimeDeltaPartialTick(!tickratemanager.isEntityFrozen(entity));
+                        float f2 = deltaTracker.getGameTimeDeltaPartialTick(!tickratemanager.isEntityFrozen(entity));
+                        renderEntity(entity, x, y, z, f2, posestack, multibuffersource, dispatch);
+                        // TODO: Get rid of this horrid workaround
+                        if (Minecraft.useShaderTransparency() && !iterator.hasNext()) {
                             renderEntity(entity, x, y, z, f2, posestack, multibuffersource, dispatch);
-                            if (Minecraft.useShaderTransparency() && !iterator.hasNext()) {
-                                renderEntity(entity, x, y, z, f2, posestack, multibuffersource, dispatch);
-                            }
                         }
                     }
                 }
