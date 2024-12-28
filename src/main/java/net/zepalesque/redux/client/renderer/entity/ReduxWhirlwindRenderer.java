@@ -31,8 +31,14 @@ public class ReduxWhirlwindRenderer<T extends AbstractWhirlwind> extends LivingE
     private static final ResourceLocation EVIL_WHIRLWIND = ResourceLocation.fromNamespaceAndPath(Aether.MODID, "textures/entity/whirlwind/evil_whirlwind.png");
 
     private final Map<T, Cache<T>> caches = new HashMap<>();
-    public ReduxWhirlwindRenderer(EntityRendererProvider.Context context) {
+    protected ReduxWhirlwindRenderer(EntityRendererProvider.Context context) {
         super(context, new WhirlwindModel<>(context.bakeLayer(ReduxRenderers.ModelLayers.WHIRLWIND)), 0.0F);
+    }
+
+    public static <E extends AbstractWhirlwind> ReduxWhirlwindRenderer<E> create(EntityRendererProvider.Context context) {
+        ReduxWhirlwindRenderer<E> renderer = new ReduxWhirlwindRenderer<>(context);
+        RENDERERS.add(renderer);
+        return renderer;
     }
 
     @Override

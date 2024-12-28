@@ -21,6 +21,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
+import net.zepalesque.redux.Redux;
 import net.zepalesque.redux.client.renderer.api.ICachedPostRenderer;
 
 @EventBusSubscriber(Dist.CLIENT)
@@ -64,6 +65,7 @@ public class RenderListener {
                     }
                 }
             }
+            ICachedPostRenderer.refreshAndClearAll();
         }
     }
 
@@ -92,8 +94,11 @@ public class RenderListener {
             double d0 = z + vec3.z();
             poseStack.pushPose();
             poseStack.translate(d2, d3, d0);
-            post.actuallyRender(entity);
+            boolean b = post.actuallyRender(entity);
             poseStack.popPose();
+            if (!b) {
+                Redux.LOGGER.debug("Did not render entity: {}", entity);
+            }
         }
     }
 }

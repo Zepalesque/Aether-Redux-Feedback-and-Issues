@@ -1,38 +1,71 @@
 package net.zepalesque.redux.client.renderer.api;
 
-import com.google.common.cache.Cache;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.world.entity.Entity;
+import net.zepalesque.redux.Redux;
 import net.zepalesque.zenith.util.lambda.Consumers;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 // TODO: Move to Zenith
 public interface ICachedPostRenderer<T extends Entity> {
 
+    // Registry for renderers that should have their caches refreshed after rendering
+    List<ICachedPostRenderer<?>> RENDERERS = new ArrayList<>();
+
+    static void refreshAndClearAll() {
+        for (ICachedPostRenderer<?> renderer : RENDERERS) {
+            renderer.refreshCaches();
+            renderer.clearCaches();
+        }
+    }
+
     default boolean actuallyRenderInternal(T entity) {
         Cache<T> cache = this.getCaches().get(entity);
-        if (cache != null) {
-            boolean success = cache.execute(this::internalRender);
-            if (success) {
-                cache.clear();
-                return true;
-            }
-        }
-        return false;
+        return cache != null && cache.execute(this::internalRender);
     }
 
     Map<T, Cache<T>> getCaches();
 
+    /**
+     * Gets rid of any {@link Entity#isRemoved() removed} entities in the cache map
+     */
+    default void refreshCaches() {
+        Set<Map.Entry<T, Cache<T>>> entries = this.getCaches().entrySet();
+        // Set#remove works with a Map's entrySet -- See Map#entrySet documentation
+        for (Map.Entry<T, Cache<T>> entry : entries) if (entry.getKey().isRemoved()) {
+            entry.getValue().clear();
+            entries.remove(entry);
+        }
+    }
+
+    /**
+     * {@link Cache#clear() Clears} all caches in the cache map
+     */
+    default void clearCaches() {
+        Collection<Cache<T>> keys = this.getCaches().values();
+    }
+
     void internalRender(@NotNull T entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight);
 
-    default void actuallyRender(Entity entity) {
+    // TODO: Investigate, will this cause issues?
+    @SuppressWarnings("unchecked")
+    default boolean actuallyRender(Entity entity) {
         try {
             T t = (T) entity;
-            actuallyRenderInternal(t);
-        } catch (ClassCastException ignored) {}
+            return actuallyRenderInternal(t);
+        } catch (ClassCastException e) {
+            Redux.LOGGER.error("Cannot post-render Entity {}, skipping", entity.getStringUUID());
+            Redux.LOGGER.error("Class cast failed", e);
+            return false;
+        }
     }
 
     class Cache<T extends Entity> {
@@ -49,6 +82,9 @@ public interface ICachedPostRenderer<T extends Entity> {
             this.entity = entity;
         }
 
+        /**
+         * Caches values, cached during the {@link EntityRenderer#render(Entity, float, float, PoseStack, MultiBufferSource, int) render} method of the renderer
+         */
         public void cache(float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
             this.entityYaw = entityYaw;
             this.partialTicks = partialTicks;
@@ -58,6 +94,9 @@ public interface ICachedPostRenderer<T extends Entity> {
             this.cached = true;
         }
 
+        /**
+         * Sets this cache's values to be default values
+         */
         public void clear() {
             this.entityYaw = Float.NaN;
             this.partialTicks = Float.NaN;
