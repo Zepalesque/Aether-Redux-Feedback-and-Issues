@@ -27,9 +27,9 @@ public interface ICachedPostRenderer<T extends Entity> {
         }
     }
 
-    default boolean actuallyRenderInternal(T entity) {
+    default boolean actuallyRenderInternal(T entity, PoseStack poseStack) {
         Cache<T> cache = this.getCaches().get(entity);
-        return cache != null && cache.execute(this::internalRender);
+        return cache != null && cache.execute(this::internalRender, poseStack);
     }
 
     Map<T, Cache<T>> getCaches();
@@ -39,11 +39,8 @@ public interface ICachedPostRenderer<T extends Entity> {
      */
     default void refreshCaches() {
         Set<Map.Entry<T, Cache<T>>> entries = this.getCaches().entrySet();
-        // Set#remove works with a Map's entrySet -- See Map#entrySet documentation
-        for (Map.Entry<T, Cache<T>> entry : entries) if (entry.getKey().isRemoved()) {
-            entry.getValue().clear();
-            entries.remove(entry);
-        }
+        // Uses Iterator#remove, which works with a Map's entrySet -- See Map#entrySet documentation
+        entries.removeIf(entry -> entry.getKey().isRemoved());
     }
 
     /**
@@ -57,10 +54,10 @@ public interface ICachedPostRenderer<T extends Entity> {
 
     // TODO: Investigate, will this cause issues?
     @SuppressWarnings("unchecked")
-    default boolean actuallyRender(Entity entity) {
+    default boolean actuallyRender(Entity entity, PoseStack poseStack) {
         try {
             T t = (T) entity;
-            return actuallyRenderInternal(t);
+            return actuallyRenderInternal(t, poseStack);
         } catch (ClassCastException e) {
             Redux.LOGGER.error("Cannot post-render Entity {}, skipping", entity.getStringUUID());
             Redux.LOGGER.error("Class cast failed", e);
@@ -72,7 +69,6 @@ public interface ICachedPostRenderer<T extends Entity> {
 
         private final T entity;
         private float entityYaw, partialTicks;
-        private PoseStack poseStack;
         private MultiBufferSource buffer;
         private int packedLight;
         private boolean cached = false;
@@ -85,10 +81,9 @@ public interface ICachedPostRenderer<T extends Entity> {
         /**
          * Caches values, cached during the {@link EntityRenderer#render(Entity, float, float, PoseStack, MultiBufferSource, int) render} method of the renderer
          */
-        public void cache(float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
+        public void cache(float entityYaw, float partialTicks, MultiBufferSource buffer, int packedLight) {
             this.entityYaw = entityYaw;
             this.partialTicks = partialTicks;
-            this.poseStack = poseStack;
             this.buffer = buffer;
             this.packedLight = packedLight;
             this.cached = true;
@@ -100,15 +95,14 @@ public interface ICachedPostRenderer<T extends Entity> {
         public void clear() {
             this.entityYaw = Float.NaN;
             this.partialTicks = Float.NaN;
-            this.poseStack = null;
             this.buffer = null;
             this.packedLight = Integer.MIN_VALUE;
             this.cached = false;
         }
 
-        public boolean execute(Consumers.C6<T, Float, Float, PoseStack, MultiBufferSource, Integer> method) {
+        public boolean execute(Consumers.C6<T, Float, Float, PoseStack, MultiBufferSource, Integer> method, PoseStack poseStack) {
             if (this.cached) {
-                method.accept(this.entity, this.entityYaw, this.partialTicks, this.poseStack, this.buffer, this.packedLight);
+                method.accept(this.entity, this.entityYaw, this.partialTicks, poseStack, this.buffer, this.packedLight);
                 return true;
             } else return false;
         }
