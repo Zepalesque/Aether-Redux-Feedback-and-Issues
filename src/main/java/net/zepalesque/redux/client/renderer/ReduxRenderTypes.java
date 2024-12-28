@@ -7,9 +7,9 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 
 public class ReduxRenderTypes {
-    public static RenderType whirlwind(ResourceLocation location, float u, float v) {
+    public static RenderType whirlwindParticleTranslucency(ResourceLocation location, float u, float v) {
         return RenderType.create(
-                "whirlwind",
+                "whirlwind_post_translucency",
                 DefaultVertexFormat.NEW_ENTITY,
                 VertexFormat.Mode.QUADS,
                 1536,

@@ -14,6 +14,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.EventBusSubscriber.Bus;import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.zepalesque.redux.Redux;
+import net.zepalesque.redux.client.renderer.entity.ReduxEvilWhirlwindRenderer;
 import net.zepalesque.redux.client.renderer.entity.ReduxWhirlwindRenderer;
 import net.zepalesque.redux.client.renderer.entity.model.WhirlwindModel;
 
@@ -29,7 +30,7 @@ public class ReduxRenderers {
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
         Redux.BLOCK_SETS.forEach(set -> set.registerRenderers(event));
         event.registerEntityRenderer(AetherEntityTypes.WHIRLWIND.get(), ReduxWhirlwindRenderer::new);
-        event.registerEntityRenderer(AetherEntityTypes.EVIL_WHIRLWIND.get(), ReduxWhirlwindRenderer::new);
+        event.registerEntityRenderer(AetherEntityTypes.EVIL_WHIRLWIND.get(), ReduxEvilWhirlwindRenderer::new);
     }
 
     public static void registerAccessoryRenderers() {

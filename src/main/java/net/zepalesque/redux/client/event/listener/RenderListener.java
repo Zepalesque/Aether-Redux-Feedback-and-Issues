@@ -59,7 +59,7 @@ public class RenderListener {
 
 
             for (Iterator<Entity> iterator =
-                 Iterators.filter(level.entitiesForRendering().iterator(), e -> e.getType() == AetherEntityTypes.WHIRLWIND.get() || e.getType() == AetherEntityTypes.EVIL_WHIRLWIND.get());
+                 Iterators.filter(level.entitiesForRendering().iterator(), e -> e.getType() == AetherEntityTypes.EVIL_WHIRLWIND.get());
                  iterator.hasNext(); ) {
                 Entity entity = iterator.next();
                 if (dispatch.shouldRender(entity, frustum, x, y, z) || entity.hasIndirectPassenger(player)) {

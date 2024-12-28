@@ -7,6 +7,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
@@ -16,12 +17,13 @@ import net.zepalesque.redux.client.renderer.ReduxRenderers;
 import net.zepalesque.redux.client.renderer.api.IPostRenderer;
 import net.zepalesque.redux.client.renderer.entity.model.WhirlwindModel;
 import net.zepalesque.redux.config.ReduxConfig;
+import net.zepalesque.zenith.util.lambda.Consumers;
+import net.zepalesque.zenith.util.lambda.Functions;
 import org.jetbrains.annotations.NotNull;
 
-public class ReduxWhirlwindRenderer<T extends AbstractWhirlwind> extends LivingEntityRenderer<T, WhirlwindModel<T>> implements IPostRenderer<T> {
+public class ReduxWhirlwindRenderer<T extends AbstractWhirlwind> extends LivingEntityRenderer<T, WhirlwindModel<T>> {
 
     private static final ResourceLocation WHIRLWIND = ResourceLocation.fromNamespaceAndPath(Aether.MODID, "textures/entity/whirlwind/whirlwind.png");
-    private static final ResourceLocation EVIL_WHIRLWIND = ResourceLocation.fromNamespaceAndPath(Aether.MODID, "textures/entity/whirlwind/evil_whirlwind.png");
 
     public ReduxWhirlwindRenderer(EntityRendererProvider.Context context) {
         super(context, new WhirlwindModel<>(context.bakeLayer(ReduxRenderers.ModelLayers.WHIRLWIND)), 0.0F);
@@ -30,32 +32,29 @@ public class ReduxWhirlwindRenderer<T extends AbstractWhirlwind> extends LivingE
     @Override
     @NotNull
     public ResourceLocation getTextureLocation(@NotNull T whirlwind) {
-        if (whirlwind.getType() == AetherEntityTypes.EVIL_WHIRLWIND.get()) return EVIL_WHIRLWIND;
-        else return WHIRLWIND;
+        return WHIRLWIND;
     }
 
     @Override
-    public void render(@NotNull T entity, float entityYaw, float partialTicks, @NotNull PoseStack poseStack, @NotNull MultiBufferSource buffer, int packedLight) {}
-
-    public void internalRender(@NotNull T entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
+    public void render(@NotNull T entity, float entityYaw, float partialTicks, @NotNull PoseStack poseStack, @NotNull MultiBufferSource buffer, int packedLight) {
         if (ReduxConfig.CLIENT.improved_whirlwinds.get()) {
-            boolean isEvil = entity.getType() == AetherEntityTypes.EVIL_WHIRLWIND.get();
             float age = this.getBob(entity, partialTicks);
-            VertexConsumer vertexconsumer = buffer.getBuffer(ReduxRenderTypes.whirlwind(getTextureLocation(entity), this.xOffset(age, isEvil) % 1.0F, 0.0F));
+            VertexConsumer vertexconsumer = buffer.getBuffer(renderType(getTextureLocation(entity), this.xOffset(age) % 1.0F));
             poseStack.pushPose();
             this.model.setupAnim(entity, 0.0F, 0.0F, age, 0.0F, 0.0F);
             poseStack.mulPose(Axis.ZP.rotationDegrees(180.0F));
-
-            if (isEvil) poseStack.scale(1.25F, 1.25F, 1.25F);
+            this.scale(entity, poseStack, partialTicks);
             this.model.renderToBuffer(poseStack, vertexconsumer, packedLight, OverlayTexture.NO_OVERLAY);
             poseStack.popPose();
         }
-
-
     }
 
-    private float xOffset(float tickCount, boolean isEvil) {
-        return tickCount * (isEvil ? 0.015F : 0.01F);
+    protected RenderType renderType(ResourceLocation texture, float xOffset) {
+        return RenderType.breezeWind(texture, xOffset, 0.0F);
+    }
+
+    protected float xOffset(float tickCount) {
+        return tickCount * 0.1F;
     }
 
     @Override
