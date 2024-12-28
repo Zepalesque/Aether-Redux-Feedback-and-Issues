@@ -28,8 +28,8 @@ public class ReduxRenderers {
     @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
         Redux.BLOCK_SETS.forEach(set -> set.registerRenderers(event));
-        event.registerEntityRenderer(AetherEntityTypes.WHIRLWIND.get(), ReduxWhirlwindRenderer::create);
-        event.registerEntityRenderer(AetherEntityTypes.EVIL_WHIRLWIND.get(), ReduxWhirlwindRenderer::create);
+        event.registerEntityRenderer(AetherEntityTypes.WHIRLWIND.get(), ReduxWhirlwindRenderer::new);
+        event.registerEntityRenderer(AetherEntityTypes.EVIL_WHIRLWIND.get(), ReduxWhirlwindRenderer::new);
     }
 
     public static void registerAccessoryRenderers() {
