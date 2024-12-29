@@ -5,8 +5,8 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.sound.PlaySoundEvent;
-import net.zepalesque.redux.client.audio.NormalizedSoundInstance;
 import net.zepalesque.redux.client.event.hook.SoundHooks;
+import net.zepalesque.zenith.util.audio.WrappedDefaultsSoundInstance;
 
 @EventBusSubscriber(Dist.CLIENT)
 public class SoundListener {
@@ -14,7 +14,7 @@ public class SoundListener {
     @SubscribeEvent
     public static void onPlaySound(PlaySoundEvent event) {
         if (SoundHooks.shouldNormalizePitch(event.getSound())) {
-            SoundInstance normalized = new NormalizedSoundInstance(event.getSound(), 32);
+            SoundInstance normalized = WrappedDefaultsSoundInstance.create(event.getSound(), 32);
             event.setSound(normalized);
         }
     }

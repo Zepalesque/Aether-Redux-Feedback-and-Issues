@@ -6,7 +6,6 @@ import net.minecraft.world.entity.Entity;
 import net.zepalesque.redux.Redux;
 import org.jetbrains.annotations.NotNull;
 
-// TODO: Move to Zenith
 public interface IPostRenderer<T extends Entity> {
 
     void internalRender(@NotNull T entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight);
