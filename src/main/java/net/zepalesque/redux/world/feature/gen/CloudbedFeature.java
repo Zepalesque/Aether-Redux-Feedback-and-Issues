@@ -6,16 +6,12 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.levelgen.DensityFunction;
-import net.minecraft.world.level.levelgen.XoroshiroRandomSource;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.level.levelgen.synth.PerlinSimplexNoise;
-import net.zepalesque.zenith.world.density.PerlinNoiseFunction;
-
-import java.util.List;
+import net.zepalesque.zenith.api.world.density.PerlinNoiseFunction;
 
 public class CloudbedFeature extends Feature<CloudbedFeature.Config> {
 

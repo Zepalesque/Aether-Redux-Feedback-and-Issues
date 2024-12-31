@@ -18,13 +18,9 @@ public class ReduxTags {
     public static class Blocks {
 
         // Blocks that should override Short Aether Grass's color to be the blight color (blightmoss for instance)
-        public static final TagKey<Block> BLIGHT_GRASS_BLOCKS = tag("blight_grass_blocks");
-        // Blocks that should make Short Aether Grass use its enchanted state
-        public static final TagKey<Block> ENCHANTED_GRASS_BLOCKS = tag("enchanted_grass_blocks");
+        public static final TagKey<Block> SHORT_AETHER_GRASS_BLIGHT_COLORING = tag("short_aether_grass_blight_coloring");
         // Blocks that should use the Highlands quicksoil system
         public static final TagKey<Block> QUICKSOIL_BEHAVIOR = tag("quicksoil_behavior");
-        // Blocks that count as Coarse Aether Dirt
-        public static final TagKey<Block> COARSE_AETHER_DIRT = tag("coarse_aether_dirt");
 
         // Blocks that can be replaced by generated rocks
         public static final TagKey<Block> ROCK_REPLACEABLE = tag("rock_replaceable");

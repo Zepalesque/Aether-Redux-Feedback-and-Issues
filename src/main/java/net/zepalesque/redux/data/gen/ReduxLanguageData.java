@@ -6,7 +6,7 @@ import net.zepalesque.redux.block.ReduxBlocks;
 import net.zepalesque.redux.client.audio.ReduxSounds;
 import net.zepalesque.redux.data.prov.ReduxLanguageProvider;
 import net.zepalesque.redux.item.ReduxItems;
-import net.zepalesque.zenith.util.DatagenUtil;
+import net.zepalesque.zenith.api.data.DatagenUtil;
 
 public class ReduxLanguageData extends ReduxLanguageProvider {
 
@@ -18,20 +18,11 @@ public class ReduxLanguageData extends ReduxLanguageProvider {
     protected void addTranslations() {
         Redux.BLOCK_SETS.forEach(set -> set.langData(this));
 
-        addBlock(ReduxBlocks.SHORT_AETHER_GRASS);
-        addLore(ReduxBlocks.SHORT_AETHER_GRASS, "Blades of the Aether's grass. It feels slightly cool to the touch.");
-
         addBlock(ReduxBlocks.GILDENROOT_LEAVES);
         addLore(ReduxBlocks.GILDENROOT_LEAVES, "Leaves of the Gildenroot tree, a variation of Skyroot that has been touched by Ambrosium but has not fully adapted as Golden Oaks have. These sometimes will drop Gildenroot Saplings");
 
         addBlock(ReduxBlocks.GILDENROOT_LEAF_PILE);
         addLore(ReduxBlocks.GILDENROOT_LEAF_PILE, "A pile of Gildenroot Leaves. These can be stacked on top of eachother to make various sizes!");
-
-        addBlock(ReduxBlocks.GOLDEN_OAK_LEAF_PILE);
-        addLore(ReduxBlocks.GOLDEN_OAK_LEAF_PILE, "A pile of Golden Oak Leaves. These can be stacked on top of eachother to make various sizes!");
-
-        addBlock(ReduxBlocks.SKYROOT_LEAF_PILE);
-        addLore(ReduxBlocks.SKYROOT_LEAF_PILE, "A pile of Skyroot Leaves. These can be stacked on top of eachother to make various sizes!");
 
         addBlock(ReduxBlocks.GOLDEN_CLOVERS);
         addLore(ReduxBlocks.GOLDEN_CLOVERS, "A nice patch of clovers that can be found in the Gilded Groves.");

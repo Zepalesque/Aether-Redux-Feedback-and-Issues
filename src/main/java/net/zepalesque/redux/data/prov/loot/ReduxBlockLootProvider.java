@@ -23,12 +23,13 @@ import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.zepalesque.redux.block.state.ReduxStates;
+import net.zepalesque.unity.data.prov.loot.UnityBlockLootProvider;
 
 import java.util.Set;
 import java.util.function.Function;
 
 // Many of these are just public overrides with no differences, as this is used by the BlockSets
-public abstract class ReduxBlockLootProvider extends AetherBlockLootSubProvider {
+public abstract class ReduxBlockLootProvider extends UnityBlockLootProvider {
 
     public ReduxBlockLootProvider(Set<Item> items, FeatureFlagSet flags, HolderLookup.Provider registries) {
         super(items, flags, registries);
@@ -102,25 +103,6 @@ public abstract class ReduxBlockLootProvider extends AetherBlockLootSubProvider 
     @Override
     public LootTable.Builder createSlabItemTable(Block pBlock) {
         return super.createSlabItemTable(pBlock);
-    }
-
-    // Only drops with shears
-    public Function<Block, LootTable.Builder> shears() {
-        return shearsOr(Blocks.AIR);
-    }
-
-    // Drops another without shears
-    public Function<Block, LootTable.Builder> shearsOr(ItemLike drop, float chance, float min, float max) {
-        HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
-        return (block) -> createSilkTouchOrShearsDispatchTable(block, this.applyExplosionDecay(block, LootItem.lootTableItem(drop).when(LootItemRandomChanceCondition.randomChance(chance)).apply(SetItemCountFunction.setCount(UniformGenerator.between(min, max))).apply(ApplyBonusCount.addUniformBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE)))));
-    }
-
-    public Function<Block, LootTable.Builder> shearsOr(ItemLike drop, float chance) {
-        return shearsOr(drop, chance, 1.0F, 1.0F);
-    }
-
-    public Function<Block, LootTable.Builder> shearsOr(ItemLike drop) {
-        return shearsOr(drop, 0.25F);
     }
 
 }

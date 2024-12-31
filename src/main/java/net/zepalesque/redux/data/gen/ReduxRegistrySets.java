@@ -1,14 +1,10 @@
 package net.zepalesque.redux.data.gen;
 
 import com.aetherteam.aether.Aether;
-import net.minecraft.core.Cloner;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.RegistrySetBuilder;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import net.zepalesque.redux.data.resource.registries.ReduxBiomeModifiers;
@@ -19,7 +15,7 @@ import net.zepalesque.redux.data.resource.registries.ReduxFeatureConfig;
 import net.zepalesque.redux.data.resource.registries.ReduxNoiseSettings;
 import net.zepalesque.redux.data.resource.registries.ReduxPlacements;
 import net.zepalesque.redux.data.resource.registries.ReduxStructureModifiers;
-import net.zepalesque.zenith.Zenith;
+import net.zepalesque.zenith.core.Zenith;
 import org.apache.commons.compress.utils.Lists;
 
 import java.util.Arrays;

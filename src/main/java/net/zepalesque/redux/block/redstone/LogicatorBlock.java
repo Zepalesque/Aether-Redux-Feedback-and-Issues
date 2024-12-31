@@ -5,14 +5,12 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.SignalGetter;
@@ -27,7 +25,7 @@ import net.minecraft.world.ticks.TickPriority;
 import net.zepalesque.redux.block.state.ReduxStates;
 import net.zepalesque.redux.block.state.enums.LogicatorMode;
 import net.zepalesque.redux.client.audio.ReduxSounds;
-import net.zepalesque.zenith.util.StateUtil;
+import net.zepalesque.zenith.api.block.StateUtil;
 
 public class LogicatorBlock extends DiodeBlock {
     public static final MapCodec<LogicatorBlock> CODEC = simpleCodec(LogicatorBlock::new);

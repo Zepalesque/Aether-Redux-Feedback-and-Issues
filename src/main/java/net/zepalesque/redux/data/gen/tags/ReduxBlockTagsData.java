@@ -33,8 +33,6 @@ public class ReduxBlockTagsData extends ReduxBlockTagsProvider {
         for (DeferredHolder<Block, ? extends Block> block : ReduxBlocks.BLOCKS.getEntries()) {
             tag.add(block.get());
         }
-        this.tag(ReduxTags.Blocks.ENCHANTED_GRASS_BLOCKS).add(AetherBlocks.ENCHANTED_AETHER_GRASS_BLOCK.get());
-//        this.tag(ReduxTags.Blocks.GOLDEN_VINE_SUSTAINABLE).add(AetherBlocks.GOLDEN_OAK_LEAVES.get());
 
         this.tag(AetherTags.Blocks.AETHER_ANIMALS_SPAWNABLE_ON).add(AetherBlocks.ENCHANTED_AETHER_GRASS_BLOCK.get());
         this.tag(AetherTags.Blocks.SWET_SPAWNABLE_ON).add(AetherBlocks.ENCHANTED_AETHER_GRASS_BLOCK.get());
@@ -44,7 +42,6 @@ public class ReduxBlockTagsData extends ReduxBlockTagsProvider {
         this.tag(ReduxTags.Blocks.ROCK_REPLACEABLE).addTag(BlockTags.DIRT);
 
         this.tag(BlockTags.REPLACEABLE).add(
-                ReduxBlocks.SHORT_AETHER_GRASS.get(),
                 ReduxBlocks.GOLDEN_CLOVERS.get()
         );
 
@@ -54,9 +51,7 @@ public class ReduxBlockTagsData extends ReduxBlockTagsProvider {
         this.tag(BlockTags.MINEABLE_WITH_HOE).add(
                 ReduxBlocks.GILDENROOT_LEAVES.get(),
                 ReduxBlocks.GOLDEN_CLOVERS.get(),
-                ReduxBlocks.GILDENROOT_LEAF_PILE.get(),
-                ReduxBlocks.GOLDEN_OAK_LEAF_PILE.get(),
-                ReduxBlocks.SKYROOT_LEAF_PILE.get()
+                ReduxBlocks.GILDENROOT_LEAF_PILE.get()
         );
 
         this.tag(BlockTags.INSIDE_STEP_SOUND_BLOCKS).add(

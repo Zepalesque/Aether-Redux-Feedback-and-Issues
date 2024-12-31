@@ -14,10 +14,8 @@ import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
-import net.zepalesque.zenith.util.EasingUtil;
+import net.zepalesque.zenith.api.math.EasingUtil;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Arrays;
 
 public class WhirlwindModel<T extends AbstractWhirlwind> extends EntityModel<T> {
 	private final ModelPart whirl_body;

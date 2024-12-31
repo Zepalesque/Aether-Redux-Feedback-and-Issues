@@ -2,9 +2,7 @@ package net.zepalesque.redux.item.tools;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponentPatch;
-import net.minecraft.nbt.ByteTag;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundSoundPacket;
@@ -22,11 +20,10 @@ import net.zepalesque.redux.config.ReduxConfig;
 import net.zepalesque.redux.item.components.ReduxDataComponents;
 import net.zepalesque.redux.recipe.recipes.InfusionRecipe;
 import net.zepalesque.zenith.api.item.CustomStackingBehavior;
-import net.zepalesque.zenith.item.CustomStackingBehavior;
+import net.zepalesque.zenith.api.recipe.recipes.AbstractStackingRecipe;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
-import java.util.Optional;
 
 public interface VeridiumItem extends CustomStackingBehavior {
 
@@ -47,11 +44,10 @@ public interface VeridiumItem extends CustomStackingBehavior {
 
     @Nullable
     @Override
-    default ItemStack transformStack(Ingredient ingredient, ItemStack original, RecipeType<?> type, Optional<CompoundTag> additionalData) {
-        if (additionalData.isEmpty()) {
+    default ItemStack transformStack(Ingredient ingredient, ItemStack original, RecipeType<? extends AbstractStackingRecipe> type, @Nullable CompoundTag additional) {
+        if (additional == null) {
             return original;
         }
-        CompoundTag additional = additionalData.get();
         int increase = additional.getByte(InfusionRecipe.ADDED_INFUSION);
         if (increase <= 0) {
             return original;

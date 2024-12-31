@@ -12,7 +12,6 @@ import com.aetherteam.nitrogen.world.trunkplacer.HookedTrunkPlacer;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.random.SimpleWeightedRandomList;
@@ -29,7 +28,6 @@ import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.RandomFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
@@ -47,10 +45,10 @@ import net.zepalesque.redux.world.feature.gen.ReduxFeatures;
 import net.zepalesque.redux.world.tree.decorator.GoldenVineDecorator;
 import net.zepalesque.redux.world.tree.foliage.SkyrootFoliagePlacer;
 import net.zepalesque.redux.world.tree.foliage.SmallGoldenOakFoliagePlacer;
-import net.zepalesque.zenith.world.feature.gen.LargeRockFeature;
-import net.zepalesque.zenith.world.feature.gen.SurfaceRuleLakeFeature;
-import net.zepalesque.zenith.world.feature.gen.ZenithFeatures;
-import net.zepalesque.zenith.world.tree.trunk.IntProviderTrunkPlacer;
+import net.zepalesque.zenith.api.world.feature.gen.LargeRockFeature;
+import net.zepalesque.zenith.api.world.feature.gen.SurfaceRuleLakeFeature;
+import net.zepalesque.zenith.api.world.tree.trunk.IntProviderTrunkPlacer;
+import net.zepalesque.zenith.core.registry.ZenithFeatures;
 
 import java.util.List;
 import java.util.Optional;
@@ -87,10 +85,6 @@ public class ReduxFeatureConfig extends ReduxFeatureBuilders {
     public static final ResourceKey<ConfiguredFeature<?, ?>> WYNDSPROUTS_PATCH = createKey(name(ReduxBlocks.WYNDSPROUTS) + "_patch");
 
     // Overrides
-    public static final ResourceKey<ConfiguredFeature<?, ?>> GRASS_BONEMEAL = createKey("aether_grass_bonemeal");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> GRASS_PATCH = AetherConfiguredFeatures.GRASS_PATCH_CONFIGURATION;
-    public static final ResourceKey<ConfiguredFeature<?, ?>> TALL_GRASS_PATCH = AetherConfiguredFeatures.TALL_GRASS_PATCH_CONFIGURATION;
-
     public static final ResourceKey<ConfiguredFeature<?, ?>> CRYSTAL_TREE = AetherConfiguredFeatures.CRYSTAL_TREE_CONFIGURATION;
     public static final ResourceKey<ConfiguredFeature<?, ?>> SKYROOT_TREE = AetherConfiguredFeatures.SKYROOT_TREE_CONFIGURATION;
     public static final ResourceKey<ConfiguredFeature<?, ?>> GOLDEN_OAK_TREE = AetherConfiguredFeatures.GOLDEN_OAK_TREE_CONFIGURATION;
@@ -233,12 +227,6 @@ public class ReduxFeatureConfig extends ReduxFeatureBuilders {
                 ), Optional.of(blocks.getOrThrow(ReduxTags.Blocks.ROCK_REPLACEABLE)), Optional.empty()));
 
         // Overrides
-        register(context, GRASS_PATCH, Feature.RANDOM_PATCH, patch(48, 7, 3, prov(ReduxBlocks.SHORT_AETHER_GRASS), NOT_ON_COARSE_DIRT));
-        register(context, TALL_GRASS_PATCH, Feature.NO_OP, new NoneFeatureConfiguration());
-
-        register(context, GRASS_BONEMEAL, Feature.SIMPLE_BLOCK,
-                new SimpleBlockConfiguration(prov(ReduxBlocks.SHORT_AETHER_GRASS)));
-
         register(context, CRYSTAL_TREE, Feature.TREE,
                 new TreeConfiguration.TreeConfigurationBuilder(
                         prov(ReduxWoodSets.CRYSTAL.log()),

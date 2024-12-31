@@ -71,20 +71,20 @@ import net.zepalesque.redux.data.prov.tags.ReduxItemTagsProvider;
 import net.zepalesque.redux.entity.ReduxEntities;
 import net.zepalesque.redux.item.ReduxItems;
 import net.zepalesque.redux.tile.ReduxTiles;
-import net.zepalesque.zenith.api.blockset.AbstractWoodSet;
-import net.zepalesque.zenith.block.tile.ZenithCeilingHangingSignBlock;
-import net.zepalesque.zenith.block.tile.ZenithSignBlock;
-import net.zepalesque.zenith.block.tile.ZenithWallHangingSignBlock;
-import net.zepalesque.zenith.block.tile.ZenithWallSignBlock;
-import net.zepalesque.zenith.client.render.entity.ZenithBoatRenderer;
-import net.zepalesque.zenith.entity.misc.ZenithBoat;
-import net.zepalesque.zenith.entity.misc.ZenithChestBoat;
-import net.zepalesque.zenith.item.ZenithBoatItem;
+import net.zepalesque.zenith.api.blockset.type.AbstractWoodSet;
+import net.zepalesque.zenith.api.data.DatagenUtil;
+import net.zepalesque.zenith.api.item.TabUtil;
+import net.zepalesque.zenith.core.block.type.tile.ZenithCeilingHangingSignBlock;
+import net.zepalesque.zenith.core.block.type.tile.ZenithSignBlock;
+import net.zepalesque.zenith.core.block.type.tile.ZenithWallHangingSignBlock;
+import net.zepalesque.zenith.core.block.type.tile.ZenithWallSignBlock;
+import net.zepalesque.zenith.core.client.render.entity.ZenithBoatRenderer;
+import net.zepalesque.zenith.core.entity.misc.ZenithBoat;
+import net.zepalesque.zenith.core.entity.misc.ZenithChestBoat;
+import net.zepalesque.zenith.core.item.type.ZenithBoatItem;
+import net.zepalesque.zenith.core.tile.ZenithHangingSignBlockEntity;
+import net.zepalesque.zenith.core.tile.ZenithSignBlockEntity;
 import net.zepalesque.zenith.mixin.mixins.common.accessor.FireAccessor;
-import net.zepalesque.zenith.tile.ZenithHangingSignBlockEntity;
-import net.zepalesque.zenith.tile.ZenithSignBlockEntity;
-import net.zepalesque.zenith.util.DatagenUtil;
-import net.zepalesque.zenith.util.TabUtil;
 
 import javax.annotation.Nullable;
 import java.util.Map;
@@ -671,7 +671,7 @@ public class BaseWoodSet extends AbstractWoodSet implements ReduxGeneration {
 
         String indefiniteLowercase = vowel ? "an" : "a";
         String indefiniteUppercase = vowel ? "An" : "A";
-        String name = DatagenUtil.getNameLocalized(this.id);
+        String name = DatagenUtil.localize(this.id);
 
         data.addBlock(this.log());
         data.addLore(this.log(), "These spawn with " + name + " " + this.treesName(true) + ". They can be double dropped with Skyroot Axes. When put in a crafting table they will provide 4 " + name + " Planks.");
@@ -891,19 +891,19 @@ public class BaseWoodSet extends AbstractWoodSet implements ReduxGeneration {
         if (phase == TabAdditionPhase.BEFORE) {
             CreativeModeTab tab = event.getTab();
 
-            if (tab == AetherCreativeTabs.AETHER_BUILDING_BLOCKS.get()) {
+            if (TabUtil.isForTab(event, AetherCreativeTabs.AETHER_BUILDING_BLOCKS)) {
                 return this.buildingBlocks(event, prev == null ? AetherBlocks.GOLDEN_OAK_WOOD : prev);
             }
 
-            if (tab == AetherCreativeTabs.AETHER_NATURAL_BLOCKS.get()) {
+            if (TabUtil.isForTab(event, AetherCreativeTabs.AETHER_NATURAL_BLOCKS)) {
                 return this.naturalBlocks(event, prev == null ? AetherBlocks.GOLDEN_OAK_LOG : prev);
             }
 
-            if (tab == AetherCreativeTabs.AETHER_FUNCTIONAL_BLOCKS.get()) {
+            if (TabUtil.isForTab(event, AetherCreativeTabs.AETHER_FUNCTIONAL_BLOCKS)) {
                 return this.functionalBlocks(event, prev == null ? AetherBlocks.SKYROOT_HANGING_SIGN : prev);
             }
 
-            if (tab == AetherCreativeTabs.AETHER_EQUIPMENT_AND_UTILITIES.get()) {
+            if (TabUtil.isForTab(event, AetherCreativeTabs.AETHER_EQUIPMENT_AND_UTILITIES)) {
                 return this.equipment(event, prev == null ? AetherItems.SKYROOT_CHEST_BOAT : prev);
             }
 

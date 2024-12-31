@@ -26,9 +26,9 @@ import net.zepalesque.redux.data.prov.ReduxRecipeProvider;
 import net.zepalesque.redux.data.prov.loot.ReduxBlockLootProvider;
 import net.zepalesque.redux.data.prov.tags.ReduxBlockTagsProvider;
 import net.zepalesque.redux.item.ReduxItems;
+import net.zepalesque.zenith.api.data.DatagenUtil;
+import net.zepalesque.zenith.api.item.TabUtil;
 import net.zepalesque.zenith.mixin.mixins.common.accessor.FireAccessor;
-import net.zepalesque.zenith.util.DatagenUtil;
-import net.zepalesque.zenith.util.TabUtil;
 
 import java.util.Map;
 import java.util.function.Supplier;
@@ -158,7 +158,7 @@ public class LogWallWoodSet extends BaseWoodSet {
     @Override
     public void langData(ReduxLanguageProvider data) {
         super.langData(data);
-        String name = DatagenUtil.getNameLocalized(this.id);
+        String name = DatagenUtil.localize(this.id);
 
         data.addBlock(this.logWall());
         data.addLore(this.logWall(), "Crafted from " + name + " " + this.logSuffix(true, false) + ". Can be used for decorative enclosures and defences. Great for keeping nasty intruders away!");

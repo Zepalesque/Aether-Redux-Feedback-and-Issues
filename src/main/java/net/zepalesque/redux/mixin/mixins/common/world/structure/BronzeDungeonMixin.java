@@ -10,11 +10,6 @@ import org.spongepowered.asm.mixin.injection.At;
 
 
 @Mixin(BronzeDungeonRoom.class)
-public class BronzeDungeonMixin {
+public class BronzeDungeonMixin extends AetherTemplateStructurePieceMixin {
 
-    // TODO: PR to make this possible without mixins
-    @WrapOperation(method = "makeSettings", at = @At(value = "NEW", target = "()Lnet/minecraft/world/level/levelgen/structure/templatesystem/StructurePlaceSettings;"))
-    private static StructurePlaceSettings redux$makeSettings(Operation<StructurePlaceSettings> original) {
-        return original.call().addProcessor(ReduxDungeonProcessors.BRONZE_BLOCKS).addProcessor(ReduxDungeonProcessors.BRONZE_TRAPS);
-    }
 }

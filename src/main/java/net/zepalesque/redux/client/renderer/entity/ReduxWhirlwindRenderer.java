@@ -1,7 +1,6 @@
 package net.zepalesque.redux.client.renderer.entity;
 
 import com.aetherteam.aether.Aether;
-import com.aetherteam.aether.entity.AetherEntityTypes;
 import com.aetherteam.aether.entity.monster.AbstractWhirlwind;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -12,13 +11,9 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
-import net.zepalesque.redux.client.renderer.ReduxRenderTypes;
 import net.zepalesque.redux.client.renderer.ReduxRenderers;
-import net.zepalesque.redux.client.renderer.api.IPostRenderer;
 import net.zepalesque.redux.client.renderer.entity.model.WhirlwindModel;
 import net.zepalesque.redux.config.ReduxConfig;
-import net.zepalesque.zenith.util.lambda.Consumers;
-import net.zepalesque.zenith.util.lambda.Functions;
 import org.jetbrains.annotations.NotNull;
 
 public class ReduxWhirlwindRenderer<T extends AbstractWhirlwind> extends LivingEntityRenderer<T, WhirlwindModel<T>> {

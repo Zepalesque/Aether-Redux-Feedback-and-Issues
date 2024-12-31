@@ -17,7 +17,7 @@ public class ReduxBiomes {
     public static final ResourceKey<Biome> CLOUDCAPS = createKey("cloudcaps");
     public static final ResourceKey<Biome> SKYROOT_SHRUBLANDS = createKey("skyroot_shrublands");
 
-    // TODO: Add to 2.1
+    // TODO: Add to 2.2
     public static final ResourceKey<Biome> SHIMMERING_HILLS = createKey("shimmering_hills");
     public static final ResourceKey<Biome> QUICKSOIL_DUNES = createKey("quicksoil_dunes");
     public static final ResourceKey<Biome> QUICKSOIL_OASIS = createKey("quicksoil_oasis");

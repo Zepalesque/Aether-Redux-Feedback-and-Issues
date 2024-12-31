@@ -3,7 +3,7 @@ package net.zepalesque.redux.config;
 import net.neoforged.neoforge.common.ModConfigSpec;
 import net.zepalesque.redux.config.enums.AACompatType;
 import net.zepalesque.redux.pack.ReduxPackConfig;
-import net.zepalesque.zenith.api.config.DataSerializableConfig;
+import net.zepalesque.zenith.api.serialization.config.DataSerializableConfig;
 import org.apache.commons.lang3.tuple.Pair;
 
 public class ReduxConfig {

@@ -5,19 +5,15 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.data.worldgen.NoiseData;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.levelgen.DensityFunction;
 import net.minecraft.world.level.levelgen.DensityFunctions;
-import net.minecraft.world.level.levelgen.NoiseRouter;
-import net.minecraft.world.level.levelgen.NoiseRouterData;
 import net.minecraft.world.level.levelgen.synth.BlendedNoise;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
 import net.zepalesque.redux.Redux;
 import net.zepalesque.redux.data.resource.builders.ReduxNoiseBuilders;
-import net.zepalesque.zenith.world.density.PerlinNoiseFunction;
+import net.zepalesque.zenith.api.world.density.PerlinNoiseFunction;
 
 import java.util.Optional;
 

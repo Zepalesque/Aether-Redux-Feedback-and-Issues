@@ -1,11 +1,9 @@
 package net.zepalesque.redux.blockset.flower.type;
 
 import net.minecraft.world.level.block.Block;
-import net.zepalesque.redux.block.ReduxBlocks;
 import net.zepalesque.redux.data.prov.ReduxBlockStateProvider;
 import net.zepalesque.redux.data.prov.ReduxItemModelProvider;
-import net.zepalesque.zenith.util.lambda.Consumers;
-import org.apache.logging.log4j.util.TriConsumer;
+import net.zepalesque.zenith.api.function.Consumers;
 
 import java.util.function.Supplier;
 

@@ -3,6 +3,7 @@ package net.zepalesque.redux.blockset.stone.type;
 import com.aetherteam.aether.block.natural.AetherDoubleDropBlock;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
+import com.mojang.datafixers.util.Pair;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
@@ -25,7 +26,6 @@ import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.zepalesque.redux.block.ReduxBlocks;
-import net.zepalesque.redux.blockset.flower.type.BaseFlowerSet;
 import net.zepalesque.redux.blockset.util.MutableLoreGeneration;
 import net.zepalesque.redux.data.prov.ReduxBlockStateProvider;
 import net.zepalesque.redux.data.prov.ReduxDataMapProvider;
@@ -36,14 +36,11 @@ import net.zepalesque.redux.data.prov.loot.ReduxBlockLootProvider;
 import net.zepalesque.redux.data.prov.tags.ReduxBlockTagsProvider;
 import net.zepalesque.redux.data.prov.tags.ReduxItemTagsProvider;
 import net.zepalesque.redux.item.ReduxItems;
-import net.zepalesque.zenith.api.blockset.AbstractFlowerSet;
-import net.zepalesque.zenith.api.blockset.AbstractStoneSet;
-import net.zepalesque.zenith.api.blockset.BlockSet;
-import net.zepalesque.zenith.api.blockset.util.CraftingMatrix;
+import net.zepalesque.zenith.api.blockset.CraftingMatrix;
+import net.zepalesque.zenith.api.blockset.type.AbstractStoneSet;
+import net.zepalesque.zenith.api.data.DatagenUtil;
+import net.zepalesque.zenith.api.item.TabUtil;
 import net.zepalesque.zenith.mixin.mixins.common.accessor.FireAccessor;
-import net.zepalesque.zenith.util.DatagenUtil;
-import net.zepalesque.zenith.util.TabUtil;
-import com.mojang.datafixers.util.Pair;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -257,7 +254,7 @@ public class BaseStoneSet extends AbstractStoneSet implements MutableLoreGenerat
     @Override
     public void langData(ReduxLanguageProvider data) {
 
-        String blockName = DatagenUtil.getNameLocalized(this.block());
+        String blockName = DatagenUtil.localize(this.block());
 
         data.addBlock(this.block());
         if (this.lore != null) { data.addLore(this.block(), this.lore); }
@@ -369,7 +366,7 @@ public class BaseStoneSet extends AbstractStoneSet implements MutableLoreGenerat
     public Supplier<? extends ItemLike> addToCreativeTab(BuildCreativeModeTabContentsEvent event, Supplier<? extends ItemLike> prev, TabAdditionPhase phase) {
         for (Table.Cell<Supplier<CreativeModeTab>, Supplier<? extends ItemLike>, Pair<Boolean, TabAdditionPhase>> triple : this.afterOrdering.cellSet()) {
             Supplier<CreativeModeTab> tabToAddTo = triple.getRowKey();
-            if (event.getTab() == tabToAddTo.get()) {
+            if (TabUtil.isForTab(event, tabToAddTo)) {
                 Supplier<? extends ItemLike> addAfter = triple.getColumnKey();
                 Pair<Boolean, TabAdditionPhase> pair = triple.getValue();
                 if (pair.getSecond() == phase) {
@@ -380,7 +377,7 @@ public class BaseStoneSet extends AbstractStoneSet implements MutableLoreGenerat
         }
         for (Table.Cell<Supplier<CreativeModeTab>, Supplier<? extends ItemLike>, Pair<Boolean, TabAdditionPhase>> triple : this.beforeOrdering.cellSet()) {
             Supplier<CreativeModeTab> tabToAddTo = triple.getRowKey();
-            if (event.getTab() == tabToAddTo.get()) {
+            if (TabUtil.isForTab(event, tabToAddTo)) {
                 Supplier<? extends ItemLike> addBefore = triple.getColumnKey();
                 Pair<Boolean, TabAdditionPhase> pair = triple.getValue();
                 if (pair.getSecond() == phase) {
@@ -391,7 +388,7 @@ public class BaseStoneSet extends AbstractStoneSet implements MutableLoreGenerat
         }
         for (Table.Cell<Supplier<CreativeModeTab>, TabAdditionPhase, Boolean> triple : this.appended.cellSet()) {
             Supplier<CreativeModeTab> tabToAddTo = triple.getRowKey();
-            if (event.getTab() == tabToAddTo.get()) {
+            if (TabUtil.isForTab(event, tabToAddTo)) {
                 boolean addAll = triple.getValue();
                 TabAdditionPhase current = triple.getColumnKey();
                 if (current == phase) {

@@ -10,7 +10,7 @@ import net.zepalesque.redux.client.ReduxColors;
 import net.zepalesque.redux.data.prov.ReduxDataMapProvider;
 import net.zepalesque.redux.data.resource.registries.ReduxBiomes;
 import net.zepalesque.redux.item.ReduxItems;
-import net.zepalesque.redux.world.biome.tint.ReduxBiomeTints;
+import net.zepalesque.unity.world.biome.tint.UnityBiomeTints;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -24,15 +24,12 @@ public class ReduxMapData extends ReduxDataMapProvider {
     protected void gather() {
         Redux.BLOCK_SETS.forEach(set -> set.mapData(this));
 
-        var biomeTints = this.builder(ReduxBiomeTints.AETHER_GRASS.get().getDataMap());
-        biomeTints.add(AetherBiomes.SKYROOT_FOREST, 0xA2F2BC, false);
-        biomeTints.add(AetherBiomes.SKYROOT_WOODLAND, 0x96E8B0, false);
-        biomeTints.add(AetherBiomes.SKYROOT_MEADOW, 0xBAFFCB, false);
+        var biomeTints = this.builder(UnityBiomeTints.AETHER_GRASS.get().getDataMap());
         biomeTints.add(ReduxBiomes.GILDED_GROVES, ReduxColors.Tints.GILDED_GRASS_COLOR, false);
 
         var compostables = this.builder(NeoForgeDataMaps.COMPOSTABLES);
         this.addCompost(compostables, ReduxBlocks.GILDENROOT_LEAVES, 0.3F);
-        this.addCompost(compostables, ReduxBlocks.SHORT_AETHER_GRASS, 0.3F);
+        this.addCompost(compostables, ReduxBlocks.GILDENROOT_LEAF_PILE, 0.05F);
         this.addCompost(compostables, ReduxItems.WYND_OATS, 0.3F);
         this.addCompost(compostables, ReduxBlocks.WYNDSPROUTS, 0.3F);
         this.addCompost(compostables, ReduxItems.WYND_OAT_PANICLE, 0.65F);

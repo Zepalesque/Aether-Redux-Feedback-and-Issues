@@ -1,6 +1,5 @@
 package net.zepalesque.redux;
 
-import com.aetherteam.aether.item.AetherItems;
 import com.google.common.reflect.Reflection;
 import com.mojang.logging.LogUtils;
 import io.github.razordevs.aeroblender.aether.AetherRuleCategory;
@@ -41,12 +40,10 @@ import net.zepalesque.redux.recipe.ReduxRecipes;
 import net.zepalesque.redux.tile.ReduxTiles;
 import net.zepalesque.redux.world.biome.ReduxRegion;
 import net.zepalesque.redux.world.biome.ReduxSurfaceRules;
-import net.zepalesque.redux.world.biome.tint.ReduxBiomeTints;
 import net.zepalesque.redux.world.feature.gen.ReduxFeatures;
 import net.zepalesque.redux.world.tree.decorator.ReduxTreeDecorators;
 import net.zepalesque.redux.world.tree.foliage.ReduxFoliagePlacers;
 import net.zepalesque.zenith.api.blockset.BlockSet;
-import net.zepalesque.zenith.network.packet.BiomeTintSyncPacket;
 import org.slf4j.Logger;
 import terrablender.api.Regions;
 import terrablender.api.SurfaceRuleManager;
@@ -70,7 +67,6 @@ public class Redux {
         if (dist == Dist.CLIENT) {
             bus.addListener(EventPriority.LOWEST, ReduxColors::blockColors);
             bus.addListener(ReduxColors::itemColors);
-            bus.addListener(ReduxColors::resolvers);
         }
 
         Reflection.initialize(ReduxWoodSets.class, ReduxStoneSets.class, ReduxFlowerSets.class);
@@ -80,7 +76,6 @@ public class Redux {
                 ReduxItems.ITEMS,
                 ReduxEntities.ENTITIES,
                 ReduxTiles.TILES,
-                ReduxBiomeTints.TINTS,
                 ReduxFeatures.FEATURES,
                 ReduxFoliagePlacers.FOLIAGE_PLACERS,
                 ReduxParticles.PARTICLES,

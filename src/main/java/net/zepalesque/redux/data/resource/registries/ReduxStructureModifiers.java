@@ -11,10 +11,10 @@ import net.minecraft.world.level.levelgen.structure.Structure;
 import net.neoforged.neoforge.common.world.StructureModifier;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import net.zepalesque.redux.Redux;
-import net.zepalesque.zenith.Zenith;
 import net.zepalesque.zenith.api.condition.Condition;
-import net.zepalesque.zenith.world.structure.modifier.ConditionalStructureModifier;
-import net.zepalesque.zenith.world.structure.modifier.RemoveStructureModifier;
+import net.zepalesque.zenith.api.world.structure.modifier.ConditionalStructureModifier;
+import net.zepalesque.zenith.api.world.structure.modifier.RemoveStructureModifier;
+import net.zepalesque.zenith.core.Zenith;
 
 public class ReduxStructureModifiers {
     public static final ResourceKey<StructureModifier> REMOVE_LARGE_CLOUDS = createKey("remove_large_clouds");

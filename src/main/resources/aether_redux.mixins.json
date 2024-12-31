@@ -19,10 +19,9 @@
     "common.entity.SliderMixin",
     "common.item.DiggerItemMixin",
     "common.item.PickaxeItemMixin",
+    "common.world.structure.AetherTemplateStructurePieceMixin",
     "common.world.structure.BronzeBossMixin",
     "common.world.structure.BronzeDungeonMixin"
   ],
-  "client": [
-    "client.color.AetherColorResolversMixin"
-  ]
+  "client": []
 }

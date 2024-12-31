@@ -9,10 +9,10 @@ import net.minecraft.world.level.material.MapColor;
 import net.zepalesque.redux.Redux;
 import net.zepalesque.redux.blockset.stone.type.BaseStoneSet;
 import net.zepalesque.redux.blockset.stone.type.BrickStoneSet;
-import net.zepalesque.zenith.api.blockset.AbstractStoneSet;
 import net.zepalesque.zenith.api.blockset.BlockSet;
-import net.zepalesque.zenith.api.blockset.util.CommonMatrices;
-import net.zepalesque.zenith.api.blockset.util.CraftingMatrix;
+import net.zepalesque.zenith.api.blockset.CommonMatrices;
+import net.zepalesque.zenith.api.blockset.CraftingMatrix;
+import net.zepalesque.zenith.api.blockset.type.AbstractStoneSet;
 
 public class ReduxStoneSets {
 

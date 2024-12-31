@@ -18,15 +18,13 @@ import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import net.zepalesque.redux.Redux;
 import net.zepalesque.redux.client.audio.ReduxMusic;
 import net.zepalesque.redux.data.ReduxTags;
-import net.zepalesque.zenith.Zenith;
 import net.zepalesque.zenith.api.condition.Condition;
-import net.zepalesque.zenith.world.biome.modifier.ConditionalBiomeModifier;
-import net.zepalesque.zenith.world.biome.modifier.MusicModifier;
-import net.zepalesque.zenith.world.biome.modifier.SkiesModifier;
-import net.zepalesque.zenith.world.biome.modifier.WaterModifier;
+import net.zepalesque.zenith.api.world.biome.modifier.ConditionalBiomeModifier;
+import net.zepalesque.zenith.api.world.biome.modifier.MusicModifier;
+import net.zepalesque.zenith.api.world.biome.modifier.SkiesModifier;
+import net.zepalesque.zenith.api.world.biome.modifier.WaterModifier;
+import net.zepalesque.zenith.core.Zenith;
 
-import javax.swing.text.html.Option;
-import java.util.Map;
 import java.util.Optional;
 
 public class ReduxBiomeModifiers {
@@ -90,7 +88,5 @@ public class ReduxBiomeModifiers {
         context.register(ADD_WYNDSPROUTS, new BiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(ReduxTags.Biomes.HAS_WYNDSPROUTS), HolderSet.direct(features.getOrThrow(ReduxPlacements.WYNDSPROUTS_PATCH)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
-
-
     }
 }

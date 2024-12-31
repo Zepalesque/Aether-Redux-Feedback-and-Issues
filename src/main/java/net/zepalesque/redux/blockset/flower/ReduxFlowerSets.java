@@ -20,9 +20,9 @@ import net.zepalesque.redux.blockset.flower.type.CloverSet;
 import net.zepalesque.redux.blockset.flower.type.EnchantedFlowerSet;
 import net.zepalesque.redux.blockset.flower.type.UntintedFlowerSet;
 import net.zepalesque.redux.world.tree.ReduxTreeGrowers;
-import net.zepalesque.zenith.api.blockset.AbstractFlowerSet;
+import net.zepalesque.zenith.api.block.CommonPlantBounds;
 import net.zepalesque.zenith.api.blockset.BlockSet;
-import net.zepalesque.zenith.block.util.CommonPlantBounds;
+import net.zepalesque.zenith.api.blockset.type.AbstractFlowerSet;
 
 public class ReduxFlowerSets {
 

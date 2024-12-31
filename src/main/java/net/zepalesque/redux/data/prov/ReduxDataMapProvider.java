@@ -6,16 +6,13 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.data.DataMapProvider;
 import net.neoforged.neoforge.registries.datamaps.builtin.Compostable;
+import net.zepalesque.unity.data.prov.UnityDataMapProvider;
 
 import java.util.concurrent.CompletableFuture;
 
-public abstract class ReduxDataMapProvider extends DataMapProvider {
+public abstract class ReduxDataMapProvider extends UnityDataMapProvider {
 
     protected ReduxDataMapProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider) {
         super(packOutput, lookupProvider);
-    }
-
-    public void addCompost(DataMapProvider.Builder<Compostable, Item> map, ItemLike item, float chance) {
-        map.add(item.asItem().builtInRegistryHolder(), new Compostable(chance), false);
     }
 }

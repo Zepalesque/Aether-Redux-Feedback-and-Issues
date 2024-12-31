@@ -24,8 +24,8 @@ import net.zepalesque.redux.config.ReduxConfig;
 import net.zepalesque.redux.data.prov.ReduxLootModifierProvider;
 import net.zepalesque.redux.item.ReduxItems;
 import net.zepalesque.redux.loot.modifer.RawOreModifier;
-import net.zepalesque.zenith.api.condition.ConfigCondition;
-import net.zepalesque.zenith.loot.condition.ConditionLootModule;
+import net.zepalesque.zenith.api.condition.type.ConfigCondition;
+import net.zepalesque.zenith.api.loot.condition.ConditionLootModule;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;

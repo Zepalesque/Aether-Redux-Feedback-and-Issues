@@ -12,18 +12,11 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.zepalesque.redux.Redux;
+import net.zepalesque.unity.data.resource.builders.base.BasePlacementBuilders;
 
 import java.util.List;
 
-public class ReduxPlacementBuilders extends AetherPlacedFeatureBuilders {
-
-    protected static void register(BootstrapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, Holder<ConfiguredFeature<?, ?>> configuration, List<PlacementModifier> modifiers) {
-        context.register(key, new PlacedFeature(configuration, List.copyOf(modifiers)));
-    }
-
-    protected static void register(BootstrapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, Holder<ConfiguredFeature<?, ?>> configuration, PlacementModifier... modifiers) {
-        register(context, key, configuration, List.of(modifiers));
-    }
+public class ReduxPlacementBuilders extends BasePlacementBuilders {
 
     protected static ResourceKey<PlacedFeature> createKey(String name) {
         return ResourceKey.create(Registries.PLACED_FEATURE, Redux.loc(name));
@@ -35,9 +28,5 @@ public class ReduxPlacementBuilders extends AetherPlacedFeatureBuilders {
 
     protected static ResourceKey<PlacedFeature> aetherKey(String name) {
         return ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(Aether.MODID, name));
-    }
-
-    protected static String name(DeferredHolder<?, ?> reg) {
-        return reg.getId().getPath();
     }
 }

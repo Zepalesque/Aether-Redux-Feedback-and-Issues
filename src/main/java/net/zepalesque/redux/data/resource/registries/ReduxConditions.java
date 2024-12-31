@@ -4,10 +4,10 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.zepalesque.redux.Redux;
 import net.zepalesque.redux.config.ReduxConfig;
-import net.zepalesque.zenith.Zenith;
 import net.zepalesque.zenith.api.condition.Condition;
-import net.zepalesque.zenith.api.condition.ConfigCondition;
-import net.zepalesque.zenith.api.condition.ModLoadedCondition;
+import net.zepalesque.zenith.api.condition.type.ConfigCondition;
+import net.zepalesque.zenith.api.condition.type.ModLoadedCondition;
+import net.zepalesque.zenith.core.Zenith;
 
 public class ReduxConditions {
 

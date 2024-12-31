@@ -1,13 +1,8 @@
 package net.zepalesque.redux.data.prov;
 
 import com.aetherteam.aether.data.providers.AetherRecipeProvider;
-import com.aetherteam.aether.recipe.recipes.block.AmbrosiumRecipe;
-import com.aetherteam.nitrogen.data.providers.NitrogenRecipeProvider;
-import com.aetherteam.nitrogen.recipe.BlockStateIngredient;
-import com.aetherteam.nitrogen.recipe.builder.BlockStateRecipeBuilder;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
-import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeBuilder;
@@ -15,40 +10,27 @@ import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
-import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.zepalesque.redux.recipe.recipes.InfusionRecipe;
+import net.zepalesque.unity.data.prov.UnityRecipeProvider;
 import net.zepalesque.zenith.api.itemstack.ItemStackConstructor;
 import net.zepalesque.zenith.api.recipe.builder.StackingRecipeBuilder;
-import net.zepalesque.zenith.recipe.builder.StackingRecipeBuilder;
 
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-public abstract class ReduxRecipeProvider extends AetherRecipeProvider {
+public abstract class ReduxRecipeProvider extends UnityRecipeProvider {
 
     public ReduxRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, String id) {
         super(output, lookupProvider, id);
-    }
-
-
-    protected static void leafPile(RecipeOutput recipeOutput, ItemLike carpet, ItemLike material) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, carpet, 6)
-                .define('#', material).pattern("##")
-                .unlockedBy(getHasName(material), has(material))
-                .save(recipeOutput);
     }
 
     public static void woodFromLogs(RecipeOutput recipeOutput, ItemLike wood, ItemLike log) {

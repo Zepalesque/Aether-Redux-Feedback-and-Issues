@@ -15,8 +15,8 @@ import net.minecraft.world.level.block.LanternBlock;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 import net.minecraft.world.level.block.state.BlockBehaviour.OffsetType;
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
@@ -26,41 +26,27 @@ import net.zepalesque.redux.Redux;
 import net.zepalesque.redux.block.dungeon.DoorwayPillarBlock;
 import net.zepalesque.redux.block.dungeon.RunelightBlock;
 import net.zepalesque.redux.block.dungeon.TrappedPillarBlock;
-import net.zepalesque.redux.block.natural.AetherShortGrassBlock;
-import net.zepalesque.redux.block.natural.HangingAetherVinesHead;
-import net.zepalesque.redux.block.natural.HangingAetherVinesBody;
 import net.zepalesque.redux.block.natural.GoldenCloversBlock;
+import net.zepalesque.redux.block.natural.HangingAetherVinesBody;
+import net.zepalesque.redux.block.natural.HangingAetherVinesHead;
 import net.zepalesque.redux.block.natural.bush.CustomBoundsBushBlock;
 import net.zepalesque.redux.block.natural.crop.WyndoatsBlock;
 import net.zepalesque.redux.block.natural.leaves.FallingLeavesBlock;
-import net.zepalesque.redux.block.natural.leaves.LeafPileBlock;
 import net.zepalesque.redux.block.redstone.LogicatorBlock;
 import net.zepalesque.redux.block.state.ReduxBlockBuilders;
 import net.zepalesque.redux.client.particle.ReduxParticles;
-import net.zepalesque.redux.event.hook.ToolActionHooks;
-import net.zepalesque.zenith.api.blockset.AbstractWoodSet;
-import net.zepalesque.zenith.block.util.CommonPlantBounds;
+import net.zepalesque.unity.block.natural.leaves.LeafPileBlock;
+import net.zepalesque.unity.event.hook.BlockHooks;
+import net.zepalesque.zenith.api.block.CommonPlantBounds;
+import net.zepalesque.zenith.api.blockset.type.AbstractWoodSet;
 import net.zepalesque.zenith.mixin.mixins.common.accessor.FireAccessor;
 
 public class ReduxBlocks extends ReduxBlockBuilders {
 
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(Redux.MODID);
 
-    public static DeferredBlock<AetherShortGrassBlock> SHORT_AETHER_GRASS = register("short_aether_grass",
-            () -> new AetherShortGrassBlock(
-                    Properties.ofFullCopy(Blocks.SHORT_GRASS)
-                            .offsetType(OffsetType.XZ)
-                            .hasPostProcess((state, level, pos) -> true)
-            ));
-
     public static DeferredBlock<FallingLeavesBlock> GILDENROOT_LEAVES = register("gildenroot_leaves",
             () -> new FallingLeavesBlock(ReduxParticles.GILDENROOT_LEAF, Properties.ofFullCopy(AetherBlocks.SKYROOT_LEAVES.get()).mapColor(MapColor.QUARTZ)));
-
-    public static DeferredBlock<LeafPileBlock> SKYROOT_LEAF_PILE = register("skyroot_leaf_pile",
-            () -> new LeafPileBlock(AetherBlocks.SKYROOT_LEAVES));
-
-    public static DeferredBlock<LeafPileBlock> GOLDEN_OAK_LEAF_PILE = register("golden_oak_leaf_pile",
-            () -> new LeafPileBlock(AetherBlocks.GOLDEN_OAK_LEAVES));
 
     public static DeferredBlock<LeafPileBlock> GILDENROOT_LEAF_PILE = register("gildenroot_leaf_pile",
             () -> new LeafPileBlock(GILDENROOT_LEAVES));
@@ -217,7 +203,7 @@ public class ReduxBlocks extends ReduxBlockBuilders {
     public static void registerToolConversions() {
         Redux.BLOCK_SETS.forEach(set -> {
             if (set instanceof AbstractWoodSet wood) {
-                wood.setupStrippables(ToolActionHooks.STRIPPABLES);
+                wood.setupStrippables(BlockHooks.ToolConversions.STRIPPABLES);
             }
         });
     }

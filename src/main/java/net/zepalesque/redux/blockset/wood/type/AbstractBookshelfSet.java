@@ -22,9 +22,9 @@ import net.zepalesque.redux.data.prov.ReduxRecipeProvider;
 import net.zepalesque.redux.data.prov.loot.ReduxBlockLootProvider;
 import net.zepalesque.redux.data.prov.tags.ReduxBlockTagsProvider;
 import net.zepalesque.redux.item.ReduxItems;
+import net.zepalesque.zenith.api.data.DatagenUtil;
+import net.zepalesque.zenith.api.item.TabUtil;
 import net.zepalesque.zenith.mixin.mixins.common.accessor.FireAccessor;
-import net.zepalesque.zenith.util.DatagenUtil;
-import net.zepalesque.zenith.util.TabUtil;
 
 import java.util.function.Supplier;
 
@@ -56,7 +56,7 @@ public abstract class AbstractBookshelfSet<B extends BookshelfBlock> extends Log
     @Override
     public void langData(ReduxLanguageProvider data) {
         super.langData(data);
-        String name = DatagenUtil.getNameLocalized(this.id);
+        String name = DatagenUtil.localize(this.id);
 
         data.addBlock(this.bookshelf());
         data.addLore(this.bookshelf(), "A nice bookshelf made of " + name + " wood. These are nice for decoration, and also will enhance the abilities of Enchanting Tables!");
