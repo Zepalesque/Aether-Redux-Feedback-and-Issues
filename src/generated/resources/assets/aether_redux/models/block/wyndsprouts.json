@@ -1,5 +1,5 @@
 {
-  "parent": "aether_redux:block/template/cross/cross_tinted_overlay",
+  "parent": "aether_unity:block/template/cross/cross_tinted_overlay",
   "render_type": "minecraft:cutout",
   "textures": {
     "cross": "aether_redux:block/natural/wyndsprouts",

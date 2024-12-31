@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "aether_redux:block/natural/aether_medium_grass"
-  }
-}

@@ -3,6 +3,9 @@
   "functions": [
     {
       "function": "aether:double_drops"
+    },
+    {
+      "function": "aether:double_drops"
     }
   ],
   "pools": [

@@ -1,4 +1,4 @@
-// 1.21.1	2024-12-21T14:18:20.4380931	Item Models: aether_redux
+// 1.21.1	2024-12-31T16:35:48.9195089	Item Models: aether_redux
 22154525bdb82a668243960fdd22d12e653ecfe7 assets/aether_redux/models/item/aerbound_cape.json
 795ee016e7dad0d6ac42593c58ba258161615647 assets/aether_redux/models/item/aurum.json
 a083a7311bfd77483a76afa2e0b34a2dca856c28 assets/aether_redux/models/item/blightmoss_holystone.json
@@ -37,7 +37,6 @@ bf3d3ea55172aeaff49ed8528826bc5ef7a0f0ed assets/aether_redux/models/item/gildenr
 c113e613258a7e3d9e824cf97d76d2807703f0f7 assets/aether_redux/models/item/gildenroot_leaves.json
 c957473410573f950e98933cb17599021c650ccf assets/aether_redux/models/item/gildenroot_sapling.json
 497b1fee83f743dda1c78e4c303f9635b30a915d assets/aether_redux/models/item/golden_clovers.json
-996869e9b86a85af2c13bf31a2e6e03c6fccb8e9 assets/aether_redux/models/item/golden_oak_leaf_pile.json
 830712522b96695b2c26d31f844efcaa964e0d48 assets/aether_redux/models/item/golden_vines.json
 799296c4d4b51c7508d64cc40b7f5af08fac78f1 assets/aether_redux/models/item/infused_veridium_axe.json
 e00233f8f617b931ac5a25f0bad5e540d5399350 assets/aether_redux/models/item/infused_veridium_hoe.json
@@ -71,8 +70,6 @@ cbf1d27224744aef8ad83f00bd888454a5f34b4f assets/aether_redux/models/item/sentrit
 2c8457bbcde4e2e32804d90476bb7ca7e0673c97 assets/aether_redux/models/item/sentrite_wall.json
 58ea8b8e6fff7717dc67222718c780da317bc3b6 assets/aether_redux/models/item/sentry_base.json
 ff88166bf4d096e3efbd4eb04082d13f80b2fbd2 assets/aether_redux/models/item/sentry_pillar.json
-262070202f715ccbb93ebca7b4dd3b04851bc0ce assets/aether_redux/models/item/short_aether_grass.json
-8b955f1366ea1252f56beac15a2b0bf2e24678b9 assets/aether_redux/models/item/skyroot_leaf_pile.json
 6eb82aa73b8f464c031aede636157d1f9fb79678 assets/aether_redux/models/item/skysprouts.json
 e7bfb6b8c011a971909445c8ed6b5f55674ec196 assets/aether_redux/models/item/stripped_crystal_log.json
 3309c49e4daa375a5737eed499cd6556832136f7 assets/aether_redux/models/item/stripped_crystal_log_wall.json

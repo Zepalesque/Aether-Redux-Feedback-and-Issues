@@ -3,6 +3,9 @@
     "aether_redux:aurum": {
       "chance": 0.65
     },
+    "aether_redux:gildenroot_leaf_pile": {
+      "chance": 0.05
+    },
     "aether_redux:gildenroot_leaves": {
       "chance": 0.3
     },
@@ -11,9 +14,6 @@
     },
     "aether_redux:lucky_clover": {
       "chance": 0.65
-    },
-    "aether_redux:short_aether_grass": {
-      "chance": 0.3
     },
     "aether_redux:wynd_oat_panicle": {
       "chance": 0.65
