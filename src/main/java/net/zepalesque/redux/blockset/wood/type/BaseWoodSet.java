@@ -696,9 +696,9 @@ public class BaseWoodSet extends AbstractWoodSet implements ReduxGeneration {
         data.addBlock(this.trapdoor());
         data.addLore(this.trapdoor(), "Crafted from " + name + " Planks. Trapdoors are useful for covering entryways one block wide. They are often used to add extra protection to staircases.");
         data.addBlock(this.pressurePlate());
-        data.addLore(this.pressurePlate(), "Crafted from " + name + " Planks. A wooden pressure plate used to activate mechanisms and redstone.");
+        data.addLore(this.pressurePlate(), "Crafted from " + name + " Planks. Pressure plates are used to activate mechanisms and redstone.");
         data.addBlock(this.button());
-        data.addLore(this.button(), "Crafted from " + name + " Planks, a button used to activate mechanisms and redstone.");
+        data.addLore(this.button(), "Crafted from " + name + " Planks. Buttons are used to activate mechanisms and redstone.");
         data.addBlock(this.sign());
         data.addLore(this.sign(), "Crafted from " + name + " Planks. A helpful sign perfect for writing messages and directions on.");
         data.addBlock(this.hangingSign());
@@ -708,9 +708,9 @@ public class BaseWoodSet extends AbstractWoodSet implements ReduxGeneration {
         data.addEntityType(this.chestBoatEntity(), name + " Boat with Chest");
 
         data.addItem(this.boatItem());
-        data.addLore(this.boatItem(), "Crafted from " + name + " Planks. While the Aether does not have many large bodies of water, a boat can occasionally be a useful tool for crossing large distances over ice!");
+        data.addLore(this.boatItem(), "Crafted from " + name + " Planks. Boats can be used to easily traverse large bodies of water!");
         data.addItem(this.chestBoatItem(), name + " Boat with Chest");
-        data.addLore(this.chestBoatItem(), indefiniteUppercase + name + " Boat with a handy chest in the back. Helpful for transporting more items over long stretches of water, which are famously difficult to find in the Aether.");
+        data.addLore(this.chestBoatItem(), indefiniteUppercase + name + " Boat with a handy chest in the back. Helpful for transporting more items over long stretches of water.");
 
     }
 

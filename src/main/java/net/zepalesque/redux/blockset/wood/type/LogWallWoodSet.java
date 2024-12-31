@@ -33,7 +33,7 @@ import net.zepalesque.zenith.util.TabUtil;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class LogWallWoodSet extends BaseWoodSet {
+public class LogWallWoodSet extends BaseW   oodSet {
 
     protected final DeferredBlock<ReduxNaturalWall> log_wall;
     protected final DeferredBlock<ReduxNaturalWall> wood_wall;
