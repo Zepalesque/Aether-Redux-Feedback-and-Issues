@@ -49,7 +49,7 @@ public class ReduxWhirlwindRenderer<T extends AbstractWhirlwind> extends LivingE
     }
 
     protected float xOffset(float tickCount) {
-        return tickCount * 0.1F;
+        return tickCount * 0.01F;
     }
 
     @Override
