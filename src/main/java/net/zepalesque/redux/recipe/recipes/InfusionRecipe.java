@@ -8,6 +8,8 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.zepalesque.redux.recipe.ReduxRecipes;
 import net.zepalesque.zenith.api.itemstack.ItemStackConstructor;
+import net.zepalesque.zenith.api.recipe.recipes.AbstractStackingRecipe;
+import net.zepalesque.zenith.api.recipe.serializer.StackingRecipeSerializer;
 import net.zepalesque.zenith.recipe.recipes.AbstractStackingRecipe;
 import net.zepalesque.zenith.recipe.serializer.StackingRecipeSerializer;
 

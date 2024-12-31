@@ -21,6 +21,7 @@ import net.zepalesque.redux.client.audio.ReduxSounds;
 import net.zepalesque.redux.config.ReduxConfig;
 import net.zepalesque.redux.item.components.ReduxDataComponents;
 import net.zepalesque.redux.recipe.recipes.InfusionRecipe;
+import net.zepalesque.zenith.api.item.CustomStackingBehavior;
 import net.zepalesque.zenith.item.CustomStackingBehavior;
 import org.jetbrains.annotations.Nullable;
 

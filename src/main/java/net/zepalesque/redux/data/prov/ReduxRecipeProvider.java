@@ -29,6 +29,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.zepalesque.redux.recipe.recipes.InfusionRecipe;
 import net.zepalesque.zenith.api.itemstack.ItemStackConstructor;
+import net.zepalesque.zenith.api.recipe.builder.StackingRecipeBuilder;
 import net.zepalesque.zenith.recipe.builder.StackingRecipeBuilder;
 
 import java.util.Optional;
