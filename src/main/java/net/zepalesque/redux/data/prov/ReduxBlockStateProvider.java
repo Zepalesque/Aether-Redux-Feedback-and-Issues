@@ -163,14 +163,14 @@ public abstract class ReduxBlockStateProvider extends UnityBlockStateProvider {
     public void cropGrowable(Block block, String location, IntegerProperty ageProperty) {
         this.getVariantBuilder(block).forAllStates((state) -> {
             int stage = state.getValue(ageProperty);
-            BlockModelBuilder cross = models().withExistingParent(this.name(block) + "_stage" + stage, Unity.loc(ModelProvider.BLOCK_FOLDER + "/template/crop/crop_lowered"))
+            BlockModelBuilder cross = models().withExistingParent(this.name(block) + "_stage" + stage, Redux.loc(ModelProvider.BLOCK_FOLDER + "/template/crop/crop_lowered"))
                     .texture("plant", this.texture(this.name(block) + "_stage" + stage, location)).renderType("cutout");
             return ConfiguredModel.builder().modelFile(cross).build();
         });
     }
 
     public void cropOccluded(Block block, String location) {
-        BlockModelBuilder cross = models().withExistingParent(this.name(block), Unity.loc(ModelProvider.BLOCK_FOLDER + "/template/crop/crop_occluded"))
+        BlockModelBuilder cross = models().withExistingParent(this.name(block), Redux.loc(ModelProvider.BLOCK_FOLDER + "/template/crop/crop_occluded"))
                 .texture("plant", this.texture(this.name(block), location)).renderType("cutout");
         this.crossBlock(block, cross);
     }
@@ -185,7 +185,7 @@ public abstract class ReduxBlockStateProvider extends UnityBlockStateProvider {
     }
 
     public void chain(Block block, String location) {
-        BlockModelBuilder chain = models().withExistingParent(this.name(block), Unity.loc("block/template/construction/chain"))
+        BlockModelBuilder chain = models().withExistingParent(this.name(block), Redux.loc("block/template/construction/chain"))
                 .texture("chain", this.texture(this.name(block), location)).renderType("cutout");
         this.getVariantBuilder(block).forAllStates((state -> {
             Direction.Axis axis = state.getValue(ChainBlock.AXIS);
@@ -247,53 +247,6 @@ public abstract class ReduxBlockStateProvider extends UnityBlockStateProvider {
 
             builder.part().modelFile(useAlt ? sideAlt : side).rotationY(rot).addModel().condition(b, true).end();
         }
-    }
-
-    public void potAlt(Block block, Block flower, String location) {
-        this.potPrefix(block, flower, location, "potted_");
-    }
-
-    public void potPrefix(Block block, Block flower, String location, String prefix) {
-        ModelFile pot = this.models().withExistingParent(this.name(block), mcLoc("block/flower_pot_cross"))
-                .texture("plant", this.modLoc("block/" + location + prefix + this.name(flower))).renderType("cutout");
-        this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(pot));
-    }
-
-    public void tintedPotDualGloverlay(Block block, Block flower, String location) {
-        ModelFile pot = this.models().withExistingParent(this.name(block), Unity.loc("block/template/pot/flower_pot_tinted_dual_gloverlay"))
-                .texture("plant", this.modLoc("block/" + location + this.name(flower)))
-                .texture("glow", this.modLoc("block/" + location + this.name(flower) + "_glow"))
-                .texture("overlay", this.modLoc("block/" + location + this.name(flower) + "_overlay")).renderType("cutout");
-        this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(pot));
-    }
-    public void tintedPotGlowOverlay(Block block, Block flower, String location) {
-        ModelFile pot = this.models().withExistingParent(this.name(block), Unity.loc("block/template/pot/flower_pot_tinted_glowing_overlay"))
-                .texture("plant", this.modLoc("block/" + location + this.name(flower)))
-                .texture("overlay", this.modLoc("block/" + location + this.name(flower) + "_glow")).renderType("cutout");
-        this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(pot));
-    }
-    public void tintedPotGlowOverlayAlt(Block block, Block flower, String location) {
-        ModelFile pot = this.models().withExistingParent(this.name(block), Unity.loc("block/template/pot/flower_pot_tinted_glowing_overlay"))
-                .texture("plant", this.modLoc("block/" + location + "potted_" + this.name(flower)))
-                .texture("overlay", this.modLoc("block/" + location + "potted_" + this.name(flower) + "_glow")).renderType("cutout");
-        this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(pot));
-    }
-    public void tintedPotOverlay(Block block, Block flower, String location) {
-        ModelFile pot = this.models().withExistingParent(this.name(block), Unity.loc("block/template/pot/flower_pot_tinted_overlay"))
-                .texture("plant", this.modLoc("block/" + location + this.name(flower)))
-                .texture("overlay", this.modLoc("block/" + location + this.name(flower) + "_overlay")).renderType("cutout");
-        this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(pot));
-    }
-    public void tintedPot(Block block, Block flower, String location) {
-        ModelFile pot = this.models().withExistingParent(this.name(block), Unity.loc("block/template/pot/flower_pot_tinted"))
-                .texture("plant", this.modLoc("block/" + location + this.name(flower))).renderType("cutout");
-        this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(pot));
-    }
-    public void tintedPotOverlayAlt(Block block, Block flower, String location) {
-        ModelFile pot = this.models().withExistingParent(this.name(block), Unity.loc("block/template/pot/flower_pot_tinted_overlay"))
-                .texture("plant", this.modLoc("block/" + location + "potted_" + this.name(flower)))
-                .texture("overlay", this.modLoc("block/" + location + "potted_" + this.name(flower) + "_overlay")).renderType("cutout");
-        this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(pot));
     }
 
     // Other
@@ -372,12 +325,4 @@ public abstract class ReduxBlockStateProvider extends UnityBlockStateProvider {
                             .rotationY(d.get2DDataValue() * 90).build();
                 });
     }
-
-
-
-
-    public ResourceLocation texture(Block block, String location) {
-        return ResourceLocation.fromNamespaceAndPath(BuiltInRegistries.BLOCK.getKey(block).getNamespace(), "block/" + location + name(block));
-    }
-
 }
