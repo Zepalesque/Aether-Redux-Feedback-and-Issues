@@ -10,7 +10,7 @@ public interface IPostRenderer<T extends Entity> {
 
     void internalRender(@NotNull T entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight);
 
-    // TODO: Investigate, will this cause issues?
+    // TODO: Funny java generics magic to make this unnecessary if possible
     @SuppressWarnings("unchecked")
     default boolean actuallyRender(Entity entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
         try {
