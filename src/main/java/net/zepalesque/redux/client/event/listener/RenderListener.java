@@ -29,6 +29,7 @@ import net.zepalesque.redux.Redux;
 import net.zepalesque.redux.client.renderer.api.IPostRenderer;
 
 import java.util.Iterator;
+import java.util.function.Predicate;
 import java.util.stream.StreamSupport;
 
 @EventBusSubscriber(Dist.CLIENT)
@@ -57,11 +58,11 @@ public class RenderListener {
 
             PoseStack posestack = event.getPoseStack();
 
+            Iterable<Entity> allEntities = level.entitiesForRendering();
+            Iterable<Entity> whirlwinds = () -> StreamSupport.stream(allEntities.spliterator(), false)
+                    .filter(e -> e.getType() == AetherEntityTypes.EVIL_WHIRLWIND.get()).iterator();
 
-            for (Iterator<Entity> iterator =
-                 Iterators.filter(level.entitiesForRendering().iterator(), e -> e.getType() == AetherEntityTypes.EVIL_WHIRLWIND.get());
-                 iterator.hasNext(); ) {
-                Entity entity = iterator.next();
+            for (Entity entity : whirlwinds) {
                 if (dispatch.shouldRender(entity, frustum, x, y, z) || entity.hasIndirectPassenger(player)) {
                     BlockPos blockpos = entity.blockPosition();
                     if ((level.isOutsideBuildHeight(blockpos.getY()) || renderer.isSectionCompiled(blockpos))
