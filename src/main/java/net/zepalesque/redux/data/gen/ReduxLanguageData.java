@@ -73,6 +73,9 @@ public class ReduxLanguageData extends ReduxLanguageProvider {
         addBlock(ReduxBlocks.BLEAKMOSS_BLOCK);
         addLore(ReduxBlocks.BLEAKMOSS_BLOCK, "A corrupted, blighted variation of the Aether's Flutemoss. This can be found in the Blight.");
 
+        addBlock(ReduxBlocks.BLEAKMOSS_CARPET);
+        addLore(ReduxBlocks.BLEAKMOSS_CARPET, "A blanket-like, vegetative layer of Bleakmoss. This can be found in the Blight, and has the capacity to grow when bonemealed.");
+
         addItem(ReduxItems.AERBOUND_CAPE);
         addLore(ReduxItems.AERBOUND_CAPE, "A cape found in the Bronze Dungeon. It allows the wearer to double-jump!");
 

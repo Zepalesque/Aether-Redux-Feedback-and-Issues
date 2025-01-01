@@ -2,6 +2,8 @@ package net.zepalesque.redux.data.prov.loot;
 
 import com.aetherteam.aether.data.providers.AetherBlockLootSubProvider;
 import com.aetherteam.aether.loot.functions.DoubleDrops;
+import com.aetherteam.nitrogen.recipe.BlockPropertyPair;
+import com.mojang.datafixers.util.Pair;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
@@ -12,16 +14,20 @@ import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import net.zepalesque.redux.block.backport.MossyCarpetBlock;
 import net.zepalesque.redux.block.state.ReduxStates;
 import net.zepalesque.unity.data.prov.loot.UnityBlockLootProvider;
 
@@ -65,6 +71,11 @@ public abstract class ReduxBlockLootProvider extends UnityBlockLootProvider {
         super.dropSelf(block);
     }
 
+    public static LootTable.Builder createOnlyWhenDispatchTable(Block block, LootItemCondition.Builder conditionBuilder) {
+        return LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(block).when(conditionBuilder)));
+    }
+
     @Override
     public void dropOther(Block block, ItemLike item) {
         super.dropOther(block, item);
@@ -78,6 +89,14 @@ public abstract class ReduxBlockLootProvider extends UnityBlockLootProvider {
     @Override
     public void add(Block block, Function<Block, LootTable.Builder> factory) {
         super.add(block, factory);
+    }
+
+    public void mossyCarpet(Block carpet) {
+        this.add(carpet, block -> createOnlyWhenDispatchTable(block,
+                LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(
+                        StatePropertiesPredicate.Builder.properties().hasProperty(MossyCarpetBlock.BASE, true)
+                )
+        ));
     }
 
     @Override

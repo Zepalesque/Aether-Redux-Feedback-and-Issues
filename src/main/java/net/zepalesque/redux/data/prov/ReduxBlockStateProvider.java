@@ -333,9 +333,9 @@ public abstract class ReduxBlockStateProvider extends UnityBlockStateProvider {
 
         ModelFile carpet = this.models().singleTexture(this.name(block), mcLoc("block/carpet"), "wool", this.texture(this.name(base), location));
         ModelFile sideSmall = this.models().singleTexture(this.name(block) + "_side_small", Redux.loc("block/template/backport/mossy_carpet_side"), "side",
-                this.texture(this.name(block) + "_side_small", location));
+                this.texture(this.name(block) + "_side_small", location)).renderType("cutout");
         ModelFile sideTall = this.models().singleTexture(this.name(block) + "_side_tall", Redux.loc("block/template/backport/mossy_carpet_side"), "side",
-                this.texture(this.name(block) + "_side_tall", location));
+                this.texture(this.name(block) + "_side_tall", location)).renderType("cutout");
 
         builder.part().modelFile(carpet).addModel().condition(MossyCarpetBlock.BASE, true).end();
 

@@ -161,7 +161,13 @@ public class MossyCarpetBlock extends Block implements BonemealableBlock {
     }
 
     private static boolean canSupportAtFace(BlockGetter level, BlockPos pos, Direction direction) {
-        return direction != Direction.UP && MultifaceBlock.canAttachTo(level, direction, pos, level.getBlockState(pos));
+        return direction != Direction.UP && canAttachTo(level, pos, direction);
+    }
+
+    public static boolean canAttachTo(BlockGetter level, BlockPos pos, Direction direction) {
+        BlockPos blockpos = pos.relative(direction);
+        BlockState blockstate = level.getBlockState(blockpos);
+        return MultifaceBlock.canAttachTo(level, direction, blockpos, blockstate);
     }
 
     private BlockState getUpdatedState(BlockState state, BlockGetter level, BlockPos pos, boolean tip) {
