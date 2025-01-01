@@ -551,11 +551,11 @@ public class BaseWoodSet extends AbstractWoodSet implements ReduxGeneration {
     public DeferredHolder<BlockEntityType<?>, BlockEntityType<? extends ZenithSignBlockEntity>> signEntity() {
         return this.sign_entity;
     }
-
+    
     @Override
     protected DeferredHolder<BlockEntityType<?>, BlockEntityType<? extends ZenithHangingSignBlockEntity>> hangingSignEntity(DeferredRegister<BlockEntityType<?>> registry, String id) {
         return registry.register(id + "_hanging_sign", () ->
-                BlockEntityType.Builder.of(((pPos, pState) -> ZenithHangingSignBlockEntity.create(pPos, pState, this)),
+                BlockEntityType.Builder.of(((pPos, pState) -> ZenithHangingSignBlockEntity.create(pPos, pState, () -> this.hangingSignEntity().get())),
                                 this.hangingSign().get(),
                                 this.wallHangingSign().get())
                         .build(null));
