@@ -1,19 +1,34 @@
 package net.zepalesque.redux.client;
 
 import com.aetherteam.aether.block.AetherBlocks;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.BlockAndTintGetter;
+import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.zepalesque.redux.Redux;
 import net.zepalesque.redux.block.ReduxBlocks;
 import net.zepalesque.redux.blockset.util.TintableSet;
+import net.zepalesque.redux.data.ReduxTags;
 import net.zepalesque.unity.client.UnityColors;
 import net.zepalesque.zenith.api.blockset.BlockSet;
 import net.zepalesque.zenith.api.blockset.type.AbstractFlowerSet;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.Optional;
+import java.util.function.Predicate;
 
 public class ReduxColors {
 
     public static class Tints {
         public static final int GILDED_GRASS_COLOR = 0xFFED96;
         public static final int BLIGHT_GRASS_COLOR = 0xD5BAFF;
+    }
+
+    public static Optional<Integer> reduxColors(BlockState state, BlockAndTintGetter level, BlockPos pos, int index, Predicate<Integer> indexGoal, boolean useBelowProperties) {
+        if (level.getBlockState(pos.below()).is(ReduxTags.Blocks.SHORT_AETHER_GRASS_BLIGHT_COLORING)) {
+            return UnityColors.encapsulate(Tints.BLIGHT_GRASS_COLOR);
+        }
+        return Optional.empty();
     }
 
     public static void blockColors(RegisterColorHandlersEvent.Block event) {

@@ -88,6 +88,9 @@ public class ReduxBlockLoot extends ReduxBlockLootProvider {
         this.add(ReduxBlocks.GOLDEN_VINES.get(), shears());
         this.add(ReduxBlocks.GOLDEN_VINES_PLANT.get(), shears().apply(ReduxBlocks.GOLDEN_VINES.get()));
 
+        this.dropSelf(ReduxBlocks.BLEAKMOSS_BLOCK.get());
+        this.dropSelf(ReduxBlocks.BLEAKMOSS_CARPET.get());
+
         this.dropSelf(ReduxBlocks.LOGICATOR.get());
     }
 

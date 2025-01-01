@@ -43,6 +43,10 @@ public class ReduxTabs {
             );
 
             TabUtil.putAfter(event, ReduxFlowerSets.AURUM.flower(), ReduxBlocks.GOLDEN_CLOVERS);
+
+            // TODO: Insert Enchanted Moss (NAME PENDING) into here before Bleakmoss
+            TabUtil.putAfter(event, UnityBlocks.FLUTEMOSS_CARPET, ReduxBlocks.BLEAKMOSS_BLOCK, ReduxBlocks.BLEAKMOSS_CARPET);
+
             
         } else if (TabUtil.isForTab(event, AetherCreativeTabs.AETHER_DUNGEON_BLOCKS)) {
             TabUtil.putAfter(event, AetherBlocks.CARVED_STONE,

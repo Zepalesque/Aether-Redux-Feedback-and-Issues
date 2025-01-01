@@ -70,9 +70,8 @@ public class ReduxLanguageData extends ReduxLanguageProvider {
         addBlock(ReduxBlocks.POTTED_SKYSPROUTS);
         addLore(ReduxBlocks.SKYSPROUTS, "A relative of the common Wyndsprouts, this flowering grass is found in the Skyfields.");
 
-        addBlock(ReduxBlocks.LOGICATOR, "Redstone Logicator");
-        addLore(ReduxBlocks.LOGICATOR, "A fascinating circuit made with an exotic material not found in the Aether - Redstone. This little diode takes in two inputs on the side, and will perform a logical operation on the two for the output. The operation is controlled by the torch on the top and the back input. The torch controls AND/OR mode, and the back input controls exclusivity (XNOR/XOR).");
-
+        addBlock(ReduxBlocks.BLEAKMOSS_BLOCK);
+        addLore(ReduxBlocks.BLEAKMOSS_BLOCK, "A corrupted, blighted variation of the Aether's Flutemoss. This can be found in the Blight.");
 
         addItem(ReduxItems.AERBOUND_CAPE);
         addLore(ReduxItems.AERBOUND_CAPE, "A cape found in the Bronze Dungeon. It allows the wearer to double-jump!");
@@ -148,6 +147,9 @@ public class ReduxLanguageData extends ReduxLanguageProvider {
 
         addBlock(ReduxBlocks.REFINED_SENTRITE_BLOCK, "Block of Refined Sentrite");
         addLore(ReduxBlocks.REFINED_SENTRITE_BLOCK, "A block of the refined form of Sentrite, crafted with Refined Sentrite.");
+
+        addBlock(ReduxBlocks.LOGICATOR, "Redstone Logicator");
+        addLore(ReduxBlocks.LOGICATOR, "A fascinating circuit made with an exotic material not found in the Aether - Redstone. This little diode takes in two inputs on the side, and will perform a logical operation on the two for the output. The operation is controlled by the torch on the top and the back input. The torch controls AND/OR mode, and the back input controls exclusivity (XNOR/XOR).");
 
         addTooltip("shift_info", "Hold [%s] for more info...");
         addTooltip("infusion_charge", "Infusion Charge: %s");

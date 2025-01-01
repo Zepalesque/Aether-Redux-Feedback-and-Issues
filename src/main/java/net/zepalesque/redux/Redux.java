@@ -11,6 +11,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
@@ -22,6 +23,7 @@ import net.zepalesque.redux.block.ReduxBlocks;
 import net.zepalesque.redux.blockset.flower.ReduxFlowerSets;
 import net.zepalesque.redux.blockset.stone.ReduxStoneSets;
 import net.zepalesque.redux.blockset.wood.ReduxWoodSets;
+import net.zepalesque.redux.client.ReduxClient;
 import net.zepalesque.redux.client.ReduxColors;
 import net.zepalesque.redux.client.audio.ReduxSounds;
 import net.zepalesque.redux.client.particle.ReduxParticles;
@@ -61,6 +63,7 @@ public class Redux {
     public Redux(ModContainer mod, IEventBus bus, Dist dist) {
         bus.addListener(EventPriority.LOWEST, ReduxData::dataSetup);
         bus.addListener(this::commonSetup);
+        bus.addListener(this::clientSetup);
         bus.addListener(this::registerDataMaps);
         bus.addListener(this::packSetup);
         bus.addListener(this::registerPackets);
@@ -107,6 +110,10 @@ public class Redux {
             ReduxItems.registerAccessories();
             ReduxEntities.addBossConversions();
         });
+    }
+
+    private void clientSetup(final FMLClientSetupEvent event) {
+        event.enqueueWork(ReduxClient::registerTintOverrides);
     }
 
     public void registerPackets(RegisterPayloadHandlersEvent event) {
