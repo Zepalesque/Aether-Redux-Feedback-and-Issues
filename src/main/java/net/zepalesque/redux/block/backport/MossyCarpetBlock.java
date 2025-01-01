@@ -98,25 +98,25 @@ public class MossyCarpetBlock extends Block implements BonemealableBlock {
         if (state.getValue(BASE)) {
             voxelshape = DOWN_AABB;
         }
-        voxelshape = switch ((WallSide)state.getValue(NORTH)) {
+        voxelshape = switch (state.getValue(NORTH)) {
             case NONE -> voxelshape;
             case LOW -> Shapes.or(voxelshape, NORTH_SHORT_AABB);
             case TALL -> Shapes.or(voxelshape, NORTH_AABB);
         };
 
-        voxelshape = switch ((WallSide)state.getValue(SOUTH)) {
+        voxelshape = switch (state.getValue(SOUTH)) {
             case NONE -> voxelshape;
             case LOW -> Shapes.or(voxelshape, SOUTH_SHORT_AABB);
             case TALL -> Shapes.or(voxelshape, SOUTH_AABB);
         };
 
-        voxelshape = switch ((WallSide)state.getValue(EAST)) {
+        voxelshape = switch (state.getValue(EAST)) {
             case NONE -> voxelshape;
             case LOW -> Shapes.or(voxelshape, EAST_SHORT_AABB);
             case TALL -> Shapes.or(voxelshape, EAST_AABB);
         };
 
-        voxelshape = switch ((WallSide)state.getValue(WEST)) {
+        voxelshape = switch (state.getValue(WEST)) {
             case NONE -> voxelshape;
             case LOW -> Shapes.or(voxelshape, WEST_SHORT_AABB);
             case TALL -> Shapes.or(voxelshape, WEST_AABB);
@@ -268,15 +268,15 @@ public class MossyCarpetBlock extends Block implements BonemealableBlock {
     @Override
     protected BlockState rotate(BlockState p_379325_, Rotation p_380164_) {
         return switch (p_380164_) {
-            case CLOCKWISE_180 -> (BlockState)p_379325_.setValue(NORTH, p_379325_.getValue(SOUTH))
+            case CLOCKWISE_180 -> p_379325_.setValue(NORTH, p_379325_.getValue(SOUTH))
             .setValue(EAST, p_379325_.getValue(WEST))
             .setValue(SOUTH, p_379325_.getValue(NORTH))
             .setValue(WEST, p_379325_.getValue(EAST));
-            case COUNTERCLOCKWISE_90 -> (BlockState)p_379325_.setValue(NORTH, p_379325_.getValue(EAST))
+            case COUNTERCLOCKWISE_90 -> p_379325_.setValue(NORTH, p_379325_.getValue(EAST))
             .setValue(EAST, p_379325_.getValue(SOUTH))
             .setValue(SOUTH, p_379325_.getValue(WEST))
             .setValue(WEST, p_379325_.getValue(NORTH));
-            case CLOCKWISE_90 -> (BlockState)p_379325_.setValue(NORTH, p_379325_.getValue(WEST))
+            case CLOCKWISE_90 -> p_379325_.setValue(NORTH, p_379325_.getValue(WEST))
             .setValue(EAST, p_379325_.getValue(NORTH))
             .setValue(SOUTH, p_379325_.getValue(EAST))
             .setValue(WEST, p_379325_.getValue(SOUTH));
@@ -287,8 +287,8 @@ public class MossyCarpetBlock extends Block implements BonemealableBlock {
     @Override
     protected BlockState mirror(BlockState p_379462_, Mirror p_380184_) {
         return switch (p_380184_) {
-            case LEFT_RIGHT -> (BlockState)p_379462_.setValue(NORTH, p_379462_.getValue(SOUTH)).setValue(SOUTH, p_379462_.getValue(NORTH));
-            case FRONT_BACK -> (BlockState)p_379462_.setValue(EAST, p_379462_.getValue(WEST)).setValue(WEST, p_379462_.getValue(EAST));
+            case LEFT_RIGHT -> p_379462_.setValue(NORTH, p_379462_.getValue(SOUTH)).setValue(SOUTH, p_379462_.getValue(NORTH));
+            case FRONT_BACK -> p_379462_.setValue(EAST, p_379462_.getValue(WEST)).setValue(WEST, p_379462_.getValue(EAST));
             default -> super.mirror(p_379462_, p_380184_);
         };
     }
