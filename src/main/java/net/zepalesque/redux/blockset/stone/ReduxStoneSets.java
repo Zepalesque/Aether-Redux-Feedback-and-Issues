@@ -22,8 +22,8 @@ public class ReduxStoneSets {
             .tabAfter(AetherCreativeTabs.AETHER_NATURAL_BLOCKS, () -> AetherBlocks.MOSSY_HOLYSTONE, false, BlockSet.TabAdditionPhase.BEFORE)
             .withTag(BlockTags.MINEABLE_WITH_PICKAXE, true);
     
-    public static final BaseStoneSet BLIGHTMOSS_HOLYSTONE = register(new BaseStoneSet("blightmoss_holystone", MapColor.TERRACOTTA_PURPLE, SoundType.STONE, 0.5F, 0.5F, "natural/"))
-            .withLore("The blighted form of Mosssy Holystone. The viscious moss on this rock wilts in the sunlight and flourishes in the moonlight.")
+    public static final BaseStoneSet BLEAKMOSS_HOLYSTONE = register(new BaseStoneSet("bleakmoss_holystone", MapColor.TERRACOTTA_PURPLE, SoundType.STONE, 0.5F, 0.5F, "natural/"))
+            .withLore("The blighted form of Mossy Holystone. The viscious moss on this rock wilts in the sunlight and flourishes in the moonlight.")
             .tabAfter(AetherCreativeTabs.AETHER_BUILDING_BLOCKS, ReduxStoneSets.GILDED_HOLYSTONE::wall, true, BlockSet.TabAdditionPhase.BEFORE)
             .tabAfter(AetherCreativeTabs.AETHER_NATURAL_BLOCKS, ReduxStoneSets.GILDED_HOLYSTONE::block, false, BlockSet.TabAdditionPhase.BEFORE)
             .withTag(BlockTags.MINEABLE_WITH_PICKAXE, true);
@@ -38,8 +38,8 @@ public class ReduxStoneSets {
                                     .pattern("H#")))
             .craftsIntoSet(() -> ReduxStoneSets.SENTRITE_BRICKS, CommonMatrices.SQUARE_2X2)
             .stonecutIntoSet(() -> ReduxStoneSets.SENTRITE_BRICKS)
-            .tabAfter(AetherCreativeTabs.AETHER_BUILDING_BLOCKS, ReduxStoneSets.BLIGHTMOSS_HOLYSTONE::wall, true, BlockSet.TabAdditionPhase.BEFORE)
-            .tabAfter(AetherCreativeTabs.AETHER_NATURAL_BLOCKS, ReduxStoneSets.BLIGHTMOSS_HOLYSTONE::block, false, BlockSet.TabAdditionPhase.BEFORE)
+            .tabAfter(AetherCreativeTabs.AETHER_BUILDING_BLOCKS, ReduxStoneSets.BLEAKMOSS_HOLYSTONE::wall, true, BlockSet.TabAdditionPhase.BEFORE)
+            .tabAfter(AetherCreativeTabs.AETHER_NATURAL_BLOCKS, ReduxStoneSets.BLEAKMOSS_HOLYSTONE::block, false, BlockSet.TabAdditionPhase.BEFORE)
             .withTag(BlockTags.MINEABLE_WITH_PICKAXE, true);
 
     public static final BaseStoneSet SENTRITE_BRICKS = register(new BrickStoneSet("sentrite_brick", MapColor.DEEPSLATE, SoundType.NETHER_BRICKS, 1.0F, 6.0F, "construction/"))

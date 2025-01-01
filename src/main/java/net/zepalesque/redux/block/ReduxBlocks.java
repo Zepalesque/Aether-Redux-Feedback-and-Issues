@@ -26,6 +26,7 @@ import net.zepalesque.redux.Redux;
 import net.zepalesque.redux.block.dungeon.DoorwayPillarBlock;
 import net.zepalesque.redux.block.dungeon.RunelightBlock;
 import net.zepalesque.redux.block.dungeon.TrappedPillarBlock;
+import net.zepalesque.redux.block.natural.DoubleDropsMossCarpet;
 import net.zepalesque.redux.block.natural.GoldenCloversBlock;
 import net.zepalesque.redux.block.natural.HangingAetherVinesBody;
 import net.zepalesque.redux.block.natural.HangingAetherVinesHead;
@@ -35,7 +36,11 @@ import net.zepalesque.redux.block.natural.leaves.FallingLeavesBlock;
 import net.zepalesque.redux.block.redstone.LogicatorBlock;
 import net.zepalesque.redux.block.state.ReduxBlockBuilders;
 import net.zepalesque.redux.client.particle.ReduxParticles;
+import net.zepalesque.redux.data.resource.registries.ReduxFeatureConfig;
+import net.zepalesque.unity.block.natural.DoubleDropsCarpet;
+import net.zepalesque.unity.block.natural.DoubleDropsGrowthBlock;
 import net.zepalesque.unity.block.natural.leaves.LeafPileBlock;
+import net.zepalesque.unity.data.resource.registries.UnityFeatureConfig;
 import net.zepalesque.unity.event.hook.BlockHooks;
 import net.zepalesque.zenith.api.block.CommonPlantBounds;
 import net.zepalesque.zenith.api.blockset.type.AbstractWoodSet;
@@ -59,6 +64,12 @@ public class ReduxBlocks extends ReduxBlockBuilders {
                     .pushReaction(PushReaction.DESTROY)
                     .replaceable()
             ));
+
+    // TODO: Moss BlockSet
+    public static DeferredBlock<DoubleDropsGrowthBlock> BLEAKMOSS_BLOCK = register("bleakmoss_block",
+            () -> new DoubleDropsGrowthBlock(Properties.ofFullCopy(Blocks.MOSS_BLOCK).mapColor(MapColor.TERRACOTTA_MAGENTA), ReduxFeatureConfig.BLEAKMOSS_BONEMEAL));
+    public static DeferredBlock<DoubleDropsMossCarpet> BLEAKMOSS_CARPET = register("bleakmoss_carpet",
+            () -> new DoubleDropsMossCarpet(Properties.ofFullCopy(Blocks.MOSS_CARPET).mapColor(MapColor.TERRACOTTA_MAGENTA)));
 
     public static final DeferredBlock<Block> CARVED_PILLAR = register("carved_pillar", () -> new RotatedPillarBlock(Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).strength(0.5F, 6.0F).requiresCorrectToolForDrops()));
     public static final DeferredBlock<Block> SENTRY_PILLAR = register("sentry_pillar", () -> new RotatedPillarBlock(Properties.ofFullCopy(CARVED_PILLAR.get()).lightLevel(state -> 11)));
