@@ -73,5 +73,7 @@ public class ReduxBlockStateData extends ReduxBlockStateProvider {
 
         this.logicator(ReduxBlocks.LOGICATOR.get(), "redstone/");
 
+        this.block(ReduxBlocks.BLEAKMOSS_BLOCK.get(), "natural/");
+        this.mossyCarpet(ReduxBlocks.BLEAKMOSS_CARPET.get(), ReduxBlocks.BLEAKMOSS_BLOCK.get(), "natural/");
     }
 }

@@ -41,11 +41,11 @@ import java.util.stream.Collectors;
 public class MossyCarpetBlock extends Block implements BonemealableBlock {
     public static final MapCodec<MossyCarpetBlock> CODEC = simpleCodec(MossyCarpetBlock::new);
     public static final BooleanProperty BASE = BlockStateProperties.BOTTOM;
-    private static final EnumProperty<WallSide> NORTH = BlockStateProperties.NORTH_WALL;
-    private static final EnumProperty<WallSide> EAST = BlockStateProperties.EAST_WALL;
-    private static final EnumProperty<WallSide> SOUTH = BlockStateProperties.SOUTH_WALL;
-    private static final EnumProperty<WallSide> WEST = BlockStateProperties.WEST_WALL;
-    private static final Map<Direction, EnumProperty<WallSide>> PROPERTY_BY_DIRECTION = ImmutableMap.copyOf(
+    public static final EnumProperty<WallSide> NORTH = BlockStateProperties.NORTH_WALL;
+    public static final EnumProperty<WallSide> EAST = BlockStateProperties.EAST_WALL;
+    public static final EnumProperty<WallSide> SOUTH = BlockStateProperties.SOUTH_WALL;
+    public static final EnumProperty<WallSide> WEST = BlockStateProperties.WEST_WALL;
+    public static final Map<Direction, EnumProperty<WallSide>> PROPERTY_BY_DIRECTION = ImmutableMap.copyOf(
         Util.make(Maps.newEnumMap(Direction.class), p_380156_ -> {
             p_380156_.put(Direction.NORTH, NORTH);
             p_380156_.put(Direction.EAST, EAST);

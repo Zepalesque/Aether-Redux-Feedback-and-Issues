@@ -14,7 +14,9 @@ import net.minecraft.world.level.block.LanternBlock;
 import net.minecraft.world.level.block.PinkPetalsBlock;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.block.state.properties.WallSide;
 import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelBuilder;
@@ -24,6 +26,7 @@ import net.neoforged.neoforge.client.model.generators.MultiPartBlockStateBuilder
 import net.neoforged.neoforge.client.model.generators.MultiPartBlockStateBuilder.PartBuilder;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.zepalesque.redux.Redux;
+import net.zepalesque.redux.block.backport.MossyCarpetBlock;
 import net.zepalesque.redux.block.construction.LayeredBookshelfBlock;
 import net.zepalesque.redux.block.dungeon.RunelightBlock;
 import net.zepalesque.redux.block.redstone.LogicatorBlock;
@@ -294,9 +297,6 @@ public abstract class ReduxBlockStateProvider extends UnityBlockStateProvider {
         this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(pot));
     }
 
-
-
-
     public void logicator(Block block, String location) {
         String name = this.name(block);
         this.getVariantBuilder(block).forAllStates(
@@ -325,4 +325,48 @@ public abstract class ReduxBlockStateProvider extends UnityBlockStateProvider {
                             .rotationY(d.get2DDataValue() * 90).build();
                 });
     }
+
+
+
+    public void mossyCarpet(Block block, Block base, String location) {
+        MultiPartBlockStateBuilder builder = this.getMultipartBuilder(block);
+
+        ModelFile carpet = this.models().singleTexture(this.name(block), mcLoc("block/carpet"), "wool", this.texture(this.name(base), location));
+        ModelFile sideSmall = this.models().singleTexture(this.name(block) + "_side_small", Redux.loc("block/template/backport/mossy_carpet_side"), "side",
+                this.texture(this.name(block) + "_side_small", location));
+        ModelFile sideTall = this.models().singleTexture(this.name(block) + "_side_tall", Redux.loc("block/template/backport/mossy_carpet_side"), "side",
+                this.texture(this.name(block) + "_side_tall", location));
+
+        builder.part().modelFile(carpet).addModel().condition(MossyCarpetBlock.BASE, true).end();
+
+        builder.part().modelFile(carpet).addModel().condition(MossyCarpetBlock.BASE, true)
+                .condition(MossyCarpetBlock.NORTH, WallSide.NONE)
+                .condition(MossyCarpetBlock.EAST, WallSide.NONE)
+                .condition(MossyCarpetBlock.SOUTH, WallSide.NONE)
+                .condition(MossyCarpetBlock.WEST, WallSide.NONE).end();
+
+        for (Map.Entry<Direction, EnumProperty<WallSide>> entry : MossyCarpetBlock.PROPERTY_BY_DIRECTION.entrySet()) {
+
+            Direction key = entry.getKey();
+            EnumProperty<WallSide> value = entry.getValue();
+
+            var tallBuilder = builder.part().modelFile(sideTall).rotationY(key.getOpposite().get2DDataValue() * 90);
+            if (key != Direction.NORTH) tallBuilder = tallBuilder.uvLock(true);
+            tallBuilder.addModel().condition(value, WallSide.TALL).end();
+            var smallBuilder = builder.part().modelFile(sideSmall).rotationY(key.getOpposite().get2DDataValue() * 90);
+            if (key != Direction.NORTH) smallBuilder = smallBuilder.uvLock(true);
+            smallBuilder.addModel().condition(value, WallSide.LOW).end();
+
+            var noneBuilder = builder.part().modelFile(sideTall).rotationY(key.getOpposite().get2DDataValue() * 90);
+            if (key != Direction.NORTH) noneBuilder = noneBuilder.uvLock(true);
+            var modelAdded = noneBuilder.addModel().condition(MossyCarpetBlock.BASE, false);
+            for (EnumProperty<WallSide> property : MossyCarpetBlock.PROPERTY_BY_DIRECTION.values()) {
+                modelAdded.condition(property, WallSide.NONE);
+            }
+            builder = modelAdded.end();
+        }
+    }
+
+
+
 }
