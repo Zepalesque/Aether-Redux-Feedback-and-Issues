@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "aether_redux:block/natural/bleakmoss_holystone",
+    "side": "aether_redux:block/natural/bleakmoss_holystone",
+    "top": "aether_redux:block/natural/bleakmoss_holystone"
+  }
+}

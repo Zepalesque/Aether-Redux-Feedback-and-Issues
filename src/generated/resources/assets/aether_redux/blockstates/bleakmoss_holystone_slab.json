@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "aether_redux:block/bleakmoss_holystone_slab"
+    },
+    "type=double": {
+      "model": "aether_redux:block/bleakmoss_holystone"
+    },
+    "type=top": {
+      "model": "aether_redux:block/bleakmoss_holystone_slab_top"
+    }
+  }
+}

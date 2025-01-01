@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/wall_inventory",
-  "textures": {
-    "wall": "aether_redux:block/natural/blightmoss_holystone"
-  }
-}
