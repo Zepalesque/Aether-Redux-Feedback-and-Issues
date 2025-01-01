@@ -1,7 +1,7 @@
-// 1.21.1	2024-12-31T23:58:26.3468276	Loot Tables
+// 1.21.1	2025-01-01T00:53:28.5955784	Loot Tables
 c6156555dc4897939b617dabc4521b7fa52feba0 data/aether_redux/loot_table/blocks/aurum.json
 66a11e556b98bf1a1485905fb0149b1a833213ab data/aether_redux/loot_table/blocks/bleakmoss_block.json
-b61a67f602c1cd856fee91bb43ab3a283a32004a data/aether_redux/loot_table/blocks/bleakmoss_carpet.json
+c8524e8336739f74fc648fcf76c60de754a38367 data/aether_redux/loot_table/blocks/bleakmoss_carpet.json
 f1295bdffeb84141ffba326df31f0a474dfe8c8a data/aether_redux/loot_table/blocks/bleakmoss_holystone.json
 0306e4b985572f83118b92002d44bd5af407f211 data/aether_redux/loot_table/blocks/bleakmoss_holystone_slab.json
 3b5e88f73d93d177b73ed9576681b60e0a16492d data/aether_redux/loot_table/blocks/bleakmoss_holystone_stairs.json

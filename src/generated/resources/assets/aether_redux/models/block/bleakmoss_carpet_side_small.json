@@ -1,5 +1,6 @@
 {
   "parent": "aether_redux:block/template/backport/mossy_carpet_side",
+  "render_type": "minecraft:cutout",
   "textures": {
     "side": "aether_redux:block/natural/bleakmoss_carpet_side_small"
   }

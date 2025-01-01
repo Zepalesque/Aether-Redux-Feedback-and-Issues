@@ -1,6 +1,7 @@
 {
   "block.aether_redux.aurum": "Aurum",
   "block.aether_redux.bleakmoss_block": "Bleakmoss Block",
+  "block.aether_redux.bleakmoss_carpet": "Bleakmoss Carpet",
   "block.aether_redux.bleakmoss_holystone": "Bleakmoss Holystone",
   "block.aether_redux.bleakmoss_holystone_slab": "Bleakmoss Holystone Slab",
   "block.aether_redux.bleakmoss_holystone_stairs": "Bleakmoss Holystone Stairs",
@@ -101,6 +102,7 @@
   "item.aether_redux.wynd_oats": "Wynd Oats",
   "lore.block.aether_redux.aurum": "A golden flower found in the Gilded Groves. Some say it brings good luck!",
   "lore.block.aether_redux.bleakmoss_block": "A corrupted, blighted variation of the Aether's Flutemoss. This can be found in the Blight.",
+  "lore.block.aether_redux.bleakmoss_carpet": "A blanket-like, vegetative layer of Bleakmoss. This can be found in the Blight, and has the capacity to grow when bonemealed.",
   "lore.block.aether_redux.bleakmoss_holystone": "The blighted form of Mossy Holystone. The viscious moss on this rock wilts in the sunlight and flourishes in the moonlight.",
   "lore.block.aether_redux.bleakmoss_holystone_slab": "Crafted from Bleakmoss Holystone. Slabs are half blocks, versatile for decoration and smooth slopes. Try adding some to a building's roofing!",
   "lore.block.aether_redux.bleakmoss_holystone_stairs": "Crafted from Bleakmoss Holystone. Stairs are useful for adding verticality to builds and are often used for decoration too!",
