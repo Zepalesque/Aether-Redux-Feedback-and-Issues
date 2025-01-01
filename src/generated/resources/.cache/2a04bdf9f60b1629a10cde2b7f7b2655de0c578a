@@ -1,4 +1,4 @@
-// 1.21.1	2024-12-09T19:33:03.1621072	Tags for minecraft:item mod id aether_redux
+// 1.21.1	2025-01-01T18:35:58.5073765	Tags for minecraft:item mod id aether_redux
 8d17c36582b2a10c1b19cd86cac220b5e90dc908 data/aether/tags/item/accessories_capes.json
 c191bd82d7ab0270a08a0b6d99db3860549e07ea data/aether/tags/item/boss_doorway_dungeon_blocks.json
 8d17c36582b2a10c1b19cd86cac220b5e90dc908 data/aether/tags/item/bronze_dungeon_loot.json
@@ -6,18 +6,19 @@ c191bd82d7ab0270a08a0b6d99db3860549e07ea data/aether/tags/item/boss_doorway_dung
 752d7b101062e40cc5449bf130575be14909a28b data/aether/tags/item/flying_cow_temptation_items.json
 079f532874a02f79935f6a4082693e47575060f5 data/aether/tags/item/locked_dungeon_blocks.json
 92fb0abf3cc460d1bc528700380179be01a2f938 data/aether/tags/item/phyg_temptation_items.json
-761d9af3851563316242dac11105074c9f83e129 data/aether/tags/item/planks_crafting.json
+fd14f71d583dd108b0ba5dc7aeac07f35c6dd887 data/aether/tags/item/planks_crafting.json
 1da24719bdf8ede41a69286763554958c408486f data/aether/tags/item/sentry_blocks.json
-761d9af3851563316242dac11105074c9f83e129 data/aether/tags/item/skyroot_repairing.json
-761d9af3851563316242dac11105074c9f83e129 data/aether/tags/item/skyroot_stick_crafting.json
-761d9af3851563316242dac11105074c9f83e129 data/aether/tags/item/skyroot_tool_crafting.json
+fd14f71d583dd108b0ba5dc7aeac07f35c6dd887 data/aether/tags/item/skyroot_repairing.json
+fd14f71d583dd108b0ba5dc7aeac07f35c6dd887 data/aether/tags/item/skyroot_stick_crafting.json
+fd14f71d583dd108b0ba5dc7aeac07f35c6dd887 data/aether/tags/item/skyroot_tool_crafting.json
 d7419f8329f04e3bc18cdcf761b7c6288bfbf50b data/aether/tags/item/slider_damaging_items.json
 def6d9c61e45ecd875098eeb799975a50e3d3000 data/aether/tags/item/trapped_dungeon_blocks.json
 3bbe39140a0bf0101119754f9a986e7c7b9070a8 data/aether/tags/item/treated_as_aether_item.json
+badc27df7b47bfd554e200272eae2349e38b2d7e data/aether_redux/tags/item/blightwillow_logs.json
 ff76e071710735bec611ec58205f07d13cb675bd data/aether_redux/tags/item/crystal_logs.json
 cfe48fd28023b2449cb40cc8fb5671de94ee19c2 data/minecraft/tags/item/axes.json
-087e45021a49143824a919a1ba7f24cab0c912e8 data/minecraft/tags/item/boats.json
-9ba95bf33ba00ef1c21abc8bed134f26a2bfc2a4 data/minecraft/tags/item/chest_boats.json
+0f5205c586388be1cac2ad063fb76a35d2ee337c data/minecraft/tags/item/boats.json
+875c7428d67e77576c81a0d2ed6682bc97bfd32b data/minecraft/tags/item/chest_boats.json
 e60767be7710a7d974af090a872ab20f4d199986 data/minecraft/tags/item/hoes.json
 d7419f8329f04e3bc18cdcf761b7c6288bfbf50b data/minecraft/tags/item/pickaxes.json
 8dca6eb7f0f539576b5d49e0926d4ebf47e7ae44 data/minecraft/tags/item/shovels.json

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "aether_redux:block/blightwillow_slab"
+    },
+    "type=double": {
+      "model": "aether_redux:block/blightwillow_planks"
+    },
+    "type=top": {
+      "model": "aether_redux:block/blightwillow_slab_top"
+    }
+  }
+}

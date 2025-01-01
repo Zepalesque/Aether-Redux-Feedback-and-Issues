@@ -1,0 +1,69 @@
+{
+  "type": "minecraft:block",
+  "functions": [
+    {
+      "function": "aether:double_drops"
+    }
+  ],
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "block": "aether_redux:blightwillow_wood_wall",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "natural_gen": "true"
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:explosion_decay"
+            }
+          ],
+          "name": "aether_redux:blightwillow_log"
+        }
+      ],
+      "functions": [
+        {
+          "function": "aether:double_drops"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "block": "aether_redux:blightwillow_wood_wall",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "natural_gen": "false"
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:explosion_decay"
+            }
+          ],
+          "name": "aether_redux:blightwillow_wood_wall"
+        }
+      ],
+      "functions": [
+        {
+          "function": "aether:double_drops"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "aether_redux:blocks/blightwillow_wood_wall"
+}

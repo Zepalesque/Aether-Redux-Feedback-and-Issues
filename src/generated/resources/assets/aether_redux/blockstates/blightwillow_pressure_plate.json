@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "aether_redux:block/blightwillow_pressure_plate"
+    },
+    "powered=true": {
+      "model": "aether_redux:block/blightwillow_pressure_plate_down"
+    }
+  }
+}

@@ -14,6 +14,21 @@
     "aether_redux:stripped_crystal_log_wall",
     "aether_redux:crystal_wood_wall",
     "aether_redux:stripped_crystal_wood_wall",
-    "aether_redux:crystal_bookshelf"
+    "aether_redux:crystal_bookshelf",
+    "aether_redux:blightwillow_planks",
+    "aether_redux:blightwillow_stairs",
+    "aether_redux:blightwillow_slab",
+    "aether_redux:blightwillow_fence",
+    "aether_redux:blightwillow_fence_gate",
+    "aether_redux:blightwillow_door",
+    "aether_redux:blightwillow_trapdoor",
+    "aether_redux:blightwillow_sign",
+    "aether_redux:blightwillow_wall_sign",
+    "#aether_redux:blightwillow_logs",
+    "aether_redux:blightwillow_log_wall",
+    "aether_redux:stripped_blightwillow_log_wall",
+    "aether_redux:blightwillow_wood_wall",
+    "aether_redux:stripped_blightwillow_wood_wall",
+    "aether_redux:blightwillow_bookshelf"
   ]
 }

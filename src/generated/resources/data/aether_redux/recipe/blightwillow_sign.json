@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "wooden_sign",
+  "key": {
+    "/": {
+      "tag": "c:rods/wooden"
+    },
+    "P": {
+      "item": "aether_redux:blightwillow_planks"
+    }
+  },
+  "pattern": [
+    "PPP",
+    "PPP",
+    " / "
+  ],
+  "result": {
+    "count": 3,
+    "id": "aether_redux:blightwillow_sign"
+  }
+}

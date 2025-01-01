@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "aether_redux:block/natural/stripped_blightwillow_log",
+    "side": "aether_redux:block/natural/stripped_blightwillow_log"
+  }
+}
