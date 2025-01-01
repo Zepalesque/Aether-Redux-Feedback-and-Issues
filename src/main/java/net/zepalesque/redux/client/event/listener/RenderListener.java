@@ -72,7 +72,7 @@ public class RenderListener {
                                     || camera.getEntity() instanceof LivingEntity && ((LivingEntity) camera.getEntity()).isSleeping()
                     )) {
 
-                        MultiBufferSource multibuffersource = buffers.bufferSource();
+                        MultiBufferSource.BufferSource multibuffersource = buffers.bufferSource();
 
 
                         float f2 = deltaTracker.getGameTimeDeltaPartialTick(!tickratemanager.isEntityFrozen(entity));
@@ -80,11 +80,10 @@ public class RenderListener {
                     }
                 }
             }
-            buffers.bufferSource().endBatch();
         }
     }
 
-    private static void renderEntity(Entity entity, double camX, double camY, double camZ, float partialTick, PoseStack poseStack, MultiBufferSource buffer, EntityRenderDispatcher dispatcher) {
+    private static void renderEntity(Entity entity, double camX, double camY, double camZ, float partialTick, PoseStack poseStack, MultiBufferSource.BufferSource buffer, EntityRenderDispatcher dispatcher) {
         double x = Mth.lerp(partialTick, entity.xOld, entity.getX());
         double y = Mth.lerp(partialTick, entity.yOld, entity.getY());
         double z = Mth.lerp(partialTick, entity.zOld, entity.getZ());
@@ -100,7 +99,7 @@ public class RenderListener {
             float rotationYaw,
             float partialTicks,
             PoseStack poseStack,
-            MultiBufferSource buffer,
+            MultiBufferSource.BufferSource buffer,
             EntityRenderDispatcher dispatcher) {
 
         EntityRenderer<? super E> entityrenderer = dispatcher.getRenderer(entity);
@@ -114,6 +113,8 @@ public class RenderListener {
             poseStack.translate(d2, d3, d0);
             if (!post.actuallyRender(entity, rotationYaw, partialTicks, poseStack, buffer, dispatcher.getPackedLightCoords(entity, partialTicks))) {
                 Redux.LOGGER.debug("Did not render entity: {}", entity);
+            } else {
+                buffer.endBatch();
             }
             poseStack.popPose();
         }
