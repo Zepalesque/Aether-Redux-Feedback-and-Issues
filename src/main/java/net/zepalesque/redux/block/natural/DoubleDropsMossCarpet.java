@@ -16,7 +16,7 @@ public class DoubleDropsMossCarpet extends MossyCarpetBlock {
     public DoubleDropsMossCarpet(Properties properties) {
         super(properties);
         this.registerDefaultState(this.defaultBlockState().setValue(AetherBlockStateProperties.DOUBLE_DROPS, false));
-        fixShapeMaps();
+        this.fixShapeMaps();
     }
 
     @Override
@@ -42,6 +42,7 @@ public class DoubleDropsMossCarpet extends MossyCarpetBlock {
         for (BlockState state : map.keySet()) {
             builder.put(state.cycle(AetherBlockStateProperties.DOUBLE_DROPS), map.get(state));
         }
-        return builder.build();
+
+        return builder.buildKeepingLast();
     }
 }
