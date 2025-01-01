@@ -76,13 +76,10 @@ public class RenderListener {
 
                         float f2 = deltaTracker.getGameTimeDeltaPartialTick(!tickratemanager.isEntityFrozen(entity));
                         renderEntity(entity, x, y, z, f2, posestack, multibuffersource, dispatch);
-                        // TODO: Get rid of this horrid workaround (it's really not that bad but it'd be nice to know WHY the last rendered whirlwind doesn't actually render)
-                        if (Minecraft.useShaderTransparency() && !iterator.hasNext()) {
-                            renderEntity(entity, x, y, z, f2, posestack, multibuffersource, dispatch);
-                        }
                     }
                 }
             }
+            buffers.bufferSource().endBatch();
         }
     }
 
