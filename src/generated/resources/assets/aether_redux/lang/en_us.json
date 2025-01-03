@@ -231,6 +231,7 @@
   "pack.aether_redux.tintable_grass.description": "Grass tint textures for the Aether: Redux",
   "pack.aether_redux.tintable_grass.title": "Redux - Tintable Grass",
   "subtitles.aether_redux.block.logicator.click": "Logicator clicks",
+  "subtitles.aether_redux.entity.slider.signal": "Slider signals",
   "subtitles.aether_redux.item.aerbound_cape.aerjump": "Something aerjumps",
   "subtitles.aether_redux.item.generic.infuse": "Item infuses",
   "subtitles.aether_redux.item.generic.infusion_expire": "Item infusion runs out",

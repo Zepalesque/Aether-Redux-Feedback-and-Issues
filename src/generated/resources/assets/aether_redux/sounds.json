@@ -5,6 +5,12 @@
     ],
     "subtitle": "subtitles.aether_redux.block.logicator.click"
   },
+  "entity.slider.signal": {
+    "sounds": [
+      "aether_redux:entity/slider/signal"
+    ],
+    "subtitle": "subtitles.aether_redux.entity.slider.signal"
+  },
   "item.aerbound_cape.aerjump": {
     "sounds": [
       "aether_redux:item/aerbound_cape/aerjump"
