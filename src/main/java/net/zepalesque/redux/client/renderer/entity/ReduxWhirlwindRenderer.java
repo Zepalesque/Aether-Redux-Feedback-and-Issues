@@ -18,7 +18,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class ReduxWhirlwindRenderer<T extends AbstractWhirlwind> extends LivingEntityRenderer<T, WhirlwindModel<T>> {
 
-    private static final ResourceLocation WHIRLWIND = ResourceLocation.fromNamespaceAndPath(Aether.MODID, "textures/entity/whirlwind/whirlwind.png");
+    private static final ResourceLocation WHIRLWIND = ResourceLocation.fromNamespaceAndPath(Aether.MODID, "textures/entity/mobs/whirlwind/whirlwind.png");
 
     public ReduxWhirlwindRenderer(EntityRendererProvider.Context context) {
         super(context, new WhirlwindModel<>(context.bakeLayer(ReduxRenderers.ModelLayers.WHIRLWIND)), 0.0F);

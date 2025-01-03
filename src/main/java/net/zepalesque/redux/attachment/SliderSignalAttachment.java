@@ -3,6 +3,7 @@ package net.zepalesque.redux.attachment;
 import com.aetherteam.aether.entity.monster.dungeon.boss.Slider;
 import com.aetherteam.nitrogen.attachment.INBTSynchable;
 import com.aetherteam.nitrogen.network.packet.SyncPacket;
+import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundSource;
 import net.zepalesque.redux.client.audio.ReduxSounds;
 import org.apache.commons.lang3.tuple.Triple;
@@ -18,13 +19,11 @@ public class SliderSignalAttachment implements INBTSynchable {
 
     private final Map<String, Triple<INBTSynchable.Type, Consumer<Object>, Supplier<Object>>> synchableFunctions = Map.ofEntries(
             Map.entry("signal_tick", Triple.of(INBTSynchable.Type.INT, (object) -> this.setSignalTick((int) object), this::getSignalTick)),
-            Map.entry("move_trajectory", Triple.of(INBTSynchable.Type.INT, (object) -> this.setMoveTrajectory((int) object), this::getMoveTrajectoryIndex))
+            Map.entry("move_direction_ordinal", Triple.of(INBTSynchable.Type.INT, (object) -> this.setMoveDirection((int) object), this::getMoveDirectionIndex))
     );
 
-    protected int signalTick = 0;
+    protected int signalTick = 0, moveDirIndex = -1;
 
-    @Nullable
-    protected net.minecraft.core.Direction moveTrajectory = null;
 
 
     public void onUpdate(Slider slider) {
@@ -50,7 +49,7 @@ public class SliderSignalAttachment implements INBTSynchable {
 
     public void syncMoveDirection(Slider slider) {
         if (!slider.level().isClientSide()) {
-            this.setSynched(slider.getId(), Direction.NEAR, "move_trajectory", Optional.ofNullable(slider.getMoveDirection()).map(Enum::ordinal).orElse(-1));
+            this.setSynched(slider.getId(), Direction.NEAR, "move_direction_ordinal", Optional.ofNullable(slider.getMoveDirection()).map(Enum::ordinal).orElse(-1));
         }
     }
 
@@ -67,22 +66,13 @@ public class SliderSignalAttachment implements INBTSynchable {
     }
 
 
-    public net.minecraft.core.Direction getMoveTrajectory() {
-        return moveTrajectory;
+
+    public int getMoveDirectionIndex() {
+        return this.moveDirIndex;
     }
 
-    public int getMoveTrajectoryIndex() {
-        return moveTrajectory == null ? -1 : moveTrajectory.ordinal();
-    }
-
-    public void setMoveTrajectory(net.minecraft.core.Direction moveTrajectory) {
-        this.moveTrajectory = moveTrajectory;
-    }
-
-    public void setMoveTrajectory(int index) {
-        net.minecraft.core.Direction[] array = net.minecraft.core.Direction.values();
-        if (index >= array.length || index < 0) return;
-        this.moveTrajectory = net.minecraft.core.Direction.values()[index];
+    public void setMoveDirection(int ordinal) {
+        this.moveDirIndex = ordinal;
     }
 
 

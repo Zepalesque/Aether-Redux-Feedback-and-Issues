@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class ReduxEvilWhirlwindRenderer<T extends AbstractWhirlwind> extends ReduxWhirlwindRenderer<T> implements IPostRenderer<T> {
 
-    private static final ResourceLocation EVIL_WHIRLWIND = ResourceLocation.fromNamespaceAndPath(Aether.MODID, "textures/entity/whirlwind/evil_whirlwind.png");
+    private static final ResourceLocation EVIL_WHIRLWIND = ResourceLocation.fromNamespaceAndPath(Aether.MODID, "textures/entity/mobs/whirlwind/evil_whirlwind.png");
 
     public ReduxEvilWhirlwindRenderer(EntityRendererProvider.Context context) {
         super(context);

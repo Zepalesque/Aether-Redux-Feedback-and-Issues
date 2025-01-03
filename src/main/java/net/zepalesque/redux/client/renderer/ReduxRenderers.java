@@ -2,12 +2,15 @@ package net.zepalesque.redux.client.renderer;
 
 import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.client.renderer.AetherModelLayers;
+import com.aetherteam.aether.client.renderer.entity.model.SliderModel;
 import com.aetherteam.aether.entity.AetherEntityTypes;
 import com.aetherteam.aether.entity.monster.PassiveWhirlwind;
+import com.aetherteam.aether.entity.monster.dungeon.boss.Slider;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.SlimeModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.entity.EntityRenderer;
+import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -16,6 +19,7 @@ import net.neoforged.fml.common.EventBusSubscriber.Bus;import net.neoforged.neof
 import net.zepalesque.redux.Redux;
 import net.zepalesque.redux.client.renderer.entity.ReduxEvilWhirlwindRenderer;
 import net.zepalesque.redux.client.renderer.entity.ReduxWhirlwindRenderer;
+import net.zepalesque.redux.client.renderer.entity.layer.SliderSignalLayer;
 import net.zepalesque.redux.client.renderer.entity.model.WhirlwindModel;
 
 @EventBusSubscriber(modid = Redux.MODID, value = Dist.CLIENT, bus = Bus.MOD)
@@ -31,6 +35,13 @@ public class ReduxRenderers {
         Redux.BLOCK_SETS.forEach(set -> set.registerRenderers(event));
         event.registerEntityRenderer(AetherEntityTypes.WHIRLWIND.get(), ReduxWhirlwindRenderer::new);
         event.registerEntityRenderer(AetherEntityTypes.EVIL_WHIRLWIND.get(), ReduxEvilWhirlwindRenderer::new);
+    }
+
+    @SubscribeEvent
+    public static void addRenderLayers(EntityRenderersEvent.AddLayers event) {
+        if (event.getRenderer(AetherEntityTypes.SLIDER.get()) instanceof LivingEntityRenderer<Slider, SliderModel> renderer) {
+            renderer.addLayer(new SliderSignalLayer(renderer));
+        }
     }
 
     public static void registerAccessoryRenderers() {
