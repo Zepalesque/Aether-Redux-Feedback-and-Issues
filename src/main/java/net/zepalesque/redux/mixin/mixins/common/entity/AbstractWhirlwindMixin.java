@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 @Mixin(AbstractWhirlwind.class)
-public class AbstractWhirlwindMixin extends LivingEntityMixin {
+public abstract class AbstractWhirlwindMixin extends LivingEntityMixin {
     @Inject(method = "tick", at = @At(value = "INVOKE", target = "Lcom/aetherteam/aether/entity/monster/AbstractWhirlwind;discard()V"), cancellable = true)
     protected void redux$dissipate(CallbackInfo ci) {
         ((AbstractWhirlwind) (Object) this).setHealth(0.0F);
