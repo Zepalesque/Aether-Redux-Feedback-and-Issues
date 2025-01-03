@@ -33,7 +33,7 @@ public abstract class SliderMixin extends LivingEntityMixin {
     }
 
 
-    @Inject(method = "setMoveDirection", at = @At("HEAD"))
+    @Inject(method = "setMoveDirection", at = @At("TAIL"))
     protected void redux$setMoveDirection(Direction moveDirection, CallbackInfo ci) {
         if (moveDirection != null) {
             SliderSignalAttachment signal = SliderSignalAttachment.get((Slider) (Object) this);
