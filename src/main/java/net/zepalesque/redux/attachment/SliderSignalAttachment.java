@@ -4,12 +4,14 @@ import com.aetherteam.aether.entity.monster.dungeon.boss.Slider;
 import com.aetherteam.nitrogen.attachment.INBTSynchable;
 import com.aetherteam.nitrogen.network.packet.SyncPacket;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.zepalesque.redux.client.audio.ReduxSounds;
 import net.zepalesque.redux.network.packet.SliderSignalSyncPacket;
 import org.apache.commons.lang3.tuple.Triple;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import oshi.util.tuples.Quintet;
 
 import java.util.Map;
 import java.util.Optional;
@@ -43,14 +45,19 @@ public class SliderSignalAttachment implements INBTSynchable {
 
     public void doBeep(Slider slider) {
         if (!slider.level().isClientSide() && this.getSignalTick() == 0) {
-            this.setSynched(slider.getId(), Direction.NEAR, "signal_tick", 6);
+            this.setSynched(slider.getId(), Direction.NEAR, "signal_tick", 6, extraForNear(slider));
             slider.level().playSound(null, slider.getX(), slider.getY(), slider.getZ(), ReduxSounds.SLIDER_SIGNAL, SoundSource.HOSTILE, 1F, 1F);
         }
     }
 
+    public static Quintet<Double, Double, Double, Double, ServerLevel> extraForNear(Slider slider) {
+        return new Quintet<>(slider.getX(), slider.getY(), slider.getZ(), 50D, (ServerLevel) slider.level());
+    }
+
+
     public void syncMoveDirection(Slider slider) {
         if (!slider.level().isClientSide()) {
-            this.setSynched(slider.getId(), Direction.NEAR, "move_direction_ordinal", Optional.ofNullable(slider.getMoveDirection()).map(Enum::ordinal).orElse(-1));
+            this.setSynched(slider.getId(), Direction.PLAYER, "move_direction_ordinal", Optional.ofNullable(slider.getMoveDirection()).map(Enum::ordinal).orElse(-1), extraForNear(slider));
         }
     }
 
@@ -85,10 +92,5 @@ public class SliderSignalAttachment implements INBTSynchable {
     @Override
     public SyncPacket getSyncPacket(int entityID, String key, Type type, Object value) {
         return new SliderSignalSyncPacket(entityID, key, type, value);
-    }
-
-    @Override
-    public void setSynched(int entityID, Direction direction, String key, Object value) {
-        INBTSynchable.super.setSynched(entityID, direction, key, value);
     }
 }
