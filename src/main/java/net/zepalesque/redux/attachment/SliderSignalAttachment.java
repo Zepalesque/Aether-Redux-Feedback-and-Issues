@@ -6,6 +6,7 @@ import com.aetherteam.nitrogen.network.packet.SyncPacket;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundSource;
 import net.zepalesque.redux.client.audio.ReduxSounds;
+import net.zepalesque.redux.network.packet.SliderSignalSyncPacket;
 import org.apache.commons.lang3.tuple.Triple;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -41,8 +42,8 @@ public class SliderSignalAttachment implements INBTSynchable {
     }
 
     public void doBeep(Slider slider) {
-        if (!slider.level().isClientSide()) {
-            this.setSynched(slider.getId(), Direction.NEAR, "signal_tick", 6);;
+        if (!slider.level().isClientSide() && this.getSignalTick() == 0) {
+            this.setSynched(slider.getId(), Direction.NEAR, "signal_tick", 6);
             slider.level().playSound(null, slider.getX(), slider.getY(), slider.getZ(), ReduxSounds.SLIDER_SIGNAL, SoundSource.HOSTILE, 1F, 1F);
         }
     }
@@ -83,7 +84,7 @@ public class SliderSignalAttachment implements INBTSynchable {
 
     @Override
     public SyncPacket getSyncPacket(int entityID, String key, Type type, Object value) {
-        return null;
+        return new SliderSignalSyncPacket(entityID, key, type, value);
     }
 
     @Override

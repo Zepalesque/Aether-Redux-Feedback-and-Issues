@@ -2,6 +2,7 @@ package net.zepalesque.redux.event.listener;
 
 import com.aetherteam.aether.attachment.AetherPlayerAttachment;
 import com.aetherteam.aether.entity.AetherEntityTypes;
+import com.aetherteam.aether.entity.monster.dungeon.boss.Slider;
 import com.aetherteam.aether.item.EquipmentUtil;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityDimensions;
@@ -14,6 +15,7 @@ import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import net.zepalesque.redux.Redux;
 import net.zepalesque.redux.attachment.ReduxPlayerAttachment;
+import net.zepalesque.redux.attachment.SliderSignalAttachment;
 import net.zepalesque.redux.config.ReduxConfig;
 import net.zepalesque.redux.event.hook.QuicksoilHooks;
 import net.zepalesque.redux.item.ReduxItems;
@@ -33,6 +35,9 @@ public class MobListener {
         if (entity instanceof Player player) {
             ReduxPlayerAttachment attachment = ReduxPlayerAttachment.get(player);
             attachment.onUpdate(player);
+        } else if (entity instanceof Slider slider) {
+            SliderSignalAttachment attachment = SliderSignalAttachment.get(slider);
+            attachment.onUpdate(slider);
         }
     }
 

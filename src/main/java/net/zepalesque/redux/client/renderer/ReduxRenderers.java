@@ -2,6 +2,7 @@ package net.zepalesque.redux.client.renderer;
 
 import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.client.renderer.AetherModelLayers;
+import com.aetherteam.aether.client.renderer.entity.SliderRenderer;
 import com.aetherteam.aether.client.renderer.entity.model.SliderModel;
 import com.aetherteam.aether.entity.AetherEntityTypes;
 import com.aetherteam.aether.entity.monster.PassiveWhirlwind;
@@ -39,7 +40,7 @@ public class ReduxRenderers {
 
     @SubscribeEvent
     public static void addRenderLayers(EntityRenderersEvent.AddLayers event) {
-        if (event.getRenderer(AetherEntityTypes.SLIDER.get()) instanceof LivingEntityRenderer<Slider, SliderModel> renderer) {
+        if (event.getRenderer(AetherEntityTypes.SLIDER.get()) instanceof SliderRenderer renderer) {
             renderer.addLayer(new SliderSignalLayer(renderer));
         }
     }

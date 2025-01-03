@@ -32,12 +32,10 @@ public class SliderSignalLayer extends RenderLayer<Slider, SliderModel> {
         SliderSignalAttachment signal = SliderSignalAttachment.get(slider);
         if (slider.isAwake() && signal.shouldGlow(slider)) {
             if (signal.getMoveDirectionIndex() != -1) {
-                @Nullable RenderType renderType = slider.isCritical() ? CRITICAL : DIRECTIONAL[signal.getMoveDirectionIndex()];
+                RenderType renderType = slider.isCritical() ? CRITICAL : DIRECTIONAL[signal.getMoveDirectionIndex()];
                 VertexConsumer consumer = buffer.getBuffer(renderType);
                 this.getParentModel().renderToBuffer(poseStack, consumer, 15728640, OverlayTexture.NO_OVERLAY);
             }
         }
     }
-
-
 }
