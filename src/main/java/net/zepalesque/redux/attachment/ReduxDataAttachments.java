@@ -11,5 +11,6 @@ public class ReduxDataAttachments {
     public static final DeferredRegister<AttachmentType<?>> ATTACHMENTS = DeferredRegister.create(NeoForgeRegistries.ATTACHMENT_TYPES, Redux.MODID);
 
     public static final DeferredHolder<AttachmentType<?>, AttachmentType<ReduxPlayerAttachment>> REDUX_PLAYER = ATTACHMENTS.register("redux_player", () -> AttachmentType.builder(ReduxPlayerAttachment::new).serialize(ReduxPlayerAttachment.CODEC).copyOnDeath().build());
+    public static final DeferredHolder<AttachmentType<?>, AttachmentType<SliderSignalAttachment>> SLIDER_SIGNAL = ATTACHMENTS.register("slider_signal", () -> AttachmentType.builder(SliderSignalAttachment::new).build());
 
 }

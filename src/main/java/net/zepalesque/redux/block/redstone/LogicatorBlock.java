@@ -49,7 +49,7 @@ public class LogicatorBlock extends DiodeBlock {
         } else {
             state = StateUtil.mapValue(state, MODE, LogicatorMode::flipOperationType);
             float f = state.getValue(MODE).isOr() ? 0.55F : 0.5F;
-            level.playSound(player, pos, ReduxSounds.LOGICATOR_CLICK.get(), SoundSource.BLOCKS, 0.3F, f);
+            level.playSound(player, pos, ReduxSounds.SLIDER_SIGNAL.get(), SoundSource.BLOCKS, 0.3F, f);
             level.setBlock(pos, state, 2);
             this.refreshOutputState(level, state, pos);
             return InteractionResult.sidedSuccess(level.isClientSide);

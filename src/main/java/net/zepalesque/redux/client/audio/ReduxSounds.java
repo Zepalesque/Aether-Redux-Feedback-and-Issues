@@ -1,7 +1,5 @@
 package net.zepalesque.redux.client.audio;
 
-import com.aetherteam.aether.Aether;
-import com.aetherteam.aether.client.AetherSoundEvents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
@@ -21,6 +19,8 @@ public class ReduxSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> INFUSION_EXPIRE = register("item.generic.infusion_expire");
 
     public static final DeferredHolder<SoundEvent, SoundEvent> LOGICATOR_CLICK = register("block.logicator.click");
+
+    public static final DeferredHolder<SoundEvent, SoundEvent> SLIDER_SIGNAL = register("entity.slider.signal");
 
 
 

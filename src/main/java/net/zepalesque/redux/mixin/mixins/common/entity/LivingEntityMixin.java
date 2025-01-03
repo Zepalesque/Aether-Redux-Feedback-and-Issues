@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(LivingEntity.class)
-public abstract class LivingEntityMixin {
+public abstract class LivingEntityMixin extends EntityMixin {
 
     @Inject(method = "makePoofParticles", at = @At("HEAD"), cancellable = true)
     protected void redux$Poof(CallbackInfo ci) {}
