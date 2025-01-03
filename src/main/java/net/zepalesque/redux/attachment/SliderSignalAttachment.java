@@ -57,7 +57,7 @@ public class SliderSignalAttachment implements INBTSynchable {
 
     public void syncMoveDirection(Slider slider) {
         if (!slider.level().isClientSide()) {
-            this.setSynched(slider.getId(), Direction.PLAYER, "move_direction_ordinal", Optional.ofNullable(slider.getMoveDirection()).map(Enum::ordinal).orElse(-1), extraForNear(slider));
+            this.setSynched(slider.getId(), Direction.NEAR, "move_direction_ordinal", Optional.ofNullable(slider.getMoveDirection()).map(Enum::ordinal).orElse(-1), extraForNear(slider));
         }
     }
 
