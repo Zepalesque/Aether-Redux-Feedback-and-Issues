@@ -10,6 +10,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
@@ -49,7 +50,7 @@ public class SliderSignalAttachment implements INBTSynchable {
 
     public void syncMoveDirection(Slider slider) {
         if (!slider.level().isClientSide()) {
-            this.setSynched(slider.getId(), Direction.NEAR, "move_trajectory", slider.getMoveDirection());
+            this.setSynched(slider.getId(), Direction.NEAR, "move_trajectory", Optional.ofNullable(slider.getMoveDirection()).map(Enum::ordinal).orElse(-1));
         }
     }
 

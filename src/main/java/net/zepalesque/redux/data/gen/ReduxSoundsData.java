@@ -20,7 +20,7 @@ public class ReduxSoundsData extends ReduxSoundsProvider {
         this.add(ReduxSounds.INFUSION_EXPIRE, sound ->
                 definition().with(sound("aether_redux:item/generic/infusion_expire"))
                         .subtitle(DatagenUtil.subtitleFor(sound)));
-        this.add(ReduxSounds.SLIDER_SIGNAL, sound ->
+        this.add(ReduxSounds.LOGICATOR_CLICK, sound ->
                 definition().with(sound("random/click"))
                         .subtitle(DatagenUtil.subtitleFor(sound)));
         this.add(ReduxSounds.AERJUMP, sound ->
