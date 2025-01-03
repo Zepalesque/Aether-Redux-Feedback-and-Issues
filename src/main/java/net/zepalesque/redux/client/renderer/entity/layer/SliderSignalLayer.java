@@ -19,7 +19,7 @@ import org.jetbrains.annotations.Nullable;
 public class SliderSignalLayer extends RenderLayer<Slider, SliderModel> {
 
     private static final RenderType[] DIRECTIONAL = ArrayUtil.generateContents(new RenderType[6], i ->
-            RenderType.eyes(ResourceLocation.fromNamespaceAndPath(Aether.MODID, "textures/entity/mobs/slider/slider_signal_" + Direction.values()[i].getName())));
+            RenderType.eyes(ResourceLocation.fromNamespaceAndPath(Aether.MODID, "textures/entity/mobs/slider/slider_signal_" + Direction.values()[i].getName() + ".png")));
 
     private static final RenderType CRITICAL = RenderType.eyes(ResourceLocation.fromNamespaceAndPath(Aether.MODID, "textures/entity/mobs/slider/slider_awake_glow.png"));
 

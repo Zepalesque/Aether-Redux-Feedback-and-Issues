@@ -1,6 +1,7 @@
 package net.zepalesque.redux.mixin.mixins.common.entity;
 
 import com.aetherteam.aether.entity.monster.dungeon.boss.Slider;
+import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvent;
 import net.zepalesque.redux.attachment.SliderSignalAttachment;
 import org.spongepowered.asm.mixin.Mixin;
@@ -16,6 +17,8 @@ public abstract class SliderMixin extends LivingEntityMixin {
 
     @Shadow private int moveDelay;
 
+    @Shadow private Direction moveDirection;
+
     @Inject(method = "getAmbientSound", at = @At("RETURN"), cancellable = true)
     protected void redux$getAmbientSound(CallbackInfoReturnable<SoundEvent> cir) {
         if (((Slider) (Object) this).isAwake()) {
@@ -25,8 +28,17 @@ public abstract class SliderMixin extends LivingEntityMixin {
 
     @Inject(method = "calculateMoveDelay", at = @At("HEAD"), cancellable = true)
     protected void redux$calculateMoveDelay(CallbackInfoReturnable<Integer> cir) {
-        int adjusted = this.isCritical() ? 4 + this.getRandom().nextInt(7) : 6 + this.getRandom().nextInt(10);
+        int adjusted = this.isCritical() ? 5 + this.getRandom().nextInt(6) : 7 + this.getRandom().nextInt(9);
         cir.setReturnValue(adjusted);
+    }
+
+
+    @Inject(method = "setMoveDirection", at = @At("HEAD"))
+    protected void redux$setMoveDirection(Direction moveDirection, CallbackInfo ci) {
+        if (moveDirection != null) {
+            SliderSignalAttachment signal = SliderSignalAttachment.get((Slider) (Object) this);
+            signal.syncMoveDirection((Slider) (Object) this);
+        }
     }
 
     @Inject(method = "customServerAiStep", at = @At("TAIL"))
@@ -34,8 +46,7 @@ public abstract class SliderMixin extends LivingEntityMixin {
         SliderSignalAttachment signal = SliderSignalAttachment.get((Slider) (Object) this);
         if (!this.isCritical() && this.moveDelay == 6 || this.isCritical() && this.moveDelay == 4) {
             signal.doBeep((Slider) (Object) this);
-            signal.syncMoveDirection((Slider) (Object) this);
-        } else if (this.moveDelay == 1) {
+        } else if (this.moveDelay == 2) {
             signal.syncMoveDirection((Slider) (Object) this);
         }
     }
