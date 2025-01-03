@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(PassiveWhirlwind.class)
-public class PassiveWhirlwindMixin extends AbstractWhirlwindMixin {
+public abstract class PassiveWhirlwindMixin extends AbstractWhirlwindMixin {
 
     @Inject(method = "spawnParticles", at = @At(value = "HEAD"), cancellable = true)
     protected void redux$spawnParticles(CallbackInfo ci) {
