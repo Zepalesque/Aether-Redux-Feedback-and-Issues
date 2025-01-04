@@ -8,6 +8,7 @@
   "mixins": [
     "common.TabUtilMixin",
     "common.accessor.AetherNoiseBuildersMixin",
+    "common.accessor.ConfigBuilderAccessor",
     "common.accessor.EntityAccessor",
     "common.accessor.MossyCarpetAccessor",
     "common.accessor.WallBlockAccessor",
