@@ -1,4 +1,4 @@
-// 1.21.1	2025-01-04T09:47:54.557609	Tags for minecraft:block mod id aether_redux
+// 1.21.1	2025-01-04T13:40:45.2447259	Tags for minecraft:block mod id aether_redux
 f88e31ba010e8b41d4256635de26d1cf8a0aa221 data/aether/tags/block/aether_animals_spawnable_on.json
 0f75c1b96051b4efed4a7984780ddae4b908b93d data/aether/tags/block/aether_dirt.json
 c191bd82d7ab0270a08a0b6d99db3860549e07ea data/aether/tags/block/boss_doorway_dungeon_blocks.json
@@ -12,7 +12,7 @@ badc27df7b47bfd554e200272eae2349e38b2d7e data/aether_redux/tags/block/blightwill
 ff76e071710735bec611ec58205f07d13cb675bd data/aether_redux/tags/block/crystal_logs.json
 326897805dd0e252157208ee77d3437b3626f008 data/aether_redux/tags/block/quicksoil_behavior.json
 69c396cb051bbe9a130e6979b67065e5041b179d data/aether_redux/tags/block/rock_replaceable.json
-0f75c1b96051b4efed4a7984780ddae4b908b93d data/aether_redux/tags/block/short_aether_grass_blight_coloring.json
+0f75c1b96051b4efed4a7984780ddae4b908b93d data/aether_redux/tags/block/short_aether_grass_bleakmoss_coloring.json
 d51f8a6ee9f25f460f3733caa85295cb0c025a2b data/aether_redux/tags/block/storage_blocks_raw_veridium.json
 fa9a2978c8e493a73fcffb3c9f78976d9a78a5a5 data/aether_redux/tags/block/storage_blocks_sentrite.json
 f8a29d6854b49369f1da49d5a9ab9edf83a78e2d data/aether_redux/tags/block/storage_blocks_veridium.json
