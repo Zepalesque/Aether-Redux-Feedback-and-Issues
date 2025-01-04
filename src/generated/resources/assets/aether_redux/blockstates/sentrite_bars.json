@@ -18,6 +18,46 @@
     },
     {
       "apply": {
+        "model": "aether_redux:block/sentrite_bars_cap_alt"
+      },
+      "when": {
+        "east": "false",
+        "north": "false",
+        "south": "true",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "aether_redux:block/sentrite_bars_side_alt"
+      },
+      "when": {
+        "south": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "aether_redux:block/sentrite_bars_cap_alt",
+        "y": 90
+      },
+      "when": {
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "west": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "aether_redux:block/sentrite_bars_side_alt",
+        "y": 90
+      },
+      "when": {
+        "west": "true"
+      }
+    },
+    {
+      "apply": {
         "model": "aether_redux:block/sentrite_bars_cap"
       },
       "when": {
@@ -54,46 +94,6 @@
       },
       "when": {
         "east": "true"
-      }
-    },
-    {
-      "apply": {
-        "model": "aether_redux:block/sentrite_bars_cap_alt",
-        "y": 90
-      },
-      "when": {
-        "east": "false",
-        "north": "false",
-        "south": "false",
-        "west": "true"
-      }
-    },
-    {
-      "apply": {
-        "model": "aether_redux:block/sentrite_bars_side_alt",
-        "y": 90
-      },
-      "when": {
-        "west": "true"
-      }
-    },
-    {
-      "apply": {
-        "model": "aether_redux:block/sentrite_bars_cap_alt"
-      },
-      "when": {
-        "east": "false",
-        "north": "false",
-        "south": "true",
-        "west": "false"
-      }
-    },
-    {
-      "apply": {
-        "model": "aether_redux:block/sentrite_bars_side_alt"
-      },
-      "when": {
-        "south": "true"
       }
     }
   ]

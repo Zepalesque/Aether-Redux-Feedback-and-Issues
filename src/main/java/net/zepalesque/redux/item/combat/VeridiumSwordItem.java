@@ -117,5 +117,7 @@ public class VeridiumSwordItem extends SwordItem implements VeridiumItem {
             tooltips.add(info);
             super.appendHoverText(stack, context, tooltips, advanced);
         }
+
+
     }
 }

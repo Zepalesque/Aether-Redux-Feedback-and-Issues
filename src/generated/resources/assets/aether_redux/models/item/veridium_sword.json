@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "aether_redux:item/weapons/veridium_sword"
+  }
+}

@@ -1,4 +1,4 @@
-// 1.21.1	2025-01-01T18:35:58.4823914	Item Models: aether_redux
+// 1.21.1	2025-01-04T10:07:23.5775386	Item Models: aether_redux
 22154525bdb82a668243960fdd22d12e653ecfe7 assets/aether_redux/models/item/aerbound_cape.json
 795ee016e7dad0d6ac42593c58ba258161615647 assets/aether_redux/models/item/aurum.json
 4afb9668485d647994daf5249d914744cc5f173d assets/aether_redux/models/item/bleakmoss_block.json
@@ -62,6 +62,7 @@ c957473410573f950e98933cb17599021c650ccf assets/aether_redux/models/item/gildenr
 e00233f8f617b931ac5a25f0bad5e540d5399350 assets/aether_redux/models/item/infused_veridium_hoe.json
 61eb8571e24f150cff006a0a41a18f2343cef7aa assets/aether_redux/models/item/infused_veridium_pickaxe.json
 b7a76be36d161bbb3c1c88a291640d20ed9d590a assets/aether_redux/models/item/infused_veridium_shovel.json
+4c155d964f08507025b23b2f2d0693b55da4fc6f assets/aether_redux/models/item/infused_veridium_sword.json
 8ce957a746719967288761a1531921e0a3f939cb assets/aether_redux/models/item/locked_carved_base.json
 11124fbbc813a05498b82ee07ea3a9236e5774cb assets/aether_redux/models/item/locked_carved_pillar.json
 136d60c440632072914a93fec02b7ffd652cc118 assets/aether_redux/models/item/locked_runelight.json
@@ -111,6 +112,7 @@ ae664ab76cfacf04198b02c4cc00c3039ca8954d assets/aether_redux/models/item/veridiu
 a10d36269b90a11c03ea84847453473095fbaeb0 assets/aether_redux/models/item/veridium_ore.json
 0d78cc71932909a7fc306a4d5de2ec8c29ce63d4 assets/aether_redux/models/item/veridium_pickaxe.json
 0800d9276da8f932e06518a5176f0d34864d3c4f assets/aether_redux/models/item/veridium_shovel.json
+25fab51c204f0bf36a3595fcd57e8202736fd397 assets/aether_redux/models/item/veridium_sword.json
 599bcfee1cc00ba1bb268ce17e64bc719d3f4269 assets/aether_redux/models/item/wyndsprouts.json
 b504c806f81f09c472208c14b5266cb230b62f26 assets/aether_redux/models/item/wynd_oats.json
 d769e4a3e26230564ec83792cbdfd952a01376e4 assets/aether_redux/models/item/wynd_oat_panicle.json
