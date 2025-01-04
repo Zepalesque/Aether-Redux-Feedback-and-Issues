@@ -6,15 +6,15 @@ import com.aetherteam.nitrogen.network.packet.SyncPacket;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.phys.Vec3;
 import net.zepalesque.redux.client.audio.ReduxSounds;
 import net.zepalesque.redux.network.packet.SliderSignalSyncPacket;
 import org.apache.commons.lang3.tuple.Triple;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import oshi.util.tuples.Quintet;
 
 import java.util.Map;
-import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
@@ -35,18 +35,21 @@ public class SliderSignalAttachment implements INBTSynchable {
 
     protected void tickSignal(Slider slider) {
         if (this.signalTick > 0) {
+            if (this.shouldGlow(slider) && (this.moveDirIndex != -1 || slider.isCritical()))
+                slider.level().playSound(null, slider.getX(), slider.getY(), slider.getZ(), ReduxSounds.SLIDER_SIGNAL, SoundSource.HOSTILE, 1F, 1F);
             this.signalTick--;
+        } else if (this.moveDirIndex != -1) {
+            this.moveDirIndex = -1;
         }
     }
 
     public boolean shouldGlow(Slider slider) {
-        return this.signalTick == 6 || this.signalTick == 1;
+        return this.signalTick == 7 || this.signalTick == 1;
     }
 
     public void doBeep(Slider slider) {
         if (!slider.level().isClientSide() && this.getSignalTick() == 0) {
-            this.setSynched(slider.getId(), Direction.NEAR, "signal_tick", 6, extraForNear(slider));
-            slider.level().playSound(null, slider.getX(), slider.getY(), slider.getZ(), ReduxSounds.SLIDER_SIGNAL, SoundSource.HOSTILE, 1F, 1F);
+            this.setSynched(slider.getId(), Direction.NEAR, "signal_tick", 8, extraForNear(slider));
         }
     }
 
@@ -57,8 +60,29 @@ public class SliderSignalAttachment implements INBTSynchable {
 
     public void syncMoveDirection(Slider slider) {
         if (!slider.level().isClientSide()) {
-            this.setSynched(slider.getId(), Direction.NEAR, "move_direction_ordinal", Optional.ofNullable(slider.getMoveDirection()).map(Enum::ordinal).orElse(-1), extraForNear(slider));
+            Vec3 targetPoint = this.targetVector(slider);
+            if (targetPoint != null) {
+                int dir = this.getMoveDirection(slider, targetPoint);
+                this.setSynched(slider.getId(), Direction.NEAR, "move_direction_ordinal", dir, extraForNear(slider));
+            }
         }
+    }
+
+    private int getMoveDirection(Slider slider, Vec3 targetPoint) {
+        net.minecraft.core.Direction moveDir = slider.getMoveDirection();
+
+        if (moveDir == null) { // Checks if the direction has changed.
+            double x = targetPoint.x - slider.getX();
+            double y = targetPoint.y - slider.getY();
+            double z = targetPoint.z - slider.getZ();
+            moveDir = Slider.calculateDirection(x, y, z);
+        }
+        return moveDir.ordinal();
+    }
+
+    private Vec3 targetVector(Slider slider) {
+        LivingEntity target = slider.getTarget();
+        return target == null ? null : target.position();
     }
 
     public static @NotNull SliderSignalAttachment get(@NotNull Slider slider) {

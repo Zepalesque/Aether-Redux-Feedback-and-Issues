@@ -14,7 +14,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.zepalesque.redux.ArrayUtil;
 import net.zepalesque.redux.attachment.SliderSignalAttachment;
-import org.jetbrains.annotations.Nullable;
 
 public class SliderSignalLayer extends RenderLayer<Slider, SliderModel> {
 
