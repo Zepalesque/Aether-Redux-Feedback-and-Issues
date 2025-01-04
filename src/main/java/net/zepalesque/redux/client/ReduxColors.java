@@ -44,7 +44,7 @@ public class ReduxColors {
         );
         for (BlockSet set : Redux.BLOCK_SETS) {
             if (set instanceof TintableSet tintable && set instanceof AbstractFlowerSet flowerSet) {
-                event.register((state, level, pos, index) -> UnityColors.getColor(state, level, pos, index, i -> i == tintable.getTintIndex(), true), flowerSet.flower().get());
+                event.register((state, level, pos, index) -> UnityColors.getColor(state, level, pos, index, i -> i == tintable.getTintIndex(), true), flowerSet.flower().get(), flowerSet.pot().get());
             }
         }
     }
