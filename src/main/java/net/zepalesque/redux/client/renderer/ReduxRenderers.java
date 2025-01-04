@@ -18,10 +18,12 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.EventBusSubscriber.Bus;import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.zepalesque.redux.Redux;
+import net.zepalesque.redux.client.renderer.entity.EmberRenderer;
 import net.zepalesque.redux.client.renderer.entity.ReduxEvilWhirlwindRenderer;
 import net.zepalesque.redux.client.renderer.entity.ReduxWhirlwindRenderer;
 import net.zepalesque.redux.client.renderer.entity.layer.SliderSignalLayer;
 import net.zepalesque.redux.client.renderer.entity.model.WhirlwindModel;
+import net.zepalesque.redux.entity.ReduxEntities;
 
 @EventBusSubscriber(modid = Redux.MODID, value = Dist.CLIENT, bus = Bus.MOD)
 public class ReduxRenderers {
@@ -36,6 +38,7 @@ public class ReduxRenderers {
         Redux.BLOCK_SETS.forEach(set -> set.registerRenderers(event));
         event.registerEntityRenderer(AetherEntityTypes.WHIRLWIND.get(), ReduxWhirlwindRenderer::new);
         event.registerEntityRenderer(AetherEntityTypes.EVIL_WHIRLWIND.get(), ReduxEvilWhirlwindRenderer::new);
+        event.registerEntityRenderer(ReduxEntities.EMBER.get(), EmberRenderer::new);
     }
 
     @SubscribeEvent

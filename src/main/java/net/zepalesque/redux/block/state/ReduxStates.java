@@ -19,21 +19,5 @@ public class ReduxStates {
     public static final BooleanProperty LEFT_INPUT = BooleanProperty.create("left_input");
     public static final BooleanProperty RIGHT_INPUT = BooleanProperty.create("right_input");
 
-
-
     public static final EnumProperty<LogicatorMode> MODE_LOGICATOR = EnumProperty.create("mode", LogicatorMode.class);
-
-    // TODO: Move to Zenith
-    public static <P extends Comparable<P>> BlockState mapValue(BlockState state, Property<P> property, UnaryOperator<P> operation) {
-        P original = state.getValue(property);
-        P mapped = operation.apply(original);
-        return state.setValue(property, mapped);
-    }
-
-    // TODO: Move to Zenith
-    public static <P extends Comparable<P>> BlockState setIfDifferent(BlockState state, Property<P> property, UnaryOperator<P> operation) {
-        P original = state.getValue(property);
-        P mapped = operation.apply(original);
-        return state.setValue(property, mapped);
-    }
 }

@@ -1,18 +1,23 @@
 package net.zepalesque.redux.entity;
 
+import com.aetherteam.aether.data.resources.AetherMobCategory;
 import com.aetherteam.aether.entity.AetherEntityTypes;
 import com.aetherteam.aether.entity.monster.dungeon.boss.Slider;
+import com.aetherteam.aether.entity.passive.Aerwhale;
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.common.util.Lazy;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.zepalesque.redux.Redux;
 import net.zepalesque.redux.block.ReduxBlocks;
 import net.zepalesque.redux.blockset.stone.ReduxStoneSets;
 import net.zepalesque.redux.config.ReduxConfig;
+import net.zepalesque.redux.entity.projectile.Ember;
 import org.spongepowered.asm.mixin.Unique;
 
 import java.util.Map;
@@ -21,6 +26,10 @@ import java.util.function.Function;
 public class ReduxEntities {
 
     public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(BuiltInRegistries.ENTITY_TYPE, Redux.MODID);
+
+    public static final DeferredHolder<EntityType<?>, EntityType<Ember>> EMBER = ENTITIES.register("ember",
+            () -> EntityType.Builder.<Ember>of(Ember::new, MobCategory.MISC).sized(0.125F, 0.125F).clientTrackingRange(4).updateInterval(20).build("ember"));
+
 
     public static void addBossConversions() {
         Map<Block, Function<BlockState, BlockState>> slider = Slider.DUNGEON_BLOCK_CONVERSIONS;
