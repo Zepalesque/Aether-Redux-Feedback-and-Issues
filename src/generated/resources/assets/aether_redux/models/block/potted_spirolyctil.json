@@ -2,7 +2,7 @@
   "parent": "aether_unity:block/template/pot/flower_pot_tinted_overlay",
   "render_type": "minecraft:cutout",
   "textures": {
-    "overlay": "aether_redux:block/natural/skysprouts_overlay",
-    "plant": "aether_redux:block/natural/skysprouts"
+    "overlay": "aether_redux:block/natural/spirolyctil_overlay",
+    "plant": "aether_redux:block/natural/spirolyctil"
   }
 }

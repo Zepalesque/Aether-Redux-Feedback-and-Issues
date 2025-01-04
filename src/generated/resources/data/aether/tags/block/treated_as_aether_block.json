@@ -25,9 +25,7 @@
     "aether_redux:locked_runelight",
     "aether_redux:locked_sentrite_bricks",
     "aether_redux:wyndsprouts",
-    "aether_redux:potted_wyndsprouts",
     "aether_redux:skysprouts",
-    "aether_redux:potted_skysprouts",
     "aether_redux:wyndoats",
     "aether_redux:sentrite_chain",
     "aether_redux:sentrite_lantern",
@@ -105,6 +103,8 @@
     "aether_redux:gildenroot_sapling",
     "aether_redux:potted_gildenroot_sapling",
     "aether_redux:lucky_clover",
-    "aether_redux:potted_lucky_clover"
+    "aether_redux:potted_lucky_clover",
+    "aether_redux:spirolyctil",
+    "aether_redux:potted_spirolyctil"
   ]
 }

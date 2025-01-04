@@ -26,11 +26,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "aether_redux:skysprouts"
+          "name": "aether_redux:spirolyctil"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "aether_redux:blocks/potted_skysprouts"
+  "random_sequence": "aether_redux:blocks/potted_spirolyctil"
 }

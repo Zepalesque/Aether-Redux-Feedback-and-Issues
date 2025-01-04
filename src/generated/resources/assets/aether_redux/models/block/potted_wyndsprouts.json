@@ -1,8 +1,0 @@
-{
-  "parent": "aether_unity:block/template/pot/flower_pot_tinted_overlay",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "overlay": "aether_redux:block/natural/wyndsprouts_overlay",
-    "plant": "aether_redux:block/natural/wyndsprouts"
-  }
-}
