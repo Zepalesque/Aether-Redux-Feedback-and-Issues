@@ -35,7 +35,7 @@ public class MobListener {
         if (entity instanceof Player player) {
             ReduxPlayerAttachment attachment = ReduxPlayerAttachment.get(player);
             attachment.onUpdate(player);
-        } else if (entity instanceof Slider slider) {
+        } else if (entity instanceof Slider slider && entity.level().isClientSide()) {
             SliderSignalAttachment attachment = SliderSignalAttachment.get(slider);
             attachment.onUpdate(slider);
         }

@@ -28,27 +28,14 @@ public abstract class SliderMixin extends LivingEntityMixin {
 
     @Inject(method = "calculateMoveDelay", at = @At("HEAD"), cancellable = true)
     protected void redux$calculateMoveDelay(CallbackInfoReturnable<Integer> cir) {
-        int adjusted = this.isCritical() ? 5 + this.getRandom().nextInt(6) : 8 + this.getRandom().nextInt(7);
+        int adjusted = this.isCritical() ? 3 + this.getRandom().nextInt(8) : 7 + this.getRandom().nextInt(8);
         cir.setReturnValue(adjusted);
-    }
-
-
-    @Inject(method = "setMoveDirection", at = @At("TAIL"))
-    protected void redux$setMoveDirection(Direction moveDirection, CallbackInfo ci) {
-//        if (moveDirection != null) {
-//            SliderSignalAttachment signal = SliderSignalAttachment.get((Slider) (Object) this);
-//            signal.syncMoveDirection((Slider) (Object) this);
-//        }
     }
 
     @Inject(method = "customServerAiStep", at = @At("TAIL"))
     protected void redux$customServerAiStep(CallbackInfo ci) {
-        SliderSignalAttachment signal = SliderSignalAttachment.get((Slider) (Object) this);
-        if (!this.isCritical() && this.moveDelay == 8 || this.isCritical() && this.moveDelay == 4) {
-            signal.doBeep((Slider) (Object) this);
-            signal.syncMoveDirection((Slider) (Object) this);
-        } else if (this.moveDelay == 2) {
-            signal.syncMoveDirection((Slider) (Object) this);
+        if (!this.isCritical() && this.moveDelay == 7 || this.isCritical() && this.moveDelay == 3) {
+            SliderSignalAttachment.sendPacket((Slider) (Object) this);
         }
     }
 }
