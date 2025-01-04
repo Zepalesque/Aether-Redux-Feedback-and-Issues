@@ -117,10 +117,8 @@ public class Ember extends Projectile {
         double d1 = this.getY() + vec3.y;
         double d2 = this.getZ() + vec3.z;
         this.updateRotation();
-        float f = 0.99F;
-        float f1 = 0.06F;
 
-        this.setDeltaMovement(vec3.multiply(0.995D, 0.99D, 0.995D));
+        this.setDeltaMovement(vec3.multiply(0.999D, 0.99D, 0.999D));
         if (hitresult.getType() != HitResult.Type.MISS && !EventHooks.onProjectileImpact(this, hitresult))
             this.onHit(hitresult);
         if (!this.isNoGravity() && hitresult.getType() != HitResult.Type.BLOCK) {
