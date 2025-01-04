@@ -1,29 +1,25 @@
 package net.zepalesque.redux.config;
 
 import net.neoforged.neoforge.common.ModConfigSpec;
-import net.neoforged.neoforge.common.ModConfigSpec.Builder;
-import net.neoforged.neoforge.common.ModConfigSpec.BooleanValue;
-import net.neoforged.neoforge.common.ModConfigSpec.IntValue;
-import net.neoforged.neoforge.common.ModConfigSpec.EnumValue;
-import net.zepalesque.redux.Redux;
 import net.zepalesque.redux.config.enums.AACompatType;
 import net.zepalesque.redux.pack.ReduxPackConfig;
+import net.zepalesque.zenith.api.serialization.config.DataSerializableConfig;
 import org.apache.commons.lang3.tuple.Pair;
 
 public class ReduxConfig {
 
-    public static class Server extends ReduxSerializingConfigBase {
+    public static class Server extends DataSerializableConfig {
 
-        public final BooleanValue redux_sky_colors;
-        public final BooleanValue redux_water_colors;
-        public final BooleanValue cloudbed;
-        public final BooleanValue revamped_quicksoil_movement;
-        public final IntValue max_veridium_tool_infusion;
-        public final BooleanValue consistent_break_speeds;
-        public final BooleanValue raw_ores;
+        public final ModConfigSpec.ConfigValue<Boolean> redux_sky_colors;
+        public final ModConfigSpec.ConfigValue<Boolean> redux_water_colors;
+        public final ModConfigSpec.ConfigValue<Boolean> cloudbed;
+        public final ModConfigSpec.ConfigValue<Boolean> revamped_quicksoil_movement;
+        public final ModConfigSpec.IntValue max_veridium_tool_infusion;
+        public final ModConfigSpec.ConfigValue<Boolean> consistent_break_speeds;
+        public final ModConfigSpec.ConfigValue<Boolean> raw_ores;
 
-        public Server(Builder builder) {
-            super(() -> SERVER_SPEC, "redux_server", Redux.MODID);
+        public Server(ModConfigSpec.Builder builder) {
+            super(() -> SERVER_SPEC, "redux_server");
             builder.push("Tweaks");
             redux_sky_colors = builder
                     .comment("Use Redux's alternative sky colors for the Aether")
@@ -52,13 +48,13 @@ public class ReduxConfig {
         }
     }
 
-    public static class Common extends ReduxSerializingConfigBase {
+    public static class Common extends DataSerializableConfig {
 
-        public final BooleanValue bronze_dungeon_upgrade;
-        public final EnumValue<AACompatType> redux_noise;
+        public final ModConfigSpec.ConfigValue<Boolean> bronze_dungeon_upgrade;
+        public final ModConfigSpec.EnumValue<AACompatType> redux_noise;
 
-        public Common(Builder builder) {
-            super(() -> COMMON_SPEC, "redux_common", Redux.MODID);
+        public Common(ModConfigSpec.Builder builder) {
+            super(() -> COMMON_SPEC, "redux_common");
             builder.push("TODO");
             bronze_dungeon_upgrade = builder
                     .comment("Upgrades the Bronze Dungeon structure with new blocks and more depth")
@@ -70,46 +66,45 @@ public class ReduxConfig {
         }
     }
 
-    public static class Client extends ReduxConfigBase {
+    public static class Client {
 
-        public final BooleanValue leaf_particles;
-        public final BooleanValue improved_whirlwinds;
+        public final ModConfigSpec.ConfigValue<Boolean> leaf_particles;
+        public final ModConfigSpec.ConfigValue<Boolean> improved_whirlwinds;
 
-        public final BooleanValue tintable_grass;
-        public final BooleanValue jappafied_textures;
-        public final BooleanValue slider_sfx;
-        public final BooleanValue slider_signal_sfx;
+        public final ModConfigSpec.ConfigValue<Boolean> tintable_grass;
+        public final ModConfigSpec.ConfigValue<Boolean> jappafied_textures;
+        public final ModConfigSpec.ConfigValue<Boolean> slider_sfx;
+        public final ModConfigSpec.ConfigValue<Boolean> slider_signal_sfx;
 
-        public Client(Builder builder) {
-            super(() -> CLIENT_SPEC, "redux_client", Redux.MODID);
+        public Client(ModConfigSpec.Builder builder) {
             builder.push("Visual");
 
-            leaf_particles = tranlateAndDefine(builder
-                    .comment("Use nice falling leaf particles for Aether leaf blocks"),
-                    "Leaf Particles", true, TranslatingConfig::defineBool);
-            improved_whirlwinds = tranlateAndDefine(builder
-                    .comment("Gives Whirlwinds a new design, based on Minecraft 1.21's new Breeze mob"),
-                    "Improved Whirlwinds", true, TranslatingConfig::defineBool);
+            leaf_particles = builder
+                    .comment("Use nice falling leaf particles for Aether leaf blocks")
+                    .define("Leaf Particles", true);
+            improved_whirlwinds = builder
+                    .comment("Gives Whirlwinds a new design, based on Minecraft 1.21's new Breeze mob")
+                    .define("Improved Whirlwinds", true);
 
             builder.pop();
 
             builder.push("Audio");
-            slider_signal_sfx = tranlateAndDefine(builder
-                    .comment("Gives the Slider a subtle signal effect."),
-                    "Slider Movement Signal", true);
+            slider_signal_sfx = builder
+                    .comment("Gives the Slider a subtle signal effect.")
+                    .define("Slider Movement Signal", true);
             builder.pop();
 
             builder.push("Builtin Resource Pack Customization");
 
-            tintable_grass = ReduxPackConfig.register(tranlateAndDefine(builder
-                    .comment("Use modified models to allow tintable Aether Grass blocks and plants. Only disable if you know what you're doing!"),
-                    "Tinted Grass", true), "resource/", "tintable_grass");
-            jappafied_textures = ReduxPackConfig.register(tranlateAndDefine(builder
-                    .comment("Use textures designed to fit with the Jappafied Aethers resource pack."),
-                    "Jappafied Textures", false), "resource/", "jappafied");
-            slider_sfx = ReduxPackConfig.register(tranlateAndDefine(builder
-                    .comment("Improve the hurt, death, and ambient sounds of the Slider."),
-                    "Slider SFX Upgrades", true), "resource/sfx/", "slider");
+            tintable_grass = ReduxPackConfig.register(builder
+                    .comment("Use modified models to allow tintable Aether Grass blocks and plants. Only disable if you know what you're doing!")
+                    .define("Tinted Grass", true), "resource/", "tintable_grass");
+            jappafied_textures = ReduxPackConfig.register(builder
+                    .comment("Use textures designed to fit with the Jappafied Aethers resource pack.")
+                    .define("Jappafied Textures", false), "resource/", "jappafied");
+            slider_sfx = ReduxPackConfig.register(builder
+                    .comment("Improve the hurt, death, and ambient sounds of the Slider.")
+                    .define("Slider SFX Upgrades", true), "resource/sfx/", "slider");
 
             builder.pop();
         }
@@ -121,15 +116,15 @@ public class ReduxConfig {
     public static final Client CLIENT;
 
     static {
-        final Pair<Server, ModConfigSpec> server = new Builder().configure(Server::new);
+        final Pair<Server, ModConfigSpec> server = new ModConfigSpec.Builder().configure(Server::new);
         SERVER_SPEC = server.getRight();
         SERVER = server.getLeft();
 
-        final Pair<Common, ModConfigSpec> common = new Builder().configure(Common::new);
+        final Pair<Common, ModConfigSpec> common = new ModConfigSpec.Builder().configure(Common::new);
         COMMON_SPEC = common.getRight();
         COMMON = common.getLeft();
 
-        final Pair<Client, ModConfigSpec> client = new Builder().configure(Client::new);
+        final Pair<Client, ModConfigSpec> client = new ModConfigSpec.Builder().configure(Client::new);
         CLIENT_SPEC = client.getRight();
         CLIENT = client.getLeft();
     }
