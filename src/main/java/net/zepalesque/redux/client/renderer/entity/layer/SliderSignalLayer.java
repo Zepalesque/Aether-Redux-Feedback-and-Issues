@@ -14,6 +14,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.zepalesque.redux.ArrayUtil;
 import net.zepalesque.redux.attachment.SliderSignalAttachment;
+import net.zepalesque.redux.config.ReduxConfig;
 
 public class SliderSignalLayer extends RenderLayer<Slider, SliderModel> {
 
@@ -26,11 +27,13 @@ public class SliderSignalLayer extends RenderLayer<Slider, SliderModel> {
 
     @Override
     public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLight, Slider slider, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
-        SliderSignalAttachment signal = SliderSignalAttachment.get(slider);
-        if (slider.isAwake() && signal.shouldGlow(slider)) {
-            RenderType renderType = slider.isCritical() ? CRITICAL : NORMAL;
-            VertexConsumer consumer = buffer.getBuffer(renderType);
-            this.getParentModel().renderToBuffer(poseStack, consumer, 15728640, OverlayTexture.NO_OVERLAY);
+        if (ReduxConfig.CLIENT.slider_signal_sfx.get() && slider.isAwake()) {
+            SliderSignalAttachment signal = SliderSignalAttachment.get(slider);
+            if (signal.shouldGlow(slider)) {
+                RenderType renderType = slider.isCritical() ? CRITICAL : NORMAL;
+                VertexConsumer consumer = buffer.getBuffer(renderType);
+                this.getParentModel().renderToBuffer(poseStack, consumer, 15728640, OverlayTexture.NO_OVERLAY);
+            }
         }
     }
 }

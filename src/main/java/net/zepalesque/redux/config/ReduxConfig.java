@@ -74,6 +74,7 @@ public class ReduxConfig {
         public final ModConfigSpec.ConfigValue<Boolean> tintable_grass;
         public final ModConfigSpec.ConfigValue<Boolean> jappafied_textures;
         public final ModConfigSpec.ConfigValue<Boolean> slider_sfx;
+        public final ModConfigSpec.ConfigValue<Boolean> slider_signal_sfx;
 
         public Client(ModConfigSpec.Builder builder) {
             builder.push("Visual");
@@ -88,6 +89,9 @@ public class ReduxConfig {
             builder.pop();
 
             builder.push("Audio");
+            slider_signal_sfx = builder
+                    .comment("Gives the Slider a subtle signal effect.")
+                    .define("Slider Movement Signal", true);
             builder.pop();
 
             builder.push("Builtin Resource Pack Customization");
