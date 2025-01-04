@@ -76,14 +76,35 @@ public class SparkParticle extends TextureSheetParticle {
       } else {
          this.gravity = 1.0F;
       }
-      super.tick();
+
+      this.baseTick();
 
       int i = 10;
       if (this.lifetime - this.age < i) {
          this.alpha = (float)(this.lifetime - this.age) / i;
       }
-
    }
+
+   protected void baseTick() {
+      this.xo = this.x;
+      this.yo = this.y;
+      this.zo = this.z;
+      if (this.age++ >= this.lifetime) {
+         this.remove();
+      } else {
+         this.yd = this.yd - 0.04 * (double)this.gravity;
+         this.move(this.xd, this.yd, this.zd);
+         if (this.speedUpWhenYMotionIsBlocked && this.y == this.yo) {
+            this.xd *= 1.1;
+            this.zd *= 1.1;
+         }
+
+         this.xd = this.xd * (double)this.friction;
+         this.yd = this.yd * (double)this.friction;
+         this.zd = this.zd * (double)this.friction;
+      }
+   }
+
    private static HitResult getHitResult(Vec3 startVec, Vec3 endVecOffset, Level level) {
       Vec3 vec3 = startVec.add(endVecOffset);
       return level.clip(new ClipContext(startVec, vec3, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, CollisionContext.empty()));
