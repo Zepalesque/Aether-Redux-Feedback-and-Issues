@@ -5,6 +5,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.zepalesque.redux.Redux;
 import net.zepalesque.redux.block.ReduxBlocks;
@@ -31,6 +32,9 @@ public class ReduxItemTagsData extends ReduxItemTagsProvider {
         this.tag(ItemTags.SWORDS).add(ReduxItems.VERIDIUM_SWORD.get(), ReduxItems.INFUSED_VERIDIUM_SWORD.get());
 
         this.tag(AetherTags.Items.SLIDER_DAMAGING_ITEMS).add(ReduxItems.VERIDIUM_PICKAXE.get(), ReduxItems.INFUSED_VERIDIUM_PICKAXE.get());
+
+        this.tag(Tags.Items.INGOTS).add(ReduxItems.VERIDIUM_INGOT.get(), ReduxItems.REFINED_SENTRITE.get());
+        this.tag(Tags.Items.NUGGETS).add(ReduxItems.VERIDIUM_NUGGET.get(), ReduxItems.SENTRITE_CHUNK.get());
 
         this.tag(AetherTags.Items.BRONZE_DUNGEON_LOOT).add(ReduxItems.AERBOUND_CAPE.get());
         this.tag(AetherTags.Items.ACCESSORIES_CAPES).add(ReduxItems.AERBOUND_CAPE.get());

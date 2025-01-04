@@ -9,10 +9,12 @@ import com.aetherteam.aether.world.foliageplacer.GoldenOakFoliagePlacer;
 import com.aetherteam.aether.world.trunkplacer.CrystalTreeTrunkPlacer;
 import com.aetherteam.nitrogen.world.foliageplacer.HookedFoliagePlacer;
 import com.aetherteam.nitrogen.world.trunkplacer.HookedTrunkPlacer;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
+import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.util.valueproviders.ConstantInt;
@@ -29,10 +31,13 @@ import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConf
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.RandomFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.VegetationPatchConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
+import net.minecraft.world.level.levelgen.placement.CaveSurface;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import net.zepalesque.redux.block.ReduxBlocks;
 import net.zepalesque.redux.blockset.flower.ReduxFlowerSets;
@@ -45,6 +50,10 @@ import net.zepalesque.redux.world.feature.gen.ReduxFeatures;
 import net.zepalesque.redux.world.tree.decorator.GoldenVineDecorator;
 import net.zepalesque.redux.world.tree.foliage.SkyrootFoliagePlacer;
 import net.zepalesque.redux.world.tree.foliage.SmallGoldenOakFoliagePlacer;
+import net.zepalesque.unity.block.UnityBlocks;
+import net.zepalesque.unity.data.UnityTags;
+import net.zepalesque.unity.extendablestate.UnityStateLists;
+import net.zepalesque.zenith.api.world.feature.gen.ExtendableStateListBlockFeature;
 import net.zepalesque.zenith.api.world.feature.gen.LargeRockFeature;
 import net.zepalesque.zenith.api.world.feature.gen.SurfaceRuleLakeFeature;
 import net.zepalesque.zenith.api.world.tree.trunk.IntProviderTrunkPlacer;
@@ -249,5 +258,21 @@ public class ReduxFeatureConfig extends ReduxFeatureBuilders {
 
         register(context, WYNDSPROUTS_PATCH, Feature.FLOWER,
                 patch(24, 5, 3, prov(ReduxBlocks.WYNDSPROUTS)));
+
+
+        register(context, BLEAKMOSS_VEGETATION, ZenithFeatures.EXTENDABLE_STATE_LIST_BLOCK.get(), new ExtendableStateListBlockFeature.Config(UnityStateLists.FLUTEMOSS.get(), Optional.empty()));
+
+        register(context, BLEAKMOSS_BONEMEAL, Feature.VEGETATION_PATCH,
+                new VegetationPatchConfiguration(UnityTags.Blocks.AETHER_CARVER_REPLACEABLES,
+                        prov(ReduxBlocks.BLEAKMOSS_BLOCK),
+                        Holder.direct(new PlacedFeature(configs.getOrThrow(BLEAKMOSS_VEGETATION),
+                                List.of())),
+                        CaveSurface.FLOOR,
+                        ConstantInt.of(1),
+                        0.0F,
+                        2,
+                        0.8F,
+                        UniformInt.of(1, 2),
+                        0.75F));
     }
 }
