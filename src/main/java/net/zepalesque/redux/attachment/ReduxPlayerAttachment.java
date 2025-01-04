@@ -143,7 +143,7 @@ public class ReduxPlayerAttachment implements INBTSynchable {
 
     private void tickAerjumps(Player player) {
         this.prevPerformedAerjumps = this.getPerformedAerjumps();
-        if (player.onGround()) {
+        if (!player.level().isClientSide() && player.onGround() && this.performedAerjumps != 0) {
             this.setSynched(player.getId(), Direction.CLIENT, "performed_aerjumps", 0);
         }
     }

@@ -5,6 +5,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.neoforged.neoforge.network.PacketDistributor;
+import net.zepalesque.redux.Redux;
 import net.zepalesque.redux.client.audio.ReduxSounds;
 import net.zepalesque.redux.network.packet.SliderSignalPacket;
 import org.jetbrains.annotations.NotNull;
@@ -30,11 +31,13 @@ public class SliderSignalAttachment {
     }
 
     public static void sendPacket(Slider slider) {
+        Redux.LOGGER.debug("Slider with UUID {} just beeped", slider.getStringUUID());
+        Redux.LOGGER.debug("[line break]");
         PacketDistributor.sendToPlayersNear((ServerLevel) slider.level(), null, slider.getX(), slider.getY(), slider.getZ(), 50D, new SliderSignalPacket(slider.getId()));
     }
 
     public void doBeep(Slider slider) {
-        if (this.getSignalTick() == 0) {
+        if (this.getSignalTick() <= 2) {
             this.setSignalTick(8);
             playSound(slider);
         }

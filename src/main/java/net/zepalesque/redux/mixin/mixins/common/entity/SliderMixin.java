@@ -28,7 +28,8 @@ public abstract class SliderMixin extends LivingEntityMixin {
 
     @Inject(method = "calculateMoveDelay", at = @At("HEAD"), cancellable = true)
     protected void redux$calculateMoveDelay(CallbackInfoReturnable<Integer> cir) {
-        int adjusted = this.isCritical() ? 3 + this.getRandom().nextInt(8) : 7 + this.getRandom().nextInt(8);
+        int rand = this.getRandom().nextInt(8);
+        int adjusted = (this.isCritical() ? 3 : 7) + rand;
         cir.setReturnValue(adjusted);
     }
 
