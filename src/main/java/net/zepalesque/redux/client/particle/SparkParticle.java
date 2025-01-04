@@ -14,6 +14,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.shapes.CollisionContext;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 
@@ -85,7 +86,7 @@ public class SparkParticle extends TextureSheetParticle {
    }
    private static HitResult getHitResult(Vec3 startVec, Vec3 endVecOffset, Level level) {
       Vec3 vec3 = startVec.add(endVecOffset);
-      return level.clip(new ClipContext(startVec, vec3, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, (Entity) null));
+      return level.clip(new ClipContext(startVec, vec3, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, CollisionContext.empty()));
    }
 
 
