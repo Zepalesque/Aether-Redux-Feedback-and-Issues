@@ -37,8 +37,6 @@ import net.zepalesque.redux.loot.modifer.ReduxLootModifiers;
 import net.zepalesque.redux.network.packet.AerjumpPacket;
 import net.zepalesque.redux.network.packet.ReduxPlayerSyncPacket;
 import net.zepalesque.redux.network.packet.SliderSignalPacket;
-import net.zepalesque.redux.pack.PackUtils;
-import net.zepalesque.redux.pack.ReduxPackConfig;
 import net.zepalesque.redux.recipe.ReduxRecipes;
 import net.zepalesque.redux.tile.ReduxTiles;
 import net.zepalesque.redux.world.biome.ReduxRegion;
@@ -47,6 +45,8 @@ import net.zepalesque.redux.world.feature.gen.ReduxFeatures;
 import net.zepalesque.redux.world.tree.decorator.ReduxTreeDecorators;
 import net.zepalesque.redux.world.tree.foliage.ReduxFoliagePlacers;
 import net.zepalesque.zenith.api.blockset.BlockSet;
+import net.zepalesque.zenith.api.packconfig.PackConfig;
+import net.zepalesque.zenith.api.packconfig.PackUtils;
 import org.slf4j.Logger;
 import terrablender.api.Regions;
 import terrablender.api.SurfaceRuleManager;
@@ -60,6 +60,8 @@ public class Redux {
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public static final Collection<BlockSet> BLOCK_SETS = new ArrayList<>();
+
+    public static final PackConfig ASSETS_CONFIG = new PackConfig(loc("overrides_pack"), PackType.CLIENT_RESOURCES);
 
     public Redux(ModContainer mod, IEventBus bus, Dist dist) {
         bus.addListener(EventPriority.LOWEST, ReduxData::dataSetup);
@@ -131,12 +133,10 @@ public class Redux {
 
     public  void packSetup(AddPackFindersEvent event) {
         if (event.getPackType() == PackType.CLIENT_RESOURCES) {
-            String pathString = "resource/overrides_pack";
-            String id = "overrides_pack";
-            PackUtils.setupPack(event, pathString, id, true, ReduxPackConfig::generate);
+            ASSETS_CONFIG.setup(event);
         } else if (event.getPackType() == PackType.SERVER_DATA) {
-            if (ReduxConfig.COMMON.bronze_dungeon_upgrade.get()) { PackUtils.setupPack(event, "dungeon_upgrades/bronze", "bronze_upgrade", true); }
-            if (ReduxConfig.COMMON.redux_noise.get().get()) { PackUtils.setupPack(event, "redux_noise", "redux_noise", true); }
+            if (ReduxConfig.COMMON.bronze_dungeon_upgrade.get()) { PackUtils.setupPack(event, MODID, "dungeon_upgrades/bronze", "bronze_upgrade", true); }
+            if (ReduxConfig.COMMON.redux_noise.get().get()) { PackUtils.setupPack(event, MODID, "redux_noise", "redux_noise", true); }
         }
     }
 
