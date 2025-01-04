@@ -36,6 +36,11 @@ public class Ember extends Projectile {
         super(entityType, level);
     }
 
+    public static final double VELOCITY_THRESHOLD_XZ = 0.075D;
+    public static final double VELOCITY_THRESHOLD_Y = 0.1D;
+    public static final double BOUNCE_FRICTION_XZ = 0.75D;
+    public static final double BOUNCE_FRICTION_Y = 0.5D;
+
     private @Nullable Entity cachedSource;
     private @Nullable UUID sourceUUID;
     private @Nullable ArrayList<Entity> cachedHits = new ArrayList<>();
@@ -161,7 +166,7 @@ public class Ember extends Projectile {
         }
     }
 
-     public Vec3 bounceVector(Vec3 velocity, Direction face) {
+     public static Vec3 bounceVector(Vec3 velocity, Direction face) {
         Vec3 normal = new Vec3(face.getStepX(), face.getStepY(), face.getStepZ());
         double mult = velocity.x * normal.x + velocity.y * normal.y + velocity.z * normal.z;
         return new Vec3(
@@ -171,7 +176,7 @@ public class Ember extends Projectile {
         );
     }
 
-    public Vec3 bounceAxis(Vec3 velocity, Direction direction) {
+    public static Vec3 bounceAxis(Vec3 velocity, Direction direction) {
         Direction.Axis axis = direction.getAxis();
         double x = velocity.x;
         double y = velocity.y;
@@ -203,17 +208,16 @@ public class Ember extends Projectile {
         Direction.Axis axis = d.getAxis();
         Vec3 loc = result.getLocation();
         Vec3 velocity = this.getDeltaMovement();
-        velocity = velocity.multiply(Math.abs(velocity.x)>0.1 ? 1 : 0, Math.abs(velocity.y)>0.1 ? 1 : 0, Math.abs(velocity.z)>0.1 ? 1 : 0);
-         Vec3 bounce = this.bounceAxis(velocity, d);
+        velocity = velocity.multiply(Math.abs(velocity.x) > VELOCITY_THRESHOLD_XZ ? 1 : 0, Math.abs(velocity.y) > VELOCITY_THRESHOLD_Y ? 1 : 0, Math.abs(velocity.z) > VELOCITY_THRESHOLD_XZ ? 1 : 0);
+         Vec3 bounce = bounceAxis(velocity, d);
          // Spawn spark particles
 
         double spread = velocity.length() * 2.5;
         for (int i = 0; i < Mth.floor(velocity.length() * 15); i++) {
-            float angle = this.level().getRandom().nextFloat() * 360 * Mth.DEG_TO_RAD;
+            float angle = this.level().getRandom().nextFloat() * 2 * Mth.PI;
             // trigonometry, how fun
             double opp = Mth.sin(angle) * spread;
             double adj = Mth.cos(angle) * spread;
-            // TODO
             if (axis == Direction.Axis.X) {
                             this.level().addParticle(ReduxParticles.SPARK.get(), loc.x(), loc.y(), loc.z(), velocity.length(), opp, adj);
             } else if (axis == Direction.Axis.Y) {
@@ -222,12 +226,14 @@ public class Ember extends Projectile {
                             this.level().addParticle(ReduxParticles.SPARK.get(), loc.x(), loc.y(), loc.z(), opp, adj, velocity.length());
             }
         }
-        SoundEvent sound =
-                velocity.length() <= 0.75 ? ReduxSounds.EMBER_BOUNCE_SMALL.get() :
-                        velocity.length() <= 1.5 ? ReduxSounds.EMBER_BOUNCE_MED.get() :
-                                ReduxSounds.EMBER_BOUNCE_BIG.get();
+        SoundEvent sound;
+        if (velocity.length() <= 0.75) sound = ReduxSounds.EMBER_BOUNCE_SMALL.get();
+        else if (velocity.length() <= 1.5) sound = ReduxSounds.EMBER_BOUNCE_MED.get();
+        else sound = ReduxSounds.EMBER_BOUNCE_BIG.get();
         this.level().playSound(null, loc.x(), loc.y(), loc.z(), sound, SoundSource.NEUTRAL, (float) (velocity.length() * 10D), 0.8F + (this.level().random.nextFloat() * 0.4F));
-        this.setDeltaMovement(bounce.scale(0.5D));
+
+        Vec3 scaled = bounce.multiply(Ember.BOUNCE_FRICTION_XZ, Ember.BOUNCE_FRICTION_Y, Ember.BOUNCE_FRICTION_XZ);
+        this.setDeltaMovement(scaled);
         this.setPos(loc);
     }
 

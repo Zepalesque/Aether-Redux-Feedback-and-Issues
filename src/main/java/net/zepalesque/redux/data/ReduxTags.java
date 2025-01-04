@@ -18,7 +18,7 @@ public class ReduxTags {
     public static class Blocks {
 
         // Blocks that should override Short Aether Grass's color to be the blight color (blightmoss for instance)
-        public static final TagKey<Block> SHORT_AETHER_GRASS_BLIGHT_COLORING = tag("short_aether_grass_blight_coloring");
+        public static final TagKey<Block> SHORT_AETHER_GRASS_BLEAKMOSS_COLORING = tag("short_aether_grass_bleakmoss_coloring");
         // Blocks that should use the Highlands quicksoil system
         public static final TagKey<Block> QUICKSOIL_BEHAVIOR = tag("quicksoil_behavior");
 

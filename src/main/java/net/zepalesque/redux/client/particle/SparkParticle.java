@@ -6,9 +6,7 @@ import net.minecraft.client.particle.ParticleProvider;
 import net.minecraft.client.particle.ParticleRenderType;
 import net.minecraft.client.particle.SpriteSet;
 import net.minecraft.client.particle.TextureSheetParticle;
-import net.minecraft.core.Direction;
 import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
@@ -17,6 +15,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
+import net.zepalesque.redux.entity.projectile.Ember;
 
 @OnlyIn(Dist.CLIENT)
 public class SparkParticle extends TextureSheetParticle {
@@ -42,29 +41,14 @@ public class SparkParticle extends TextureSheetParticle {
       return 15728880;
    }
 
-   public Vec3 bounceAxis(Vec3 velocity, Direction direction) {
-      Direction.Axis axis = direction.getAxis();
-      double x = velocity.x;
-      double y = velocity.y;
-      double z = velocity.z;
-      if (axis == Direction.Axis.X) {
-         x = -x;
-      } else if (axis == Direction.Axis.Y) {
-         y = -y;
-      } else if (axis == Direction.Axis.Z) {
-         z = -z;
-      }
-      return new Vec3(x, y, z);
-   }
-
    public void tick() {
       Vec3 velocity = new Vec3(this.xd, this.yd, this.zd);
       Vec3 pos = new Vec3(this.x, this.y, this.z);
-      velocity = velocity.multiply(Math.abs(velocity.x)>0.1 ? 1 : 0, Math.abs(velocity.y)>0.1 ? 1 : 0, Math.abs(velocity.z)>0.1 ? 1 : 0);
+      velocity = velocity.multiply(Math.abs(velocity.x) > Ember.VELOCITY_THRESHOLD_XZ ? 1 : 0, Math.abs(velocity.y) > Ember.VELOCITY_THRESHOLD_Y ? 1 : 0, Math.abs(velocity.z) > Ember.VELOCITY_THRESHOLD_XZ ? 1 : 0);
       HitResult hitresult = getHitResult(pos, velocity.length() == 0 ? velocity.add(0, -0.04, 0) : velocity, this.level);
       if (velocity.length() > 0D && hitresult.getType() == HitResult.Type.BLOCK) {
-         Vec3 bounce = this.bounceAxis(velocity, ((BlockHitResult)hitresult).getDirection());
-         Vec3 scaled = bounce.scale(0.5D);
+         Vec3 bounce = Ember.bounceAxis(velocity, ((BlockHitResult)hitresult).getDirection());
+         Vec3 scaled = bounce.multiply(Ember.BOUNCE_FRICTION_XZ, Ember.BOUNCE_FRICTION_Y, Ember.BOUNCE_FRICTION_XZ);
          this.xd = scaled.x;
          this.yd = scaled.y;
          this.zd = scaled.z;

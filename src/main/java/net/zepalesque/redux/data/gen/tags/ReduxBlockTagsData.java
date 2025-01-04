@@ -58,7 +58,7 @@ public class ReduxBlockTagsData extends ReduxBlockTagsProvider {
                 ReduxBlocks.BLEAKMOSS_CARPET.get()
         );
 
-        this.tag(ReduxTags.Blocks.SHORT_AETHER_GRASS_BLIGHT_COLORING).add(
+        this.tag(ReduxTags.Blocks.SHORT_AETHER_GRASS_BLEAKMOSS_COLORING).add(
                 ReduxBlocks.BLEAKMOSS_BLOCK.get()
         );
 
