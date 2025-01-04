@@ -6,7 +6,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
@@ -39,12 +38,10 @@ public class Ember extends Projectile {
     public static final double VELOCITY_THRESHOLD_XZ = 0.075D;
     public static final double VELOCITY_THRESHOLD_Y = 0.1D;
     public static final double BOUNCE_FRICTION_XZ = 0.75D;
-    public static final double BOUNCE_FRICTION_Y = 0.5D;
+    public static final double BOUNCE_FRICTION_Y = 0.7D;
 
-    private @Nullable Entity cachedSource;
-    private @Nullable UUID sourceUUID;
-    private @Nullable ArrayList<Entity> cachedHits = new ArrayList<>();
-    private @Nullable ArrayList<UUID> hitUUIDs = new ArrayList<>();
+    private @Nullable UUID source;
+    private final ArrayList<UUID> hitEntities = new ArrayList<>();
     public final int lifetime = 80;
     public Ember(Level level, Player owner) {
         this(ReduxEntities.EMBER.get(), level);
@@ -58,52 +55,19 @@ public class Ember extends Projectile {
     }
 
     protected void hit(Entity entity) {
-        this.cachedHits.add(entity);
-        this.hitUUIDs.add(entity.getUUID());
+        this.hitEntities.add(entity.getUUID());
     }
 
     protected void setEmberSource(Entity entity) {
-        this.cachedSource = entity;
-        this.sourceUUID = entity.getUUID();
-    }
-
-    public Entity getEmberSource() {
-        if (this.cachedSource != null && !this.cachedSource.isRemoved()) {
-            return this.cachedSource;
-        } else if (this.sourceUUID != null && this.level() instanceof ServerLevel) {
-            this.cachedSource = ((ServerLevel)this.level()).getEntity(this.sourceUUID);
-            return this.cachedSource;
-        } else {
-            return null;
-        }
-    }
-
-    public ArrayList<Entity> getHits() {
-        if (this.cachedHits != null && !this.cachedHits.isEmpty()) {
-            return this.cachedHits;
-        } else if (this.hitUUIDs != null && !this.hitUUIDs.isEmpty() && this.level() instanceof ServerLevel serverLevel) {
-            ArrayList<Entity> collection = new ArrayList<>();
-            for (UUID id : this.hitUUIDs) {
-                Entity e = serverLevel.getEntity(id);
-                if (e != null && !e.isRemoved()) {
-                    collection.add(e);
-                } else {
-                    this.hitUUIDs.remove(id);
-                }
-            }
-            this.cachedHits = collection;
-            return this.cachedHits;
-        } else {
-            return new ArrayList<>();
-        }
+        this.source = entity.getUUID();
     }
 
     protected boolean originatedFrom(Entity entity) {
-        return entity.getUUID().equals(this.sourceUUID);
+        return entity.getUUID().equals(this.source);
     }
 
     protected boolean hasHit(Entity entity) {
-        return this.hitUUIDs != null && this.hitUUIDs.contains(entity.getUUID());
+        return this.hitEntities != null && this.hitEntities.contains(entity.getUUID());
     }
 
 
@@ -139,13 +103,13 @@ public class Ember extends Projectile {
 
     protected void addAdditionalSaveData(CompoundTag compound) {
         super.addAdditionalSaveData(compound);
-        if (this.sourceUUID != null) {
-            compound.putUUID("Source", this.sourceUUID);
+        if (this.source != null) {
+            compound.putUUID("Source", this.source);
         }
-        if (this.hitUUIDs != null && !this.hitUUIDs.isEmpty()) {
+        if (this.hitEntities != null && !this.hitEntities.isEmpty()) {
             CompoundTag hits = new CompoundTag();
-            for (int i = 0; i < this.hitUUIDs.size(); i++) {
-                UUID id = this.hitUUIDs.get(i);
+            for (int i = 0; i < this.hitEntities.size(); i++) {
+                UUID id = this.hitEntities.get(i);
                 hits.putUUID(String.valueOf(i), id);
             }
             compound.put("Hits", hits);
@@ -154,20 +118,16 @@ public class Ember extends Projectile {
     protected void readAdditionalSaveData(CompoundTag compound) {
         super.readAdditionalSaveData(compound);
         if (compound.hasUUID("Source")) {
-            this.sourceUUID = compound.getUUID("Source");
-            this.cachedSource = null;
+            this.source = compound.getUUID("Source");
         }
         if (compound.contains("Hits") && compound.get("Hits") instanceof CompoundTag hits) {
-            this.hitUUIDs = new ArrayList<>();
             for (String s : hits.getAllKeys()) {
-                this.hitUUIDs.add(hits.getUUID(s));
+                this.hitEntities.add(hits.getUUID(s));
             }
-            this.cachedHits = new ArrayList<>();
         }
     }
 
-     public static Vec3 bounceVector(Vec3 velocity, Direction face) {
-        Vec3 normal = new Vec3(face.getStepX(), face.getStepY(), face.getStepZ());
+     public static Vec3 bounceVector(Vec3 velocity, Vec3 normal) {
         double mult = velocity.x * normal.x + velocity.y * normal.y + velocity.z * normal.z;
         return new Vec3(
                 velocity.x - 2 * mult * normal.x,
@@ -198,6 +158,7 @@ public class Ember extends Projectile {
         if (result.getEntity() instanceof LivingEntity livingentity && !this.ownedBy(livingentity) && !this.originatedFrom(livingentity) && !this.hasHit(livingentity) && !(livingentity instanceof BossMob<?>)) {
             // TODO
 //         livingentity.hurt(ReduxDamageTypes.entitySource(this.level(), ReduxDamageTypes.EMBER, this.getOwner()), 1.0F);
+            this.hit(livingentity);
         }
 
     }
@@ -210,8 +171,8 @@ public class Ember extends Projectile {
         Vec3 velocity = this.getDeltaMovement();
         velocity = velocity.multiply(Math.abs(velocity.x) > VELOCITY_THRESHOLD_XZ ? 1 : 0, Math.abs(velocity.y) > VELOCITY_THRESHOLD_Y ? 1 : 0, Math.abs(velocity.z) > VELOCITY_THRESHOLD_XZ ? 1 : 0);
          Vec3 bounce = bounceAxis(velocity, d);
-         // Spawn spark particles
 
+        // Spawn spark particles
         double spread = velocity.length() * 2.5;
         for (int i = 0; i < Mth.floor(velocity.length() * 15); i++) {
             float angle = this.level().getRandom().nextFloat() * 2 * Mth.PI;

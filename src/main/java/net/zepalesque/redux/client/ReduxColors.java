@@ -22,7 +22,7 @@ public class ReduxColors {
         public static final int GILDED_GRASS_COLOR = 0xFFED96;
         public static final int BLIGHT_GRASS_COLOR = 0xD5BAFF;
 
-        public static final int BLEAKMOSS_GRASS_COLOR = 0xD9B8F2;
+        public static final int BLEAKMOSS_GRASS_COLOR = 0xDAB9EA;
     }
 
     public static Optional<Integer> reduxColors(BlockState state, BlockAndTintGetter level, BlockPos pos, int index, Predicate<Integer> indexGoal, boolean useBelowProperties) {
