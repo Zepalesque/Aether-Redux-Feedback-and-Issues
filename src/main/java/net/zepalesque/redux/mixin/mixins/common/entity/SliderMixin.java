@@ -28,12 +28,12 @@ public abstract class SliderMixin extends LivingEntityMixin {
 
     @Inject(method = "calculateMoveDelay", at = @At("HEAD"), cancellable = true)
     protected void redux$calculateMoveDelay(CallbackInfoReturnable<Integer> cir) {
-        int rand = this.getRandom().nextInt(8);
+        int rand = this.getRandom().nextInt(7);
         int adjusted = (this.isCritical() ? 3 : 7) + rand;
         cir.setReturnValue(adjusted);
     }
 
-    @Inject(method = "customServerAiStep", at = @At("TAIL"))
+    @Inject(method = "customServerAiStep", at = @At("HEAD"))
     protected void redux$customServerAiStep(CallbackInfo ci) {
         if (!this.isCritical() && this.moveDelay == 7 || this.isCritical() && this.moveDelay == 3) {
             SliderSignalAttachment.sendPacket((Slider) (Object) this);
