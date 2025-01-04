@@ -1,32 +1,35 @@
-package net.zepalesque.redux.item.tools;
+package net.zepalesque.redux.item.combat;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.PickaxeItem;
+import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.zepalesque.redux.data.ReduxTags;
-import net.zepalesque.redux.item.util.TooltipUtils;
 import net.zepalesque.redux.item.components.ReduxDataComponents;
+import net.zepalesque.redux.item.tools.VeridiumItem;
+import net.zepalesque.redux.item.util.TooltipUtils;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-public class VeridiumPickaxeItem extends PickaxeItem implements VeridiumItem {
+public class VeridiumSwordItem extends SwordItem implements VeridiumItem {
     private final Supplier<? extends Item> uninfused;
 
-    public VeridiumPickaxeItem(Tier tier, Properties properties, Supplier<? extends Item> uninfused) {
+    public VeridiumSwordItem(Tier tier, Properties properties, Supplier<? extends Item> uninfused) {
         super(tier, properties);
         this.uninfused = uninfused;
     }
@@ -48,9 +51,8 @@ public class VeridiumPickaxeItem extends PickaxeItem implements VeridiumItem {
 
     @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        int amount = target.getType().is(ReduxTags.Entities.VALID_PICKAXE_TARGETS) ? 1 : 2;
         boolean bool = super.hurtEnemy(stack, target, attacker);
-        ItemStack transform = this.deplete(stack, attacker, amount);
+        ItemStack transform = this.deplete(stack, attacker, 1);
         if (!attacker.level().isClientSide() && transform != null && transform != stack) {
             attacker.setItemSlot(EquipmentSlot.MAINHAND, transform);
             if (attacker instanceof ServerPlayer sp) {
@@ -82,11 +84,28 @@ public class VeridiumPickaxeItem extends PickaxeItem implements VeridiumItem {
     }
 
     @Override
+    public InteractionResult useOn(UseOnContext context) {
+        InteractionResult result = super.useOn(context);
+        if (result == InteractionResult.sidedSuccess(context.getLevel().isClientSide()) && !context.getPlayer().level().isClientSide() && !context.getPlayer().isCreative()) {
+            ItemStack stack = context.getItemInHand();
+            Player player = context.getPlayer();
+            ItemStack transform = this.deplete(stack, player, 1);
+            if (!player.level().isClientSide() && transform != null && transform != stack) {
+                player.setItemSlot(EquipmentSlot.MAINHAND, transform);
+                if (player instanceof ServerPlayer sp) {
+                    this.sendSound(sp);
+                }
+            }
+        }
+        return result;
+    }
+
+    @Override
     public <T extends LivingEntity> int damageItem(ItemStack stack, int amount, @Nullable T entity, Consumer<Item> onBroken) {
         return super.damageItem(stack, amount, entity, onBroken) * VeridiumItem.DURABILITY_DMG_MULTIPLIER;
     }
 
-    public static class Uninfused extends PickaxeItem {
+    public static class Uninfused extends SwordItem {
 
         public Uninfused(Tier tier, Properties properties) {
             super(tier, properties);

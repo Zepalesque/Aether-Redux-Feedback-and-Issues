@@ -28,8 +28,8 @@ import java.util.function.Supplier;
 public class VeridiumShovelItem extends ShovelItem implements VeridiumItem {
     private final Supplier<? extends Item> uninfused;
 
-    public VeridiumShovelItem(Tier pTier, Properties pProperties, Supplier<? extends Item> uninfused) {
-        super(pTier, pProperties);
+    public VeridiumShovelItem(Tier tier, Properties properties, Supplier<? extends Item> uninfused) {
+        super(tier, properties);
         this.uninfused = uninfused;
     }
 
@@ -106,8 +106,8 @@ public class VeridiumShovelItem extends ShovelItem implements VeridiumItem {
 
     public static class Uninfused extends ShovelItem {
 
-        public Uninfused(Tier pTier, Properties pProperties) {
-            super(pTier, pProperties);
+        public Uninfused(Tier tier, Properties properties) {
+            super(tier, properties);
         }
 
         @Override

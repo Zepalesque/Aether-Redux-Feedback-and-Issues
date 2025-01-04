@@ -123,11 +123,22 @@ public class ReduxRecipeData extends ReduxRecipeProvider {
                 .withExtra(infusionInfo)
                 .save(output, Redux.loc("veridium_hoe_increase_infusion"));
 
+        infuse(ReduxItems.INFUSED_VERIDIUM_SWORD.get(), ReduxItems.VERIDIUM_SWORD.get())
+                .withSound(infusionSound)
+                .withExtra(infusionInfo)
+                .save(output, Redux.loc("veridium_sword_infuse"));
+
+        infuse(ReduxItems.INFUSED_VERIDIUM_SWORD.get(), ReduxItems.INFUSED_VERIDIUM_SWORD.get())
+                .withSound(infusionSound)
+                .withExtra(infusionInfo)
+                .save(output, Redux.loc("veridium_sword_increase_infusion"));
+
+
         makePickaxe(ReduxItems.VERIDIUM_PICKAXE, ReduxItems.VERIDIUM_INGOT).save(output);
         makeShovel(ReduxItems.VERIDIUM_SHOVEL, ReduxItems.VERIDIUM_INGOT).save(output);
         makeAxe(ReduxItems.VERIDIUM_AXE, ReduxItems.VERIDIUM_INGOT).save(output);
         makeHoe(ReduxItems.VERIDIUM_HOE, ReduxItems.VERIDIUM_INGOT).save(output);
-//        makeSword(ReduxItems.VERIDIUM_SWORD, ReduxItems.VERIDIUM_INGOT).save(output);
+        makeSword(ReduxItems.VERIDIUM_SWORD, ReduxItems.VERIDIUM_INGOT).save(output);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ReduxBlocks.SENTRITE_LANTERN.get(), 1)
                 .define('C', ReduxItems.SENTRITE_CHUNK.get())

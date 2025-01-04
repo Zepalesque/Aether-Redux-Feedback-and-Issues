@@ -106,13 +106,12 @@ public class ReduxTabs {
                     ReduxItems.INFUSED_VERIDIUM_AXE,
                     ReduxItems.INFUSED_VERIDIUM_PICKAXE,
                     ReduxItems.INFUSED_VERIDIUM_SHOVEL,
-                    /*ReduxItems.INFUSED_VERIDIUM_SWORD,
-                    ReduxItems.INFUSED_VERIDIUM_SWORD,*/
+                    ReduxItems.INFUSED_VERIDIUM_SWORD,
                     ReduxItems.VERIDIUM_HOE,
                     ReduxItems.VERIDIUM_AXE,
                     ReduxItems.VERIDIUM_PICKAXE,
-                    ReduxItems.VERIDIUM_SHOVEL/*,
-                    ReduxItems.VERIDIUM_SWORD*/
+                    ReduxItems.VERIDIUM_SHOVEL,
+                    ReduxItems.VERIDIUM_SWORD
             );
         } else if (TabUtil.isForTab(event, AetherCreativeTabs.AETHER_INGREDIENTS)) {
             TabUtil.putAfter(event, AetherItems.ZANITE_GEMSTONE,

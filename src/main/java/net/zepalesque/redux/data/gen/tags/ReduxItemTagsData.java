@@ -28,7 +28,7 @@ public class ReduxItemTagsData extends ReduxItemTagsProvider {
         this.tag(ItemTags.SHOVELS).add(ReduxItems.VERIDIUM_SHOVEL.get(), ReduxItems.INFUSED_VERIDIUM_SHOVEL.get());
         this.tag(ItemTags.HOES).add(ReduxItems.VERIDIUM_HOE.get(), ReduxItems.INFUSED_VERIDIUM_HOE.get());
         this.tag(ItemTags.AXES).add(ReduxItems.VERIDIUM_AXE.get(), ReduxItems.INFUSED_VERIDIUM_AXE.get());
-//        this.tag(ItemTags.SWORDS).add(ReduxItems.VERIDIUM_SWORD.get(), ReduxItems.INFUSED_VERIDIUM_SWORD.get());
+        this.tag(ItemTags.SWORDS).add(ReduxItems.VERIDIUM_SWORD.get(), ReduxItems.INFUSED_VERIDIUM_SWORD.get());
 
         this.tag(AetherTags.Items.SLIDER_DAMAGING_ITEMS).add(ReduxItems.VERIDIUM_PICKAXE.get(), ReduxItems.INFUSED_VERIDIUM_PICKAXE.get());
 

@@ -134,6 +134,11 @@ public class ReduxLanguageData extends ReduxLanguageProvider {
         addItem(ReduxItems.INFUSED_VERIDIUM_SHOVEL);
         addLore(ReduxItems.INFUSED_VERIDIUM_SHOVEL, "A shovel made of Veridium. This can be infused by right-clicking with an Ambrosium Shard to make it far more powerful for a short time!");
 
+        addItem(ReduxItems.VERIDIUM_SWORD);
+        addLore(ReduxItems.VERIDIUM_SWORD, "A sword made of Veridium. This can be infused by right-clicking with an Ambrosium Shard to make it far more powerful for a short time!");
+        addItem(ReduxItems.INFUSED_VERIDIUM_SWORD);
+        addLore(ReduxItems.INFUSED_VERIDIUM_SWORD, "A sword made of Veridium. This can be infused by right-clicking with an Ambrosium Shard to make it far more powerful for a short time!");
+
         addItem(ReduxItems.VERIDIUM_HOE);
         addLore(ReduxItems.VERIDIUM_HOE, "A hoe made of Veridium. This can be infused by right-clicking with an Ambrosium Shard to make it far more powerful for a short time!");
         addItem(ReduxItems.INFUSED_VERIDIUM_HOE);
