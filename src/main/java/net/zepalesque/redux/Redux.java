@@ -61,10 +61,10 @@ public class Redux {
 
     public static final Collection<BlockSet> BLOCK_SETS = new ArrayList<>();
 
-    public static final PackConfig ASSETS_CONFIG = new PackConfig(loc("asset_overrides"), PackType.CLIENT_RESOURCES);
+    public static final PackConfig ASSETS_CONFIG = new PackConfig(loc("asset_overrides"), PackType.CLIENT_RESOURCES, false);
 
     // TODO
-    public static final PackConfig DATA_CONFIG = new PackConfig(loc("data_overrides"), PackType.CLIENT_RESOURCES);
+    public static final PackConfig DATA_CONFIG = new PackConfig(loc("data_overrides"), PackType.SERVER_DATA);
 
     public Redux(ModContainer mod, IEventBus bus, Dist dist) {
         bus.addListener(EventPriority.LOWEST, ReduxData::dataSetup);
@@ -138,8 +138,8 @@ public class Redux {
         if (event.getPackType() == PackType.CLIENT_RESOURCES) {
             ASSETS_CONFIG.setup(event);
         } else if (event.getPackType() == PackType.SERVER_DATA) {
-            if (ReduxConfig.COMMON.bronze_dungeon_upgrade.get()) { PackUtils.setupPack(event, MODID, "dungeon_upgrades/bronze", "bronze_upgrade", true); }
-            if (ReduxConfig.COMMON.redux_noise.get().get()) { PackUtils.setupPack(event, MODID, "redux_noise", "redux_noise", true); }
+            if (ReduxConfig.COMMON.bronze_dungeon_upgrade.get()) { PackUtils.setupPack(event, MODID, "dungeon_upgrades/bronze", "bronze_upgrade", true, true); }
+            if (ReduxConfig.COMMON.redux_noise.get().get()) { PackUtils.setupPack(event, MODID, "redux_noise", "redux_noise", true, true); }
         }
     }
 
