@@ -28,17 +28,11 @@ import java.util.List;
 @OnlyIn(Dist.CLIENT)
 public class SparkParticle extends TextureSheetParticle {
 
-
-    private static final int STORED_PAST_TICKS = 5;
-    protected final double[] xPast = new double[STORED_PAST_TICKS], yPast = new double[STORED_PAST_TICKS], zPast = new double[STORED_PAST_TICKS];
-
     SparkParticle(ClientLevel level, double x, double y, double z) {
         super(level, x, y, z, 0.0D, 0.0D, 0.0D);
-        Arrays.fill(this.xPast, x);
-        Arrays.fill(this.yPast, y);
-        Arrays.fill(this.zPast, z);
-        this.gravity = 1.0F;
-        this.friction = 1F;
+        this.gravity = 1F;
+//        this.hasPhysics = false;
+        this.friction = 0.999F;
         this.xd *= 0.8F;
         this.yd *= 0.8F;
         this.zd *= 0.8F;
@@ -60,7 +54,7 @@ public class SparkParticle extends TextureSheetParticle {
     public void tick() {
         Vec3 velocity = new Vec3(this.xd, this.yd, this.zd);
         Vec3 pos = new Vec3(this.x, this.y, this.z);
-        velocity = velocity.multiply(Math.abs(velocity.x) > Ember.VELOCITY_THRESHOLD_XZ ? 1 : 0, Math.abs(velocity.y) > Ember.VELOCITY_THRESHOLD_Y ? 1 : 0, Math.abs(velocity.z) > Ember.VELOCITY_THRESHOLD_XZ ? 1 : 0);
+        velocity = velocity.multiply(1D, Math.abs(velocity.y) > Ember.VELOCITY_THRESHOLD_Y ? 1 : 0, 1D);
         HitResult hitresult = getHitResult(pos, velocity.length() == 0 ? velocity.add(0, -0.04, 0) : velocity, this.level);
         if (velocity.length() > 0D && hitresult.getType() == HitResult.Type.BLOCK) {
             Vec3 bounce = Ember.bounceAxis(velocity, ((BlockHitResult)hitresult).getDirection());
@@ -86,11 +80,6 @@ public class SparkParticle extends TextureSheetParticle {
     }
 
     protected void baseTick() {
-        calculatePastPos(this.xPast, this.xo);
-        calculatePastPos(this.yPast, this.yo);
-        calculatePastPos(this.zPast, this.zo);
-
-
         this.xo = this.x;
         this.yo = this.y;
         this.zo = this.z;
@@ -109,35 +98,6 @@ public class SparkParticle extends TextureSheetParticle {
             this.yd = this.yd * (double)this.friction;
             this.zd = this.zd * (double)this.friction;
         }
-    }
-
-    @Override
-    protected void renderRotatedQuad(VertexConsumer buffer, Camera camera, Quaternionf quaternion, float partialTicks) {
-        super.renderRotatedQuad(buffer, camera, quaternion, partialTicks);
-
-        for (int i = 0; i < STORED_PAST_TICKS; i++) {
-            float x = (float) Mth.lerp(partialTicks, i == 0 ? this.xo : this.xPast[i - 1], this.xPast[i]);
-            float y = (float) Mth.lerp(partialTicks, i == 0 ? this.yo : this.yPast[i - 1], this.yPast[i]);
-            float z = (float) Mth.lerp(partialTicks, i == 0 ? this.zo : this.zPast[i - 1], this.zPast[i]);
-            float alphamult = 1 - Mth.inverseLerp(i, 0, STORED_PAST_TICKS);
-            float alpha = this.alpha * (alphamult);
-            this.renderRotatedQuad(buffer, quaternion, x, y, z, partialTicks, alpha);
-        }
-    }
-
-    protected void renderRotatedQuad(VertexConsumer buffer, Quaternionf quaternion, float x, float y, float z, float partialTicks, float alpha) {
-        float ao = this.alpha;
-        this.alpha = alpha;
-        super.renderRotatedQuad(buffer, quaternion, x, y, z, partialTicks);
-        this.alpha = ao;
-    }
-
-    private void calculatePastPos(double[] prevPos, double original) {
-        for (int j = prevPos.length - 2; j > 0; j--) {
-            double d = prevPos[j];
-            prevPos[j + 1] = d;
-        }
-        prevPos[0] = original;
     }
 
     @Override
@@ -160,14 +120,18 @@ public class SparkParticle extends TextureSheetParticle {
                 this.setLocationFromBoundingbox();
             }
 
+            if (Math.abs(y1) >= 1.0E-5F && Math.abs(y) < 1.0E-5F) {
+                this.stoppedByCollision = true;
+            }
+
             this.onGround = y1 != y && y1 < 0.0;
-            if (x1 != x) {
-                this.xd *= 0.75;
+            /*if (x1 != x) {
+                this.xd *= 0.99;
             }
 
             if (z1 != z) {
-                this.zd *= 0.75;
-            }
+                this.zd *= 0.99;
+            }*/
         }
     }
 

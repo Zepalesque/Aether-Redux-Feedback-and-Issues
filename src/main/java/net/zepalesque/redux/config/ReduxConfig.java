@@ -87,7 +87,7 @@ public class ReduxConfig {
 
             jappafied_textures = Redux.ASSETS_CONFIG.register(builder
                     .comment("Use textures designed to fit with the Jappafied Aethers resource pack.")
-                    .define("Jappafied Textures", false), "resource/", "jappafied");
+                    .define("Jappafied Textures", false), "jappafied");
 
 
             builder.pop();
@@ -97,19 +97,13 @@ public class ReduxConfig {
 
             slider_sfx_upgrade = Redux.ASSETS_CONFIG.register(builder
                     .comment("Improve the hurt, death, and ambient sounds of the Slider.")
-                    .define("Slider SFX Upgrades", true), "resource/sfx/", "slider");
+                    .define("Slider SFX Upgrades", true), "sfx/", "slider");
 
             slider_signal_sfx = builder
                     .comment("Gives the Slider a subtle signal effect before sliding.")
                     .define("Slider Movement Signal", true);
 
             builder.pop(2);
-
-            builder.push("Builtin Resource Pack Customization");
-
-
-
-            builder.pop();
         }
     }
 

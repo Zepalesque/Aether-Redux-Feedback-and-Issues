@@ -36,7 +36,7 @@ public class Ember extends Projectile {
     }
 
     public static final double VELOCITY_THRESHOLD_XZ = 0.075D;
-    public static final double VELOCITY_THRESHOLD_Y = 0.1D;
+    public static final double VELOCITY_THRESHOLD_Y = 0.05D;
     public static final double BOUNCE_FRICTION_XZ = 0.75D;
     public static final double BOUNCE_FRICTION_Y = 0.7D;
 
