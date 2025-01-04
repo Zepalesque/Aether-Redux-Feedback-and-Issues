@@ -15,9 +15,11 @@ import net.zepalesque.redux.Redux;
 import net.zepalesque.redux.block.ReduxBlocks;
 import net.zepalesque.redux.block.natural.bush.CustomBoundsBushBlock;
 import net.zepalesque.redux.block.natural.bush.CustomBoundsFlowerBlock;
+import net.zepalesque.redux.blockset.flower.type.AetherFlowerSet;
 import net.zepalesque.redux.blockset.flower.type.BaseFlowerSet;
 import net.zepalesque.redux.blockset.flower.type.CloverSet;
 import net.zepalesque.redux.blockset.flower.type.EnchantedFlowerSet;
+import net.zepalesque.redux.blockset.flower.type.TintedFlowerSet;
 import net.zepalesque.redux.blockset.flower.type.UntintedFlowerSet;
 import net.zepalesque.redux.world.tree.ReduxTreeGrowers;
 import net.zepalesque.zenith.api.block.CommonPlantBounds;
@@ -48,6 +50,16 @@ public class ReduxFlowerSets {
             .tabAfter(AetherCreativeTabs.AETHER_NATURAL_BLOCKS, ReduxBlocks.GOLDEN_CLOVERS, BlockSet.TabAdditionPhase.AFTER)
             .withPotTag(BlockTags.FLOWER_POTS)
             .withLore("A large four-leaved clover found in the Gilded Groves. Makes a nice decoration, and can be placed in a flower pot!"));
+
+    public static final BaseFlowerSet<CustomBoundsFlowerBlock> SPIROLYCTIL = register(new AetherFlowerSet<>("spirolyctil", "natural/",
+            () -> new CustomBoundsFlowerBlock(CommonPlantBounds.FLOWER,
+                    MobEffects.LEVITATION, 4, Properties.ofFullCopy(Blocks.DANDELION).mapColor(MapColor.TERRACOTTA_LIGHT_BLUE)), 1, 0xFFFFFF)
+            .tabAfter(AetherCreativeTabs.AETHER_NATURAL_BLOCKS, AetherBlocks.WHITE_FLOWER, BlockSet.TabAdditionPhase.BEFORE)
+            .craftsIntoShapeless(1, () -> Items.L, 1, RecipeCategory.MISC)
+            .withFlowerTag(BlockTags.FLOWERS)
+            .withPotTag(BlockTags.FLOWER_POTS)
+            .withLore("A golden flower found in the Gilded Groves. Some say it brings good luck!"));
+
 
     public static <T extends AbstractFlowerSet> T register(T set) {
         Redux.BLOCK_SETS.add(set);

@@ -5,6 +5,7 @@ import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -73,6 +74,7 @@ public abstract class BaseFlowerSet<B extends Block> extends AbstractFlowerSet i
         this.textureFolder = textureFolder;
         this.flower = flower(blocks, items, id, constructor);
         this.pot = pot(blocks, id);
+        potTags.add(BlockTags.FLOWER_POTS);
     }
 
     @Override

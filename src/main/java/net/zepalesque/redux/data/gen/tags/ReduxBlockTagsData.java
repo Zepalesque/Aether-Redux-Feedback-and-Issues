@@ -156,11 +156,6 @@ public class ReduxBlockTagsData extends ReduxBlockTagsProvider {
                 ReduxBlocks.VERIDIUM_BLOCK.get()
         );
 
-        this.tag(BlockTags.FLOWER_POTS).add(
-                ReduxBlocks.POTTED_WYNDSPROUTS.get(),
-                ReduxBlocks.POTTED_SKYSPROUTS.get()
-        );
-
         this.tag(BlockTags.CROPS).add(
                 ReduxBlocks.WYNDOATS.get()
         );

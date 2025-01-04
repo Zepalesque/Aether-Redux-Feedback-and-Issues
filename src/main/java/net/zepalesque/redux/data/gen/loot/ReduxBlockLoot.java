@@ -63,9 +63,7 @@ public class ReduxBlockLoot extends ReduxBlockLootProvider {
         this.dropNone(ReduxBlocks.LOCKED_SENTRITE_BRICKS.get());
 
         this.add(ReduxBlocks.WYNDSPROUTS.get(), shearsOr(ReduxItems.WYND_OATS.get(), 0.25F));
-        this.dropPottedContents(ReduxBlocks.POTTED_WYNDSPROUTS.get());
         this.add(ReduxBlocks.SKYSPROUTS.get(), shears());
-        this.dropPottedContents(ReduxBlocks.POTTED_SKYSPROUTS.get());
         this.add(ReduxBlocks.WYNDOATS.get(),
                 this.createCropDrops(
                         ReduxBlocks.WYNDOATS.get(),
