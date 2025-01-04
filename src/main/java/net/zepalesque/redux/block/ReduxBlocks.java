@@ -120,8 +120,6 @@ public class ReduxBlocks extends ReduxBlockBuilders {
                     .instrument(NoteBlockInstrument.BASEDRUM)
             ));
 
-    // TODO: Automate pot creation
-
     public static DeferredBlock<Block> WYNDSPROUTS = register("wyndsprouts",
             () -> new CustomBoundsBushBlock.Enchanted(CommonPlantBounds.BUSH, Properties.ofFullCopy(Blocks.SHORT_GRASS).sound(SoundType.CHERRY_SAPLING).offsetType(OffsetType.XZ).hasPostProcess((s, l, p) -> true)));
 

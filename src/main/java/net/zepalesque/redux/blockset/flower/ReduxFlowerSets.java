@@ -34,31 +34,27 @@ public class ReduxFlowerSets {
             .tabAfter(AetherCreativeTabs.AETHER_NATURAL_BLOCKS, AetherBlocks.WHITE_FLOWER, BlockSet.TabAdditionPhase.BEFORE)
             .craftsIntoShapeless(1, () -> Items.YELLOW_DYE, 1, RecipeCategory.MISC)
             .withFlowerTag(BlockTags.FLOWERS)
-            .withPotTag(BlockTags.FLOWER_POTS)
             .withLore("A golden flower found in the Gilded Groves. Some say it brings good luck!"));
 
     public static final BaseFlowerSet<SaplingBlock> GILDENROOT_SAPLING = register(new UntintedFlowerSet<>("gildenroot_sapling", "natural/",
             () -> new SaplingBlock(ReduxTreeGrowers.GILDENROOT, Properties.ofFullCopy(Blocks.OAK_SAPLING).mapColor(MapColor.QUARTZ)))
             .tabAfter(AetherCreativeTabs.AETHER_NATURAL_BLOCKS, AetherBlocks.SKYROOT_SAPLING, BlockSet.TabAdditionPhase.BEFORE)
             .withFlowerTag(BlockTags.SAPLINGS)
-            .withPotTag(BlockTags.FLOWER_POTS)
             .compost(0.3F)
             .withLore("The sapling of the Gildenroot tree. It can be grown by waiting or using Bone Meal."));
 
     public static final BaseFlowerSet<CustomBoundsBushBlock> LUCKY_CLOVER = register(new CloverSet<>("lucky_clover", "natural/",
             () -> new CustomBoundsBushBlock(Block.box(5.0D, 0.0D, 5.0D, 11.0D, 10.0D, 11.0D), Properties.ofFullCopy(Blocks.DANDELION).mapColor(MapColor.GOLD)))
             .tabAfter(AetherCreativeTabs.AETHER_NATURAL_BLOCKS, ReduxBlocks.GOLDEN_CLOVERS, BlockSet.TabAdditionPhase.AFTER)
-            .withPotTag(BlockTags.FLOWER_POTS)
             .withLore("A large four-leaved clover found in the Gilded Groves. Makes a nice decoration, and can be placed in a flower pot!"));
 
     public static final BaseFlowerSet<CustomBoundsFlowerBlock> SPIROLYCTIL = register(new AetherFlowerSet<>("spirolyctil", "natural/",
             () -> new CustomBoundsFlowerBlock(CommonPlantBounds.FLOWER,
                     MobEffects.LEVITATION, 4, Properties.ofFullCopy(Blocks.DANDELION).mapColor(MapColor.TERRACOTTA_LIGHT_BLUE)), 1, 0xFFFFFF)
             .tabAfter(AetherCreativeTabs.AETHER_NATURAL_BLOCKS, AetherBlocks.WHITE_FLOWER, BlockSet.TabAdditionPhase.BEFORE)
-            .craftsIntoShapeless(1, () -> Items.L, 1, RecipeCategory.MISC)
+            .craftsIntoShapeless(1, () -> Items.LIGHT_BLUE_DYE, 1, RecipeCategory.MISC)
             .withFlowerTag(BlockTags.FLOWERS)
-            .withPotTag(BlockTags.FLOWER_POTS)
-            .withLore("A golden flower found in the Gilded Groves. Some say it brings good luck!"));
+            .withLore("An indigo flower found in the Blight. This plant almost feels like an outlier, as it gives off a much more peaceful vibe than other surrounding Blight foliage."));
 
 
     public static <T extends AbstractFlowerSet> T register(T set) {
