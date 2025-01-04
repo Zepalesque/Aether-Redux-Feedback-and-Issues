@@ -1,6 +1,7 @@
 package net.zepalesque.redux.blockset.flower.type;
 
 import com.mojang.datafixers.util.Pair;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
@@ -43,7 +44,6 @@ import java.util.Map;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 
-@SuppressWarnings("unchecked")
 public abstract class BaseFlowerSet<B extends Block> extends AbstractFlowerSet implements MutableLoreGeneration<BaseFlowerSet<B>> {
 
     public final String id, textureFolder;
@@ -183,6 +183,14 @@ public abstract class BaseFlowerSet<B extends Block> extends AbstractFlowerSet i
         if (this.flammability != null) {
             accessor.callSetFlammable(this.flower().get(), flammability.getFirst(), flammability.getSecond());
         }
+
+        // Do pot stuff while we're at it
+        FlowerPotBlock pot = (FlowerPotBlock) Blocks.FLOWER_POT;
+        addFlower(pot, this.flower, this.pot);
+    }
+
+    protected void addFlower(FlowerPotBlock base, Supplier<? extends Block> flower, Supplier<? extends Block> pot) {
+        base.addPlant(BuiltInRegistries.BLOCK.getKey(flower.get()), pot);
     }
 
     @Override
