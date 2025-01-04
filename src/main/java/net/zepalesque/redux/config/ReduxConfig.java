@@ -87,6 +87,9 @@ public class ReduxConfig {
 
             builder.pop();
 
+            builder.push("Audio");
+            builder.pop();
+
             builder.push("Builtin Resource Pack Customization");
 
             tintable_grass = ReduxPackConfig.register(builder

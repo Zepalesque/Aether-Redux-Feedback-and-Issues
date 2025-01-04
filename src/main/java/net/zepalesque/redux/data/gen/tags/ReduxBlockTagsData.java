@@ -37,6 +37,8 @@ public class ReduxBlockTagsData extends ReduxBlockTagsProvider {
         this.tag(AetherTags.Blocks.AETHER_ANIMALS_SPAWNABLE_ON).add(AetherBlocks.ENCHANTED_AETHER_GRASS_BLOCK.get());
         this.tag(AetherTags.Blocks.SWET_SPAWNABLE_ON).add(AetherBlocks.ENCHANTED_AETHER_GRASS_BLOCK.get());
 
+        this.tag(AetherTags.Blocks.AETHER_DIRT).add(ReduxBlocks.BLEAKMOSS_BLOCK.get());
+
         this.tag(ReduxTags.Blocks.QUICKSOIL_BEHAVIOR).add(AetherBlocks.QUICKSOIL.get());
 
         this.tag(ReduxTags.Blocks.ROCK_REPLACEABLE).addTag(BlockTags.DIRT);
