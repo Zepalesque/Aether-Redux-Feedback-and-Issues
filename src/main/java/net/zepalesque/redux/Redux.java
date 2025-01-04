@@ -61,7 +61,10 @@ public class Redux {
 
     public static final Collection<BlockSet> BLOCK_SETS = new ArrayList<>();
 
-    public static final PackConfig ASSETS_CONFIG = new PackConfig(loc("overrides_pack"), PackType.CLIENT_RESOURCES);
+    public static final PackConfig ASSETS_CONFIG = new PackConfig(loc("asset_overrides"), PackType.CLIENT_RESOURCES);
+
+    // TODO
+    public static final PackConfig DATA_CONFIG = new PackConfig(loc("data_overrides"), PackType.CLIENT_RESOURCES);
 
     public Redux(ModContainer mod, IEventBus bus, Dist dist) {
         bus.addListener(EventPriority.LOWEST, ReduxData::dataSetup);

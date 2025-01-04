@@ -71,9 +71,8 @@ public class ReduxConfig {
         public final ModConfigSpec.ConfigValue<Boolean> leaf_particles;
         public final ModConfigSpec.ConfigValue<Boolean> improved_whirlwinds;
 
-        public final ModConfigSpec.ConfigValue<Boolean> tintable_grass;
         public final ModConfigSpec.ConfigValue<Boolean> jappafied_textures;
-        public final ModConfigSpec.ConfigValue<Boolean> slider_sfx;
+        public final ModConfigSpec.ConfigValue<Boolean> slider_sfx_upgrade;
         public final ModConfigSpec.ConfigValue<Boolean> slider_signal_sfx;
 
         public Client(ModConfigSpec.Builder builder) {
@@ -86,25 +85,29 @@ public class ReduxConfig {
                     .comment("Gives Whirlwinds a new design, based on Minecraft 1.21's new Breeze mob")
                     .define("Improved Whirlwinds", true);
 
-            builder.pop();
-
-            builder.push("Audio");
-            slider_signal_sfx = builder
-                    .comment("Gives the Slider a subtle signal effect.")
-                    .define("Slider Movement Signal", true);
-            builder.pop();
-
-            builder.push("Builtin Resource Pack Customization");
-
-            tintable_grass = Redux.ASSETS_CONFIG.register(builder
-                    .comment("Use modified models to allow tintable Aether Grass blocks and plants. Only disable if you know what you're doing!")
-                    .define("Tinted Grass", true), "resource/", "tintable_grass");
             jappafied_textures = Redux.ASSETS_CONFIG.register(builder
                     .comment("Use textures designed to fit with the Jappafied Aethers resource pack.")
                     .define("Jappafied Textures", false), "resource/", "jappafied");
-            slider_sfx = Redux.ASSETS_CONFIG.register(builder
+
+
+            builder.pop();
+
+            builder.push("Audio");
+            builder.push("Slider");
+
+            slider_sfx_upgrade = Redux.ASSETS_CONFIG.register(builder
                     .comment("Improve the hurt, death, and ambient sounds of the Slider.")
                     .define("Slider SFX Upgrades", true), "resource/sfx/", "slider");
+
+            slider_signal_sfx = builder
+                    .comment("Gives the Slider a subtle signal effect before sliding.")
+                    .define("Slider Movement Signal", true);
+
+            builder.pop(2);
+
+            builder.push("Builtin Resource Pack Customization");
+
+
 
             builder.pop();
         }
