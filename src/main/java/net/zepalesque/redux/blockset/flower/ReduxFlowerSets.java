@@ -21,6 +21,7 @@ import net.zepalesque.redux.blockset.flower.type.CloverSet;
 import net.zepalesque.redux.blockset.flower.type.EnchantedFlowerSet;
 import net.zepalesque.redux.blockset.flower.type.TintedFlowerSet;
 import net.zepalesque.redux.blockset.flower.type.UntintedFlowerSet;
+import net.zepalesque.redux.client.ReduxColors;
 import net.zepalesque.redux.world.tree.ReduxTreeGrowers;
 import net.zepalesque.zenith.api.block.CommonPlantBounds;
 import net.zepalesque.zenith.api.blockset.BlockSet;
@@ -50,7 +51,7 @@ public class ReduxFlowerSets {
 
     public static final BaseFlowerSet<CustomBoundsFlowerBlock> SPIROLYCTIL = register(new AetherFlowerSet<>("spirolyctil", "natural/",
             () -> new CustomBoundsFlowerBlock(CommonPlantBounds.FLOWER,
-                    MobEffects.LEVITATION, 4, Properties.ofFullCopy(Blocks.DANDELION).mapColor(MapColor.TERRACOTTA_LIGHT_BLUE)), 1, 0xFFFFFF)
+                    MobEffects.LEVITATION, 4, Properties.ofFullCopy(Blocks.DANDELION).mapColor(MapColor.TERRACOTTA_LIGHT_BLUE)), 1, ReduxColors.Tints.BLIGHT_GRASS_COLOR)
             .tabAfter(AetherCreativeTabs.AETHER_NATURAL_BLOCKS, AetherBlocks.WHITE_FLOWER, BlockSet.TabAdditionPhase.BEFORE)
             .craftsIntoShapeless(1, () -> Items.LIGHT_BLUE_DYE, 1, RecipeCategory.MISC)
             .withFlowerTag(BlockTags.FLOWERS)
