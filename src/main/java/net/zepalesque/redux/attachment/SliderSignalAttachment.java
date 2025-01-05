@@ -38,7 +38,6 @@ public class SliderSignalAttachment {
             if (this.signalTick == 2) playSound(slider);
             else if (this.signalTick == 1) {
                 this.overrideDirection = null;
-                this.hasOverriden = false;
             }
             this.signalTick--;
         }
@@ -78,7 +77,7 @@ public class SliderSignalAttachment {
 
     public void beginSignal(Slider slider) {
         if (this.getSignalTick() <= 2) {
-            this.overrideDirection = null;
+            if (!this.hasOverriden) this.overrideDirection = null;
             this.setSignalTick(8);
             playSound(slider);
         }
@@ -102,7 +101,7 @@ public class SliderSignalAttachment {
     }
 
     public void setOverrideDirection(Slider entity, Direction direction) {
-        if ((direction == null && !this.hasOverriden) || this.signalTick == 0) return;
+        if ((direction == null && !this.hasOverriden) || (direction == null && this.signalTick == 0)) return;
         this.overrideDirection = direction;
         this.hasOverriden = true;
     }
