@@ -5,6 +5,7 @@ import net.zepalesque.redux.Redux;
 import net.zepalesque.redux.block.ReduxBlocks;
 import net.zepalesque.redux.client.audio.ReduxSounds;
 import net.zepalesque.redux.data.prov.ReduxLanguageProvider;
+import net.zepalesque.redux.data.resource.registries.ReduxJukeboxSongs;
 import net.zepalesque.redux.entity.ReduxEntities;
 import net.zepalesque.redux.item.ReduxItems;
 import net.zepalesque.zenith.api.data.DatagenUtil;
@@ -103,7 +104,7 @@ public class ReduxLanguageData extends ReduxLanguageProvider {
 
         addItem(ReduxItems.MUSIC_DISC_SENTIENCE, "Ancient Sentrite Music Disc");
         addLore(ReduxItems.MUSIC_DISC_SENTIENCE, "A music disc that plays \"Sentience\" by Emile van Krieken.");
-
+        addJukeboxSong(ReduxJukeboxSongs.SENTIENCE, "Emile van Krieken - Sentience");
 
         addItem(ReduxItems.REFINED_SENTRITE);
         addLore(ReduxItems.REFINED_SENTRITE, "The purified form of Sentrite. This can be used for a variety of different things, but is commonly found associated with Sentry technology.");
