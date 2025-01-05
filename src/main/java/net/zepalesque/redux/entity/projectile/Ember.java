@@ -189,7 +189,7 @@ public class Ember extends Projectile {
         }
         SoundEvent sound;
         if (velocity.length() <= 0.75) sound = ReduxSounds.EMBER_BOUNCE_SMALL.get();
-        else if (velocity.length() <= 1.5) sound = ReduxSounds.EMBER_BOUNCE_MED.get();
+        else if (velocity.length() <= 1.5) sound = ReduxSounds.EMBER_BOUNCE_MEDIUM.get();
         else sound = ReduxSounds.EMBER_BOUNCE_BIG.get();
         this.level().playSound(null, loc.x(), loc.y(), loc.z(), sound, SoundSource.NEUTRAL, (float) (velocity.length() * 10D), 0.8F + (this.level().random.nextFloat() * 0.4F));
 

@@ -11,7 +11,7 @@ public class ReduxSounds {
     public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(BuiltInRegistries.SOUND_EVENT, Redux.MODID);
 
     public static final DeferredHolder<SoundEvent, SoundEvent> EMBER_BOUNCE_BIG = register("entity.ember.bounce_big");
-    public static final DeferredHolder<SoundEvent, SoundEvent> EMBER_BOUNCE_MED = register("entity.ember.bounce_med");
+    public static final DeferredHolder<SoundEvent, SoundEvent> EMBER_BOUNCE_MEDIUM = register("entity.ember.bounce_medium");
     public static final DeferredHolder<SoundEvent, SoundEvent> EMBER_BOUNCE_SMALL = register("entity.ember.bounce_small");
 
     public static final DeferredHolder<SoundEvent, SoundEvent> AERJUMP = register("item.aerbound_cape.aerjump");

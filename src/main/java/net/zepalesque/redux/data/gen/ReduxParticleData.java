@@ -19,6 +19,8 @@ public class ReduxParticleData extends ReduxParticleProvider {
     protected void addDescriptions() {
         this.spriteSet(ReduxParticles.GILDENROOT_LEAF.get(), Redux.loc("leaves/gildenroot"));
 
+        this.spriteSet(ReduxParticles.SHADEROOT_LEAF.get(), Redux.loc("leaves/shaderoot"));
+
         ResourceLocation[] lightningTextures = ArrayUtil.generateContents(new ResourceLocation[10], i -> Redux.loc("lightning/lightning" + i));
         this.spriteSet(ReduxParticles.WHIRLWIND_LIGHTNING.get(), List.of(lightningTextures));
 

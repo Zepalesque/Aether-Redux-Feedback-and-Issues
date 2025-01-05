@@ -30,6 +30,19 @@ public class ReduxSoundsData extends ReduxSoundsProvider {
                 definition().with(sound("aether_redux:entity/slider/signal"))
                         .subtitle(DatagenUtil.subtitleFor(sound)));
 
+        this.add(ReduxSounds.EMBER_BOUNCE_BIG,  sound ->
+                definition().with(sound("aether_redux:entity/ember/bounce_big"))
+                        .subtitle(DatagenUtil.subtitleFor(sound)));
+
+        this.add(ReduxSounds.EMBER_BOUNCE_MEDIUM, sound ->
+                definition().with(sound("aether_redux:entity/ember/bounce_medium"))
+                        .subtitle(DatagenUtil.subtitleFor(sound)));
+
+        this.add(ReduxSounds.EMBER_BOUNCE_SMALL,  sound ->
+                definition().with(sound("aether_redux:entity/ember/bounce_small"))
+                        .subtitle(DatagenUtil.subtitleFor(sound)));
+
+
         this.add(ReduxSounds.ITEM_MUSIC_DISC_SENTIENCE, sound ->
                 definition().with(sound("aether_redux:item/records/sentience").stream()));
     }

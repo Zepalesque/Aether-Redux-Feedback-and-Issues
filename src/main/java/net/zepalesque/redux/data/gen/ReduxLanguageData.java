@@ -196,5 +196,9 @@ public class ReduxLanguageData extends ReduxLanguageProvider {
         addSubtitle(ReduxSounds.LOGICATOR_CLICK, DatagenUtil::subtitleFor, "Logicator clicks");
         addSubtitle(ReduxSounds.AERJUMP, DatagenUtil::subtitleFor, "Something aerjumps");
         addSubtitle(ReduxSounds.SLIDER_SIGNAL, DatagenUtil::subtitleFor, "Slider signals");
+        addSubtitle(ReduxSounds.EMBER_BOUNCE_BIG, DatagenUtil::subtitleFor, "Ember shatters");
+        addSubtitle(ReduxSounds.EMBER_BOUNCE_MEDIUM, DatagenUtil::subtitleFor, "Ember crackles");
+        addSubtitle(ReduxSounds.EMBER_BOUNCE_SMALL, DatagenUtil::subtitleFor, "Ember sparks");
+
     }
 }
