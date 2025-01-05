@@ -44,7 +44,7 @@ public class SliderSignalAttachment {
     }
 
     public static void sendSignal(Slider slider) {
-        PacketDistributor.sendToPlayersNear(
+        if (!slider.level().isClientSide()) PacketDistributor.sendToPlayersNear(
                 (ServerLevel) slider.level(), null,
                 slider.getX(), slider.getY(), slider.getZ(), 50D,
                 new SliderSignalPacket.Signal(
@@ -53,7 +53,7 @@ public class SliderSignalAttachment {
     }
 
     public static void syncDirection(Slider slider, Direction direction) {
-        PacketDistributor.sendToPlayersNear(
+        if (!slider.level().isClientSide()) PacketDistributor.sendToPlayersNear(
                 (ServerLevel) slider.level(), null,
                 slider.getX(), slider.getY(), slider.getZ(), 50D,
                 new SliderSignalPacket.DirectionOverride(
@@ -62,7 +62,7 @@ public class SliderSignalAttachment {
     }
 
     public static void syncTarget(Slider slider, Entity target) {
-        PacketDistributor.sendToPlayersNear(
+        if (!slider.level().isClientSide()) PacketDistributor.sendToPlayersNear(
                 (ServerLevel) slider.level(), null,
                 slider.getX(), slider.getY(), slider.getZ(), 50D,
                 new SliderSignalPacket.SyncTarget(
