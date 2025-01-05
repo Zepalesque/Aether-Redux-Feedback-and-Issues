@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "H": {
+      "item": "aether:holystone"
+    },
+    "V": {
+      "item": "aether_redux:veridium_ingot"
+    }
+  },
+  "pattern": [
+    "H",
+    "H",
+    "V"
+  ],
+  "result": {
+    "count": 1,
+    "id": "aether_redux:veridium_dart_shooter"
+  }
+}

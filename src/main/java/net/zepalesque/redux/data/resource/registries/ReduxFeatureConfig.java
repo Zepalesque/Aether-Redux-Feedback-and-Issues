@@ -259,8 +259,9 @@ public class ReduxFeatureConfig extends ReduxFeatureBuilders {
         register(context, WYNDSPROUTS_PATCH, Feature.FLOWER,
                 patch(24, 5, 3, prov(ReduxBlocks.WYNDSPROUTS)));
 
-
-        register(context, BLEAKMOSS_VEGETATION, ZenithFeatures.EXTENDABLE_STATE_LIST_BLOCK.get(), new ExtendableStateListBlockFeature.Config(UnityStateLists.FLUTEMOSS.get(), Optional.empty()));
+        // TODO
+        register(context, BLEAKMOSS_VEGETATION, ZenithFeatures.EXTENDABLE_STATE_LIST_BLOCK.get(),
+                new ExtendableStateListBlockFeature.Config(UnityStateLists.FLUTEMOSS.get(), Optional.empty()));
 
         register(context, BLEAKMOSS_BONEMEAL, Feature.VEGETATION_PATCH,
                 new VegetationPatchConfiguration(UnityTags.Blocks.AETHER_CARVER_REPLACEABLES,

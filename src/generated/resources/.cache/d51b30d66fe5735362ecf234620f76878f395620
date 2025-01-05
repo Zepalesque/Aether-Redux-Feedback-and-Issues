@@ -1,4 +1,4 @@
-// 1.21.1	2025-01-04T17:13:22.4557752	Item Models: aether_redux
+// 1.21.1	2025-01-04T19:59:40.8416721	Item Models: aether_redux
 22154525bdb82a668243960fdd22d12e653ecfe7 assets/aether_redux/models/item/aerbound_cape.json
 795ee016e7dad0d6ac42593c58ba258161615647 assets/aether_redux/models/item/aurum.json
 4afb9668485d647994daf5249d914744cc5f173d assets/aether_redux/models/item/bleakmoss_block.json
@@ -59,6 +59,7 @@ c957473410573f950e98933cb17599021c650ccf assets/aether_redux/models/item/gildenr
 497b1fee83f743dda1c78e4c303f9635b30a915d assets/aether_redux/models/item/golden_clovers.json
 830712522b96695b2c26d31f844efcaa964e0d48 assets/aether_redux/models/item/golden_vines.json
 799296c4d4b51c7508d64cc40b7f5af08fac78f1 assets/aether_redux/models/item/infused_veridium_axe.json
+c951cac085f8e6c8f3460b5ddb1f5e440568d92f assets/aether_redux/models/item/infused_veridium_dart_shooter.json
 e00233f8f617b931ac5a25f0bad5e540d5399350 assets/aether_redux/models/item/infused_veridium_hoe.json
 61eb8571e24f150cff006a0a41a18f2343cef7aa assets/aether_redux/models/item/infused_veridium_pickaxe.json
 b7a76be36d161bbb3c1c88a291640d20ed9d590a assets/aether_redux/models/item/infused_veridium_shovel.json
@@ -107,6 +108,8 @@ bd3d3ad20b8dbfeea5505e61b48aaf4a64ed23f5 assets/aether_redux/models/item/trapped
 63c3485837cbacd6c15979a79e008e0353678c97 assets/aether_redux/models/item/trapped_sentry_pillar.json
 2c78df1e9275f237b1b0fc10b3c039bdaca1bb91 assets/aether_redux/models/item/veridium_axe.json
 3a4888b7dae2b6f8450252ffb8f6cfa8d3d70a6a assets/aether_redux/models/item/veridium_block.json
+ce767f57ec085ac0742940ae61c46be9dca63522 assets/aether_redux/models/item/veridium_dart.json
+453ce52298767c5af41a8b139736760408f9af83 assets/aether_redux/models/item/veridium_dart_shooter.json
 2d4c2c4e77ee65d2d8da5fe989a0f0bd7d364513 assets/aether_redux/models/item/veridium_hoe.json
 7fe518aef675b78120cc6aac20d274687e5bf417 assets/aether_redux/models/item/veridium_ingot.json
 ae664ab76cfacf04198b02c4cc00c3039ca8954d assets/aether_redux/models/item/veridium_nugget.json

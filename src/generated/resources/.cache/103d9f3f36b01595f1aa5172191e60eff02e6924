@@ -1,4 +1,4 @@
-// 1.21.1	2024-12-31T16:35:48.940496	Registries
+// 1.21.1	2025-01-04T19:59:40.8976377	Registries
 1bf1e96a91388f7bf47c90dab07b1152d3861b11 data/aether/worldgen/configured_feature/crystal_tree.json
 36359e7f855c63655f66afb67ad5e5bffb49b9ad data/aether/worldgen/configured_feature/golden_oak_tree.json
 47ec4dab1e49d10c7a9d88096f1d8297e837b2e8 data/aether/worldgen/configured_feature/skyroot_tree.json
@@ -12,6 +12,8 @@ b1924e11e2a4cc074084f391e61ba8b59b590874 data/aether_redux/neoforge/biome_modifi
 b70383ff80e31243b986fcefb5fd78247ee1b1de data/aether_redux/worldgen/biome/gilded_groves.json
 c8e73592a257316a1bc906517b4393ae86f79d4d data/aether_redux/worldgen/configured_feature/ambrosium_rock.json
 32a486a178bb1f8641a3f3de2c59c9948769389f data/aether_redux/worldgen/configured_feature/aurum_patch.json
+6cabdb26a2cb8eeca1a072c6842fae953c90d839 data/aether_redux/worldgen/configured_feature/bleakmoss_bonemeal.json
+e832d1de286e287cc166d6fe9f50878de63b223a data/aether_redux/worldgen/configured_feature/bleakmoss_vegetation.json
 4b381670c718154fb753a5dc522707259b926230 data/aether_redux/worldgen/configured_feature/cloudbed.json
 cff751a27ed65a9bf33c0aa1ff7abf313346c412 data/aether_redux/worldgen/configured_feature/gilded_groves_trees.json
 91625b4558b8e7cc72e340ae499e475f4d0d68bd data/aether_redux/worldgen/configured_feature/gilded_holystone_ore.json

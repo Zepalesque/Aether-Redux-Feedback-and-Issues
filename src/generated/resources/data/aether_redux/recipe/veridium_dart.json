@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "/": {
+      "tag": "aether:skyroot_stick"
+    },
+    "F": {
+      "tag": "c:feathers"
+    },
+    "V": {
+      "item": "aether_redux:veridium_ingot"
+    }
+  },
+  "pattern": [
+    "F",
+    "/",
+    "V"
+  ],
+  "result": {
+    "count": 4,
+    "id": "aether_redux:veridium_dart"
+  }
+}

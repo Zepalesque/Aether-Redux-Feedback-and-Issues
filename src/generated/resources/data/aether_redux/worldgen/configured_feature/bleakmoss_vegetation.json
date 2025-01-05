@@ -1,0 +1,6 @@
+{
+  "type": "zenith:extendable_state_list",
+  "config": {
+    "to_place": "aether_unity:flutemoss"
+  }
+}
