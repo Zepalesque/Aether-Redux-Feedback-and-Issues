@@ -5,14 +5,14 @@
       "condition": "minecraft:entity_properties",
       "entity": "this",
       "predicate": {
-        "type": "#aether_redux:sentries"
+        "type": "#aether_redux:sentrite_music_disc_dropping"
       }
     },
     {
       "condition": "minecraft:entity_properties",
       "entity": "attacker",
       "predicate": {
-        "type": "#aether_redux:sentries"
+        "type": "#aether_redux:sentrite_music_disc_dropping"
       }
     }
   ],

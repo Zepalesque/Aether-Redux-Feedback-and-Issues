@@ -1,5 +1,5 @@
-// 1.21.1	2025-01-05T14:57:04.0341072	Global Loot Modifiers : aether_redux
+// 1.21.1	2025-01-05T15:02:12.6376076	Global Loot Modifiers : aether_redux
 927ef7719b591908de35e0fd2b9c5e50ba0cedfc data/aether_redux/loot_modifiers/aerbound_cape.json
 af76ed495c7d2f9115c478eb073569402ad7251e data/aether_redux/loot_modifiers/raw_veridium.json
-65ddafdff0ab797aebb5d7bd9c3ad71e37f70522 data/aether_redux/loot_modifiers/sentrite_disc.json
+16d7da70c2a552a231ce94a0511ab3ebe9905ad1 data/aether_redux/loot_modifiers/sentrite_disc.json
 8aeb8ef99441e8c05543945ff51a8e19cce45d4e data/neoforge/loot_modifiers/global_loot_modifiers.json

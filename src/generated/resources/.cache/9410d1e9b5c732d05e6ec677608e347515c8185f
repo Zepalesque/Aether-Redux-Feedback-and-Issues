@@ -1,3 +1,4 @@
-// 1.21.1	2025-01-05T14:57:04.0141194	Tags for minecraft:entity_type mod id aether_redux
-5d55890f03431ddaefa201c89369e0dfcd1067b8 data/aether_redux/tags/entity_type/sentries.json
+// 1.21.1	2025-01-05T15:02:12.6196158	Tags for minecraft:entity_type mod id aether_redux
+85d3d04482664e42d405e183521203c39d5e7b15 data/aether_redux/tags/entity_type/sentries.json
+f3d2924a739f297564000bda40a0b892bf48973b data/aether_redux/tags/entity_type/sentrite_music_disc_dropping.json
 517c15463812a27fa02321072d0873731c0fd60a data/aether_redux/tags/entity_type/valid_pickaxe_targets.json

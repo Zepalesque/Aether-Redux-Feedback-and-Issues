@@ -1,10 +1,6 @@
 {
-  "remove": [
-    "aether:slider"
-  ],
   "values": [
     "aether:slider",
-    "aether:sentry",
-    "#aether_redux:sentries"
+    "aether:sentry"
   ]
 }
