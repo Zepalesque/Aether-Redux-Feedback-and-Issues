@@ -20,6 +20,8 @@ public abstract class SliderMixin extends MobMixin {
 
     @Shadow private Direction moveDirection;
 
+    @Shadow public abstract int getMoveDelay();
+
     @Inject(method = "getAmbientSound", at = @At("RETURN"), cancellable = true)
     protected void redux$getAmbientSound(CallbackInfoReturnable<SoundEvent> cir) {
         if (((Slider) (Object) this).isAwake()) {
@@ -43,7 +45,7 @@ public abstract class SliderMixin extends MobMixin {
 
     @Inject(method = "setMoveDirection", at = @At("HEAD"))
     protected void redux$setMoveDirection(Direction moveDirection, CallbackInfo ci) {
-        if (moveDirection != null && !((Slider) (Object) this).isCritical()) {
+        if (moveDirection != null && !((Slider) (Object) this).isCritical() && this.getMoveDelay() > 0) {
             SliderSignalAttachment.syncDirection((Slider) (Object) this, moveDirection);
         }
     }

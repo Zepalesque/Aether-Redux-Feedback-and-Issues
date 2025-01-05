@@ -56,10 +56,15 @@ public class SliderSignalLayer extends RenderLayer<Slider, SliderModel> {
                     Redux.LOGGER.debug("Slider has no target! Using all-side signal texture...");
                     return NORMAL;
                 } else {
-                    Direction toTarget = Slider.calculateDirection(target.getX(), target.getY(), target.getZ());
+                    double x = target.getX() - slider.getX();
+                    double y = target.getY() - slider.getY();
+                    double z = target.getZ() - slider.getZ();
+                    Direction toTarget = Slider.calculateDirection(x, y, z);
                     return DIRECTIONAL[toTarget.ordinal()];
                 }
             } else return DIRECTIONAL[d.ordinal()];
         }
     }
+
+
 }

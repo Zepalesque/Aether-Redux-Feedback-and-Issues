@@ -23,6 +23,8 @@ public class SliderSignalAttachment {
     @Nullable
     protected Direction overrideDirection = null;
 
+    protected boolean hasOverriden = false;
+
     @Nullable
     protected Entity target = null;
 
@@ -34,7 +36,10 @@ public class SliderSignalAttachment {
     protected void tickSignal(Slider slider) {
         if (this.signalTick > 0 && slider.level().isClientSide()) {
             if (this.signalTick == 2) playSound(slider);
-            else if (this.signalTick == 1) this.overrideDirection = null;
+            else if (this.signalTick == 1) {
+                this.overrideDirection = null;
+                this.hasOverriden = false;
+            }
             this.signalTick--;
         }
     }
@@ -53,7 +58,7 @@ public class SliderSignalAttachment {
     }
 
     public static void syncDirection(Slider slider, Direction direction) {
-        if (!slider.level().isClientSide()) PacketDistributor.sendToPlayersNear(
+        if (!slider.level().isClientSide() && direction != null) PacketDistributor.sendToPlayersNear(
                 (ServerLevel) slider.level(), null,
                 slider.getX(), slider.getY(), slider.getZ(), 50D,
                 new SliderSignalPacket.DirectionOverride(
@@ -97,7 +102,9 @@ public class SliderSignalAttachment {
     }
 
     public void setOverrideDirection(Slider entity, Direction direction) {
+        if ((direction == null && !this.hasOverriden) || this.signalTick == 0) return;
         this.overrideDirection = direction;
+        this.hasOverriden = true;
     }
 
     public Direction getOverrideDirection(Slider entity) {
