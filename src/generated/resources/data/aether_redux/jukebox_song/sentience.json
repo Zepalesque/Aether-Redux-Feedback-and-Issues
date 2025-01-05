@@ -1,0 +1,8 @@
+{
+  "comparator_output": 1,
+  "description": {
+    "translate": "jukebox_song.aether_redux.sentience"
+  },
+  "length_in_seconds": 149.0,
+  "sound_event": "aether_redux:item.music_disc.sentience"
+}

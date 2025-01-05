@@ -1,4 +1,4 @@
-// 1.21.1	2025-01-04T19:59:40.8416721	Item Models: aether_redux
+// 1.21.1	2025-01-05T14:57:04.0181169	Item Models: aether_redux
 22154525bdb82a668243960fdd22d12e653ecfe7 assets/aether_redux/models/item/aerbound_cape.json
 795ee016e7dad0d6ac42593c58ba258161615647 assets/aether_redux/models/item/aurum.json
 4afb9668485d647994daf5249d914744cc5f173d assets/aether_redux/models/item/bleakmoss_block.json
@@ -72,6 +72,7 @@ bc3db77b4defe372d9b4e6bae1a00d4d7e8e4509 assets/aether_redux/models/item/locked_
 74f57902f32679621621dcb5fcebce7b375bd214 assets/aether_redux/models/item/locked_sentry_pillar.json
 11107c9d0152f7017b3fa0e6d47ff6ed2b84cca2 assets/aether_redux/models/item/logicator.json
 db2e8281ad71d5c0c277e3921bef5ed2aa32b5d4 assets/aether_redux/models/item/lucky_clover.json
+c354be5dc6deabe693efe5d0268c945bc32b7479 assets/aether_redux/models/item/music_disc_sentience.json
 d8de2565b035201fb855f38b6083299efcc91e31 assets/aether_redux/models/item/raw_veridium.json
 8a433ef11c34eda652a3186b21612f69a875b6e8 assets/aether_redux/models/item/raw_veridium_block.json
 2306d148e9f27c562fb193942ebe90b717aa5562 assets/aether_redux/models/item/refined_sentrite.json

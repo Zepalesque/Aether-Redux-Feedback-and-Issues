@@ -28,5 +28,13 @@
       "aether_redux:item/generic/infusion_expire"
     ],
     "subtitle": "subtitles.aether_redux.item.generic.infusion_expire"
+  },
+  "item.music_disc.sentience": {
+    "sounds": [
+      {
+        "name": "aether_redux:item/records/sentience",
+        "stream": true
+      }
+    ]
   }
 }

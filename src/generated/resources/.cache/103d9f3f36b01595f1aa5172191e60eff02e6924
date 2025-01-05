@@ -1,7 +1,8 @@
-// 1.21.1	2025-01-04T19:59:40.8976377	Registries
+// 1.21.1	2025-01-05T14:57:04.0371054	Registries
 1bf1e96a91388f7bf47c90dab07b1152d3861b11 data/aether/worldgen/configured_feature/crystal_tree.json
 36359e7f855c63655f66afb67ad5e5bffb49b9ad data/aether/worldgen/configured_feature/golden_oak_tree.json
 47ec4dab1e49d10c7a9d88096f1d8297e837b2e8 data/aether/worldgen/configured_feature/skyroot_tree.json
+b5eb8e53fc3c6c6e568c858d776ca6335189a6ba data/aether_redux/jukebox_song/sentience.json
 b1924e11e2a4cc074084f391e61ba8b59b590874 data/aether_redux/neoforge/biome_modifier/add_cloudbed.json
 153a8395e69deb42c8ce94ce097e7110ccd0e329 data/aether_redux/neoforge/biome_modifier/add_sentrite.json
 80e78c3961c994390ac7e9e070ead01a6ff24bba data/aether_redux/neoforge/biome_modifier/add_wyndsprouts.json

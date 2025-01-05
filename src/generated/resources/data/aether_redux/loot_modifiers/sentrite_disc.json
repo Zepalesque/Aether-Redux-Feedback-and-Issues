@@ -1,0 +1,30 @@
+{
+  "type": "nitrogen_internals:add_entity_drops",
+  "conditions": [
+    {
+      "condition": "minecraft:entity_properties",
+      "entity": "this",
+      "predicate": {
+        "type": "#aether_redux:sentries"
+      }
+    },
+    {
+      "condition": "minecraft:entity_properties",
+      "entity": "attacker",
+      "predicate": {
+        "type": "#aether_redux:sentries"
+      }
+    }
+  ],
+  "functions": [
+    {
+      "add": false,
+      "count": 1.0,
+      "function": "minecraft:set_count"
+    }
+  ],
+  "item": {
+    "count": 1,
+    "id": "aether_redux:music_disc_sentience"
+  }
+}
