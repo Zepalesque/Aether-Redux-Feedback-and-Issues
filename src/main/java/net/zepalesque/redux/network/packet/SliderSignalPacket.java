@@ -10,10 +10,14 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import net.zepalesque.redux.Redux;
 import net.zepalesque.redux.attachment.ReduxDataAttachments;
 import net.zepalesque.redux.attachment.SliderSignalAttachment;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.Optional;
 
 public class SliderSignalPacket {
 
@@ -84,6 +88,43 @@ public class SliderSignalPacket {
                 Entity entity = level.getEntity(payload.mobID());
                 if (entity != null && entity.hasData(ReduxDataAttachments.SLIDER_SIGNAL.get()) && entity.getType() == AetherEntityTypes.SLIDER.get()) {
                     SliderSignalAttachment.get((Slider) entity).setOverrideDirection((Slider) entity, payload.direction());
+                }
+            }
+        }
+    }
+
+    public record SyncTarget(int mobID, Optional<Integer> target) implements CustomPacketPayload {
+
+        public static final Type<SyncTarget> TYPE = new Type<>(Redux.loc("slider_signal_target_sync"));
+
+        public static final StreamCodec<RegistryFriendlyByteBuf, SyncTarget> STREAM_CODEC = CustomPacketPayload.codec(
+                SyncTarget::write,
+                SyncTarget::decode);
+
+        public void write(FriendlyByteBuf buf) {
+            buf.writeInt(this.mobID());
+            buf.writeOptional(this.target(), FriendlyByteBuf::writeInt);
+        }
+
+        public static SyncTarget decode(FriendlyByteBuf buf) {
+            int mobID = buf.readInt();
+            Optional<Integer> mob = buf.readOptional(FriendlyByteBuf::readInt);
+            return new SyncTarget(mobID, mob);
+        }
+
+        @Override
+        public Type<? extends CustomPacketPayload> type() {
+            return TYPE;
+        }
+
+
+        public static void execute(SyncTarget payload, IPayloadContext context) {
+            ClientLevel level = Minecraft.getInstance().level;
+            if (level != null) {
+                Entity entity = level.getEntity(payload.mobID());
+                if (entity != null && entity.hasData(ReduxDataAttachments.SLIDER_SIGNAL.get()) && entity.getType() == AetherEntityTypes.SLIDER.get()) {
+                    Optional<Entity> mob = payload.target().map(level::getEntity);
+                    SliderSignalAttachment.get((Slider) entity).setTarget((Slider) entity, mob.orElse(null));
                 }
             }
         }

@@ -1,12 +1,9 @@
 package net.zepalesque.redux.mixin.mixins.common.entity;
 
-import com.aetherteam.aether.entity.monster.dungeon.boss.Slider;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.phys.AABB;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -16,8 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class LivingEntityMixin extends EntityMixin {
 
     @Inject(method = "makePoofParticles", at = @At("HEAD"), cancellable = true)
-    protected void redux$Poof(CallbackInfo ci) {}
-
+    protected void redux$poof(CallbackInfo ci) {}
 
     @Inject(method = "isPushable", at = @At("HEAD"), cancellable = true)
     protected void redux$isPushable(CallbackInfoReturnable<Boolean> cir) {}

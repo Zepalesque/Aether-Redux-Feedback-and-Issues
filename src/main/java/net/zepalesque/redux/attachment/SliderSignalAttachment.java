@@ -5,12 +5,15 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.Entity;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.zepalesque.redux.client.audio.ReduxSounds;
 import net.zepalesque.redux.config.ReduxConfig;
 import net.zepalesque.redux.network.packet.SliderSignalPacket;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Optional;
 
 // Client-Side
 public class SliderSignalAttachment {
@@ -19,6 +22,10 @@ public class SliderSignalAttachment {
 
     @Nullable
     protected Direction overrideDirection = null;
+
+    @Nullable
+    protected Entity target = null;
+
 
     public void onUpdate(Slider slider) {
         this.tickSignal(slider);
@@ -37,15 +44,36 @@ public class SliderSignalAttachment {
     }
 
     public static void sendSignal(Slider slider) {
-        PacketDistributor.sendToPlayersNear((ServerLevel) slider.level(), null, slider.getX(), slider.getY(), slider.getZ(), 50D, new SliderSignalPacket.Signal(slider.getId()));
+        PacketDistributor.sendToPlayersNear(
+                (ServerLevel) slider.level(), null,
+                slider.getX(), slider.getY(), slider.getZ(), 50D,
+                new SliderSignalPacket.Signal(
+                        slider.getId()
+                ));
     }
 
     public static void syncDirection(Slider slider, Direction direction) {
-        PacketDistributor.sendToPlayersNear((ServerLevel) slider.level(), null, slider.getX(), slider.getY(), slider.getZ(), 50D, new SliderSignalPacket.DirectionOverride(slider.getId(), direction));
+        PacketDistributor.sendToPlayersNear(
+                (ServerLevel) slider.level(), null,
+                slider.getX(), slider.getY(), slider.getZ(), 50D,
+                new SliderSignalPacket.DirectionOverride(
+                        slider.getId(), direction
+                ));
+    }
+
+    public static void syncTarget(Slider slider, Entity target) {
+        PacketDistributor.sendToPlayersNear(
+                (ServerLevel) slider.level(), null,
+                slider.getX(), slider.getY(), slider.getZ(), 50D,
+                new SliderSignalPacket.SyncTarget(
+                        slider.getId(),
+                        Optional.ofNullable(target).map(Entity::getId)
+                ));
     }
 
     public void beginSignal(Slider slider) {
         if (this.getSignalTick() <= 2) {
+            this.overrideDirection = null;
             this.setSignalTick(8);
             playSound(slider);
         }
@@ -74,5 +102,14 @@ public class SliderSignalAttachment {
 
     public Direction getOverrideDirection(Slider entity) {
         return this.overrideDirection;
+    }
+
+    public void setTarget(Slider slider, @Nullable Entity entity) {
+        this.target = entity;
+    }
+
+    @Nullable
+    public Entity getTarget(Slider slider) {
+        return this.target;
     }
 }

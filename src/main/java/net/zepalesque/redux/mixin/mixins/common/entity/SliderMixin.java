@@ -3,6 +3,7 @@ package net.zepalesque.redux.mixin.mixins.common.entity;
 import com.aetherteam.aether.entity.monster.dungeon.boss.Slider;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.entity.LivingEntity;
 import net.zepalesque.redux.attachment.SliderSignalAttachment;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -12,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Slider.class)
-public abstract class SliderMixin extends LivingEntityMixin {
+public abstract class SliderMixin extends MobMixin {
     @Shadow public abstract boolean isCritical();
 
     @Shadow private int moveDelay;
@@ -45,5 +46,10 @@ public abstract class SliderMixin extends LivingEntityMixin {
         if (moveDirection != null && !((Slider) (Object) this).isCritical()) {
             SliderSignalAttachment.syncDirection((Slider) (Object) this, moveDirection);
         }
+    }
+
+    @Override
+    protected void redux$setTarget(LivingEntity target, CallbackInfo ci) {
+        SliderSignalAttachment.syncTarget((Slider) (Object) this, target);
     }
 }

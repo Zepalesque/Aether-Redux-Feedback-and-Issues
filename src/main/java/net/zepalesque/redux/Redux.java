@@ -130,6 +130,7 @@ public class Redux {
         registrar.playBidirectional(ReduxPlayerSyncPacket.TYPE, ReduxPlayerSyncPacket.STREAM_CODEC, ReduxPlayerSyncPacket::execute);
         registrar.playToClient(SliderSignalPacket.Signal.TYPE, SliderSignalPacket.Signal.STREAM_CODEC, SliderSignalPacket.Signal::execute);
         registrar.playToClient(SliderSignalPacket.DirectionOverride.TYPE, SliderSignalPacket.DirectionOverride.STREAM_CODEC, SliderSignalPacket.DirectionOverride::execute);
+        registrar.playToClient(SliderSignalPacket.SyncTarget.TYPE, SliderSignalPacket.SyncTarget.STREAM_CODEC, SliderSignalPacket.SyncTarget::execute);
     }
 
     private void registerDataMaps(RegisterDataMapTypesEvent event) {

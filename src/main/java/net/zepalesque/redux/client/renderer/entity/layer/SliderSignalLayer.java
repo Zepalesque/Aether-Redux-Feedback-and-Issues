@@ -12,6 +12,7 @@ import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
 import net.zepalesque.redux.ArrayUtil;
 import net.zepalesque.redux.Redux;
 import net.zepalesque.redux.attachment.SliderSignalAttachment;
@@ -34,10 +35,8 @@ public class SliderSignalLayer extends RenderLayer<Slider, SliderModel> {
     @Override
     public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLight, Slider slider, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
         if (ReduxConfig.CLIENT.slider_signal_sfx.get() && slider.isAwake()) {
-            SliderSignalAttachment signal = SliderSignalAttachment.get(slider);
-            if (signal.shouldGlow(slider)) {
-
-                RenderType renderType = slider.isCritical() ? CRITICAL : NORMAL;
+            RenderType renderType = renderType(slider);
+            if (renderType != null) {
                 VertexConsumer consumer = buffer.getBuffer(renderType);
                 this.getParentModel().renderToBuffer(poseStack, consumer, 15728640, OverlayTexture.NO_OVERLAY);
             }
@@ -52,8 +51,14 @@ public class SliderSignalLayer extends RenderLayer<Slider, SliderModel> {
         else {
             @Nullable Direction d = attachment.getOverrideDirection(slider);
             if (d == null) {
-                Redux.LOGGER.debug("Direction for render was NULL and therefore no direction will be used");
-                return NORMAL;
+                @Nullable Entity target = attachment.getTarget(slider);
+                if (target == null) {
+                    Redux.LOGGER.debug("Slider has no target! Using all-side signal texture...");
+                    return NORMAL;
+                } else {
+                    Direction toTarget = Slider.calculateDirection(target.getX(), target.getY(), target.getZ());
+                    return DIRECTIONAL[toTarget.ordinal()];
+                }
             } else return DIRECTIONAL[d.ordinal()];
         }
     }

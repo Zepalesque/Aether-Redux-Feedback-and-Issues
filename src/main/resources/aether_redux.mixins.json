@@ -17,6 +17,7 @@
     "common.entity.EntityMixin",
     "common.entity.EvilWhirlwindMixin",
     "common.entity.LivingEntityMixin",
+    "common.entity.MobMixin",
     "common.entity.PassiveWhirlwindMixin",
     "common.entity.SliderMixin",
     "common.entity.ai.SliderAvoidanceMixin",
