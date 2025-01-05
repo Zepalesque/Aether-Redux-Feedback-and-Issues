@@ -2,6 +2,7 @@ package net.zepalesque.redux.attachment;
 
 import com.aetherteam.aether.entity.monster.dungeon.boss.Slider;
 import net.minecraft.client.Minecraft;
+import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.neoforged.neoforge.network.PacketDistributor;
@@ -9,11 +10,15 @@ import net.zepalesque.redux.client.audio.ReduxSounds;
 import net.zepalesque.redux.config.ReduxConfig;
 import net.zepalesque.redux.network.packet.SliderSignalPacket;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 // Client-Side
 public class SliderSignalAttachment {
 
     protected int signalTick = 0;
+
+    @Nullable
+    protected Direction overrideDirection = null;
 
     public void onUpdate(Slider slider) {
         this.tickSignal(slider);
@@ -22,6 +27,7 @@ public class SliderSignalAttachment {
     protected void tickSignal(Slider slider) {
         if (this.signalTick > 0 && slider.level().isClientSide()) {
             if (this.signalTick == 2) playSound(slider);
+            else if (this.signalTick == 1) this.overrideDirection = null;
             this.signalTick--;
         }
     }
@@ -30,11 +36,15 @@ public class SliderSignalAttachment {
         return this.signalTick == 8 || this.signalTick == 7 || this.signalTick == 2 || this.signalTick == 1;
     }
 
-    public static void sendPacket(Slider slider) {
-        PacketDistributor.sendToPlayersNear((ServerLevel) slider.level(), null, slider.getX(), slider.getY(), slider.getZ(), 50D, new SliderSignalPacket(slider.getId()));
+    public static void sendSignal(Slider slider) {
+        PacketDistributor.sendToPlayersNear((ServerLevel) slider.level(), null, slider.getX(), slider.getY(), slider.getZ(), 50D, new SliderSignalPacket.Signal(slider.getId()));
     }
 
-    public void doBeep(Slider slider) {
+    public static void syncDirection(Slider slider, Direction direction) {
+        PacketDistributor.sendToPlayersNear((ServerLevel) slider.level(), null, slider.getX(), slider.getY(), slider.getZ(), 50D, new SliderSignalPacket.DirectionOverride(slider.getId(), direction));
+    }
+
+    public void beginSignal(Slider slider) {
         if (this.getSignalTick() <= 2) {
             this.setSignalTick(8);
             playSound(slider);
@@ -56,5 +66,13 @@ public class SliderSignalAttachment {
 
     public void setSignalTick(int signalTick) {
         this.signalTick = signalTick;
+    }
+
+    public void setOverrideDirection(Slider entity, Direction direction) {
+        this.overrideDirection = direction;
+    }
+
+    public Direction getOverrideDirection(Slider entity) {
+        return this.overrideDirection;
     }
 }

@@ -36,7 +36,14 @@ public abstract class SliderMixin extends LivingEntityMixin {
     @Inject(method = "customServerAiStep", at = @At("HEAD"))
     protected void redux$customServerAiStep(CallbackInfo ci) {
         if (!this.isCritical() && this.moveDelay == 7 || this.isCritical() && this.moveDelay == 3) {
-            SliderSignalAttachment.sendPacket((Slider) (Object) this);
+            SliderSignalAttachment.sendSignal((Slider) (Object) this);
+        }
+    }
+
+    @Inject(method = "setMoveDirection", at = @At("HEAD"))
+    protected void redux$setMoveDirection(Direction moveDirection, CallbackInfo ci) {
+        if (moveDirection != null && !((Slider) (Object) this).isCritical()) {
+            SliderSignalAttachment.syncDirection((Slider) (Object) this, moveDirection);
         }
     }
 }

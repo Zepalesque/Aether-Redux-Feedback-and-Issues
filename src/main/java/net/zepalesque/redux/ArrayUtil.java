@@ -2,6 +2,7 @@ package net.zepalesque.redux;
 
 import java.util.function.Function;
 
+// TODO: Expand, move to Zenith
 public class ArrayUtil {
 
     public static <T> T[] generateContents(T[] array, Function<Integer, T> factory) {
