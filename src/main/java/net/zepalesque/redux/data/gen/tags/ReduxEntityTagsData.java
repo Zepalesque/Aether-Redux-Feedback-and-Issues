@@ -20,5 +20,7 @@ public class ReduxEntityTagsData extends EntityTypeTagsProvider {
     @Override
     protected void addTags(Provider provider) {
         this.tag(ReduxTags.Entities.VALID_PICKAXE_TARGETS).add(AetherEntityTypes.SLIDER.get());
+        this.tag(ReduxTags.Entities.SENTRIES).add(AetherEntityTypes.SLIDER.get(), AetherEntityTypes.SENTRY.get());
+        this.tag(ReduxTags.Entities.SENTRITE_MUSIC_DISC_DROPPING).addTag(ReduxTags.Entities.SENTRIES).remove(AetherEntityTypes.SLIDER.get());
     }
 }

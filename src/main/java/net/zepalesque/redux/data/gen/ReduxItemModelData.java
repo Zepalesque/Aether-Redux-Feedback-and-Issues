@@ -94,9 +94,11 @@ public class ReduxItemModelData extends ReduxItemModelProvider {
 
         this.itemBlock(ReduxBlocks.BLEAKMOSS_BLOCK.get());
         this.itemBlock(ReduxBlocks.BLEAKMOSS_CARPET.get());
+
+        this.item(ReduxItems.MUSIC_DISC_SENTIENCE.get(), "misc/");
     }
 
-
+    // TODO
     public static class Grass extends ReduxItemModelProvider {
         public Grass(PackOutput output, ExistingFileHelper helper) {
             super(output, Redux.MODID, helper);

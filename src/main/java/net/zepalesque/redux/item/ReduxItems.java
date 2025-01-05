@@ -1,5 +1,6 @@
 package net.zepalesque.redux.item;
 
+import com.aetherteam.aether.data.resources.registries.AetherJukeboxSongs;
 import com.aetherteam.aether.item.AetherItems;
 import com.aetherteam.aether.item.combat.DartItem;
 import io.wispforest.accessories.api.AccessoriesAPI;
@@ -13,12 +14,14 @@ import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.item.PickaxeItem;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.SwordItem;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.zepalesque.redux.Redux;
 import net.zepalesque.redux.block.ReduxBlocks;
+import net.zepalesque.redux.data.resource.registries.ReduxJukeboxSongs;
 import net.zepalesque.redux.entity.ReduxEntities;
 import net.zepalesque.redux.item.accessories.cape.AerboundCapeItem;
 import net.zepalesque.redux.item.combat.VeridiumDartItem;
@@ -62,6 +65,8 @@ public class ReduxItems {
     public static final DeferredItem<Item> VERIDIUM_DART = ITEMS.register("veridium_dart", () -> new VeridiumDartItem(new Item.Properties()));
     public static final DeferredItem<VeridiumDartShooter.Uninfused> VERIDIUM_DART_SHOOTER = ITEMS.register("veridium_dart_shooter", () -> new VeridiumDartShooter.Uninfused(VERIDIUM_DART, 9, new Item.Properties().stacksTo(1)));
     public static final DeferredItem<VeridiumDartShooter> INFUSED_VERIDIUM_DART_SHOOTER = ITEMS.register("infused_veridium_dart_shooter", () -> new VeridiumDartShooter(VERIDIUM_DART, 7, new Item.Properties().stacksTo(1), ReduxItems.VERIDIUM_DART_SHOOTER));
+
+    public static final DeferredItem<Item> MUSIC_DISC_SENTIENCE = ITEMS.register("music_disc_sentience", () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(ReduxJukeboxSongs.SENTIENCE)));
 
 
     public static final DeferredItem<AerboundCapeItem> AERBOUND_CAPE = ITEMS.register("aerbound_cape", () -> new AerboundCapeItem(new Item.Properties().stacksTo(1).rarity(AetherItems.AETHER_LOOT)));

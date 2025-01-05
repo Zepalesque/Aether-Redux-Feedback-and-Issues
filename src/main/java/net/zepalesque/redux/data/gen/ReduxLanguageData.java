@@ -101,6 +101,9 @@ public class ReduxLanguageData extends ReduxLanguageProvider {
         addItem(ReduxItems.RAW_VERIDIUM);
         addLore(ReduxItems.RAW_VERIDIUM, "A chunk of Raw Veridium. This can be smelted into an ingot.");
 
+        addItem(ReduxItems.MUSIC_DISC_SENTIENCE, "Ancient Sentrite Music Disc");
+        addLore(ReduxItems.MUSIC_DISC_SENTIENCE, "A music disc that plays \"Sentience\" by Emile van Krieken.");
+
 
         addItem(ReduxItems.REFINED_SENTRITE);
         addLore(ReduxItems.REFINED_SENTRITE, "The purified form of Sentrite. This can be used for a variety of different things, but is commonly found associated with Sentry technology.");

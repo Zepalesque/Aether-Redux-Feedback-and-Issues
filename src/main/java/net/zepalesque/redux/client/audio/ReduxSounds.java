@@ -17,12 +17,11 @@ public class ReduxSounds {
     public static final DeferredHolder<SoundEvent, SoundEvent> AERJUMP = register("item.aerbound_cape.aerjump");
     public static final DeferredHolder<SoundEvent, SoundEvent> INFUSE_ITEM = register("item.generic.infuse");
     public static final DeferredHolder<SoundEvent, SoundEvent> INFUSION_EXPIRE = register("item.generic.infusion_expire");
+    public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_MUSIC_DISC_SENTIENCE = register("item.music_disc.sentience");
 
     public static final DeferredHolder<SoundEvent, SoundEvent> LOGICATOR_CLICK = register("block.logicator.click");
 
     public static final DeferredHolder<SoundEvent, SoundEvent> SLIDER_SIGNAL = register("entity.slider.signal");
-
-
 
     private static DeferredHolder<SoundEvent, SoundEvent> register(String location) {
         return SOUNDS.register(location, () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(Redux.MODID, location)));

@@ -49,6 +49,10 @@ public class ReduxTags {
     public static class Entities {
         public static final TagKey<EntityType<?>> VALID_PICKAXE_TARGETS = tag("valid_pickaxe_targets");
 
+        public static final TagKey<EntityType<?>> SENTRIES = tag("sentries");
+
+        public static final TagKey<EntityType<?>> SENTRITE_MUSIC_DISC_DROPPING = tag("sentries");
+
         private static TagKey<EntityType<?>> tag(String name) {
             return TagKey.create(Registries.ENTITY_TYPE, Redux.loc(name));
         }

@@ -29,5 +29,8 @@ public class ReduxSoundsData extends ReduxSoundsProvider {
         this.add(ReduxSounds.SLIDER_SIGNAL, sound ->
                 definition().with(sound("aether_redux:entity/slider/signal"))
                         .subtitle(DatagenUtil.subtitleFor(sound)));
+
+        this.add(ReduxSounds.ITEM_MUSIC_DISC_SENTIENCE, sound ->
+                definition().with(sound("aether_redux:item/records/sentience").stream()));
     }
 }

@@ -12,6 +12,7 @@ import net.zepalesque.redux.data.resource.registries.ReduxBiomes;
 import net.zepalesque.redux.data.resource.registries.ReduxConditions;
 import net.zepalesque.redux.data.resource.registries.ReduxDensityFunctions;
 import net.zepalesque.redux.data.resource.registries.ReduxFeatureConfig;
+import net.zepalesque.redux.data.resource.registries.ReduxJukeboxSongs;
 import net.zepalesque.redux.data.resource.registries.ReduxNoiseSettings;
 import net.zepalesque.redux.data.resource.registries.ReduxPlacements;
 import net.zepalesque.redux.data.resource.registries.ReduxStructureModifiers;
@@ -31,7 +32,8 @@ public class ReduxRegistrySets extends DatapackBuiltinEntriesProvider {
             .add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ReduxBiomeModifiers::bootstrap)
             .add(NeoForgeRegistries.Keys.STRUCTURE_MODIFIERS, ReduxStructureModifiers::bootstrap)
             .add(Zenith.Keys.CONDITION, ReduxConditions::bootstrap)
-            .add(Registries.BIOME, ReduxBiomes::bootstrap);
+            .add(Registries.BIOME, ReduxBiomes::bootstrap)
+            .add(Registries.JUKEBOX_SONG, ReduxJukeboxSongs::bootstrap);
 
     public ReduxRegistrySets(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, String modid, String... otherIds) {
         super(output, registries, BUILDER, buildModidList(modid, otherIds));
