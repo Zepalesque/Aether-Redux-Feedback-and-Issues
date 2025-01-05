@@ -1,0 +1,7 @@
+{
+  "parent": "aether_redux:block/template/layer/layer_size10",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "block": "aether_redux:block/natural/shaderoot_leaves"
+  }
+}

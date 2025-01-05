@@ -1,4 +1,4 @@
-// 1.21.1	2025-01-05T14:57:04.0181169	Item Models: aether_redux
+// 1.21.1	2025-01-05T15:53:58.4265581	Item Models: aether_redux
 22154525bdb82a668243960fdd22d12e653ecfe7 assets/aether_redux/models/item/aerbound_cape.json
 795ee016e7dad0d6ac42593c58ba258161615647 assets/aether_redux/models/item/aurum.json
 4afb9668485d647994daf5249d914744cc5f173d assets/aether_redux/models/item/bleakmoss_block.json
@@ -93,6 +93,9 @@ cbf1d27224744aef8ad83f00bd888454a5f34b4f assets/aether_redux/models/item/sentrit
 2c8457bbcde4e2e32804d90476bb7ca7e0673c97 assets/aether_redux/models/item/sentrite_wall.json
 58ea8b8e6fff7717dc67222718c780da317bc3b6 assets/aether_redux/models/item/sentry_base.json
 ff88166bf4d096e3efbd4eb04082d13f80b2fbd2 assets/aether_redux/models/item/sentry_pillar.json
+06c3604eb7b36b3ac8812479d6059581abffde17 assets/aether_redux/models/item/shaderoot_leaf_pile.json
+3c8e3d79635b7c531473e862001b582fc99ff022 assets/aether_redux/models/item/shaderoot_leaves.json
+697784e3655679b8599ef3a5f92bfe1e39119c97 assets/aether_redux/models/item/shaderoot_sapling.json
 6eb82aa73b8f464c031aede636157d1f9fb79678 assets/aether_redux/models/item/skysprouts.json
 ca66221312d21063f168e38f805dbbc79c16414b assets/aether_redux/models/item/spirolyctil.json
 1531709140b68907f7242819d9f6710a4de53487 assets/aether_redux/models/item/stripped_blightwillow_log.json

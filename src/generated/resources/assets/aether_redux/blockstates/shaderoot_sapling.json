@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "stage=0": {
+      "model": "aether_redux:block/shaderoot_sapling"
+    },
+    "stage=1": {
+      "model": "aether_redux:block/shaderoot_sapling"
+    }
+  }
+}

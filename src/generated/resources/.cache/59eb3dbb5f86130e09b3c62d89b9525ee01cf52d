@@ -1,4 +1,4 @@
-// 1.21.1	2025-01-04T17:13:22.4637696	Loot Tables
+// 1.21.1	2025-01-05T15:53:58.440547	Loot Tables
 c6156555dc4897939b617dabc4521b7fa52feba0 data/aether_redux/loot_table/blocks/aurum.json
 66a11e556b98bf1a1485905fb0149b1a833213ab data/aether_redux/loot_table/blocks/bleakmoss_block.json
 c8524e8336739f74fc648fcf76c60de754a38367 data/aether_redux/loot_table/blocks/bleakmoss_carpet.json
@@ -69,6 +69,7 @@ aaddf15b174e61d876a254dd2743e10a633e9941 data/aether_redux/loot_table/blocks/luc
 4f0249868d48ec7cc93a576cffa361313726b466 data/aether_redux/loot_table/blocks/potted_aurum.json
 648296f2d059096c4f9e7884b43c4e1f7eb62af6 data/aether_redux/loot_table/blocks/potted_gildenroot_sapling.json
 33c3732e978e625db69b365f41109dcd89b5cd6e data/aether_redux/loot_table/blocks/potted_lucky_clover.json
+4b179be195e25d9cc59306346356a927224d195a data/aether_redux/loot_table/blocks/potted_shaderoot_sapling.json
 4c842f25cf221c44d2a16820e778e01d76c48c90 data/aether_redux/loot_table/blocks/potted_spirolyctil.json
 31634f3ccbb1109ba54691cd7c7c94d822fddafa data/aether_redux/loot_table/blocks/raw_veridium_block.json
 0ebc7dcb8eb4341e49b22474ca24a82197aa4203 data/aether_redux/loot_table/blocks/refined_sentrite_block.json
@@ -87,6 +88,9 @@ ac19e5aa1de54241ed658de5fae5c4ede43943e1 data/aether_redux/loot_table/blocks/sen
 094aa3d3030a334bb9f3dfd02a1711ea0d0d2e1b data/aether_redux/loot_table/blocks/sentrite_wall.json
 3820b92658b295420cbb8f479fa50b5689741a8c data/aether_redux/loot_table/blocks/sentry_base.json
 30d0a8ba8c5835d07831497bb4dd5582cf7b0a51 data/aether_redux/loot_table/blocks/sentry_pillar.json
+3c7870625293723fe2fe064806fd119a2be7d5bb data/aether_redux/loot_table/blocks/shaderoot_leaf_pile.json
+fecff10e9323c7a0b9eeb14a02b265bf66a243dd data/aether_redux/loot_table/blocks/shaderoot_leaves.json
+7633f7343573a5e3922868d8a80ab939c7372e68 data/aether_redux/loot_table/blocks/shaderoot_sapling.json
 8be38794a87c5759ae04906377422cd5894d62b4 data/aether_redux/loot_table/blocks/skysprouts.json
 96c5ceab0b7e05e25b12f676cbea823aebb21601 data/aether_redux/loot_table/blocks/spirolyctil.json
 569d2d2dfb48803cb8ebd99a7d11f7d60b1eaf76 data/aether_redux/loot_table/blocks/stripped_blightwillow_log.json

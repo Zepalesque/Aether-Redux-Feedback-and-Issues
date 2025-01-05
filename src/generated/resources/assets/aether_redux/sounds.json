@@ -5,6 +5,24 @@
     ],
     "subtitle": "subtitles.aether_redux.block.logicator.click"
   },
+  "entity.ember.bounce_big": {
+    "sounds": [
+      "aether_redux:entity/ember/bounce_big"
+    ],
+    "subtitle": "subtitles.aether_redux.entity.ember.bounce_big"
+  },
+  "entity.ember.bounce_medium": {
+    "sounds": [
+      "aether_redux:entity/ember/bounce_medium"
+    ],
+    "subtitle": "subtitles.aether_redux.entity.ember.bounce_medium"
+  },
+  "entity.ember.bounce_small": {
+    "sounds": [
+      "aether_redux:entity/ember/bounce_small"
+    ],
+    "subtitle": "subtitles.aether_redux.entity.ember.bounce_small"
+  },
   "entity.slider.signal": {
     "sounds": [
       "aether_redux:entity/slider/signal"
