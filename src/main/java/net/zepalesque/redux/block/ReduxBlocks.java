@@ -33,6 +33,7 @@ import net.zepalesque.redux.block.natural.HangingAetherVinesHead;
 import net.zepalesque.redux.block.natural.bush.CustomBoundsBushBlock;
 import net.zepalesque.redux.block.natural.crop.WyndoatsBlock;
 import net.zepalesque.redux.block.natural.leaves.FallingLeavesBlock;
+import net.zepalesque.redux.block.natural.leaves.ShadedLeavesBlock;
 import net.zepalesque.redux.block.redstone.LogicatorBlock;
 import net.zepalesque.redux.block.state.ReduxBlockBuilders;
 import net.zepalesque.redux.client.particle.ReduxParticles;
@@ -56,8 +57,8 @@ public class ReduxBlocks extends ReduxBlockBuilders {
     public static DeferredBlock<LeafPileBlock> GILDENROOT_LEAF_PILE = register("gildenroot_leaf_pile",
             () -> new LeafPileBlock(GILDENROOT_LEAVES));
 
-    public static DeferredBlock<FallingLeavesBlock> SHADEROOT_LEAVES = register("shaderoot_leaves",
-            () -> new FallingLeavesBlock(ReduxParticles.SHADEROOT_LEAF, Properties.ofFullCopy(AetherBlocks.SKYROOT_LEAVES.get()).mapColor(MapColor.TERRACOTTA_PURPLE)));
+    public static DeferredBlock<ShadedLeavesBlock> SHADEROOT_LEAVES = register("shaderoot_leaves",
+            () -> new ShadedLeavesBlock(ReduxParticles.SHADEROOT_LEAF, 5, Properties.ofFullCopy(AetherBlocks.SKYROOT_LEAVES.get()).mapColor(MapColor.TERRACOTTA_PURPLE)));
 
     public static DeferredBlock<LeafPileBlock> SHADEROOT_LEAF_PILE = register("shaderoot_leaf_pile",
             () -> new LeafPileBlock(SHADEROOT_LEAVES));

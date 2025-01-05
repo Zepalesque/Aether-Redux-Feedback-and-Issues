@@ -8,12 +8,20 @@ import net.minecraft.world.level.block.state.BlockState;
 import java.util.function.Supplier;
 
 public class ShadedLeavesBlock extends FallingLeavesBlock {
-    public ShadedLeavesBlock(Supplier<? extends ParticleOptions> particle, Properties properties) {
+    private final int lightBlock;
+
+    public ShadedLeavesBlock(Supplier<? extends ParticleOptions> particle, int lightBlock, Properties properties) {
         super(particle, properties);
+        this.lightBlock = lightBlock;
     }
 
     @Override
     protected int getLightBlock(BlockState state, BlockGetter level, BlockPos pos) {
-        return 7;
+        return this.lightBlock;
+    }
+
+    @Override
+    protected boolean propagatesSkylightDown(BlockState state, BlockGetter level, BlockPos pos) {
+        return this.lightBlock < 15 && super.propagatesSkylightDown(state, level, pos);
     }
 }
