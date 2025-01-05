@@ -19,7 +19,7 @@ import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
 public class EmberRenderer extends EntityRenderer<Ember> {
-    private static final ResourceLocation TEXTURE_LOCATION = Redux.loc("textures/entity/ember.png");
+    private static final ResourceLocation TEXTURE_LOCATION = Redux.loc("textures/entity/projectile/ember.png");
     private static final RenderType RENDER_TYPE = RenderType.entityTranslucent(TEXTURE_LOCATION);
 
     private static final int FULLBRIGHT = LightTexture.pack(15, 15);

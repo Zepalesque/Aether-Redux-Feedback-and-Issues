@@ -1,5 +1,6 @@
 package net.zepalesque.redux.data.gen;
 
+import com.aetherteam.aether.AetherTags;
 import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.item.AetherItems;
 import net.minecraft.core.Holder;
@@ -13,6 +14,7 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
+import net.neoforged.neoforge.common.Tags;
 import net.zepalesque.redux.Redux;
 import net.zepalesque.redux.block.ReduxBlocks;
 import net.zepalesque.redux.blockset.flower.ReduxFlowerSets;
@@ -133,12 +135,42 @@ public class ReduxRecipeData extends ReduxRecipeProvider {
                 .withExtra(infusionInfo)
                 .save(output, Redux.loc("veridium_sword_increase_infusion"));
 
+        infuse(ReduxItems.INFUSED_VERIDIUM_DART_SHOOTER.get(), ReduxItems.VERIDIUM_DART_SHOOTER.get())
+                .withSound(infusionSound)
+                .withExtra(infusionInfo)
+                .save(output, Redux.loc("veridium_dart_shooter_infuse"));
+
+        infuse(ReduxItems.INFUSED_VERIDIUM_DART_SHOOTER.get(), ReduxItems.INFUSED_VERIDIUM_DART_SHOOTER.get())
+                .withSound(infusionSound)
+                .withExtra(infusionInfo)
+                .save(output, Redux.loc("veridium_dart_shooter_increase_infusion"));
+
 
         makePickaxe(ReduxItems.VERIDIUM_PICKAXE, ReduxItems.VERIDIUM_INGOT).save(output);
         makeShovel(ReduxItems.VERIDIUM_SHOVEL, ReduxItems.VERIDIUM_INGOT).save(output);
         makeAxe(ReduxItems.VERIDIUM_AXE, ReduxItems.VERIDIUM_INGOT).save(output);
         makeHoe(ReduxItems.VERIDIUM_HOE, ReduxItems.VERIDIUM_INGOT).save(output);
         makeSword(ReduxItems.VERIDIUM_SWORD, ReduxItems.VERIDIUM_INGOT).save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ReduxItems.VERIDIUM_DART.get(), 4)
+                .define('F', Tags.Items.FEATHERS)
+                .define('/', AetherTags.Items.SKYROOT_STICKS)
+                .define('V', ReduxItems.VERIDIUM_INGOT.get())
+                .pattern("F")
+                .pattern("/")
+                .pattern("V")
+                .unlockedBy("has_feather", has(Tags.Items.FEATHERS))
+                .unlockedBy(getHasName(ReduxItems.VERIDIUM_INGOT.get()), has(ReduxItems.VERIDIUM_INGOT.get()))
+                .save(output);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ReduxItems.VERIDIUM_DART_SHOOTER.get(), 1)
+                .define('H', AetherBlocks.HOLYSTONE.get())
+                .define('V', ReduxItems.VERIDIUM_INGOT.get())
+                .pattern("H")
+                .pattern("H")
+                .pattern("V")
+                .unlockedBy(getHasName(ReduxItems.VERIDIUM_INGOT.get()), has(ReduxItems.VERIDIUM_INGOT.get()))
+                .save(output);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ReduxBlocks.SENTRITE_LANTERN.get(), 1)
                 .define('C', ReduxItems.SENTRITE_CHUNK.get())

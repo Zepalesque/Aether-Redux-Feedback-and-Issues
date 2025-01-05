@@ -25,6 +25,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.SignItem;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.ButtonBlock;
 import net.minecraft.world.level.block.DoorBlock;
@@ -514,9 +515,13 @@ public class BaseWoodSet extends AbstractWoodSet implements ReduxGeneration {
     @Override
     protected DeferredHolder<EntityType<?>, EntityType<? extends ZenithBoat>> boatEntity(DeferredRegister<EntityType<?>> registry, String id) {
         return registry.register(id + "_boat", () ->
-                EntityType.Builder.<ZenithBoat>of(ZenithBoat::new, MobCategory.MISC)
+                EntityType.Builder.of(this::createBoat, MobCategory.MISC)
                         .sized(1.375F, 0.5625F).clientTrackingRange(10).build(id + "_boat")
         );
+    }
+
+    protected ZenithBoat createBoat(EntityType<? extends ZenithBoat> type, Level level) {
+        return new ZenithBoat(type, level).withSet(this);
     }
 
     @Override
@@ -527,10 +532,13 @@ public class BaseWoodSet extends AbstractWoodSet implements ReduxGeneration {
     @Override
     protected DeferredHolder<EntityType<?>, EntityType<? extends ZenithChestBoat>> chestBoatEntity(DeferredRegister<EntityType<?>> registry, String id) {
         return registry.register(id + "_chest_boat", () ->
-                EntityType.Builder.<ZenithChestBoat>of(ZenithChestBoat::new, MobCategory.MISC)
+                EntityType.Builder.<ZenithChestBoat>of(this::createChestBoat, MobCategory.MISC)
                         .sized(1.375F, 0.5625F).clientTrackingRange(10).build(id + "_chest_boat")
         );
+    }
 
+    protected ZenithChestBoat createChestBoat(EntityType<? extends ZenithChestBoat> type, Level level) {
+        return new ZenithChestBoat(type, level).withSet(this);
     }
 
     @Override
@@ -947,5 +955,10 @@ public class BaseWoodSet extends AbstractWoodSet implements ReduxGeneration {
     @Override
     public Supplier<Item> getStick() {
         return AetherItems.SKYROOT_STICK;
+    }
+
+    @Override
+    public String getID() {
+        return this.id;
     }
 }

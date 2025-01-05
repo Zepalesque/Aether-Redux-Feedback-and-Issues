@@ -1,6 +1,7 @@
 package net.zepalesque.redux.item;
 
 import com.aetherteam.aether.item.AetherItems;
+import com.aetherteam.aether.item.combat.DartItem;
 import io.wispforest.accessories.api.AccessoriesAPI;
 import io.wispforest.accessories.api.Accessory;
 import net.minecraft.ChatFormatting;
@@ -18,7 +19,10 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.zepalesque.redux.Redux;
 import net.zepalesque.redux.block.ReduxBlocks;
+import net.zepalesque.redux.entity.ReduxEntities;
 import net.zepalesque.redux.item.accessories.cape.AerboundCapeItem;
+import net.zepalesque.redux.item.combat.VeridiumDartItem;
+import net.zepalesque.redux.item.combat.VeridiumDartShooter;
 import net.zepalesque.redux.item.combat.VeridiumSwordItem;
 import net.zepalesque.redux.item.property.ReduxFoods;
 import net.zepalesque.redux.item.property.ReduxItemTiers;
@@ -52,8 +56,12 @@ public class ReduxItems {
     public static final DeferredItem<VeridiumShovelItem> INFUSED_VERIDIUM_SHOVEL = ITEMS.register("infused_veridium_shovel", () -> new VeridiumShovelItem(ReduxItemTiers.INFUSED_VERIDIUM, new Item.Properties().attributes(ShovelItem.createAttributes(ReduxItemTiers.INFUSED_VERIDIUM, 0, -2.8F)), VERIDIUM_SHOVEL));
     public static final DeferredItem<VeridiumHoeItem> INFUSED_VERIDIUM_HOE = ITEMS.register("infused_veridium_hoe", () -> new VeridiumHoeItem(ReduxItemTiers.INFUSED_VERIDIUM, new Item.Properties().attributes(HoeItem.createAttributes(ReduxItemTiers.INFUSED_VERIDIUM, 0, -1.4F)), VERIDIUM_HOE));
 
-    public static final DeferredItem<VeridiumSwordItem.Uninfused> VERIDIUM_SWORD = ITEMS.register("veridium_sword", () -> new VeridiumSwordItem.Uninfused(ReduxItemTiers.VERIDIUM, new Item.Properties().attributes(SwordItem.createAttributes(ReduxItemTiers.VERIDIUM, 0, -2.9F))));
-    public static final DeferredItem<VeridiumSwordItem> INFUSED_VERIDIUM_SWORD = ITEMS.register("infused_veridium_sword", () -> new VeridiumSwordItem(ReduxItemTiers.INFUSED_VERIDIUM, new Item.Properties().attributes(SwordItem.createAttributes(ReduxItemTiers.VERIDIUM, 0, -2.9F)), VERIDIUM_SWORD));
+    public static final DeferredItem<VeridiumSwordItem.Uninfused> VERIDIUM_SWORD = ITEMS.register("veridium_sword", () -> new VeridiumSwordItem.Uninfused(ReduxItemTiers.VERIDIUM, new Item.Properties().attributes(SwordItem.createAttributes(ReduxItemTiers.VERIDIUM, 2, -2.5F))));
+    public static final DeferredItem<VeridiumSwordItem> INFUSED_VERIDIUM_SWORD = ITEMS.register("infused_veridium_sword", () -> new VeridiumSwordItem(ReduxItemTiers.INFUSED_VERIDIUM, new Item.Properties().attributes(SwordItem.createAttributes(ReduxItemTiers.VERIDIUM, 4, -2.2F)), VERIDIUM_SWORD));
+
+    public static final DeferredItem<Item> VERIDIUM_DART = ITEMS.register("veridium_dart", () -> new VeridiumDartItem(new Item.Properties()));
+    public static final DeferredItem<VeridiumDartShooter.Uninfused> VERIDIUM_DART_SHOOTER = ITEMS.register("veridium_dart_shooter", () -> new VeridiumDartShooter.Uninfused(VERIDIUM_DART, 9, new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<VeridiumDartShooter> INFUSED_VERIDIUM_DART_SHOOTER = ITEMS.register("infused_veridium_dart_shooter", () -> new VeridiumDartShooter(VERIDIUM_DART, 7, new Item.Properties().stacksTo(1), ReduxItems.VERIDIUM_DART_SHOOTER));
 
 
     public static final DeferredItem<AerboundCapeItem> AERBOUND_CAPE = ITEMS.register("aerbound_cape", () -> new AerboundCapeItem(new Item.Properties().stacksTo(1).rarity(AetherItems.AETHER_LOOT)));

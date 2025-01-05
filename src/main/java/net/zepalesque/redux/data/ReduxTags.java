@@ -39,6 +39,8 @@ public class ReduxTags {
 
     public static class Items {
 
+        public static final TagKey<Item> INFUSED_VERIDIUM_ITEMS = tag("infused_veridium_items");
+
         public static TagKey<Item> tag(String name) {
             return TagKey.create(Registries.ITEM, Redux.loc(name));
         }

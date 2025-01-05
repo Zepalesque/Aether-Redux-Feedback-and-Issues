@@ -5,6 +5,7 @@ import net.zepalesque.redux.Redux;
 import net.zepalesque.redux.block.ReduxBlocks;
 import net.zepalesque.redux.client.audio.ReduxSounds;
 import net.zepalesque.redux.data.prov.ReduxLanguageProvider;
+import net.zepalesque.redux.entity.ReduxEntities;
 import net.zepalesque.redux.item.ReduxItems;
 import net.zepalesque.zenith.api.data.DatagenUtil;
 
@@ -137,6 +138,13 @@ public class ReduxLanguageData extends ReduxLanguageProvider {
         addItem(ReduxItems.INFUSED_VERIDIUM_SWORD);
         addLore(ReduxItems.INFUSED_VERIDIUM_SWORD, "A sword made of Veridium. This can be infused by right-clicking with an Ambrosium Shard to make it far more powerful for a short time!");
 
+        addItem(ReduxItems.VERIDIUM_DART_SHOOTER);
+        addLore(ReduxItems.VERIDIUM_DART_SHOOTER, "A dart shooter made of Veridium. This can be infused by right-clicking with an Ambrosium Shard to make it shoot faster and apply a glowing effect for a short time!");
+        addItem(ReduxItems.INFUSED_VERIDIUM_DART_SHOOTER);
+        addLore(ReduxItems.INFUSED_VERIDIUM_DART_SHOOTER, "A dart shooter made of Veridium. This can be infused by right-clicking with an Ambrosium Shard to make it shoot faster and apply a glowing effect for a short time!");
+        addItem(ReduxItems.VERIDIUM_DART);
+        addLore(ReduxItems.VERIDIUM_DART, "A dart made of Veridium. This can be used with a Veridium Dart Shooter");
+
         addItem(ReduxItems.VERIDIUM_HOE);
         addLore(ReduxItems.VERIDIUM_HOE, "A hoe made of Veridium. This can be infused by right-clicking with an Ambrosium Shard to make it far more powerful for a short time!");
         addItem(ReduxItems.INFUSED_VERIDIUM_HOE);
@@ -157,6 +165,10 @@ public class ReduxLanguageData extends ReduxLanguageProvider {
         addBlock(ReduxBlocks.LOGICATOR, "Redstone Logicator");
         addLore(ReduxBlocks.LOGICATOR, "A fascinating circuit made with an exotic material not found in the Aether - Redstone. This little diode takes in two inputs on the side, and will perform a logical operation on the two for the output. The operation is controlled by the torch on the top and the back input. The torch controls AND/OR mode, and the back input controls exclusivity (XNOR/XOR).");
 
+        addEntityType(ReduxEntities.EMBER);
+        addEntityType(ReduxEntities.VERIDIUM_DART);
+        addEntityType(ReduxEntities.INFUSED_VERIDIUM_DART);
+
         addTooltip("shift_info", "Hold [%s] for more info...");
         addTooltip("infusion_charge", "Infusion Charge: %s");
         addTooltip("infusion_info", "Can be infused by right-clicking the item in your inventory while hovering over it with an Ambrosium Shard");
@@ -165,8 +177,6 @@ public class ReduxLanguageData extends ReduxLanguageProvider {
         addTooltip("cape_modifier", "When on Back");
 
         addPackDescription("mod", "The Aether: Redux Resources");
-        addPackTitle("tintable_grass", "Redux - Tintable Grass");
-        addPackDescription("tintable_grass", "Grass tint textures for the Aether: Redux");
 
         addPackTitle("bronze_upgrade", "Redux - Bronze Dungeon Upgrade");
         addPackDescription("bronze_upgrade", "Configurable in config/aether_redux/common.toml");

@@ -18,6 +18,7 @@ import net.zepalesque.redux.block.ReduxBlocks;
 import net.zepalesque.redux.blockset.stone.ReduxStoneSets;
 import net.zepalesque.redux.config.ReduxConfig;
 import net.zepalesque.redux.entity.projectile.Ember;
+import net.zepalesque.redux.entity.projectile.VeridiumDart;
 import org.spongepowered.asm.mixin.Unique;
 
 import java.util.Map;
@@ -29,6 +30,12 @@ public class ReduxEntities {
 
     public static final DeferredHolder<EntityType<?>, EntityType<Ember>> EMBER = ENTITIES.register("ember",
             () -> EntityType.Builder.<Ember>of(Ember::new, MobCategory.MISC).sized(0.125F, 0.125F).clientTrackingRange(4).updateInterval(20).build("ember"));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<VeridiumDart>> INFUSED_VERIDIUM_DART = ENTITIES.register("infused_veridium_dart",
+            () -> EntityType.Builder.<VeridiumDart>of(VeridiumDart::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build("infused_veridium_dart"));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<VeridiumDart.Uninfused>> VERIDIUM_DART = ENTITIES.register("veridium_dart",
+            () -> EntityType.Builder.<VeridiumDart.Uninfused>of(VeridiumDart.Uninfused::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build("veridium_dart"));
 
 
     public static void addBossConversions() {

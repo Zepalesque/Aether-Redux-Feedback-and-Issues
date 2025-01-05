@@ -113,6 +113,13 @@ public class ReduxTabs {
                     ReduxItems.VERIDIUM_SHOVEL,
                     ReduxItems.VERIDIUM_SWORD
             );
+
+            TabUtil.putAfter(event, AetherItems.ENCHANTED_DART,
+                    ReduxItems.VERIDIUM_DART_SHOOTER,
+                    ReduxItems.INFUSED_VERIDIUM_DART_SHOOTER,
+                    ReduxItems.VERIDIUM_DART
+            );
+
         } else if (TabUtil.isForTab(event, AetherCreativeTabs.AETHER_INGREDIENTS)) {
             TabUtil.putAfter(event, AetherItems.ZANITE_GEMSTONE,
                     ReduxItems.RAW_VERIDIUM,
