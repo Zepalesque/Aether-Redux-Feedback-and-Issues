@@ -26,6 +26,7 @@ public class ReduxMapData extends ReduxDataMapProvider {
 
         var biomeTints = this.builder(UnityBiomeTints.AETHER_GRASS.get().getDataMap());
         biomeTints.add(ReduxBiomes.GILDED_GROVES, ReduxColors.Tints.GILDED_GRASS_COLOR, false);
+        biomeTints.add(ReduxBiomes.THE_BLIGHT, ReduxColors.Tints.BLIGHT_GRASS_COLOR, false);
 
         var compostables = this.builder(NeoForgeDataMaps.COMPOSTABLES);
         this.addCompost(compostables, ReduxBlocks.GILDENROOT_LEAVES, 0.3F);

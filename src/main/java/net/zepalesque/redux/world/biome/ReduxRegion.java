@@ -27,7 +27,7 @@ public class ReduxRegion extends Region {
 //        ResourceKey<Biome> frosted = ReduxConfig.COMMON.enable_snowy_biomes.get() ? ReduxBiomes.FROSTED_FORESTS : AetherBiomes.SKYROOT_FOREST;
 //        ResourceKey<Biome> glaical = ReduxConfig.COMMON.enable_snowy_biomes.get() ? ReduxBiomes.GLACIAL_TUNDRA : AetherBiomes.SKYROOT_FOREST;
 //        ResourceKey<Biome> cloudcaps = ReduxConfig.COMMON.enable_cloudcaps.get() ? ReduxBiomes.CLOUDCAPS : AetherBiomes.SKYROOT_GROVE;
-//        ResourceKey<Biome> blight = ReduxConfig.COMMON.enable_the_blight.get() ? ReduxBiomes.THE_BLIGHT : AetherBiomes.SKYROOT_WOODLAND;
+        ResourceKey<Biome> blight = /*ReduxConfig.COMMON.enable_the_blight.get() ?*/ ReduxBiomes.THE_BLIGHT /*: AetherBiomes.SKYROOT_WOODLAND*/;
 //        ResourceKey<Biome> highfields = ReduxConfig.COMMON.enable_skyfields.get() ? ReduxBiomes.SKYFIELDS : AetherBiomes.SKYROOT_MEADOW;
 //        ResourceKey<Biome> shrublands = ReduxConfig.COMMON.enable_skyroot_shrublands.get() ? ReduxBiomes.SKYROOT_SHRUBLANDS : AetherBiomes.SKYROOT_MEADOW;
         ResourceKey<Biome> grove = /*ReduxConfig.COMMON.enable_gilded_biomes.get() ?*/ ReduxBiomes.GILDED_GROVES /*: AetherBiomes.SKYROOT_GROVE*/;
@@ -45,9 +45,9 @@ public class ReduxRegion extends Region {
         addBiome(mapper, new Climate.ParameterPoint(temp1, Climate.Parameter.span(0.3F, 1.0F), fullRange, fullRange, fullRange, fullRange, 0),
                 cloudcaps);*/
 
-/*        addBiome(mapper, new Climate.ParameterPoint(temp2, Climate.Parameter.span(-1.0F, -0.3F), fullRange, fullRange, fullRange, fullRange, 0),
-                blight);*/
-        addBiome(mapper, new Climate.ParameterPoint(temp2, Climate.Parameter.span(-0.3F, -0.15F), fullRange, fullRange, fullRange, fullRange, 0),
+        addBiome(mapper, new Climate.ParameterPoint(temp2, Climate.Parameter.span(-1.0F, -0.4F), fullRange, fullRange, fullRange, fullRange, 0),
+                blight);
+        addBiome(mapper, new Climate.ParameterPoint(temp2, Climate.Parameter.span(-0.4F, -0.15F), fullRange, fullRange, fullRange, fullRange, 0),
                 AetherBiomes.SKYROOT_FOREST);
         addBiome(mapper, new Climate.ParameterPoint(temp2, Climate.Parameter.span(-0.15F, 0.0F), fullRange, fullRange, fullRange, fullRange, 0),
                 AetherBiomes.SKYROOT_MEADOW);

@@ -55,9 +55,11 @@ public class ReduxBiomeModifiers {
                 Optional.of(new SkiesModifier.DefaultSkySettings(biomes.getOrThrow(ReduxTags.Biomes.MODIFY_SKY_COLOR), Optional.of(0x9FA4DD), Optional.of(0xBEC4E5))),
                 ImmutableMap.<Holder<Biome>, Integer>builder() // sky
                         .put(biomes.getOrThrow(ReduxBiomes.GILDED_GROVES), 0xC4BDAA)
+                        .put(biomes.getOrThrow(ReduxBiomes.THE_BLIGHT), 0x8F90BA)
                         .build(),
                 ImmutableMap.<Holder<Biome>, Integer>builder() // fog
                         .put(biomes.getOrThrow(ReduxBiomes.GILDED_GROVES), 0xDDD9DA)
+                        .put(biomes.getOrThrow(ReduxBiomes.THE_BLIGHT), 0xBCBDE2)
                         .build());
         context.register(SKY_COLOR_AETHER, new ConditionalBiomeModifier(Holder.direct(sky), conditions.get(ReduxConditions.SKY_COLORS).orElseThrow()));
 
