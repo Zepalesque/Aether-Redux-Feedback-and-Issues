@@ -120,6 +120,9 @@ public class ReduxTabs {
                     ReduxItems.VERIDIUM_DART
             );
 
+            TabUtil.putAfter(event, AetherItems.MUSIC_DISC_ASCENDING_DAWN, ReduxItems.MUSIC_DISC_SENTIENCE);
+
+
         } else if (TabUtil.isForTab(event, AetherCreativeTabs.AETHER_INGREDIENTS)) {
             TabUtil.putAfter(event, AetherItems.ZANITE_GEMSTONE,
                     ReduxItems.RAW_VERIDIUM,
@@ -133,6 +136,7 @@ public class ReduxTabs {
                     ReduxItems.WYND_OATS,
                     ReduxItems.WYND_OAT_PANICLE
             );
+
         } else if (TabUtil.isForTab(event, AetherCreativeTabs.AETHER_REDSTONE_BLOCKS)) {
             TabUtil.put(event, ReduxBlocks.LOGICATOR);
         } else if (TabUtil.isForTab(event, AetherCreativeTabs.AETHER_ARMOR_AND_ACCESSORIES)) {
