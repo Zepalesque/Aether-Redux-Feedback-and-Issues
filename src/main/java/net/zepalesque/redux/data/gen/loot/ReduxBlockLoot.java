@@ -34,9 +34,19 @@ public class ReduxBlockLoot extends ReduxBlockLootProvider {
         Redux.BLOCK_SETS.forEach(set -> set.lootData(this));
 
         this.add(ReduxBlocks.GILDENROOT_LEAVES.get(),
-                (leaves) -> droppingWithChancesAndSkyrootSticks(leaves, ReduxFlowerSets.GILDENROOT_SAPLING.flower().get(), BlockLootAccessor.aether$getNormalLeavesSaplingChances()));
-
+                (leaves) -> droppingWithChancesAndSkyrootSticks(
+                        leaves, ReduxFlowerSets.GILDENROOT_SAPLING.flower().get(),
+                        BlockLootAccessor.aether$getNormalLeavesSaplingChances())
+        );
         this.add(ReduxBlocks.GILDENROOT_LEAF_PILE.get(), shears());
+
+        this.add(ReduxBlocks.SHADEROOT_LEAVES.get(),
+                (leaves) -> droppingWithChancesAndSkyrootSticks(
+                        leaves, ReduxFlowerSets.SHADEROOT_SAPLING.flower().get(),
+                        BlockLootAccessor.aether$getNormalLeavesSaplingChances())
+        );
+        this.add(ReduxBlocks.SHADEROOT_LEAF_PILE.get(), shears());
+
 
         this.dropSelf(ReduxBlocks.CARVED_PILLAR.get());
         this.dropSelf(ReduxBlocks.SENTRY_PILLAR.get());

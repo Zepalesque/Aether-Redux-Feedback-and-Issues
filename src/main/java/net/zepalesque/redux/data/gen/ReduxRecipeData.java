@@ -48,6 +48,9 @@ public class ReduxRecipeData extends ReduxRecipeProvider {
 
         enchantingRecipe(RecipeCategory.DECORATIONS, ReduxFlowerSets.GILDENROOT_SAPLING.flower().get(), AetherBlocks.SKYROOT_SAPLING.get(), 0.1F, 1000).save(output);
         ambrosiumEnchanting(ReduxBlocks.GILDENROOT_LEAVES.get(), AetherBlocks.SKYROOT_LEAVES.get()).save(output);
+        layerBlock(output, ReduxBlocks.GILDENROOT_LEAF_PILE.get(), ReduxBlocks.GILDENROOT_LEAVES.get(), 6);
+
+        layerBlock(output, ReduxBlocks.SHADEROOT_LEAF_PILE.get(), ReduxBlocks.SHADEROOT_LEAVES.get(), 6);
 
         stonecuttingRecipe(output, RecipeCategory.BUILDING_BLOCKS, ReduxBlocks.CARVED_BASE.get(), AetherBlocks.CARVED_STONE.get());
         stonecuttingRecipe(output, RecipeCategory.BUILDING_BLOCKS, ReduxBlocks.CARVED_PILLAR.get(), AetherBlocks.CARVED_STONE.get());
@@ -217,6 +220,5 @@ public class ReduxRecipeData extends ReduxRecipeProvider {
 
         oreBlockStorageRecipesRecipesWithCustomUnpacking(output, RecipeCategory.MISC, ReduxItems.REFINED_SENTRITE.get(), RecipeCategory.BUILDING_BLOCKS, ReduxBlocks.REFINED_SENTRITE_BLOCK.get(), "refined_sentrite_from_refined_sentrite_block", "refined_sentrite");
 
-        layerBlock(output, ReduxBlocks.GILDENROOT_LEAF_PILE.get(), ReduxBlocks.GILDENROOT_LEAVES.get(), 6);
     }
 }

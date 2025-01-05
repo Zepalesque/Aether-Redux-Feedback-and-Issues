@@ -44,6 +44,13 @@ public class ReduxFlowerSets {
             .compost(0.3F)
             .withLore("The sapling of the Gildenroot tree. It can be grown by waiting or using Bone Meal."));
 
+    public static final BaseFlowerSet<SaplingBlock> SHADEROOT_SAPLING = register(new UntintedFlowerSet<>("shaderoot_sapling", "natural/",
+            () -> new SaplingBlock(ReduxTreeGrowers.SHADEROOT, Properties.ofFullCopy(Blocks.OAK_SAPLING).mapColor(MapColor.TERRACOTTA_PURPLE)))
+            .tabAfter(AetherCreativeTabs.AETHER_NATURAL_BLOCKS, () -> ReduxFlowerSets.GILDENROOT_SAPLING.flower().get(), BlockSet.TabAdditionPhase.BEFORE)
+            .withFlowerTag(BlockTags.SAPLINGS)
+            .compost(0.3F)
+            .withLore("The sapling of the Gildenroot tree. It can be grown by waiting or using Bone Meal."));
+
     public static final BaseFlowerSet<CustomBoundsBushBlock> LUCKY_CLOVER = register(new CloverSet<>("lucky_clover", "natural/",
             () -> new CustomBoundsBushBlock(Block.box(5.0D, 0.0D, 5.0D, 11.0D, 10.0D, 11.0D), Properties.ofFullCopy(Blocks.DANDELION).mapColor(MapColor.GOLD)))
             .tabAfter(AetherCreativeTabs.AETHER_NATURAL_BLOCKS, ReduxBlocks.GOLDEN_CLOVERS, BlockSet.TabAdditionPhase.AFTER)

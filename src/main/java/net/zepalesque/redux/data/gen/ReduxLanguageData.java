@@ -26,6 +26,12 @@ public class ReduxLanguageData extends ReduxLanguageProvider {
         addBlock(ReduxBlocks.GILDENROOT_LEAF_PILE);
         addLore(ReduxBlocks.GILDENROOT_LEAF_PILE, "A pile of Gildenroot Leaves. These can be stacked on top of eachother to make various sizes!");
 
+        addBlock(ReduxBlocks.SHADEROOT_LEAVES);
+        addLore(ReduxBlocks.SHADEROOT_LEAVES, "Leaves of the Shaderoot tree, a corrupted variation of Skyroot that has been inflicted by the Blight.");
+
+        addBlock(ReduxBlocks.SHADEROOT_LEAF_PILE);
+        addLore(ReduxBlocks.SHADEROOT_LEAF_PILE, "A pile of Shaderoot Leaves. These can be stacked on top of eachother to make various sizes!");
+
         addBlock(ReduxBlocks.GOLDEN_CLOVERS);
         addLore(ReduxBlocks.GOLDEN_CLOVERS, "A nice patch of clovers that can be found in the Gilded Groves.");
 

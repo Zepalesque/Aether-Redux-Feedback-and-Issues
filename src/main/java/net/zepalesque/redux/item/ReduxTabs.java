@@ -39,7 +39,9 @@ public class ReduxTabs {
 
             TabUtil.putAfter(event, UnityBlocks.SKYROOT_LEAF_PILE,
                     ReduxBlocks.GILDENROOT_LEAVES,
-                    ReduxBlocks.GILDENROOT_LEAF_PILE
+                    ReduxBlocks.GILDENROOT_LEAF_PILE,
+                    ReduxBlocks.SHADEROOT_LEAVES,
+                    ReduxBlocks.SHADEROOT_LEAF_PILE
             );
 
             TabUtil.putAfter(event, ReduxFlowerSets.AURUM.flower(), ReduxBlocks.GOLDEN_CLOVERS);

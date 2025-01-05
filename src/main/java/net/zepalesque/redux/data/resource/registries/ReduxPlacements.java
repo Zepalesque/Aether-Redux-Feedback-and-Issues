@@ -34,6 +34,7 @@ import net.minecraft.world.level.levelgen.placement.NoiseThresholdCountPlacement
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.placement.RarityFilter;
 import net.zepalesque.redux.block.ReduxBlocks;
+import net.zepalesque.redux.blockset.flower.ReduxFlowerSets;
 import net.zepalesque.redux.data.resource.builders.ReduxPlacementBuilders;
 
 public class ReduxPlacements extends ReduxPlacementBuilders {
@@ -57,6 +58,10 @@ public class ReduxPlacements extends ReduxPlacementBuilders {
     public static final ResourceKey<PlacedFeature> DENSE_AMBROSIUM_ORE = createKey("dense_ambrosium_ore");
     public static final ResourceKey<PlacedFeature> SURFACE_RULE_WATER_LAKE = copyKey(ReduxFeatureConfig.SURFACE_RULE_WATER_LAKE);
     public static final ResourceKey<PlacedFeature> WYNDSPROUTS_PATCH = copyKey(ReduxFeatureConfig.WYNDSPROUTS_PATCH);
+
+
+    public static final ResourceKey<PlacedFeature> BLIGHT_TREES = copyKey(ReduxFeatureConfig.BLIGHT_TREES);
+
 
     public static final ResourceKey<PlacedFeature> SPARSE_WYNDSPROUTS_PATCH = createKey("sparse_" + name(ReduxBlocks.WYNDSPROUTS) + "_patch");
 
@@ -109,6 +114,19 @@ public class ReduxPlacements extends ReduxPlacementBuilders {
                 ImprovedLayerPlacementModifier.of(Heightmap.Types.OCEAN_FLOOR, ConstantInt.of(2), 4),
                 BiomeFilter.biome(),
                 PlacementUtils.filteredByBlockSurvival(AetherBlocks.GOLDEN_OAK_SAPLING.get()),
+                blacklist
+        );
+
+        register(context, BLIGHT_TREES, configs.getOrThrow(ReduxFeatureConfig.BLIGHT_TREES),
+                CountPlacement.of(new WeightedListInt(SimpleWeightedRandomList.<IntProvider>builder()
+                        .add(ConstantInt.of(6), 9)
+                        .add(ConstantInt.of(4), 3)
+                        .add(ConstantInt.of(2), 5)
+                        .add(ConstantInt.of(10), 1)
+                        .build())),
+                ImprovedLayerPlacementModifier.of(Heightmap.Types.OCEAN_FLOOR, ConstantInt.of(2), 4),
+                BiomeFilter.biome(),
+                PlacementUtils.filteredByBlockSurvival(ReduxFlowerSets.SHADEROOT_SAPLING.flower().get()),
                 blacklist
         );
 

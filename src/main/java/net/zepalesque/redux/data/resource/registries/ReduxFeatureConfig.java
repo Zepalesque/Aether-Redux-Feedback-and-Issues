@@ -87,6 +87,8 @@ public class ReduxFeatureConfig extends ReduxFeatureBuilders {
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> GROVE_TREES = createKey("gilded_groves_trees");
 
+    public static final ResourceKey<ConfiguredFeature<?, ?>> BLIGHT_TREES = createKey("the_blight_trees");
+
     public static final ResourceKey<ConfiguredFeature<?, ?>> SURFACE_RULE_WATER_LAKE = createKey("surface_rule_water_lake");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> AMBROSIUM_ROCK = createKey("ambrosium_rock");
@@ -95,6 +97,9 @@ public class ReduxFeatureConfig extends ReduxFeatureBuilders {
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> BLEAKMOSS_VEGETATION = createKey("bleakmoss_vegetation");
     public static final ResourceKey<ConfiguredFeature<?, ?>> BLEAKMOSS_BONEMEAL = createKey("bleakmoss_bonemeal");
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SMALL_SHADEROOT_TREE = createKey("small_shaderoot");
+
 
     // Overrides
     public static final ResourceKey<ConfiguredFeature<?, ?>> CRYSTAL_TREE = AetherConfiguredFeatures.CRYSTAL_TREE_CONFIGURATION;
@@ -122,6 +127,15 @@ public class ReduxFeatureConfig extends ReduxFeatureBuilders {
                         BlockStateProvider.simple(AetherFeatureStates.SKYROOT_LOG),
                         new StraightTrunkPlacer(4, 2, 0),
                         prov(ReduxBlocks.GILDENROOT_LEAVES),
+                        new SkyrootFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)),
+                        new TwoLayersFeatureSize(1, 0, 1)
+                ).ignoreVines().build());
+
+        register(context, SMALL_SHADEROOT_TREE, Feature.TREE,
+                new TreeConfiguration.TreeConfigurationBuilder(
+                        BlockStateProvider.simple(AetherFeatureStates.SKYROOT_LOG),
+                        new StraightTrunkPlacer(4, 2, 0),
+                        prov(ReduxBlocks.SHADEROOT_LEAVES),
                         new SkyrootFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)),
                         new TwoLayersFeatureSize(1, 0, 1)
                 ).ignoreVines().build());
@@ -210,8 +224,28 @@ public class ReduxFeatureConfig extends ReduxFeatureBuilders {
 
         register(context, GROVE_TREES, Feature.RANDOM_SELECTOR,
                 new RandomFeatureConfiguration(List.of(
-                        new WeightedPlacedFeature(PlacementUtils.inlinePlaced(configs.getOrThrow(GROVE_GILDED_TREES), PlacementUtils.filteredByBlockSurvival(ReduxFlowerSets.GILDENROOT_SAPLING.flower().get())), 0.375F)),
-                        PlacementUtils.inlinePlaced(configs.getOrThrow(GROVE_GOLDEN_TREES), PlacementUtils.filteredByBlockSurvival(AetherBlocks.GOLDEN_OAK_SAPLING.get()))));
+                        new WeightedPlacedFeature(
+                                PlacementUtils.inlinePlaced(
+                                        configs.getOrThrow(GROVE_GILDED_TREES),
+                                        PlacementUtils.filteredByBlockSurvival(ReduxFlowerSets.GILDENROOT_SAPLING.flower().get()))
+                                , 0.375F)),
+                        PlacementUtils.inlinePlaced(
+                                configs.getOrThrow(GROVE_GOLDEN_TREES),
+                                PlacementUtils.filteredByBlockSurvival(AetherBlocks.GOLDEN_OAK_SAPLING.get())
+                        )));
+
+        register(context, BLIGHT_TREES, Feature.RANDOM_SELECTOR,
+                new RandomFeatureConfiguration(List.of(
+                        new WeightedPlacedFeature(
+                                PlacementUtils.inlinePlaced(
+                                        configs.getOrThrow(SMALL_SHADEROOT_TREE),
+                                        PlacementUtils.filteredByBlockSurvival(ReduxFlowerSets.SHADEROOT_SAPLING.flower().get()))
+                                , 0.375F)),
+                        // TODO: Blightwillow
+                        PlacementUtils.inlinePlaced(
+                                configs.getOrThrow(SMALL_SHADEROOT_TREE),
+                                PlacementUtils.filteredByBlockSurvival(AetherBlocks.GOLDEN_OAK_SAPLING.get())
+                        )));
 
         register(context, SENTRITE_ORE, Feature.ORE, new OreConfiguration(new TagMatchTest(AetherTags.Blocks.HOLYSTONE),
                 drops(ReduxStoneSets.SENTRITE.block()), 48, 0.0F));

@@ -36,9 +36,11 @@ public class Blight {
                 .grassColorOverride(0xb1_ff_cb)
                 .foliageColorOverride(0xb1_ff_cb)
                 .grassColorModifier(BiomeSpecialEffects.GrassColorModifier.NONE)
+                // TODO: Consider doing some music stuff
                 .backgroundMusic(ReduxMusic.DEFAULT_AETHER_MUSIC)
                 .build())
                 .mobSpawnSettings(
+                        // TODO: Blight spawns
                 new MobSpawnSettings.Builder()
                         .addMobCharge(AetherEntityTypes.COCKATRICE.get(), 0.5, 0.15)
                         .addMobCharge(AetherEntityTypes.ZEPHYR.get(), 0.6, 0.16)
@@ -72,6 +74,7 @@ public class Blight {
 
                 .addFeature(GenerationStep.Decoration.LAKES, ReduxPlacements.SURFACE_RULE_WATER_LAKE)
 
+                // TODO: Ore balancing
                 .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, AetherPlacedFeatures.ORE_AETHER_DIRT_PLACEMENT)
                 .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, AetherPlacedFeatures.ORE_ICESTONE_PLACEMENT)
                 .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, AetherPlacedFeatures.ORE_AMBROSIUM_PLACEMENT)
@@ -81,7 +84,8 @@ public class Blight {
 
                 .addFeature(GenerationStep.Decoration.FLUID_SPRINGS, AetherPlacedFeatures.WATER_SPRING_PLACEMENT)
 
-                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AetherPlacedFeatures.SKYROOT_FOREST_TREES_PLACEMENT)
+                // TODO: Blight plants
+                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ReduxPlacements.BLIGHT_TREES)
                 .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AetherPlacedFeatures.HOLIDAY_TREE_PLACEMENT)
                 .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AetherPlacedFeatures.GRASS_PATCH_PLACEMENT)
                 .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AetherPlacedFeatures.TALL_GRASS_PATCH_PLACEMENT)
@@ -89,6 +93,7 @@ public class Blight {
                 .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AetherPlacedFeatures.PURPLE_FLOWER_PATCH_PLACEMENT)
                 .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, AetherPlacedFeatures.BERRY_BUSH_PATCH_PLACEMENT)
 
+                // TODO: Aercloud balancing
                 .addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, AetherPlacedFeatures.CRYSTAL_ISLAND_PLACEMENT)
                 .addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, AetherPlacedFeatures.COLD_AERCLOUD_PLACEMENT)
                 .addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, AetherPlacedFeatures.BLUE_AERCLOUD_PLACEMENT)

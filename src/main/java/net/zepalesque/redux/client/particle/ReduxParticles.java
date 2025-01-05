@@ -26,6 +26,7 @@ public class ReduxParticles {
     public static final DeferredRegister<ParticleType<?>> PARTICLES = DeferredRegister.create(BuiltInRegistries.PARTICLE_TYPE, Redux.MODID);
 
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> GILDENROOT_LEAF = PARTICLES.register("gildenroot_leaf", () -> new SimpleParticleType(false));
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> SHADEROOT_LEAF = PARTICLES.register("shaderoot_leaf", () -> new SimpleParticleType(false));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> WHIRLWIND_LIGHTNING = PARTICLES.register("whirlwind_lightning", () -> new SimpleParticleType(false));
 
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> SPARK = PARTICLES.register("spark", () -> new SimpleParticleType(false));
@@ -34,6 +35,7 @@ public class ReduxParticles {
     @OnlyIn(Dist.CLIENT)
     public static void registerParticleFactories(RegisterParticleProvidersEvent event) {
         event.registerSpriteSet(GILDENROOT_LEAF.get(), ReduxLeafParticle.Provider::new);
+        event.registerSpriteSet(SHADEROOT_LEAF.get(), ReduxLeafParticle.Provider::new);
         event.registerSpriteSet(WHIRLWIND_LIGHTNING.get(), ReduxGlowParticle.Lightning::new);
         event.registerSpriteSet(SPARK.get(), SparkParticle.Provider::new);
 
