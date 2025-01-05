@@ -51,7 +51,7 @@ public class ReduxTags {
 
         public static final TagKey<EntityType<?>> SENTRIES = tag("sentries");
 
-        public static final TagKey<EntityType<?>> SENTRITE_MUSIC_DISC_DROPPING = tag("sentries");
+        public static final TagKey<EntityType<?>> SENTRITE_MUSIC_DISC_DROPPING = tag("sentrite_music_disc_dropping");
 
         private static TagKey<EntityType<?>> tag(String name) {
             return TagKey.create(Registries.ENTITY_TYPE, Redux.loc(name));
