@@ -279,4 +279,9 @@ public abstract class BaseFlowerSet<B extends Block> extends AbstractFlowerSet i
         }
         return null;
     }
+
+    @Override
+    public String getID() {
+        return this.id;
+    }
 }

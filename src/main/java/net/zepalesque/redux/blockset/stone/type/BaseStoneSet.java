@@ -400,4 +400,9 @@ public class BaseStoneSet extends AbstractStoneSet implements MutableLoreGenerat
         }
         return null;
     }
+
+    @Override
+    public String getID() {
+        return this.id;
+    }
 }
