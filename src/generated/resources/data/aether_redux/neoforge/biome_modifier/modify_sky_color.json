@@ -9,11 +9,11 @@
     },
     "fog_map": {
       "aether_redux:gilded_groves": 14539226,
-      "aether_redux:the_blight": 12369378
+      "aether_redux:the_blight": 11382483
     },
     "sky_map": {
       "aether_redux:gilded_groves": 12893610,
-      "aether_redux:the_blight": 9408698
+      "aether_redux:the_blight": 8158629
     }
   },
   "when": "aether_redux:sky_colors"

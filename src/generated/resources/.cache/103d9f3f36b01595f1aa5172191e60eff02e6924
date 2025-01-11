@@ -1,4 +1,4 @@
-// 1.21.1	2025-01-05T15:53:58.4670438	Registries
+// 1.21.1	2025-01-11T11:29:40.9539398	Registries
 1bf1e96a91388f7bf47c90dab07b1152d3861b11 data/aether/worldgen/configured_feature/crystal_tree.json
 36359e7f855c63655f66afb67ad5e5bffb49b9ad data/aether/worldgen/configured_feature/golden_oak_tree.json
 47ec4dab1e49d10c7a9d88096f1d8297e837b2e8 data/aether/worldgen/configured_feature/skyroot_tree.json
@@ -7,7 +7,7 @@ b1924e11e2a4cc074084f391e61ba8b59b590874 data/aether_redux/neoforge/biome_modifi
 153a8395e69deb42c8ce94ce097e7110ccd0e329 data/aether_redux/neoforge/biome_modifier/add_sentrite.json
 80e78c3961c994390ac7e9e070ead01a6ff24bba data/aether_redux/neoforge/biome_modifier/add_wyndsprouts.json
 35449027148b0a4224081b47e833d7239aee6b28 data/aether_redux/neoforge/biome_modifier/modify_music.json
-093c9fca32cae26bfdc28ca166682786ab35d86d data/aether_redux/neoforge/biome_modifier/modify_sky_color.json
+26142eac39b5c20151d6451b935dc71f7c4c234b data/aether_redux/neoforge/biome_modifier/modify_sky_color.json
 83b35b6092b680cc1622e2e6c19932499f99e62f data/aether_redux/neoforge/biome_modifier/modify_water_color.json
 4a5be552b9f72acc559173e300fee91cca2aba4f data/aether_redux/neoforge/structure_modifier/remove_large_clouds.json
 b70383ff80e31243b986fcefb5fd78247ee1b1de data/aether_redux/worldgen/biome/gilded_groves.json
