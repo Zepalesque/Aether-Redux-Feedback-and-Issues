@@ -140,8 +140,8 @@ public class Redux {
         if (event.getPackType() == PackType.CLIENT_RESOURCES) {
             ASSETS_CONFIG.setup(event);
         } else if (event.getPackType() == PackType.SERVER_DATA) {
-            if (ReduxConfig.COMMON.bronze_dungeon_upgrade.get()) { PackUtils.setupPack(event, MODID, "dungeon_upgrades/bronze", "bronze_upgrade", true, true); }
-            if (ReduxConfig.COMMON.redux_noise.get().get()) { PackUtils.setupPack(event, MODID, "redux_noise", "redux_noise", true, true); }
+            if (ReduxConfig.COMMON.bronze_dungeon_upgrade.get()) { PackUtils.setupPack(event, MODID, "data/dungeon_upgrades/bronze", "bronze_upgrade", true, true); }
+            if (ReduxConfig.COMMON.redux_noise.get().get()) { PackUtils.setupPack(event, MODID, "data/redux_noise", "redux_noise", true, true); }
         }
     }
 
