@@ -9,12 +9,10 @@ import java.util.function.Supplier;
 
 public class ShadedLeavesBlock extends FallingLeavesBlock {
     private final int lightBlock;
-    private final boolean propogateLight;
 
     public ShadedLeavesBlock(Supplier<? extends ParticleOptions> particle, int lightBlock, Properties properties) {
         super(particle, properties);
         this.lightBlock = lightBlock;
-        this.propogateLight = lightBlock < 15;
     }
 
     @Override
@@ -24,6 +22,6 @@ public class ShadedLeavesBlock extends FallingLeavesBlock {
 
     @Override
     protected boolean propagatesSkylightDown(BlockState state, BlockGetter level, BlockPos pos) {
-        return this.propogateLight && super.propagatesSkylightDown(state, level, pos);
+        return this.lightBlock <= level.getMaxLightLevel() && super.propagatesSkylightDown(state, level, pos);
     }
 }
