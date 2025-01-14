@@ -2,7 +2,7 @@
   "type": "minecraft:random_selector",
   "config": {
     "default": {
-      "feature": "aether_redux:small_shaderoot",
+      "feature": "aether_redux:blightroot",
       "placement": [
         {
           "type": "minecraft:block_predicate_filter",
