@@ -21,6 +21,7 @@ import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.DensityFunction;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
@@ -48,6 +49,7 @@ import net.zepalesque.redux.data.resource.builders.ReduxFeatureBuilders;
 import net.zepalesque.redux.world.feature.gen.CloudbedFeature;
 import net.zepalesque.redux.world.feature.gen.ReduxFeatures;
 import net.zepalesque.redux.world.tree.decorator.GoldenVineDecorator;
+import net.zepalesque.redux.world.tree.foliage.BlightwillowFoliagePlacer;
 import net.zepalesque.redux.world.tree.foliage.SkyrootFoliagePlacer;
 import net.zepalesque.redux.world.tree.foliage.SmallGoldenOakFoliagePlacer;
 import net.zepalesque.unity.block.UnityBlocks;
@@ -100,6 +102,8 @@ public class ReduxFeatureConfig extends ReduxFeatureBuilders {
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> SMALL_SHADEROOT_TREE = createKey("small_shaderoot");
 
+    public static final ResourceKey<ConfiguredFeature<?, ?>> BLIGHTROOT_TREE = createKey("blightroot");
+
 
     // Overrides
     public static final ResourceKey<ConfiguredFeature<?, ?>> CRYSTAL_TREE = AetherConfiguredFeatures.CRYSTAL_TREE_CONFIGURATION;
@@ -138,6 +142,17 @@ public class ReduxFeatureConfig extends ReduxFeatureBuilders {
                         prov(ReduxBlocks.SHADEROOT_LEAVES),
                         new SkyrootFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)),
                         new TwoLayersFeatureSize(1, 0, 1)
+                ).ignoreVines().build());
+
+        register(context, BLIGHTROOT_TREE, Feature.TREE,
+                new TreeConfiguration.TreeConfigurationBuilder(
+                        prov(ReduxWoodSets.BLIGHTWILLOW.log()),
+                        // TODO
+                        new IntProviderTrunkPlacer(UniformInt.of(12, 14)),
+                        // TODO
+                        prov(drops(ReduxBlocks.SHADEROOT_LEAVES).setValue(LeavesBlock.PERSISTENT, true)),
+                        new BlightwillowFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)),
+                        new TwoLayersFeatureSize(7, 0, 3)
                 ).ignoreVines().build());
 
         register(context, LARGE_GILDENROOT_TREE, Feature.TREE,
@@ -241,9 +256,9 @@ public class ReduxFeatureConfig extends ReduxFeatureBuilders {
                                         configs.getOrThrow(SMALL_SHADEROOT_TREE),
                                         PlacementUtils.filteredByBlockSurvival(ReduxFlowerSets.SHADEROOT_SAPLING.flower().get()))
                                 , 0.375F)),
-                        // TODO: Blightwillow
                         PlacementUtils.inlinePlaced(
-                                configs.getOrThrow(SMALL_SHADEROOT_TREE),
+                                configs.getOrThrow(BLIGHTROOT_TREE),
+                                // TODO: Filter via Blightroot Sapling
                                 PlacementUtils.filteredByBlockSurvival(AetherBlocks.GOLDEN_OAK_SAPLING.get())
                         )));
 
