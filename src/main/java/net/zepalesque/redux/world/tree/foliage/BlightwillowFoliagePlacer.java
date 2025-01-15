@@ -56,7 +56,7 @@ public class BlightwillowFoliagePlacer extends FoliagePlacer {
                 if (isLowest) extendBelow = true;
                 if (isHighest) extendAbove = true;
                 mutable.setWithOffset(start, 0, i, 0);
-                placeLeavesRow(level, setter, rand, config, mutable, 0, 0, rand.nextBoolean());
+                placeLeavesRow(level, setter, rand, config, mutable, 0, 0, false);
             }
         }
 
@@ -67,7 +67,7 @@ public class BlightwillowFoliagePlacer extends FoliagePlacer {
             boolean place = (i != 1 || ((extendBelow) && rand.nextFloat() < 0.75F)) && (i != radius + 2 || ((extendAbove) && rand.nextFloat() < 0.75F));
             if (place) {
                 mutable.setWithOffset(start, d.getNormal().getX(), i, d.getNormal().getZ());
-                placeLeavesRow(level, setter, rand, config, mutable, 0, 0, rand.nextBoolean());
+                placeLeavesRow(level, setter, rand, config, mutable, 0, 0, false);
             }
         }
     }
@@ -77,7 +77,7 @@ public class BlightwillowFoliagePlacer extends FoliagePlacer {
             boolean place = i != 0 || (extendBelow && rand.nextFloat() < 0.75F);
             if (place) {
                 mutable.setWithOffset(start, d.getNormal().getX(), i, d.getNormal().getZ());
-                placeLeavesRow(level, setter, rand, config, mutable, 0, 0, rand.nextBoolean());
+                placeLeavesRow(level, setter, rand, config, mutable, 0, 0, false);
             }
         }
     }
