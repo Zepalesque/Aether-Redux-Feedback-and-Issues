@@ -48,8 +48,8 @@ public class BlightwillowFoliagePlacer extends FoliagePlacer {
         boolean extendAbove = false;
 
         // Place inner spine part
-        for (int i = -1; i < 7; i++) {
-            boolean isHighest = i == 6;
+        for (int i = -1; i < 8; i++) {
+            boolean isHighest = i == 7;
             boolean isLowest = i == -1;
             boolean place = (!isLowest && !isHighest) || rand.nextBoolean();
             if (place) {
