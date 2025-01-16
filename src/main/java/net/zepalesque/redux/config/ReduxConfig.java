@@ -14,6 +14,7 @@ public class ReduxConfig {
         public final ModConfigSpec.ConfigValue<Boolean> redux_water_colors;
         public final ModConfigSpec.ConfigValue<Boolean> cloudbed;
         public final ModConfigSpec.ConfigValue<Boolean> revamped_quicksoil_movement;
+        // TODO: Item component?
         public final ModConfigSpec.IntValue max_veridium_tool_infusion;
         public final ModConfigSpec.ConfigValue<Boolean> consistent_break_speeds;
         public final ModConfigSpec.ConfigValue<Boolean> raw_ores;
@@ -53,15 +54,23 @@ public class ReduxConfig {
         public final ModConfigSpec.ConfigValue<Boolean> bronze_dungeon_upgrade;
         public final ModConfigSpec.EnumValue<AACompatType> redux_noise;
 
+        public final ModConfigSpec.ConfigValue<Boolean> gummy_swet_nerf;
+
         public Common(ModConfigSpec.Builder builder) {
             super(() -> COMMON_SPEC, "redux_common");
             builder.push("TODO");
-            bronze_dungeon_upgrade = builder
-                    .comment("Upgrades the Bronze Dungeon structure with new blocks and more depth")
-                    .define("Bronze Dungeon Upgrade", true);
             redux_noise = builder
                     .comment("Uses an alternative noise for the Aether. By default, this is disabled with the Ancient Aether mod installed.")
+                    .worldRestart()
                     .defineEnum("Redux Noise", AACompatType.WITHOUT_AA);
+            bronze_dungeon_upgrade = builder
+                    .comment("Upgrades the Bronze Dungeon structure with new blocks and more depth")
+                    .worldRestart()
+                    .define("Bronze Dungeon Upgrade", true);
+            gummy_swet_nerf = builder
+                    .comment("Nerfs Gummy Swets and makes them craftable.")
+                    .gameRestart()
+                    .define("Gummy Swet Nerf", true);
             builder.pop();
         }
     }

@@ -6,6 +6,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
 import net.zepalesque.redux.Redux;
+import net.zepalesque.redux.config.ReduxConfig;
 import net.zepalesque.redux.item.property.ReduxFoods;
 
 @EventBusSubscriber(modid = Redux.MODID, bus = EventBusSubscriber.Bus.MOD)
@@ -13,7 +14,7 @@ public class RegistryListener {
 
     @SubscribeEvent
     public static void modifyComponents(ModifyDefaultComponentsEvent event) {
-        if (true) // TODO: Config
+        if (ReduxConfig.COMMON.gummy_swet_nerf.get())
             event.modifyMatching(item -> item instanceof GummySwetItem, builder -> builder.set(DataComponents.FOOD, ReduxFoods.GUMMY_SWET_NERF));
     }
 }
