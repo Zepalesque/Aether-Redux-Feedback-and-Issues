@@ -17,11 +17,13 @@ public class ReduxConfig {
         // TODO: Item component?
         public final ModConfigSpec.IntValue max_veridium_tool_infusion;
         public final ModConfigSpec.ConfigValue<Boolean> consistent_break_speeds;
+        // TODO: Other Ores
         public final ModConfigSpec.ConfigValue<Boolean> raw_ores;
+        public final ModConfigSpec.ConfigValue<Boolean> gummy_swet_nerf;
 
         public Server(ModConfigSpec.Builder builder) {
             super(() -> SERVER_SPEC, "redux_server");
-            builder.push("Tweaks");
+            builder.push("Worldgen Tweaks");
             redux_sky_colors = builder
                     .comment("Use Redux's alternative sky colors for the Aether")
                     .define("Redux Sky Colors", true);
@@ -31,20 +33,25 @@ public class ReduxConfig {
             cloudbed = builder
                     .comment("Replace the Aether's large Aercloud features with a noise-based cloudbed")
                     .define("Cloudbed", true);
-            raw_ores = builder
-                    .comment("Use raw ores like modern vanilla versions, instead of just getting the ore block when mining it")
-                    .define("Raw Ores", true);
+
             builder.pop();
             builder.push("Gameplay");
             max_veridium_tool_infusion = builder
                     .comment("The maximum amount of infusion a Veridium tool is able to carry. Note that by default, a tools infusion level is increased by 4 when it is infused with a single Ambrosium Shard.")
-                    .defineInRange("Max Veridium Tool Infusion", 64, 1, 127);
+                    .defineInRange("Max Veridium Tool Infusion", 64, 1, Short.MAX_VALUE);
             revamped_quicksoil_movement = builder
                     .comment("Changes quicksoil to make it use a better movement system, based on the way it worked in the Aether II: Highlands in 1.12")
                     .define("Revamped Quicksoil Movement", true);
             consistent_break_speeds = builder
                     .comment("Slows down the mining speeds of some Aether blocks, to be more vanilla-consistent")
                     .define("Consistent Break Speeds", false);
+            raw_ores = builder
+                    .comment("Use raw ores like modern vanilla versions, instead of just getting the ore block when mining it")
+                    .define("Raw Ores", true);
+            gummy_swet_nerf = builder
+                    .comment("Nerfs Gummy Swets and makes them craftable.")
+                    .gameRestart()
+                    .define("Gummy Swet Nerf", true);
             builder.pop();
         }
     }
@@ -54,11 +61,10 @@ public class ReduxConfig {
         public final ModConfigSpec.ConfigValue<Boolean> bronze_dungeon_upgrade;
         public final ModConfigSpec.EnumValue<AACompatType> redux_noise;
 
-        public final ModConfigSpec.ConfigValue<Boolean> gummy_swet_nerf;
-
+        // TODO: Move this stuff to server when switching to PackConfig? assuming the configs are loaded before data stuff is initially loaded
         public Common(ModConfigSpec.Builder builder) {
             super(() -> COMMON_SPEC, "redux_common");
-            builder.push("TODO");
+            builder.push("Datapack Registration");
             redux_noise = builder
                     .comment("Uses an alternative noise for the Aether. By default, this is disabled with the Ancient Aether mod installed.")
                     .worldRestart()
@@ -67,10 +73,6 @@ public class ReduxConfig {
                     .comment("Upgrades the Bronze Dungeon structure with new blocks and more depth")
                     .worldRestart()
                     .define("Bronze Dungeon Upgrade", true);
-            gummy_swet_nerf = builder
-                    .comment("Nerfs Gummy Swets and makes them craftable.")
-                    .gameRestart()
-                    .define("Gummy Swet Nerf", true);
             builder.pop();
         }
     }

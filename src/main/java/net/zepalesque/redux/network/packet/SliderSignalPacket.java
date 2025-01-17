@@ -38,13 +38,10 @@ public class SliderSignalPacket {
             return new Signal(mobID);
         }
 
-
-
         @Override
         public Type<? extends CustomPacketPayload> type() {
             return TYPE;
         }
-
 
         public static void execute(Signal payload, IPayloadContext context) {
             ClientLevel level = Minecraft.getInstance().level;

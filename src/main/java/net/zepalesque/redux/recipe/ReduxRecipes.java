@@ -16,6 +16,5 @@ public class ReduxRecipes {
     public static class Serializers {
         public static final DeferredRegister<RecipeSerializer<?>> SERIALIZERS = DeferredRegister.create(BuiltInRegistries.RECIPE_SERIALIZER, Redux.MODID);
         public static final DeferredHolder<RecipeSerializer<?>, StackingRecipeSerializer<InfusionRecipe>> INFUSION = SERIALIZERS.register("infusion", InfusionRecipe.Serializer::new);
-
     }
 }

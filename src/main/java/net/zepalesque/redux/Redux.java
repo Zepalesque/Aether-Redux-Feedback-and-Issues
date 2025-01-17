@@ -150,10 +150,4 @@ public class Redux {
     public static ResourceLocation loc(String path) {
         return ResourceLocation.fromNamespaceAndPath(MODID, path);
     }
-
-    public static boolean compat(String modid) {
-        return ModList.get().isLoaded(modid);
-    }
-
-
 }

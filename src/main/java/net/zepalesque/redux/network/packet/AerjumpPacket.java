@@ -109,7 +109,6 @@ public class AerjumpPacket {
             return new Particles(x, y, z);
         }
 
-
         public static void execute(Particles packet, IPayloadContext context) {
             Player player = Minecraft.getInstance().player;
             if (player != null) {

@@ -85,7 +85,7 @@ public class ReduxRecipeData extends ReduxRecipeProvider {
                 .save(output);
 
         CompoundTag infusionInfo = new CompoundTag();
-        infusionInfo.putByte(InfusionRecipe.ADDED_INFUSION, (byte) 4);
+        infusionInfo.putShort(InfusionRecipe.ADDED_INFUSION, (short) 4);
         Holder<SoundEvent> infusionSound = ReduxSounds.INFUSE_ITEM;
 
         infuse(ReduxItems.INFUSED_VERIDIUM_PICKAXE.get(), ReduxItems.VERIDIUM_PICKAXE.get())

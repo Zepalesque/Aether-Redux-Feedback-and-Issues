@@ -58,7 +58,7 @@ public interface VeridiumItem extends CustomStackingBehavior {
         if (i >= max) {
             return null;
         } else {
-            int infusion = (byte) Math.min(i + additional.getByte(InfusionRecipe.ADDED_INFUSION), max);
+            int infusion = Math.min(i + additional.getShort(InfusionRecipe.ADDED_INFUSION), max);
             original.applyComponents(DataComponentPatch.builder().set(ReduxDataComponents.INFUSION.get(), infusion).build());
             return original;
         }
