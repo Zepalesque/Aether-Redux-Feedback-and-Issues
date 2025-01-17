@@ -9,6 +9,7 @@ import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import net.zepalesque.redux.data.resource.registries.ReduxBiomeModifiers;
 import net.zepalesque.redux.data.resource.registries.ReduxBiomes;
+import net.zepalesque.redux.data.resource.registries.ReduxCarverConfig;
 import net.zepalesque.redux.data.resource.registries.ReduxConditions;
 import net.zepalesque.redux.data.resource.registries.ReduxDensityFunctions;
 import net.zepalesque.redux.data.resource.registries.ReduxFeatureConfig;
@@ -26,14 +27,15 @@ import java.util.concurrent.CompletableFuture;
 
 public class ReduxRegistrySets extends DatapackBuiltinEntriesProvider {
     public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
+            .add(Registries.BIOME, ReduxBiomes::bootstrap)
+            .add(Registries.CONFIGURED_CARVER, ReduxCarverConfig::bootstrap)
             .add(Registries.CONFIGURED_FEATURE, ReduxFeatureConfig::bootstrap)
-            .add(Registries.PLACED_FEATURE, ReduxPlacements::bootstrap)
             .add(Registries.DENSITY_FUNCTION, ReduxDensityFunctions::bootstrap)
+            .add(Registries.JUKEBOX_SONG, ReduxJukeboxSongs::bootstrap)
+            .add(Registries.PLACED_FEATURE, ReduxPlacements::bootstrap)
             .add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ReduxBiomeModifiers::bootstrap)
             .add(NeoForgeRegistries.Keys.STRUCTURE_MODIFIERS, ReduxStructureModifiers::bootstrap)
-            .add(Zenith.Keys.CONDITION, ReduxConditions::bootstrap)
-            .add(Registries.BIOME, ReduxBiomes::bootstrap)
-            .add(Registries.JUKEBOX_SONG, ReduxJukeboxSongs::bootstrap);
+            .add(Zenith.Keys.CONDITION, ReduxConditions::bootstrap);
 
     public ReduxRegistrySets(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, String modid, String... otherIds) {
         super(output, registries, BUILDER, buildModidList(modid, otherIds));

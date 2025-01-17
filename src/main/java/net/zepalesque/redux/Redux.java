@@ -41,6 +41,7 @@ import net.zepalesque.redux.recipe.ReduxRecipes;
 import net.zepalesque.redux.tile.ReduxTiles;
 import net.zepalesque.redux.world.biome.ReduxRegion;
 import net.zepalesque.redux.world.biome.ReduxSurfaceRules;
+import net.zepalesque.redux.world.carver.ReduxCarvers;
 import net.zepalesque.redux.world.feature.gen.ReduxFeatures;
 import net.zepalesque.redux.world.tree.decorator.ReduxTreeDecorators;
 import net.zepalesque.redux.world.tree.foliage.ReduxFoliagePlacers;
@@ -94,7 +95,8 @@ public class Redux {
                 ReduxLootModifiers.GLOBAL_LOOT_MODIFIERS,
                 ReduxTreeDecorators.TREE_DECORATORS,
                 ReduxDataComponents.TYPES,
-                ReduxDataAttachments.ATTACHMENTS
+                ReduxDataAttachments.ATTACHMENTS,
+                ReduxCarvers.CARVERS
         };
 
         for (DeferredRegister<?> register : registers) {

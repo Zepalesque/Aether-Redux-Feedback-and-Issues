@@ -18,6 +18,7 @@ import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import net.zepalesque.redux.Redux;
 import net.zepalesque.redux.client.audio.ReduxMusic;
 import net.zepalesque.redux.data.ReduxTags;
+import net.zepalesque.redux.data.resource.builders.ReduxCarverBuilders;
 import net.zepalesque.zenith.api.condition.Condition;
 import net.zepalesque.zenith.api.world.biome.modifier.ConditionalBiomeModifier;
 import net.zepalesque.zenith.api.world.biome.modifier.MusicModifier;
@@ -34,6 +35,7 @@ public class ReduxBiomeModifiers {
     public static final ResourceKey<BiomeModifier> MUSIC_MODIFY = createKey("modify_music");
     public static final ResourceKey<BiomeModifier> ADD_SENTRITE = createKey("add_sentrite");
     public static final ResourceKey<BiomeModifier> ADD_WYNDSPROUTS = createKey("add_wyndsprouts");
+    public static final ResourceKey<BiomeModifier> ADD_CAVES = createKey("add_caves");
 
     private static ResourceKey<BiomeModifier> createKey(String name) {
         return ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, Redux.loc(name));
@@ -90,5 +92,8 @@ public class ReduxBiomeModifiers {
         context.register(ADD_WYNDSPROUTS, new BiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(ReduxTags.Biomes.HAS_WYNDSPROUTS), HolderSet.direct(features.getOrThrow(ReduxPlacements.WYNDSPROUTS_PATCH)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
+
+        context.register(ADD_CAVES, new BiomeModifiers.AddCarversBiomeModifier(
+                biomes.getOrThrow(ReduxTags.Biomes.HAS_CAVES), HolderSet.direct(carvers.getOrThrow(ReduxCarverConfig.AETHER_CAVES)), GenerationStep.Carving.AIR));
     }
 }
