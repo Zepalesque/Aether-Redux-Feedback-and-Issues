@@ -20,7 +20,7 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.zepalesque.redux.recipe.recipes.InfusionRecipe;
 import net.zepalesque.unity.data.prov.UnityRecipeProvider;
-import net.zepalesque.zenith.api.itemstack.ItemStackConstructor;
+import net.zepalesque.zenith.api.item.stack.ItemStackConstructor;
 import net.zepalesque.zenith.api.recipe.builder.StackingRecipeBuilder;
 
 import java.util.Optional;
