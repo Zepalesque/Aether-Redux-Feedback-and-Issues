@@ -68,6 +68,8 @@ public class ReduxTags {
         public static final TagKey<Biome> HAS_WYNDSPROUTS = tag("has_wyndsprouts");
         public static final TagKey<Biome> HAS_CLOUDBED = tag("has_cloudbed");
 
+        public static final TagKey<Biome> HAS_GOLDEN_VINES = tag("has_golden_vines");
+
         private static TagKey<Biome> tag(String name) {
             return TagKey.create(Registries.BIOME, Redux.loc(name));
         }

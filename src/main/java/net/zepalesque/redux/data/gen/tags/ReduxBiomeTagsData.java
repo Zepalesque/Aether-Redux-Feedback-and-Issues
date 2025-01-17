@@ -1,6 +1,5 @@
 package net.zepalesque.redux.data.gen.tags;
 
-import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.AetherTags;
 import com.aetherteam.aether.data.resources.registries.AetherBiomes;
 import net.minecraft.core.HolderLookup;
@@ -26,6 +25,8 @@ public class ReduxBiomeTagsData extends BiomeTagsProvider {
                 ReduxBiomes.GILDED_GROVES,
                 ReduxBiomes.THE_BLIGHT
         );
+
+        this.tag(ReduxTags.Biomes.HAS_GOLDEN_VINES).add(ReduxBiomes.GILDED_GROVES);
         this.tag(ReduxTags.Biomes.HAS_CLOUDBED).addTag(AetherTags.Biomes.IS_AETHER);
         this.tag(ReduxTags.Biomes.MODIFY_MUSIC).addTag(AetherTags.Biomes.IS_AETHER);
         this.tag(ReduxTags.Biomes.MODIFY_SKY_COLOR).addTag(AetherTags.Biomes.IS_AETHER);

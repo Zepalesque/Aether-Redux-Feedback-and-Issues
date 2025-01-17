@@ -11,10 +11,10 @@ import com.aetherteam.nitrogen.world.foliageplacer.HookedFoliagePlacer;
 import com.aetherteam.nitrogen.world.trunkplacer.HookedTrunkPlacer;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
+import net.minecraft.core.Vec3i;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
-import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.util.valueproviders.ConstantInt;
@@ -28,7 +28,6 @@ import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.RandomFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
@@ -52,9 +51,9 @@ import net.zepalesque.redux.world.tree.decorator.GoldenVineDecorator;
 import net.zepalesque.redux.world.tree.foliage.BlightwillowFoliagePlacer;
 import net.zepalesque.redux.world.tree.foliage.SkyrootFoliagePlacer;
 import net.zepalesque.redux.world.tree.foliage.SmallGoldenOakFoliagePlacer;
-import net.zepalesque.unity.block.UnityBlocks;
 import net.zepalesque.unity.data.UnityTags;
 import net.zepalesque.unity.extendablestate.UnityStateLists;
+import net.zepalesque.zenith.api.block.predicate.InBiomePredicate;
 import net.zepalesque.zenith.api.world.feature.gen.ExtendableStateListBlockFeature;
 import net.zepalesque.zenith.api.world.feature.gen.LargeRockFeature;
 import net.zepalesque.zenith.api.world.feature.gen.SurfaceRuleLakeFeature;
@@ -75,14 +74,11 @@ public class ReduxFeatureConfig extends ReduxFeatureBuilders {
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> SMALL_GILDENROOT_TREE = createKey("small_gildenroot");
     public static final ResourceKey<ConfiguredFeature<?, ?>> LARGE_GILDENROOT_TREE = createKey("large_gildenroot");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> LARGE_GOLDEN_VINE_TREE = createKey("large_vine_golden_oak");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SMALL_GOLDEN_VINE_TREE = createKey("small_vine_golden_oak");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> VARIED_GILDENROOT_TREE = createKey("varied_gildenroot");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> SMALL_GOLDEN_OAK_TREE = createKey("small_golden_oak");
     public static final ResourceKey<ConfiguredFeature<?, ?>> LARGE_GOLDEN_OAK_TREE = createKey("large_golden_oak");
 
-    public static final ResourceKey<ConfiguredFeature<?, ?>> GROVE_GOLDEN_TREES = createKey("grove_golden_trees");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> GROVE_GILDED_TREES = createKey("grove_gilded_trees");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> SENTRITE_ORE = createKey(name(ReduxStoneSets.SENTRITE.block()) + "_ore");
     public static final ResourceKey<ConfiguredFeature<?, ?>> GILDED_HOLYSTONE_ORE = createKey(name(ReduxStoneSets.GILDED_HOLYSTONE.block()) + "_ore");
@@ -164,7 +160,11 @@ public class ReduxFeatureConfig extends ReduxFeatureBuilders {
                         new TwoLayersFeatureSize(2, 1, 4)
                 ).ignoreVines().build());
 
-        register(context, SMALL_GOLDEN_VINE_TREE, Feature.TREE,
+        BlockPredicate has_golden_vines = InBiomePredicate.inTag(ReduxTags.Biomes.HAS_GOLDEN_VINES);
+        BlockPredicate on_enchanted = BlockPredicate.matchesTag(new Vec3i(0, -1, 0), UnityTags.Blocks.SHORT_AETHER_GRASS_STATE_ENCHANTING);
+        BlockPredicate golden_vine_predicate = BlockPredicate.anyOf(has_golden_vines, on_enchanted);
+
+        register(context, SMALL_GOLDEN_OAK_TREE, Feature.TREE,
                 new TreeConfiguration.TreeConfigurationBuilder(
                         new WeightedStateProvider(new SimpleWeightedRandomList.Builder<BlockState>()
                                 .add(AetherFeatureStates.GOLDEN_OAK_LOG, 1)
@@ -178,10 +178,10 @@ public class ReduxFeatureConfig extends ReduxFeatureBuilders {
                         new GoldenVineDecorator(0.25F,
                                 prov(ReduxBlocks.GOLDEN_VINES_PLANT),
                                 prov(ReduxBlocks.GOLDEN_VINES),
-                                UniformInt.of(1, 3))
+                                UniformInt.of(1, 3), Optional.of(golden_vine_predicate))
                 )).build());
 
-        register(context, LARGE_GOLDEN_VINE_TREE, Feature.TREE,
+        register(context, LARGE_GOLDEN_OAK_TREE, Feature.TREE,
                 new TreeConfiguration.TreeConfigurationBuilder(
                         new WeightedStateProvider(new SimpleWeightedRandomList.Builder<BlockState>()
                                 .add(AetherFeatureStates.GOLDEN_OAK_LOG, 1)
@@ -195,44 +195,15 @@ public class ReduxFeatureConfig extends ReduxFeatureBuilders {
                         new GoldenVineDecorator(0.25F,
                                 prov(ReduxBlocks.GOLDEN_VINES_PLANT),
                                 prov(ReduxBlocks.GOLDEN_VINES),
-                                UniformInt.of(1, 5))
+                                UniformInt.of(1, 5), Optional.of(golden_vine_predicate))
                         )).build());
-
-        register(context, SMALL_GOLDEN_OAK_TREE, Feature.TREE,
-                new TreeConfiguration.TreeConfigurationBuilder(
-                        new WeightedStateProvider(new SimpleWeightedRandomList.Builder<BlockState>()
-                                .add(AetherFeatureStates.GOLDEN_OAK_LOG, 1)
-                                .add(AetherFeatureStates.SKYROOT_LOG, 7)
-                        ),
-                        new IntProviderTrunkPlacer(UniformInt.of(6, 8)),
-                        BlockStateProvider.simple(AetherFeatureStates.GOLDEN_OAK_LEAVES),
-                        new SmallGoldenOakFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)),
-                        new TwoLayersFeatureSize(1, 0, 1)
-                ).ignoreVines().build());
-
-        register(context, LARGE_GOLDEN_OAK_TREE, Feature.TREE,
-                new TreeConfiguration.TreeConfigurationBuilder(
-                        new WeightedStateProvider(new SimpleWeightedRandomList.Builder<BlockState>()
-                                .add(AetherFeatureStates.GOLDEN_OAK_LOG, 1)
-                                .add(AetherFeatureStates.SKYROOT_LOG, 7)
-                        ),
-                        new IntProviderTrunkPlacer(UniformInt.of(8, 12)),
-                        BlockStateProvider.simple(AetherFeatureStates.GOLDEN_OAK_LEAVES),
-                        new GoldenOakFoliagePlacer(ConstantInt.of(3), ConstantInt.of(1), ConstantInt.of(6)),
-                        new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(9))
-                ).ignoreVines().build());
 
         register(context, GOLDEN_OAK_TREE, Feature.RANDOM_SELECTOR,
                 new RandomFeatureConfiguration(List.of(
                         new WeightedPlacedFeature(PlacementUtils.inlinePlaced(configs.getOrThrow(SMALL_GOLDEN_OAK_TREE), PlacementUtils.filteredByBlockSurvival(AetherBlocks.GOLDEN_OAK_SAPLING.get())), 0.35F)),
                         PlacementUtils.inlinePlaced(configs.getOrThrow(LARGE_GOLDEN_OAK_TREE), PlacementUtils.filteredByBlockSurvival(AetherBlocks.GOLDEN_OAK_SAPLING.get()))));
 
-        register(context, GROVE_GOLDEN_TREES, Feature.RANDOM_SELECTOR,
-                new RandomFeatureConfiguration(List.of(
-                        new WeightedPlacedFeature(PlacementUtils.inlinePlaced(configs.getOrThrow(SMALL_GOLDEN_VINE_TREE), PlacementUtils.filteredByBlockSurvival(AetherBlocks.GOLDEN_OAK_SAPLING.get())), 0.35F)),
-                        PlacementUtils.inlinePlaced(configs.getOrThrow(LARGE_GOLDEN_VINE_TREE), PlacementUtils.filteredByBlockSurvival(AetherBlocks.GOLDEN_OAK_SAPLING.get()))));
-
-        register(context, GROVE_GILDED_TREES, Feature.RANDOM_SELECTOR,
+        register(context, VARIED_GILDENROOT_TREE, Feature.RANDOM_SELECTOR,
                 new RandomFeatureConfiguration(List.of(
                         new WeightedPlacedFeature(PlacementUtils.inlinePlaced(configs.getOrThrow(SMALL_GILDENROOT_TREE), PlacementUtils.filteredByBlockSurvival(ReduxFlowerSets.GILDENROOT_SAPLING.flower().get())), 0.60F)),
                         PlacementUtils.inlinePlaced(configs.getOrThrow(LARGE_GILDENROOT_TREE), PlacementUtils.filteredByBlockSurvival(ReduxFlowerSets.GILDENROOT_SAPLING.flower().get()))));
@@ -241,11 +212,11 @@ public class ReduxFeatureConfig extends ReduxFeatureBuilders {
                 new RandomFeatureConfiguration(List.of(
                         new WeightedPlacedFeature(
                                 PlacementUtils.inlinePlaced(
-                                        configs.getOrThrow(GROVE_GILDED_TREES),
+                                        configs.getOrThrow(VARIED_GILDENROOT_TREE),
                                         PlacementUtils.filteredByBlockSurvival(ReduxFlowerSets.GILDENROOT_SAPLING.flower().get()))
                                 , 0.375F)),
                         PlacementUtils.inlinePlaced(
-                                configs.getOrThrow(GROVE_GOLDEN_TREES),
+                                configs.getOrThrow(GOLDEN_OAK_TREE),
                                 PlacementUtils.filteredByBlockSurvival(AetherBlocks.GOLDEN_OAK_SAPLING.get())
                         )));
 
