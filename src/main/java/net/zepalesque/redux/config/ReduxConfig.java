@@ -50,7 +50,7 @@ public class ReduxConfig {
                     .define("Raw Ores", true);
             gummy_swet_nerf = builder
                     .comment("Nerfs Gummy Swets and makes them craftable.")
-                    .gameRestart()
+                    .worldRestart()
                     .define("Gummy Swet Nerf", true);
             builder.pop();
         }
