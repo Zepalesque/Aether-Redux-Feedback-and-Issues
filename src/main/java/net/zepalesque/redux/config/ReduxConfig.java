@@ -25,13 +25,16 @@ public class ReduxConfig {
             super(() -> SERVER_SPEC, "redux_server");
             builder.push("Worldgen Tweaks");
             redux_sky_colors = builder
+                    .worldRestart()
                     .comment("Use Redux's alternative sky colors for the Aether")
                     .define("Redux Sky Colors", true);
             redux_water_colors = builder
                     .comment("Use Redux's alternative water colors for the Aether")
+                    .worldRestart()
                     .define("Redux Water Colors", true);
             cloudbed = builder
                     .comment("Replace the Aether's large Aercloud features with a noise-based cloudbed")
+                    .worldRestart()
                     .define("Cloudbed", true);
 
             builder.pop();
@@ -47,6 +50,7 @@ public class ReduxConfig {
                     .define("Consistent Break Speeds", false);
             raw_ores = builder
                     .comment("Use raw ores like modern vanilla versions, instead of just getting the ore block when mining it")
+                    .worldRestart()
                     .define("Raw Ores", true);
             gummy_swet_nerf = builder
                     .comment("Nerfs Gummy Swets and makes them craftable.")
