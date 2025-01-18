@@ -21,7 +21,7 @@ public class ClientMobListener {
     @SubscribeEvent
     public static void cancelSneak(EntityTickEvent.Post event) {
         final Entity entity = event.getEntity();
-        if (ReduxConfig.SERVER.revamped_quicksoil_movement.get() && QuicksoilHooks.shouldAlterMovement(entity)) {
+        if (entity.level().isClientSide() && ReduxConfig.SERVER.revamped_quicksoil_movement.get() && QuicksoilHooks.shouldAlterMovement(entity)) {
             KeyHooks.cancelKey(entity, Minecraft.getInstance().options.keyShift);
         }
     }

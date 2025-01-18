@@ -26,9 +26,12 @@
     "common.item.DiggerItemMixin",
     "common.item.GummySwetItemMixin",
     "common.item.PickaxeItemMixin",
+    "common.world.feature.AercloudFeatureMixin",
+    "common.world.feature.FeatureMixin",
     "common.world.structure.AetherTemplateStructurePieceMixin",
-    "common.world.structure.BronzeBossMixin",
-    "common.world.structure.BronzeDungeonMixin"
+    "common.world.structure.SilverDungeonMixin",
+    "common.world.structure.piece.BronzeBossMixin",
+    "common.world.structure.piece.BronzeDungeonMixin"
   ],
   "client": []
 }

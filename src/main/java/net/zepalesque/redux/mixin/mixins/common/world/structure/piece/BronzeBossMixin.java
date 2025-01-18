@@ -1,4 +1,4 @@
-package net.zepalesque.redux.mixin.mixins.common.world.structure;
+package net.zepalesque.redux.mixin.mixins.common.world.structure.piece;
 
 import com.aetherteam.aether.world.structurepiece.bronzedungeon.BronzeBossRoom;
 import com.aetherteam.aether.world.structurepiece.bronzedungeon.BronzeDungeonRoom;
