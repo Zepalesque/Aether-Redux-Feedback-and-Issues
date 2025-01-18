@@ -48,7 +48,7 @@ public interface VeridiumItem extends CustomStackingBehavior {
         if (additional == null) {
             return original;
         }
-        int increase = additional.getByte(InfusionRecipe.ADDED_INFUSION);
+        int increase = additional.getShort(InfusionRecipe.ADDED_INFUSION);
         if (increase <= 0) {
             return original;
         }
@@ -76,7 +76,7 @@ public interface VeridiumItem extends CustomStackingBehavior {
         int original = Objects.requireNonNullElse(stack.get(ReduxDataComponents.INFUSION), 0);
 
         if (original > amount) {
-            int infusion = (byte) (original - amount);
+            int infusion = (short) (original - amount);
             stack.set(ReduxDataComponents.INFUSION.get(), infusion);
         } else {
             return this.getUninfusedStack(stack);
