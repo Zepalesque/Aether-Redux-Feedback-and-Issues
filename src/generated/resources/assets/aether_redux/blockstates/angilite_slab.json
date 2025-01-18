@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "aether_redux:block/angilite_slab"
+    },
+    "type=double": {
+      "model": "aether_redux:block/angilite"
+    },
+    "type=top": {
+      "model": "aether_redux:block/angilite_slab_top"
+    }
+  }
+}

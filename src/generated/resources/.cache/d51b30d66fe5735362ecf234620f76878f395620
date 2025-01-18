@@ -1,5 +1,9 @@
-// 1.21.1	2025-01-05T15:53:58.4265581	Item Models: aether_redux
+// 1.21.1	2025-01-17T19:55:19.0088954	Item Models: aether_redux
 22154525bdb82a668243960fdd22d12e653ecfe7 assets/aether_redux/models/item/aerbound_cape.json
+65b671b9f9b4b518af9a6210074af3ab2ced1fc8 assets/aether_redux/models/item/angilite.json
+e46d0a14035c031d2bbe02db571fa2fb9db605cb assets/aether_redux/models/item/angilite_slab.json
+9bd589bde1c3dc5afc55437fa2034f40b9d7ecd1 assets/aether_redux/models/item/angilite_stairs.json
+815292db0dbc0f2e9aef5e7fd74235d3f7993208 assets/aether_redux/models/item/angilite_wall.json
 795ee016e7dad0d6ac42593c58ba258161615647 assets/aether_redux/models/item/aurum.json
 4afb9668485d647994daf5249d914744cc5f173d assets/aether_redux/models/item/bleakmoss_block.json
 bd2d02f692760f06fa233b72f2311b9a5a82be0b assets/aether_redux/models/item/bleakmoss_carpet.json

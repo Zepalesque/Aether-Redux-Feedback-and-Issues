@@ -1,4 +1,8 @@
-// 1.21.1	2025-01-05T15:53:58.440547	Loot Tables
+// 1.21.1	2025-01-17T19:55:19.0188892	Loot Tables
+206de14cd46a27e35f3a396b7919a25e4db9e49e data/aether_redux/loot_table/blocks/angilite.json
+b09d499acb797946909c71addf6e5b0fc93e72c3 data/aether_redux/loot_table/blocks/angilite_slab.json
+4cd1cece3abac15a9a6e1fb4e9b2a70091cf7c23 data/aether_redux/loot_table/blocks/angilite_stairs.json
+b64a56b4a0f5af8799c736ad5dedcbbfefc076ac data/aether_redux/loot_table/blocks/angilite_wall.json
 c6156555dc4897939b617dabc4521b7fa52feba0 data/aether_redux/loot_table/blocks/aurum.json
 66a11e556b98bf1a1485905fb0149b1a833213ab data/aether_redux/loot_table/blocks/bleakmoss_block.json
 c8524e8336739f74fc648fcf76c60de754a38367 data/aether_redux/loot_table/blocks/bleakmoss_carpet.json
