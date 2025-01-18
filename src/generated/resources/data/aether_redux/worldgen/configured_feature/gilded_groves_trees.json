@@ -2,7 +2,7 @@
   "type": "minecraft:random_selector",
   "config": {
     "default": {
-      "feature": "aether_redux:grove_golden_trees",
+      "feature": "aether:golden_oak_tree",
       "placement": [
         {
           "type": "minecraft:block_predicate_filter",
@@ -22,7 +22,7 @@
       {
         "chance": 0.375,
         "feature": {
-          "feature": "aether_redux:grove_gilded_trees",
+          "feature": "aether_redux:varied_gildenroot",
           "placement": [
             {
               "type": "minecraft:block_predicate_filter",

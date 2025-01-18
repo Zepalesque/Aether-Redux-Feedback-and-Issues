@@ -8,7 +8,7 @@
     {
       "condition": "zenith:when",
       "inline_condition": {
-        "config_path": "[Tweaks, Raw Ores]",
+        "config_path": "[Gameplay, Raw Ores]",
         "element": "zenith:config_enabled",
         "serializer": "redux_server"
       }

@@ -1,8 +1,9 @@
-// 1.21.1	2025-01-05T16:02:01.8501684	Tags for minecraft:worldgen/biome mod id aether_redux
+// 1.21.1	2025-01-17T18:57:40.3428689	Tags for minecraft:worldgen/biome mod id aether_redux
 82768894f107a050d60f3bff5c0eb15dff7a6cbc data/aether/tags/worldgen/biome/is_aether.json
 6425e7e0a57a451843094090fa1e31c9fbd4c5e0 data/aether_redux/tags/worldgen/biome/has_cloudbed.json
+d591ac95cd16961b6595722d490f78ed27818c49 data/aether_redux/tags/worldgen/biome/has_golden_vines.json
 6425e7e0a57a451843094090fa1e31c9fbd4c5e0 data/aether_redux/tags/worldgen/biome/has_sentrite.json
-8b35baa18ab237cca09ca885ed8ee1589d1da139 data/aether_redux/tags/worldgen/biome/has_wyndsprouts.json
+c3c238eb7b3ef858352483eb7234018fc2ecb301 data/aether_redux/tags/worldgen/biome/has_wyndsprouts.json
 6425e7e0a57a451843094090fa1e31c9fbd4c5e0 data/aether_redux/tags/worldgen/biome/should_modify_music.json
 6425e7e0a57a451843094090fa1e31c9fbd4c5e0 data/aether_redux/tags/worldgen/biome/should_modify_sky_color.json
 6425e7e0a57a451843094090fa1e31c9fbd4c5e0 data/aether_redux/tags/worldgen/biome/should_modify_water_color.json

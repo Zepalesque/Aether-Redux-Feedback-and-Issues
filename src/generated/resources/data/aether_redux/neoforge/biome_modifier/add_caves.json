@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_carvers",
+  "biomes": "#aether_redux:has_wyndsprouts",
+  "carvers": "aether_redux:aether_caves",
+  "step": "air"
+}

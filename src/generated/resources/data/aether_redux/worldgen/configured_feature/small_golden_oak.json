@@ -1,7 +1,50 @@
 {
   "type": "minecraft:tree",
   "config": {
-    "decorators": [],
+    "decorators": [
+      {
+        "type": "aether_redux:golden_vines",
+        "length": {
+          "type": "minecraft:uniform",
+          "max_inclusive": 3,
+          "min_inclusive": 1
+        },
+        "plant_body_provider": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "aether_redux:golden_vines_plant"
+          }
+        },
+        "plant_head_provider": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "aether_redux:golden_vines",
+            "Properties": {
+              "age": "0"
+            }
+          }
+        },
+        "predicate": {
+          "type": "minecraft:any_of",
+          "predicates": [
+            {
+              "type": "zenith:in_biome",
+              "biomes": "#aether_redux:has_golden_vines"
+            },
+            {
+              "type": "minecraft:matching_block_tag",
+              "offset": [
+                0,
+                -1,
+                0
+              ],
+              "tag": "aether_unity:short_aether_grass_state_enchanting"
+            }
+          ]
+        },
+        "probability": 0.25
+      }
+    ],
     "dirt_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
@@ -37,8 +80,8 @@
       "type": "zenith:int_provider_trunk",
       "height": {
         "type": "minecraft:uniform",
-        "max_inclusive": 8,
-        "min_inclusive": 6
+        "max_inclusive": 9,
+        "min_inclusive": 7
       }
     },
     "trunk_provider": {

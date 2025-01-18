@@ -1,5 +1,5 @@
 {
-  "config_path": "[Tweaks, Redux Water Colors]",
+  "config_path": "[Worldgen Tweaks, Redux Water Colors]",
   "element": "zenith:config_enabled",
   "serializer": "redux_server"
 }

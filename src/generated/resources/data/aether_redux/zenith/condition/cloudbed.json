@@ -1,5 +1,5 @@
 {
-  "config_path": "[Tweaks, Cloudbed]",
+  "config_path": "[Worldgen Tweaks, Cloudbed]",
   "element": "zenith:config_enabled",
   "serializer": "redux_server"
 }
