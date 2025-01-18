@@ -29,7 +29,6 @@
     "common.world.feature.AercloudFeatureMixin",
     "common.world.feature.FeatureMixin",
     "common.world.structure.AetherTemplateStructurePieceMixin",
-    "common.world.structure.SilverDungeonMixin",
     "common.world.structure.piece.BronzeBossMixin",
     "common.world.structure.piece.BronzeDungeonMixin"
   ],
