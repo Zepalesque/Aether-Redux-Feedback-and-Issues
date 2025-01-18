@@ -64,6 +64,10 @@ public class BaseStoneSet extends AbstractStoneSet implements MutableLoreGenerat
     protected final List<Supplier<AbstractStoneSet>> stonecut_sets = new ArrayList<>();
     protected final Map<Supplier<? extends ItemLike>, Float> smelted_blocks = new HashMap<>();
     protected final Map<Supplier<AbstractStoneSet>, Float> smelted_sets = new HashMap<>();
+    protected final Map<Supplier<? extends ItemLike>, Float> blasted_blocks = new HashMap<>();
+    protected final Map<Supplier<AbstractStoneSet>, Float> blasted_sets = new HashMap<>();
+    protected final Map<Supplier<? extends ItemLike>, Pair<Float, Integer>> enchanted_blocks = new HashMap<>();
+    protected final Map<Supplier<AbstractStoneSet>, Pair<Float, Integer>> enchanted_sets = new HashMap<>();
     protected final Table<Supplier<CreativeModeTab>, Supplier<? extends ItemLike>, Pair<Boolean, TabAdditionPhase>> afterOrdering = HashBasedTable.create();
     protected final Table<Supplier<CreativeModeTab>, Supplier<? extends ItemLike>, Pair<Boolean, TabAdditionPhase>> beforeOrdering = HashBasedTable.create();
     protected final Table<Supplier<CreativeModeTab>, TabAdditionPhase, Boolean> appended = HashBasedTable.create();
@@ -200,6 +204,26 @@ public class BaseStoneSet extends AbstractStoneSet implements MutableLoreGenerat
         return this;
     }
 
+    public BaseStoneSet blastsIntoSet(Supplier<AbstractStoneSet> set, float experience) {
+        this.blasted_sets.put(set, experience);
+        return this;
+    }
+
+    public BaseStoneSet blastsInto(Supplier<? extends ItemLike> block, float experience) {
+        this.blasted_blocks.put(block, experience);
+        return this;
+    }
+
+    public BaseStoneSet enchantsIntoSet(Supplier<AbstractStoneSet> set, float experience, int time) {
+        this.enchanted_sets.put(set, Pair.of(experience, time));
+        return this;
+    }
+
+    public BaseStoneSet enchantsInto(Supplier<? extends ItemLike> block, float experience, int time) {
+        this.enchanted_blocks.put(block, Pair.of(experience, time));
+        return this;
+    }
+
     @Override
     public BaseStoneSet withTag(TagKey<Block> tag, boolean allBlocks) {
         this.tags.put(tag, allBlocks);
@@ -308,6 +332,22 @@ public class BaseStoneSet extends AbstractStoneSet implements MutableLoreGenerat
 
         this.smelted_sets.forEach((set, xp) ->
                 data.smeltingOreRecipe(set.get().block().get(), this.block().get(), xp).save(consumer, data.name(ReduxRecipeProvider.getConversionRecipeName(set.get().block().get(), this.block().get()) + "_smelting"))
+        );
+
+        this.blasted_blocks.forEach((block, xp) ->
+            data.blastingOreRecipe(block.get(), this.block().get(), xp).save(consumer, data.name(ReduxRecipeProvider.getConversionRecipeName(block.get(), this.block().get()) + "_blasting"))
+        );
+
+        this.blasted_sets.forEach((set, xp) ->
+                data.blastingOreRecipe(set.get().block().get(), this.block().get(), xp).save(consumer, data.name(ReduxRecipeProvider.getConversionRecipeName(set.get().block().get(), this.block().get()) + "_blasting"))
+        );
+
+        this.enchanted_blocks.forEach((block, xpAndTime) ->
+            data.enchantingRecipe(RecipeCategory.MISC, block.get(), this.block().get(), xpAndTime.getFirst(), xpAndTime.getSecond()).save(consumer, data.name(ReduxRecipeProvider.getConversionRecipeName(block.get(), this.block().get()) + "_enchanting"))
+        );
+
+        this.enchanted_sets.forEach((set, xpAndTime) ->
+                data.enchantingRecipe(RecipeCategory.MISC, set.get().block().get(), this.block().get(), xpAndTime.getFirst(), xpAndTime.getSecond()).save(consumer, data.name(ReduxRecipeProvider.getConversionRecipeName(set.get().block().get(), this.block().get()) + "_enchanting"))
         );
 
 

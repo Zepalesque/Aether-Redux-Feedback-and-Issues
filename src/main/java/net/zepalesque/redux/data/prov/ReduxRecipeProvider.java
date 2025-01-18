@@ -1,6 +1,7 @@
 package net.zepalesque.redux.data.prov;
 
 import com.aetherteam.aether.data.providers.AetherRecipeProvider;
+import com.aetherteam.aether.recipe.builder.AetherCookingRecipeBuilder;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.core.HolderLookup;
@@ -130,14 +131,28 @@ public abstract class ReduxRecipeProvider extends UnityRecipeProvider {
         return super.smeltingOreRecipe(result, ingredient, experience);
     }
 
-    protected SimpleCookingRecipeBuilder smeltingOreRecipe(ItemLike result, ItemLike ingredient, float experience, int cookTime) {
+    public SimpleCookingRecipeBuilder blastingOreRecipe(ItemLike result, ItemLike ingredient, float experience) {
+        return super.blastingOreRecipe(result, ingredient, experience);
+    }
+
+    public SimpleCookingRecipeBuilder smeltingOreRecipe(ItemLike result, ItemLike ingredient, float experience, int cookTime) {
         return SimpleCookingRecipeBuilder.smelting(Ingredient.of(ingredient), RecipeCategory.MISC, result, experience, cookTime)
                 .unlockedBy(getHasName(ingredient), has(ingredient));
     }
 
-    protected SimpleCookingRecipeBuilder blastingOreRecipe(ItemLike result, ItemLike ingredient, float experience, int cookTime) {
+    public SimpleCookingRecipeBuilder blastingOreRecipe(ItemLike result, ItemLike ingredient, float experience, int cookTime) {
         return SimpleCookingRecipeBuilder.blasting(Ingredient.of(ingredient), RecipeCategory.MISC, result, experience, cookTime)
                 .unlockedBy(getHasName(ingredient), has(ingredient));
+    }
+
+    @Override
+    public AetherCookingRecipeBuilder enchantingRecipe(RecipeCategory category, ItemLike result, ItemLike ingredient, float experience, int duration) {
+        return super.enchantingRecipe(category, result, ingredient, experience, duration);
+    }
+
+    @Override
+    public AetherCookingRecipeBuilder enchantingRecipe(RecipeCategory category, ItemLike result, TagKey<Item> ingredient, float experience, int duration, String unlockName) {
+        return super.enchantingRecipe(category, result, ingredient, experience, duration, unlockName);
     }
 
     @SuppressWarnings("deprecation")

@@ -4,6 +4,7 @@ import com.aetherteam.aether.AetherTags;
 import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.item.AetherCreativeTabs;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.MapColor;
 import net.zepalesque.redux.Redux;
@@ -50,6 +51,18 @@ public class ReduxStoneSets {
             .withTag(AetherTags.Blocks.SENTRY_BLOCKS, false)
             .withItemTag(AetherTags.Items.SENTRY_BLOCKS, false);
 
+    public static final BaseStoneSet ANGILITE = register(new BaseStoneSet("angilite", MapColor.TERRACOTTA_YELLOW, SoundType.TUFF, 0.5F, 6.0F, "natural/"))
+            // TODO: Idea: glowstone tiles via enchanting angelic stone? Maybe? Could be nice for ceiling lights in the silver dungeons
+            .withLore("A stone type found in the Aether. Angilite is commonly used in Valkyrian structures in its tile/brick form, Angelic Stone. Additionally, when enchanted, it buds into a dazzlingly bright glowing stone!")
+            .craftsInto(AetherBlocks.ANGELIC_STONE, CommonMatrices.SQUARE_2X2)
+            .enchantsInto(() -> Blocks.GLOWSTONE, 0.0F, 200)
+            .stonecutInto(AetherBlocks.ANGELIC_STONE, 1)
+            .stonecutInto(AetherBlocks.ANGELIC_WALL, 1)
+            .stonecutInto(AetherBlocks.ANGELIC_STAIRS, 1)
+            .stonecutInto(AetherBlocks.ANGELIC_SLAB, 1)
+            .tabAfter(AetherCreativeTabs.AETHER_BUILDING_BLOCKS, ReduxStoneSets.SENTRITE::wall, true, BlockSet.TabAdditionPhase.BEFORE)
+            .tabAfter(AetherCreativeTabs.AETHER_NATURAL_BLOCKS, ReduxStoneSets.SENTRITE::block, false, BlockSet.TabAdditionPhase.BEFORE)
+            .withTag(BlockTags.MINEABLE_WITH_PICKAXE, true);
 
 
     public static <T extends AbstractStoneSet> T register(T set) {
