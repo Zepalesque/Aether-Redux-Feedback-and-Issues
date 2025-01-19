@@ -21,7 +21,6 @@ import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.DensityFunction;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
@@ -99,7 +98,7 @@ public class ReduxFeatureConfig extends ReduxFeatureBuilders {
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> SMALL_SHADEROOT_TREE = createKey("small_shaderoot");
 
-    public static final ResourceKey<ConfiguredFeature<?, ?>> BLIGHTROOT_TREE = createKey("blightroot");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> BLIGHTWILLOW_TREE = createKey("blightwillow");
 
 
     // Overrides
@@ -141,7 +140,7 @@ public class ReduxFeatureConfig extends ReduxFeatureBuilders {
                         new TwoLayersFeatureSize(1, 0, 1)
                 ).ignoreVines().build());
 
-        register(context, BLIGHTROOT_TREE, Feature.TREE,
+        register(context, BLIGHTWILLOW_TREE, Feature.TREE,
                 new TreeConfiguration.TreeConfigurationBuilder(
                         prov(ReduxWoodSets.BLIGHTWILLOW.log()),
                         new BlightwillowTrunkPlacer(UniformInt.of(12, 14)),
@@ -231,8 +230,8 @@ public class ReduxFeatureConfig extends ReduxFeatureBuilders {
                                         PlacementUtils.filteredByBlockSurvival(ReduxFlowerSets.SHADEROOT_SAPLING.flower().get()))
                                 , 0.375F)),
                         PlacementUtils.inlinePlaced(
-                                configs.getOrThrow(BLIGHTROOT_TREE),
-                                // TODO: Filter via Blightroot Sapling
+                                configs.getOrThrow(BLIGHTWILLOW_TREE),
+                                // TODO: Filter via Blightwillow Sapling
                                 PlacementUtils.filteredByBlockSurvival(AetherBlocks.GOLDEN_OAK_SAPLING.get())
                         )));
 
