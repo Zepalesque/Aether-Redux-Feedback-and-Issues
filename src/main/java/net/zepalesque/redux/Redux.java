@@ -45,6 +45,7 @@ import net.zepalesque.redux.world.carver.ReduxCarvers;
 import net.zepalesque.redux.world.feature.gen.ReduxFeatures;
 import net.zepalesque.redux.world.tree.decorator.ReduxTreeDecorators;
 import net.zepalesque.redux.world.tree.foliage.ReduxFoliagePlacers;
+import net.zepalesque.redux.world.tree.trunk.ReduxTrunkPlacers;
 import net.zepalesque.zenith.api.blockset.BlockSet;
 import net.zepalesque.zenith.api.packconfig.PackConfig;
 import net.zepalesque.zenith.api.packconfig.PackUtils;
@@ -88,6 +89,7 @@ public class Redux {
                 ReduxTiles.TILES,
                 ReduxFeatures.FEATURES,
                 ReduxFoliagePlacers.FOLIAGE_PLACERS,
+                ReduxTrunkPlacers.TRUNK_PLACERS,
                 ReduxParticles.PARTICLES,
                 ReduxRecipes.TYPES,
                 ReduxRecipes.Serializers.SERIALIZERS,
