@@ -1,4 +1,4 @@
-// 1.21.1	2025-01-17T19:55:19.0228872	Block States: aether_redux
+// 1.21.1	2025-01-19T15:04:49.2099697	Block States: aether_redux
 27b55e671cfc0a044bf9fa27933bc8d7890a09d7 assets/aether_redux/blockstates/angilite.json
 2cbe20499de76107b080997bbf04f8c3dbe5093e assets/aether_redux/blockstates/angilite_slab.json
 decdc25a329c583be2f4a7eec1f07e3ae4b5a7ed assets/aether_redux/blockstates/angilite_stairs.json
@@ -80,7 +80,7 @@ e4a4d10ceb7ca8da8230ae385d0e937d72eede53 assets/aether_redux/blockstates/raw_ver
 7033907fbae21b5426d807f7bc4b5cd61ae5c86d assets/aether_redux/blockstates/runelight.json
 efc3a38e6517408652a86923b564e45b2022ec59 assets/aether_redux/blockstates/runic_lantern.json
 ddf80e03b9d60dbd6e2fe38929a54e149481e7b3 assets/aether_redux/blockstates/sentrite.json
-f60a2ce7e3fcea9a2f6c9433724ee93df6ec1f9d assets/aether_redux/blockstates/sentrite_bars.json
+7b4331d71e454b29167519efcc128dde18e1f9d9 assets/aether_redux/blockstates/sentrite_bars.json
 32325c658f9a9ae024be2ac574624a9273b991ea assets/aether_redux/blockstates/sentrite_bricks.json
 28987a7eeed5ddfcc524c1ab31e2e101085cee6f assets/aether_redux/blockstates/sentrite_brick_slab.json
 0f5747e4c532a5fdca904311c4291bba0d866ed0 assets/aether_redux/blockstates/sentrite_brick_stairs.json

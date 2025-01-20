@@ -20,7 +20,7 @@
         "Properties": {
           "distance": "7",
           "double_drops": "true",
-          "persistent": "true",
+          "persistent": "false",
           "waterlogged": "false"
         }
       }
@@ -34,7 +34,7 @@
       "upper_size": 3
     },
     "trunk_placer": {
-      "type": "zenith:int_provider_trunk",
+      "type": "aether_redux:blightwillow_trunk",
       "height": {
         "type": "minecraft:uniform",
         "max_inclusive": 14,

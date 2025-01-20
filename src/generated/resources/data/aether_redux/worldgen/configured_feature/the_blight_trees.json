@@ -2,7 +2,7 @@
   "type": "minecraft:random_selector",
   "config": {
     "default": {
-      "feature": "aether_redux:blightroot",
+      "feature": "aether_redux:blightwillow",
       "placement": [
         {
           "type": "minecraft:block_predicate_filter",
