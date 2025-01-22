@@ -39,6 +39,17 @@
         "type": "minecraft:uniform",
         "max_inclusive": 14,
         "min_inclusive": 12
+      },
+      "wood_block": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "aether_redux:blightwillow_wood",
+          "Properties": {
+            "axis": "y",
+            "double_drops": "true",
+            "natural_gen": "false"
+          }
+        }
       }
     },
     "trunk_provider": {

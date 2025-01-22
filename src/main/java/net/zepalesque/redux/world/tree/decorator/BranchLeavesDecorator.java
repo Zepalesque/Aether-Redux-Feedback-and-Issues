@@ -16,12 +16,12 @@ import java.util.List;
 
 public class BranchLeavesDecorator extends TreeDecorator {
 
-    public static final MapCodec<BranchLeavesDecorator> CODEC = RecordCodecBuilder.mapCodec((vines) ->
-            vines.group(Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter((config) -> config.probability),
-                            IntProvider.CODEC.fieldOf("range").forGetter((config) -> config.range),
-                            IntProvider.CODEC.fieldOf("radius").forGetter((config) -> config.radius),
-                            BlockStateProvider.CODEC.fieldOf("leaf_block").forGetter((config) -> config.leaf))
-                                    .apply(vines, BranchLeavesDecorator::new));
+    public static final MapCodec<BranchLeavesDecorator> CODEC = RecordCodecBuilder.mapCodec(builder ->
+            builder.group(Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter(deco -> deco.probability),
+                            IntProvider.CODEC.fieldOf("range").forGetter(deco -> deco.range),
+                            IntProvider.CODEC.fieldOf("radius").forGetter(deco -> deco.radius),
+                            BlockStateProvider.CODEC.fieldOf("leaf_block").forGetter(deco -> deco.leaf))
+                                    .apply(builder, BranchLeavesDecorator::new));
     private final float probability;
     private final IntProvider range;
     private final IntProvider radius;

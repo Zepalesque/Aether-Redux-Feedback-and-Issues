@@ -143,7 +143,8 @@ public class ReduxFeatureConfig extends ReduxFeatureBuilders {
         register(context, BLIGHTWILLOW_TREE, Feature.TREE,
                 new TreeConfiguration.TreeConfigurationBuilder(
                         prov(ReduxWoodSets.BLIGHTWILLOW.log()),
-                        new BlightwillowTrunkPlacer(UniformInt.of(12, 14)),
+                        // TODO
+                        new BlightwillowTrunkPlacer(UniformInt.of(12, 14), Optional.of(prov(ReduxWoodSets.BLIGHTWILLOW.wood())), Optional.empty()),
                         // TODO
                         prov(drops(ReduxBlocks.SHADEROOT_LEAVES)),
                         new BlightwillowFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)),
