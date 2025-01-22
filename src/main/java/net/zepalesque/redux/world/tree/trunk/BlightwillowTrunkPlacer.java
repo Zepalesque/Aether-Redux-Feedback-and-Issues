@@ -80,8 +80,7 @@ public class BlightwillowTrunkPlacer extends TrunkPlacer {
             BlockPos upper2 = top.below(1).relative(d, 3);
             this.placeLog(level, setter, random, upper2, config);
 
-            // TODO
-            if (this.wood.isPresent()/* && this.roots.isPresent()*/) {
+            if (this.wood.isPresent()) {
 
                 // Place side roots
                 int rootSize = baseRootHeight + ArrayUtils.indexOf(HORIZONTAL_PLANE_SHUFFLE, d);
