@@ -70,7 +70,7 @@ public class ReduxBlockLoot extends ReduxBlockLootProvider {
 
         this.dropSelf(ReduxBlocks.RUNELIGHT.get());
         this.dropNone(ReduxBlocks.LOCKED_RUNELIGHT.get());
-        this.dropNone(ReduxBlocks.LOCKED_SENTRITE_BRICKS.get());
+        this.dropNone(ReduxBlocks.LOCKED_POLISHED_SENTRITE.get());
 
         this.add(ReduxBlocks.WYNDSPROUTS.get(), shearsOr(ReduxItems.WYND_OATS.get(), 0.25F));
         this.add(ReduxBlocks.SKYSPROUTS.get(), shears());

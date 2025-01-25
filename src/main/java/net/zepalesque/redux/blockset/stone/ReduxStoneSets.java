@@ -37,19 +37,27 @@ public class ReduxStoneSets {
                                     .define('H', AetherBlocks.HOLYSTONE.get())
                                     .pattern("#H")
                                     .pattern("H#")))
-            .craftsIntoSet(() -> ReduxStoneSets.SENTRITE_BRICKS, CommonMatrices.SQUARE_2X2)
+            .craftsIntoSet(() -> ReduxStoneSets.POLISHED_SENTRITE, CommonMatrices.SQUARE_2X2)
+            .stonecutIntoSet(() -> ReduxStoneSets.POLISHED_SENTRITE)
             .stonecutIntoSet(() -> ReduxStoneSets.SENTRITE_BRICKS)
             .tabAfter(AetherCreativeTabs.AETHER_BUILDING_BLOCKS, ReduxStoneSets.BLEAKMOSS_HOLYSTONE::wall, true, BlockSet.TabAdditionPhase.BEFORE)
             .tabAfter(AetherCreativeTabs.AETHER_NATURAL_BLOCKS, ReduxStoneSets.BLEAKMOSS_HOLYSTONE::block, false, BlockSet.TabAdditionPhase.BEFORE)
             .withTag(BlockTags.MINEABLE_WITH_PICKAXE, true);
 
-    public static final BaseStoneSet SENTRITE_BRICKS = register(new BrickStoneSet("sentrite_brick", MapColor.DEEPSLATE, SoundType.NETHER_BRICKS, 1.0F, 6.0F, "construction/"))
-            .withLore("Bricks made of Sentrite. These can be used as a nice building block!")
+    public static final BaseStoneSet POLISHED_SENTRITE = register(new BaseStoneSet("polished_sentrite", MapColor.DEEPSLATE, SoundType.NETHER_BRICKS, 1.0F, 6.0F, "construction/"))
+            .withLore("The polished form of Sentrite. These can be used as a nice building block!")
             .tabAfter(AetherCreativeTabs.AETHER_BUILDING_BLOCKS, () -> ReduxStoneSets.SENTRITE.wall().get(), true, BlockSet.TabAdditionPhase.BEFORE)
+            .craftsIntoSet(() -> ReduxStoneSets.SENTRITE_BRICKS, CommonMatrices.SQUARE_2X2)
+            .stonecutIntoSet(() -> ReduxStoneSets.SENTRITE_BRICKS)
             .withTag(BlockTags.MINEABLE_WITH_PICKAXE, true)
             .withTag(AetherTags.Blocks.DUNGEON_BLOCKS, false)
             .withTag(AetherTags.Blocks.SENTRY_BLOCKS, false)
             .withItemTag(AetherTags.Items.SENTRY_BLOCKS, false);
+
+    public static final BaseStoneSet SENTRITE_BRICKS = register(new BrickStoneSet("sentrite_brick", MapColor.DEEPSLATE, SoundType.NETHER_BRICKS, 1.0F, 6.0F, "construction/"))
+            .withLore("Bricks made out of Sentrite. These can be used as a nice building block!")
+            .tabAfter(AetherCreativeTabs.AETHER_BUILDING_BLOCKS, () -> ReduxStoneSets.POLISHED_SENTRITE.wall().get(), true, BlockSet.TabAdditionPhase.BEFORE)
+            .withTag(BlockTags.MINEABLE_WITH_PICKAXE, true);
 
     public static final BaseStoneSet ANGILITE = register(new BaseStoneSet("angilite", MapColor.TERRACOTTA_YELLOW, SoundType.TUFF, 0.5F, 6.0F, "natural/"))
             // TODO: Idea: glowstone tiles via enchanting angelic stone? Maybe? Could be nice for ceiling lights in the silver dungeons

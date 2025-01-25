@@ -121,7 +121,7 @@ public class ReduxItemTagsData extends ReduxItemTagsProvider {
                 ReduxBlocks.BOSS_DOORWAY_SENTRY_BASE.get().asItem(),
                 ReduxBlocks.RUNELIGHT.get().asItem(),
                 ReduxBlocks.LOCKED_RUNELIGHT.get().asItem(),
-                ReduxBlocks.LOCKED_SENTRITE_BRICKS.get().asItem()
+                ReduxBlocks.LOCKED_POLISHED_SENTRITE.get().asItem()
         );
 
         this.tag(AetherTags.Items.LOCKED_DUNGEON_BLOCKS).add(
@@ -130,7 +130,7 @@ public class ReduxItemTagsData extends ReduxItemTagsProvider {
                 ReduxBlocks.LOCKED_CARVED_BASE.get().asItem(),
                 ReduxBlocks.LOCKED_SENTRY_BASE.get().asItem(),
                 ReduxBlocks.LOCKED_RUNELIGHT.get().asItem(),
-                ReduxBlocks.LOCKED_SENTRITE_BRICKS.get().asItem()
+                ReduxBlocks.LOCKED_POLISHED_SENTRITE.get().asItem()
         );
 
         this.tag(AetherTags.Items.DUNGEON_BLOCKS).add(

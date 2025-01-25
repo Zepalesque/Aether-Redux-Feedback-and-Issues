@@ -9,7 +9,6 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ChainBlock;
-import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraft.world.level.block.IronBarsBlock;
 import net.minecraft.world.level.block.LanternBlock;
 import net.minecraft.world.level.block.RotatedPillarBlock;
@@ -38,10 +37,8 @@ import net.zepalesque.redux.block.redstone.LogicatorBlock;
 import net.zepalesque.redux.block.state.ReduxBlockBuilders;
 import net.zepalesque.redux.client.particle.ReduxParticles;
 import net.zepalesque.redux.data.resource.registries.ReduxFeatureConfig;
-import net.zepalesque.unity.block.natural.DoubleDropsCarpet;
 import net.zepalesque.unity.block.natural.DoubleDropsGrowthBlock;
 import net.zepalesque.unity.block.natural.leaves.LeafPileBlock;
-import net.zepalesque.unity.data.resource.registries.UnityFeatureConfig;
 import net.zepalesque.unity.event.hook.BlockHooks;
 import net.zepalesque.zenith.api.block.CommonPlantBounds;
 import net.zepalesque.zenith.api.blockset.type.AbstractWoodSet;
@@ -119,7 +116,7 @@ public class ReduxBlocks extends ReduxBlockBuilders {
                     true
             ));
 
-    public static final DeferredBlock<Block> LOCKED_SENTRITE_BRICKS = register("locked_sentrite_bricks", () ->
+    public static final DeferredBlock<Block> LOCKED_POLISHED_SENTRITE = register("locked_polished_sentrite", () ->
             new Block(Properties.of()
                     .mapColor(MapColor.DEEPSLATE)
                     .strength(-1.0F, 3600000.0F)

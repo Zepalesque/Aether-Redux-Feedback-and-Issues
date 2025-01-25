@@ -1,6 +1,5 @@
 package net.zepalesque.redux.data.gen;
 
-import com.aetherteam.aether.block.AetherBlocks;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.zepalesque.redux.Redux;
@@ -47,7 +46,7 @@ public class ReduxItemModelData extends ReduxItemModelProvider {
 
         this.itemBlock(ReduxBlocks.RUNELIGHT.get(), "_on");
         this.itemOverlayDungeonBlock(ReduxBlocks.LOCKED_RUNELIGHT.get(), ReduxBlocks.RUNELIGHT.get(), "lock", "dungeon/", "_on");
-        this.itemOverlayDungeonBlock(ReduxBlocks.LOCKED_SENTRITE_BRICKS.get(), ReduxStoneSets.SENTRITE_BRICKS.block().get(), "construction/", "lock");
+        this.itemOverlayDungeonBlock(ReduxBlocks.LOCKED_POLISHED_SENTRITE.get(), ReduxStoneSets.POLISHED_SENTRITE.block().get(), "construction/", "lock");
 
         this.item(ReduxItems.WYND_OAT_PANICLE.get(), "materials/");
         this.item(ReduxItems.WYND_OATS.get(), "food/");

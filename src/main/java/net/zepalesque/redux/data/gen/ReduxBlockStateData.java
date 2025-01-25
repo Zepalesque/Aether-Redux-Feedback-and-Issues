@@ -1,7 +1,5 @@
 package net.zepalesque.redux.data.gen;
 
-import com.aetherteam.aether.block.AetherBlocks;
-import net.minecraft.client.renderer.CubeMap;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.zepalesque.redux.Redux;
@@ -50,7 +48,7 @@ public class ReduxBlockStateData extends ReduxBlockStateProvider {
         this.cubeActivatable(ReduxBlocks.RUNELIGHT.get(), "dungeon/");
         this.cubeActivatable(ReduxBlocks.LOCKED_RUNELIGHT.get(), ReduxBlocks.RUNELIGHT.get(), "dungeon/");
 
-        this.dungeonBlock(ReduxBlocks.LOCKED_SENTRITE_BRICKS.get(), ReduxStoneSets.SENTRITE_BRICKS.block().get(), "construction/");
+        this.dungeonBlock(ReduxBlocks.LOCKED_POLISHED_SENTRITE.get(), ReduxStoneSets.POLISHED_SENTRITE.block().get(), "construction/");
 
         this.crossEnchantableOverlay(ReduxBlocks.WYNDSPROUTS.get(), "natural/");
         this.crossTintedOverlay(ReduxBlocks.SKYSPROUTS.get(), "natural/");

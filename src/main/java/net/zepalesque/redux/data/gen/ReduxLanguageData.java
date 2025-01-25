@@ -67,7 +67,7 @@ public class ReduxLanguageData extends ReduxLanguageProvider {
         addLore(ReduxBlocks.RUNELIGHT, "A glowing block of circuitry made of Veridium, which can be easily toggled on and off. Found in Bronze Dungeons.");
         addBlock(ReduxBlocks.LOCKED_RUNELIGHT);
 
-        addBlock(ReduxBlocks.LOCKED_SENTRITE_BRICKS);
+        addBlock(ReduxBlocks.LOCKED_POLISHED_SENTRITE);
 
 
         addBlock(ReduxBlocks.WYNDSPROUTS);

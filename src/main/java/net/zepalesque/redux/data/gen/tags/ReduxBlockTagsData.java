@@ -99,7 +99,7 @@ public class ReduxBlockTagsData extends ReduxBlockTagsProvider {
                 ReduxBlocks.BOSS_DOORWAY_SENTRY_BASE.get(),
                 ReduxBlocks.RUNELIGHT.get(),
                 ReduxBlocks.LOCKED_RUNELIGHT.get(),
-                ReduxBlocks.LOCKED_SENTRITE_BRICKS.get()
+                ReduxBlocks.LOCKED_POLISHED_SENTRITE.get()
         );
         this.tag(AetherTags.Blocks.LOCKED_DUNGEON_BLOCKS).add(
                 ReduxBlocks.LOCKED_CARVED_PILLAR.get(),
@@ -107,7 +107,7 @@ public class ReduxBlockTagsData extends ReduxBlockTagsProvider {
                 ReduxBlocks.LOCKED_CARVED_BASE.get(),
                 ReduxBlocks.LOCKED_SENTRY_BASE.get(),
                 ReduxBlocks.LOCKED_RUNELIGHT.get(),
-                ReduxBlocks.LOCKED_SENTRITE_BRICKS.get()
+                ReduxBlocks.LOCKED_POLISHED_SENTRITE.get()
         );
         this.tag(AetherTags.Blocks.DUNGEON_BLOCKS).add(
                 ReduxBlocks.CARVED_PILLAR.get(),
