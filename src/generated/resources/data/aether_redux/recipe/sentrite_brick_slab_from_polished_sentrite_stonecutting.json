@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "aether_redux:polished_sentrite"
+  },
+  "result": {
+    "count": 2,
+    "id": "aether_redux:sentrite_brick_slab"
+  }
+}

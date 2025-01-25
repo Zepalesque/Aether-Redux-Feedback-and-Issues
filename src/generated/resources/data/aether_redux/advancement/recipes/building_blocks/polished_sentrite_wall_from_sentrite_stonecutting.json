@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_sentrite_bricks": {
+    "has_sentrite": {
       "conditions": {
         "items": [
           {
-            "items": "aether_redux:sentrite_bricks"
+            "items": "aether_redux:sentrite"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "aether_redux:sentrite_bricks_from_sentrite"
+        "recipe": "aether_redux:polished_sentrite_wall_from_sentrite_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_sentrite_bricks"
+      "has_sentrite"
     ]
   ],
   "rewards": {
     "recipes": [
-      "aether_redux:sentrite_bricks_from_sentrite"
+      "aether_redux:polished_sentrite_wall_from_sentrite_stonecutting"
     ]
   }
 }

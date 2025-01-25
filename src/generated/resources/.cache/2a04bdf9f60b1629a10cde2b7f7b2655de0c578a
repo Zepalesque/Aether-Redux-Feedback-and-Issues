@@ -1,4 +1,4 @@
-// 1.21.1	2025-01-04T19:59:40.8956384	Tags for minecraft:item mod id aether_redux
+// 1.21.1	2025-01-24T22:47:44.8029614	Tags for minecraft:item mod id aether_redux
 8d17c36582b2a10c1b19cd86cac220b5e90dc908 data/aether/tags/item/accessories_capes.json
 c191bd82d7ab0270a08a0b6d99db3860549e07ea data/aether/tags/item/boss_doorway_dungeon_blocks.json
 8d17c36582b2a10c1b19cd86cac220b5e90dc908 data/aether/tags/item/bronze_dungeon_loot.json
@@ -6,10 +6,10 @@ c191bd82d7ab0270a08a0b6d99db3860549e07ea data/aether/tags/item/boss_doorway_dung
 1e0050c0c65a03c138c14cc5295b4a7fcec2d877 data/aether/tags/item/dart_shooters.json
 184faca5516506997d979aa45bfac63b68600825 data/aether/tags/item/dungeon_blocks.json
 752d7b101062e40cc5449bf130575be14909a28b data/aether/tags/item/flying_cow_temptation_items.json
-079f532874a02f79935f6a4082693e47575060f5 data/aether/tags/item/locked_dungeon_blocks.json
+e1976f006a7f28b9ee8c22584e8d5d7c82641ca7 data/aether/tags/item/locked_dungeon_blocks.json
 92fb0abf3cc460d1bc528700380179be01a2f938 data/aether/tags/item/phyg_temptation_items.json
 fd14f71d583dd108b0ba5dc7aeac07f35c6dd887 data/aether/tags/item/planks_crafting.json
-1da24719bdf8ede41a69286763554958c408486f data/aether/tags/item/sentry_blocks.json
+1a3cad2b844bcb0ff147912d293818c000fd02e4 data/aether/tags/item/sentry_blocks.json
 fd14f71d583dd108b0ba5dc7aeac07f35c6dd887 data/aether/tags/item/skyroot_repairing.json
 fd14f71d583dd108b0ba5dc7aeac07f35c6dd887 data/aether/tags/item/skyroot_stick_crafting.json
 fd14f71d583dd108b0ba5dc7aeac07f35c6dd887 data/aether/tags/item/skyroot_tool_crafting.json

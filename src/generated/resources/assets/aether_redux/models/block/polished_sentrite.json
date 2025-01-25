@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "aether_redux:block/construction/polished_sentrite"
+  }
+}

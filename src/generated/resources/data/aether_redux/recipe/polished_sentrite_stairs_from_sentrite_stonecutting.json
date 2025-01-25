@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "aether_redux:sentrite"
+  },
+  "result": {
+    "count": 1,
+    "id": "aether_redux:polished_sentrite_stairs"
+  }
+}

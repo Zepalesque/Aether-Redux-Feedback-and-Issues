@@ -3,15 +3,16 @@
   "category": "building",
   "key": {
     "#": {
-      "item": "aether_redux:sentrite"
+      "item": "aether_redux:polished_sentrite"
     }
   },
   "pattern": [
-    "##",
-    "##"
+    "#  ",
+    "## ",
+    "###"
   ],
   "result": {
     "count": 4,
-    "id": "aether_redux:sentrite_bricks"
+    "id": "aether_redux:polished_sentrite_stairs"
   }
 }

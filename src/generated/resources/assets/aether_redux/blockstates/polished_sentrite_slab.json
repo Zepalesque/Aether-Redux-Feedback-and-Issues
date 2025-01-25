@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "aether_redux:block/polished_sentrite_slab"
+    },
+    "type=double": {
+      "model": "aether_redux:block/polished_sentrite"
+    },
+    "type=top": {
+      "model": "aether_redux:block/polished_sentrite_slab_top"
+    }
+  }
+}
