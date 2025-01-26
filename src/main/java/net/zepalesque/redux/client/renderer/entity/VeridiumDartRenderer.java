@@ -38,7 +38,7 @@ public class VeridiumDartRenderer extends ArrowRenderer<VeridiumDart> {
     }
 
     public static class Uninfused extends ArrowRenderer<VeridiumDart.Uninfused> {
-        public static final ResourceLocation TEXTURE = Redux.loc("textures/entity/projectile/dart/infused_veridium_dart.png");
+        public static final ResourceLocation TEXTURE = Redux.loc("textures/entity/projectile/dart/veridium_dart.png");
 
         public Uninfused(EntityRendererProvider.Context context) {
             super(context);

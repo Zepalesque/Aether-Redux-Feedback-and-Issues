@@ -37,7 +37,6 @@ public class VeridiumDart extends AbstractDart {
         if (this.level().isClientSide && !this.inGround) {
             this.level().addParticle(ParticleTypes.INSTANT_EFFECT, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
         }
-
     }
 
     @Override

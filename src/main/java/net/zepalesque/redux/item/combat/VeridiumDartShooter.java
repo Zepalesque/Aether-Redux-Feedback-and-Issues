@@ -41,19 +41,7 @@ public class VeridiumDartShooter extends DartShooterItem implements VeridiumItem
     public int getUseDuration(ItemStack stack, LivingEntity entity) {
         return this.useTime;
     }
-
-    @Override
-    public AbstractDart customDart(AbstractDart dart, ItemStack projectileStack, ItemStack weaponStack) {
-            AbstractDart newDart = ReduxEntities.INFUSED_VERIDIUM_DART.get().create(dart.level());
-            if (newDart != null && dart.getOwner() != null) {
-                Entity owner = dart.getOwner();
-                newDart.setPos(owner.getX(), owner.getEyeY() - 0.1, owner.getZ());
-                newDart.setOwner(owner);
-                return newDart;
-            }
-            return super.customDart(dart, projectileStack, weaponStack);
-    }
-
+    
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity user) {
         ItemStack original = super.finishUsingItem(stack, level, user);
